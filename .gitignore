@@ -9,3 +9,6 @@ www/build
 .sass-cache/
 www/lib
 e2e/build
+.vscode/
+jsconfig.json
+typings/
