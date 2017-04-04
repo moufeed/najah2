@@ -1,0 +1,68 @@
+
+.children-list{
+    > .card.child-card{
+        padding: 0;
+        margin: 10px;
+        box-shadow:0 1px 1px rgba(0, 0, 0, 0.3);
+    }
+    .item-body{
+            p{
+                margin: 0;
+                span{
+                    display:  block;
+                    margin: 0 5px ;
+                    text-align: center;
+                    
+                   color: drken($gray ,5%);
+                    &.total{
+                        color :$black;
+                        font-weight: bolder;
+                        font-size: 18px;
+                        margin-top: 5px;
+                    }
+                }
+            }
+    }
+    .item-footer{
+        color :$black;
+        .link{
+                padding: 5px 10px;
+                border: 1px solid nth($colors ,1);
+                border-radius: 2px;
+                color : nth($colors ,1);
+                &.activated{
+                    background: nth($colors ,1);
+                    color :$white;
+                }
+        }
+        i{
+            margin :5px;
+            color: $gray;
+        }
+    }
+}
+
+
+
+
+/*
+   <div class="card child-card" ng-repeat="child in children">
+          <div class="item item-avatar">
+            <img ng-src="{{child.pic}}">
+            <h4>{{child.firstname  + " " + child.lastname}}</h4>
+            <p>{{child.lastprogram}}</p>
+         </div>
+          <div class="item item-body">
+           <div class="flex-footer">
+            <p> <span class="subdued">برامج دراسية : </span><span>{{child.programs}}</span></p>
+             <p><span class="subdued">دورات فصلية</span><span>{{child.tracks}}</span></p>
+           </div>
+          </div>
+          <div class="item item-footer flex-footer">
+            <span><i class="ion-ios-clock-outline"></i>{{child.lastlogin}}</span>
+            <a ui-sref="#" class="link" > <i class="ion-ios-information-outline"></i> تفاصيل</a>
+          </div>
+      </div>
+
+
+*/

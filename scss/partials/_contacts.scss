@@ -1,0 +1,16 @@
+.contactslist{
+
+    .icon:before{
+        color :$contactIcon;
+    }
+}
+
+.modal-message{
+     background :darken($white,4%);
+     form{
+         background :#fff;
+        textarea{
+                min-height: 40vh;
+            }
+     }
+}

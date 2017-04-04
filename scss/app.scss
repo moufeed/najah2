@@ -26,6 +26,59 @@ $tabs-striped-off-opacity:        $tabs-off-opacity;
 $ionicons-font-path: "../lib/ionic/release/fonts" !default;
 
 // Include all of Ionic.
+
+
+
+//
+$black : #000;
+$primary: #337ab7; 
+$success: #5cb85c;
+$info:    #5bc0de;
+$warning: #f0ad4e;
+$danger:  #d9534f;
+ $flagW : 24px;
+$white : #fff;
+ 
+$colors : #386FDF #1C3144 #2C302E #191923 #FFB100;
+$pie : #608097  #FAFFFD  #3f5e72  #555 ;
+$m-blue:                   #2196F3;
+$m-red:                    #F44336;
+$m-purple:                 #9C27B0;
+$m-deeppurple:             #673AB7;
+$m-lightblue:              #03A9F4;  
+$m-cyan:                   #00BCD4;
+$m-teal:                   #009688;
+$m-green:                  #4CAF50;
+$m-lightgreen:             #8BC34A;
+$m-lime:                   #CDDC39;
+$m-yellow:                 #FFEB3B;
+$m-amber:                  #FFC107;
+$m-orange:                 #FF9800;
+$m-deeporange:             #FF5722;
+$m-gray:                   #9E9E9E;
+$m-bluegray:               #607D8B;
+$m-indigo:                 #3F51B5;
+$m-pink:                   #E91E63;
+$m-brown:                  #795548;
+
+$listcolors : (
+    light : $light,
+    stable :$stable,
+    positive : $positive,
+    calm : $calm,
+    balanced : $balanced,
+    energized : $energized,
+    assertive : $assertive,
+    royal : $royal,
+    dark : $dark,
+    gray : $gray
+);
+
+//contacts
+$contactIcon: #3A6EDE;
+
+
+
 @import "www/lib/ionic/scss/ionic";
 
 // Tmp fix until Ionic adds !default to $button-default-border and $button-default-active-border.

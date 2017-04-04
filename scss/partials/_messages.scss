@@ -1,0 +1,25 @@
+
+ 
+.messages-list{
+     .item{
+         margin-bottom:4px;
+         box-shadow: 0 2px 2px -2px rgba($black ,.6);
+         
+         .item-content{
+             position: relative;
+            background :$light url("#{$icon}") 96% 50%  /12px no-repeat;
+         }
+     }
+    
+ } 
+ .modalmessage{
+     background :darken($white,4%);
+ form{
+        border-top: 1px solid #eee;
+        padding-top: 15px; 
+        textarea{
+            min-height: 80px;
+        }
+     }
+ }
+ 

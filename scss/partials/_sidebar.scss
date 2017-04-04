@@ -1,0 +1,54 @@
+.menu{
+    background-color:nth($colors , 3);
+    background : linear-gradient(to right,nth($colors , 3) , lighten(nth($colors , 3),4%));
+
+    .list{
+        
+        .item , .item .item-content{
+            border-color :lighten(nth($colors , 3),6%);
+             background-color:nth($colors , 3);
+             background : linear-gradient(to right,nth($colors , 3) , lighten(nth($colors , 3),4%));
+             &.activated{
+            background: nth($colors , 1);
+            box-shadow: 0 2px 2px -1px rgba(darken(nth($colors , 1) , 10%) ,.5);
+                i{
+                    background : rgba($black,.3);
+                }
+            }
+        }
+        .item .item-content{
+             padding:5px  10px;
+            color :$white;
+        }
+        i{
+                font-size: 1.3em; 
+                color:nth($colors , 5);
+                position: relative;
+                top: 2px;
+                background:transparent;
+                 width : 40px;
+                 height: 40px;
+                 line-height: 40px;
+                margin: 0px 5px;
+                border-radius: 50%;
+                text-align: center;
+
+        }
+    }
+    .logo{
+         background-color:nth($colors , 3); 
+         z-index: 1;
+         position: relative;
+          background : linear-gradient(to right,rgba(darken(nth($colors , 3),4%),.9) ,rgba(nth($colors , 3) ,.9) ); 
+           
+          img.blur{
+               opacity: .7;
+               filter:blur(25px);
+               position: absolute;
+               transform: scale(1.04);
+          } 
+    }
+}       
+.menu-open .pane {
+    box-shadow: -5px 0 15px -3px rgba($black,.4);
+}

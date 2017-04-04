@@ -1,0 +1,136 @@
+
+.bar {
+    .button{
+        top:0;
+    }
+}
+.item{
+    border-color: $item-border-color;
+} 
+.pre-img{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     &.finish-loading
+        {
+            background-color: transparent;
+            border: none;
+
+                img
+            {
+                    visibility: visible;
+                    opacity: 1;
+            }
+        }
+         img
+  {
+    position: absolute;
+		left: 0px;
+		top: 0px;
+		visibility: hidden;
+		opacity: 0;
+		@include transition(visibility 0s linear, opacity 0.5s linear); 
+        width: 100%;
+  }
+}
+
+.ico-lg{
+    
+}
+.icon-orange{
+    color:orange;
+}
+
+.emptymsg{
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    background: $light;
+    display: block;
+    padding:15px;
+    text-align: center;
+    &.inside{
+        box-shadow :none;
+    }
+    .icon{
+        font-size: 6em;
+        margin-bottom:15px; 
+    } 
+    &.primary .icon{color:$primary;}
+    &.success .icon{color:$success;}
+    &.warning .icon{color:$warning;}
+    &.danger .icon{color:$danger;}
+    &.info .icon{color:$info;}
+    
+}
+
+.flag-new{
+    position: absolute;
+    top:0;
+    display: inline-block;
+    width:  $flagW ;
+    > i{
+        position: relative;
+        display: block;
+        &:before,&:after{
+             position: absolute;
+            
+        }
+        &:before{
+             top : 0;
+            content :'';
+            width: 0;
+            height: 0;
+     
+        }
+        &:after{
+             top : -3px;
+            content : '⦿';
+            color: rgba($light,.5);
+        }
+       
+    }
+    &.right{
+        right : 0;
+        i{
+            &:before{
+            border-top:  $flagW  solid lighten($assertive ,9%);
+            border-left:  $flagW  solid transparent;
+        }
+        &:after{
+            right : 1px;
+            font-size: 11px;
+        }
+     }
+    }
+    &.left{
+        left : 0;
+         i{
+            &:before{
+            border-top:  $flagW  solid lighten($assertive ,9%);
+            border-right:  $flagW  solid transparent;
+        }
+        &:after{
+            left : 1px;
+            font-size: 11px;
+        }
+     }
+    }
+
+}
+
+
+ 
+
+    
+     @for $i from 1 through length($listcolors){
+          .border-top-#{nth(nth($listcolors , $i) , 1)}{
+               border: 0;
+               border-top : 3px solid nth(nth($listcolors , $i) , 2);
+            }
+     }
+ 
+ .flex-footer{
+        @include display-flex;
+        @include justify-content(space-between);
+        @include align-items(center);
+ }
