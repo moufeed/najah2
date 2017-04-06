@@ -1,54 +1,104 @@
 .menu{
-    background-color:nth($colors , 3);
-    background : linear-gradient(to right,nth($colors , 3) , lighten(nth($colors , 3),4%));
-
-    .list{
-        
-        .item , .item .item-content{
-            border-color :lighten(nth($colors , 3),6%);
-             background-color:nth($colors , 3);
-             background : linear-gradient(to right,nth($colors , 3) , lighten(nth($colors , 3),4%));
-             &.activated{
-            background: nth($colors , 1);
-            box-shadow: 0 2px 2px -1px rgba(darken(nth($colors , 1) , 10%) ,.5);
-                i{
-                    background : rgba($black,.3);
-                }
+    .bar-side-menu{
+        background-color:darken($white,10%) ;
+        height: 130px !important; 
+        border-bottom : 1px solid darken($white,20%);
+       
+        .item.item-avatar{
+            padding: 0 15px;
+            color:nth($colors ,3);
+            h2,p{
+                color:nth($colors ,3);
             }
-        }
-        .item .item-content{
-             padding:5px  10px;
-            color :$white;
-        }
-        i{
-                font-size: 1.3em; 
-                color:nth($colors , 5);
+            h2{
+                    font-weight: bolder;
+            }
+            img{
                 position: relative;
-                top: 2px;
-                background:transparent;
-                 width : 40px;
-                 height: 40px;
-                 line-height: 40px;
-                margin: 0px 5px;
-                border-radius: 50%;
-                text-align: center;
-
+                top: 10px;
+                left: auto;
+                margin-bottom: 15px;
+                max-width: 50px;
+                max-height: 50px;
+                // box-shadow: 0 0 0 5px darken($white,10%) , 0 0 0 6px darken($white,35%);
+            }
+            .mm-user-icon{
+                @include align-items(flex-start);
+                right: 0;
+                padding-top: 5px;
+                color:$gray;
+            }
+        } 
+    }
+    .list {
+             
+                .item{
+                     border-bottom : 0; 
+                     border-color : transparent;
+                     
+                     .icon{
+                         font-size: 23px;
+                         color :mc(blue);
+                     }
+                } 
+            
         }
-    }
-    .logo{
-         background-color:nth($colors , 3); 
-         z-index: 1;
-         position: relative;
-          background : linear-gradient(to right,rgba(darken(nth($colors , 3),4%),.9) ,rgba(nth($colors , 3) ,.9) ); 
-           
-          img.blur{
-               opacity: .7;
-               filter:blur(25px);
-               position: absolute;
-               transform: scale(1.04);
-          } 
-    }
-}       
-.menu-open .pane {
-    box-shadow: -5px 0 15px -3px rgba($black,.4);
 }
+.has-side-menu-header{
+    top: 130px; 
+}
+
+// .menu{
+//     background-color:nth($colors , 3);
+//     background : linear-gradient(to right,nth($colors , 3) , lighten(nth($colors , 3),4%));
+
+//     .list{
+        
+//         .item , .item .item-content{
+//             border-color :lighten(nth($colors , 3),6%);
+//              background-color:nth($colors , 3);
+//              background : linear-gradient(to right,nth($colors , 3) , lighten(nth($colors , 3),4%));
+//              &.activated{
+//             background: nth($colors , 1);
+//             box-shadow: 0 2px 2px -1px rgba(darken(nth($colors , 1) , 10%) ,.5);
+//                 i{
+//                     background : rgba($black,.3);
+//                 }
+//             }
+//         }
+//         .item .item-content{
+//              padding:5px  10px;
+//             color :$white;
+//         }
+//         i{
+//                 font-size: 1.3em; 
+//                 color:nth($colors , 5);
+//                 position: relative;
+//                 top: 2px;
+//                 background:transparent;
+//                  width : 40px;
+//                  height: 40px;
+//                  line-height: 40px;
+//                 margin: 0px 5px;
+//                 border-radius: 50%;
+//                 text-align: center;
+
+//         }
+//     }
+//     .logo{
+//          background-color:nth($colors , 3); 
+//          z-index: 1;
+//          position: relative;
+//           background : linear-gradient(to right,rgba(darken(nth($colors , 3),4%),.9) ,rgba(nth($colors , 3) ,.9) ); 
+           
+//           img.blur{
+//                opacity: .7;
+//                filter:blur(25px);
+//                position: absolute;
+//                transform: scale(1.04);
+//           } 
+//     }
+// }       
+// .menu-open .pane {
+//     box-shadow: -5px 0 15px -3px rgba($black,.4);
+// }

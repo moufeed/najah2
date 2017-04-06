@@ -3,133 +3,105 @@
  *
  * Use it to customise the look and feel of the app.
  */
-
-// Colors.
-$positive: #387ef5;
-$stable: #f5f5f5;
+$dir: ltr ;
+$black: #000;
+$primary: #337ab7;
+$success: #5cb85c;
+$info : #5bc0de;
+$warning: #f0ad4e;
+$danger : #d9534f;
+$flagW: 24px;
+$white: #fff;
+$colors: #386FDF #1C3144 #2C302E #191923 #FFB100;
+$pie: #608097 #FAFFFD #3f5e72 #555;
+$light : #fff !default;
+$stable : #f8f8f8 !default;
+$positive : #387ef5 !default;
+$calm : #11c1f3 !default;
+$balanced : #33cd5f !default;
+$energized : #ffc900 !default;
+$assertive : #ef473a !default;
+$royal : #886aea !default;
+$dark : #444 !default;
+$gray : #777;
+$item-border-color : #eee;
+//contacts
+$contactIcon: #3A6EDE;
 
 $base-background-color: #fcfcfc;
 $item-default-bg: white;
 $item-divider-bg: #f1f1f1;
-
 // Setting the default button to button-outline.
 $button-default-bg: white;
 $button-default-text: $positive;
 $button-default-border: $positive;
 $button-default-active-bg: $positive;
 $button-default-active-border: $positive;
+$tabs-off-opacity : 0.6;
+$tabs-striped-off-opacity : $tabs-off-opacity;
 
-$tabs-off-opacity:                0.6;
-$tabs-striped-off-opacity:        $tabs-off-opacity;
+$material : (
+  blue:                   #2196F3,
+  red:                    #F44336,
+  purple:                 #9C27B0,
+  deeppurple:               #673AB7,
+  lightblue:              #03A9F4,  
+  cyan:                   #00BCD4, 
+  teal:                   #009688,
+  green:                  #4CAF50,
+  lightgreen:             #8BC34A,
+  lime:                   #CDDC39,
+  yellow:                 #FFEB3B,
+  amber:                    #FFC107,
+  orange:                 #FF9800,
+  deeporange:               #FF5722,
+  gray:                   #9E9E9E,
+  bluegray:                 #607D8B,
+  indigo:                 #3F51B5,
+  pink:                   #E91E63,
+  brown:                  #795548
+);
+
+$listcolors : (
+    light : #fff,
+    stable :#f8f8f8,
+    positive : #387ef5,
+    calm : #11c1f3,
+    balanced : #33cd5f, 
+    energized : #ffc900,
+    assertive : #ef473a,
+    royal : #886aea,
+    dark :  #444444,
+    gray : #777777
+);
+
+
+
+@function mc($key) {
+  @if map-has-key($material, $key) {
+    @return map-get($material, $key);
+  } 
+}
+
+
+// Bar content.
+$bar-content-bg : mc(blue);
+ 
+$button-large-icon-size : 23px;
+
+//mixins
+@import "mixins/gradient";
 
 // The path to the font icons.
 $ionicons-font-path: "../lib/ionic/release/fonts" !default;
-
 // Include all of Ionic.
-
-
-
-//
-$black : #000;
-$primary: #337ab7; 
-$success: #5cb85c;
-$info:    #5bc0de;
-$warning: #f0ad4e;
-$danger:  #d9534f;
- $flagW : 24px;
-$white : #fff;
- 
-$colors : #386FDF #1C3144 #2C302E #191923 #FFB100;
-$pie : #608097  #FAFFFD  #3f5e72  #555 ;
-$m-blue:                   #2196F3;
-$m-red:                    #F44336;
-$m-purple:                 #9C27B0;
-$m-deeppurple:             #673AB7;
-$m-lightblue:              #03A9F4;  
-$m-cyan:                   #00BCD4;
-$m-teal:                   #009688;
-$m-green:                  #4CAF50;
-$m-lightgreen:             #8BC34A;
-$m-lime:                   #CDDC39;
-$m-yellow:                 #FFEB3B;
-$m-amber:                  #FFC107;
-$m-orange:                 #FF9800;
-$m-deeporange:             #FF5722;
-$m-gray:                   #9E9E9E;
-$m-bluegray:               #607D8B;
-$m-indigo:                 #3F51B5;
-$m-pink:                   #E91E63;
-$m-brown:                  #795548;
-
-$listcolors : (
-    light : $light,
-    stable :$stable,
-    positive : $positive,
-    calm : $calm,
-    balanced : $balanced,
-    energized : $energized,
-    assertive : $assertive,
-    royal : $royal,
-    dark : $dark,
-    gray : $gray
-);
-
-//contacts
-$contactIcon: #3A6EDE;
-
-
-
-@import "www/lib/ionic/scss/ionic";
-
-// Tmp fix until Ionic adds !default to $button-default-border and $button-default-active-border.
-$button-default-bg: white;
-$button-default-text: $positive;
-$button-default-border: $positive;
-$button-default-active-bg: $positive;
-$button-default-active-border: $positive;
-
-// Setting the default button to button-outline.
-.button.active, .button.activated {
-  background-color: $button-default-active-bg;
-  box-shadow: none;
-  color: #fff;
-}
-
-.button, .button.button-light, .button.button-stable, .button.button-positive, .button.button-calm, .button.button-assertive,
-.button.button-balanced, .button.button-energized, .button.button-royal, .button.button-dark {
-  border-color: $button-default-border;
-
-  &.activated, &.active  {
-    border-color: $button-default-active-border;
-  }
-}
-
-.button.button-light, .button.button-stable, .button.button-calm, .button.button-assertive, .button.button-balanced,
-.button.button-energized, .button.button-royal, .button.button-dark {
-  color: $button-default-text;
-}
-
-.button-clear, .button.button-clear {
-  color: $button-default-text;
-
-  &.activated, &.active  {
-    background: none;
-  }
-}
-
-.button-outline, .button.button-outline {
-  border-color: $button-default-border;
-
-  &.activated, &.active  {
-    background-color: $button-default-active-bg;
-  }
-}
-
-.button.button-icon, .button-icon {
-  border-color: transparent;
-  color: $button-default-text;
-  background-color: transparent;
-}
+@import "www/lib/ionic/scss/ionic"; 
 
 // Include all of Moodle Mobile.
 @import "www/build/mm.bundle.scss";
+ 
+@import "partials/button",
+        "partials/bar",
+        "partials/loginpage",
+        "partials/common"
+;  

@@ -188,6 +188,7 @@ angular.module('mm.core.login')
      * @return {Promise} Promise resolved when the state changes.
      */
     self.goToSiteInitialPage = function() {
+        return  $state.go('site.parent');
         var myCoursesDisabled = $mmCourses.isMyCoursesDisabledInSite();
 
         if (myCoursesDisabled || ($mmSite.getInfo() && $mmSite.getInfo().userhomepage === 0)) {

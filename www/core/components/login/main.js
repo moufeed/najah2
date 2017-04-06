@@ -208,7 +208,7 @@ angular.module('mm.core.login', [])
 
     // Redirect depending on user session.
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-
+            
         // Prevent state changes while the app is not ready.
         if (!$mmApp.isReady() && toState.name !== 'mm_login.init') {
             event.preventDefault();
@@ -218,7 +218,7 @@ angular.module('mm.core.login', [])
         }
 
         var isLoginStateWithSession = toState.name === 'mm_login.reconnect' || toState.name === 'mm_login.sitepolicy';
-
+            
         if (toState.name.substr(0, 8) === 'redirect' || toState.name.substr(0, 15) === 'mm_contentlinks') {
             return;
         } else if ((toState.name.substr(0, 8) !== 'mm_login' || isLoginStateWithSession) && !$mmSite.isLoggedIn()) {
@@ -232,6 +232,7 @@ angular.module('mm.core.login', [])
             });
             $state.transitionTo('mm_login.init');
         } else if (toState.name.substr(0, 8) === 'mm_login' && !isLoginStateWithSession && $mmSite.isLoggedIn()) {
+             
             // We are logged in and requested the login page.
             event.preventDefault();
             $log.debug('Redirect to course page, request was: ' + toState.name);

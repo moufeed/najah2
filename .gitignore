@@ -12,3 +12,11 @@ e2e/build
 .vscode/
 jsconfig.json
 typings/
+.vs/
+*.sln
+*.user
+.idea/
+*.jsproj 
+*.idea
+vcs.xml
+test.json

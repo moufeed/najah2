@@ -54,6 +54,7 @@ angular.module('mm.core')
             // Wrap the element in a div and add the button.
             element.wrap('<div class="item-input-inset mm-show-password-container">');
             element.after(button);
+            
 
             // By default, don't autocapitalize and autocorrect.
             if (!element.attr('autocorrect')) {

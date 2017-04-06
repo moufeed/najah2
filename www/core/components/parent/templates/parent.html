@@ -1,0 +1,34 @@
+<ion-view view-title="{{ 'mm.parent.title' | translate }}">
+
+    <ion-content padding="true" mm-state-class>
+
+        <div class="children-list">
+
+            <div ng-if="children" class="card child-card" ng-repeat="child in children">
+                <div class="item item-avatar">
+                    <img ng-src="{{child.pic}}"> 
+                    <h4>{{child.firstname + " " + child.lastname}}</h4>
+                    <p>{{child.lastprogram}}</p>
+                </div>
+                <div class="item item-body">
+                    <div class="flex-footer">
+                        <p> <span>{{ 'mm.parent.programs'  | translate }}  : </span><span class="total">{{child.programs}}</span></p>
+                        <p><span>{{ 'mm.parent.tracks'  | translate }} : </span><span class="total">{{child.tracks}}</span></p>
+                    </div>
+                </div>
+                <div class="item item-footer flex-footer">
+                    <span><i class="ion-ios-clock-outline"></i>{{child.lastlogin}}</span>
+                    <a ui-sref="app.child({id:child.id})" class="link icon-left ion-ios-information-outline"> تفاصيل</a>
+                </div>
+            </div>
+                {{ 'mm.parent.programs'  | translate }}
+            <div class="card emptymsg danger" ng-if="!children || children.length <= 0">
+                <div class="text-center">
+                      <ion-spinner icon="lines" ng-if="!children.noData"></ion-spinner>
+                      <span ng-show="children.noData"> {{ 'mm.parent.noChildren'  | translate }}</span>
+                </div> 
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>

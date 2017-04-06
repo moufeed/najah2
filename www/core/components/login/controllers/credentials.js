@@ -22,9 +22,11 @@ angular.module('mm.core.login')
  * @name mmLoginCredentialsCtrl
  */
 .controller('mmLoginCredentialsCtrl', function($scope, $stateParams, $mmSitesManager, $mmUtil, $ionicHistory, $mmApp,
-            $q, $mmLoginHelper, $mmContentLinksDelegate, $mmContentLinksHelper, $translate) {
+            $q, $mmLoginHelper, $mmContentLinksDelegate, $mmContentLinksHelper, $translate,$state) {
 
     $scope.siteurl = $stateParams.siteurl;
+    $scope.showSiteInfo = false;    
+
     $scope.credentials = {
         username: $stateParams.username
     };
@@ -95,6 +97,8 @@ angular.module('mm.core.login')
         $scope.siteChecked = true;
     }
 
+    
+ 
     $scope.login = function() {
 
         $mmApp.closeKeyboard();
@@ -103,7 +107,7 @@ angular.module('mm.core.login')
         var siteurl = $scope.siteurl,
             username = $scope.credentials.username,
             password = $scope.credentials.password;
-
+            
         if (!$scope.siteChecked) {
             // Site wasn't checked (it failed), let's check again.
             return checkSite(siteurl).then(function() {
@@ -133,7 +137,7 @@ angular.module('mm.core.login')
             return $mmSitesManager.newSite(data.siteurl, data.token, data.privatetoken).then(function() {
                 delete $scope.credentials; // Delete username and password from the scope.
                 $ionicHistory.nextViewOptions({disableBack: true});
-
+                     
                 if (urlToOpen) {
                     // There's a content link to open.
                     return $mmContentLinksDelegate.getActionsFor(urlToOpen, undefined, username).then(function(actions) {
@@ -154,6 +158,7 @@ angular.module('mm.core.login')
         }).finally(function() {
             modal.dismiss();
         });
+         
     };
 
 });
