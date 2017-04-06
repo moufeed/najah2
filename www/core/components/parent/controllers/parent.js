@@ -15,17 +15,13 @@
 angular.module('mm.core.parent')
 
 /**
- * Controller to handle input of user credentials.
+ * Controller to handle parent section
  *
- * @module mm.core.login
+ * @module mm.core.mmParentCtrl
  * @ngdoc controller
- * @name mmLoginCredentialsCtrl
+ * @name mmParentCtrl
  */
-.controller('mmParentCtrl', function($scope, $stateParams,$mmContentLinksHelper,$state,$log,$mmSite,mmCoreConfigConstants) {
-      
-        var  site = mmCoreConfigConstants.siteurl;
+.controller('mmParentCtrl', function($scope, $stateParams,$mmContentLinksHelper,$state,$log,$mmSite) {
    $log.getInstance('mmParentCtrl');
-     console.clear();
-     console.log(site);
-  
+   
 }); 

@@ -16,14 +16,11 @@ angular.module('mm.core.parent')
 
 .factory('$mmParent', function($log, $q, $mmSite, $mmUtil, $translate, mmCoreUsersStore, $mmFilepool, $mmSitesManager,$resource ,mmCoreConfigConstants) {
     var self = {};
-    var  site = mmCoreConfigConstants.siteurl;
-    
     $log = $log.getInstance('$mmParent');
-
-    
+    var  api =  $mmSite.getURL() + '/local/ajax/parent.php';
     
     self.getChildren = function() {
-        return $resource(__con.parUrl).get({s: 'parent.childs'}).$promise;
+        return $resource(api).get({s: 'parent.childs' , wstoken: $mmSite.getToken() }).$promise;
     }
 
       return self;
