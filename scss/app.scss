@@ -75,7 +75,7 @@ $listcolors : (
     gray : #777777
 );
 
-
+$stats-colors  : #C51609  #1275C3 #D00B4E #009688 ;
 
 @function mc($key) {
   @if map-has-key($material, $key) {
@@ -101,6 +101,7 @@ $ionicons-font-path: "../lib/ionic/release/fonts" !default;
 @import "www/build/mm.bundle.scss";
  
 @import "partials/button",
+        "partials/base64",
         "partials/bar",
         "partials/loginpage",
         "partials/common"

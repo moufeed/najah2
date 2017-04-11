@@ -1,3 +1,4 @@
+
 // (C) Copyright 2015 Martin Dougiamas
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,16 +13,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-angular.module('mm.core.parent')
+angular.module('mm.addons.parent')
 
 /**
- * Controller to handle parent section
+ * Directive to render empty message 
  *
- * @module mm.core.mmParentCtrl
- * @ngdoc controller
- * @name mmParentCtrl
+ * @module mm.addons.parent
+ * @ngdoc directive
+ * @name mmaEmpty
  */
-.controller('mmParentCtrl', function($scope, $stateParams,$mmContentLinksHelper,$state,$log,$mmSite) {
-   $log.getInstance('mmParentCtrl');
-   
-}); 
+.directive('mmaEmpty', function() {
+	return {
+		restrict: 'E',
+		transclude: true,
+		scope: {
+			helperClass: '@',
+            icon:"@"
+		},
+		templateUrl: 'addons/parent/templates/emptymsg.html'
+	};
+})
+ 

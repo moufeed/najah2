@@ -106,7 +106,8 @@ angular.module('mm.core.login')
         // Get input data.
         var siteurl = $scope.siteurl,
             username = $scope.credentials.username,
-            password = $scope.credentials.password;
+            password = $scope.credentials.password,
+            userType =  $scope.credentials.usertype;
             
         if (!$scope.siteChecked) {
             // Site wasn't checked (it failed), let's check again.
@@ -146,11 +147,13 @@ angular.module('mm.core.login')
                             // Action should only have 1 site because we're filtering by username.
                             action.action(action.sites[0]);
                         } else {
-                            return $mmLoginHelper.goToSiteInitialPage();
+                            localStorage.setItem('userType',userType);
+                            return $mmLoginHelper.goToSiteInitialPage(userType );
                         }
                     });
                 } else {
-                    return $mmLoginHelper.goToSiteInitialPage();
+                    localStorage.setItem('userType',userType);
+                    return $mmLoginHelper.goToSiteInitialPage(userType);  
                 }
             });
         }).catch(function(error) {

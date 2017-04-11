@@ -1,0 +1,457 @@
+$stats-colors: #C51609 #1275C3 #D00B4E #009688 !default;
+$black: #000 !default;
+$gray: #777 !default;
+$white :#fff !default;
+$weeklybar :#1275C3 !default;
+$lasttrackbar: #009688!default;
+$attendencebar: #D00B4E!default;
+$rightArr:'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ3Ny4xNzUgNDc3LjE3NSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDc3LjE3NSA0NzcuMTc1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPHBhdGggZD0iTTM2MC43MzEsMjI5LjA3NWwtMjI1LjEtMjI1LjFjLTUuMy01LjMtMTMuOC01LjMtMTkuMSwwcy01LjMsMTMuOCwwLDE5LjFsMjE1LjUsMjE1LjVsLTIxNS41LDIxNS41ICAgYy01LjMsNS4zLTUuMywxMy44LDAsMTkuMWMyLjYsMi42LDYuMSw0LDkuNSw0YzMuNCwwLDYuOS0xLjMsOS41LTRsMjI1LjEtMjI1LjFDMzY1LjkzMSwyNDIuODc1LDM2NS45MzEsMjM0LjI3NSwzNjAuNzMxLDIyOS4wNzV6ICAgIiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==';
+$leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ3Ny4xNzUgNDc3LjE3NSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDc3LjE3NSA0NzcuMTc1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPHBhdGggZD0iTTE0NS4xODgsMjM4LjU3NWwyMTUuNS0yMTUuNWM1LjMtNS4zLDUuMy0xMy44LDAtMTkuMXMtMTMuOC01LjMtMTkuMSwwbC0yMjUuMSwyMjUuMWMtNS4zLDUuMy01LjMsMTMuOCwwLDE5LjFsMjI1LjEsMjI1ICAgYzIuNiwyLjYsNi4xLDQsOS41LDRzNi45LTEuMyw5LjUtNGM1LjMtNS4zLDUuMy0xMy44LDAtMTkuMUwxNDUuMTg4LDIzOC41NzV6IiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==';
+.card {
+    .card-header {
+            padding: 15px 10px;
+            color: $white;
+            font-size: 18px;
+        }
+    .item{
+        &.even {
+            background-color: darken($white, 3%);
+        }
+    }
+}
+//--------------------------------------------------------------------------------------------
+// parent page
+//--------------------------------------------------------------------------------------------
+.children-list {
+    >.card.child-card {
+        padding: 0;
+        margin: 10px 0;
+        box-shadow: 0 1px 1px rgba($black, .3);
+    }
+    .item-body {
+        p {
+            margin: 0;
+            span {
+                display: block;
+                margin: 0 5px;
+                text-align: center;
+                color: darken($gray, 5%);
+                &.total {
+                    color: $black;
+                    font-weight: bolder;
+                    font-size: 18px;
+                    margin-top: 5px;
+                }
+            }
+        }
+    }
+    .item-footer {
+        color: $black;
+        .link {
+            padding: 5px 10px;
+            border: 1px solid nth($colors, 1);
+            border-radius: 2px;
+            color: nth($colors, 1);
+            &.activated {
+                background: nth($colors, 1);
+                color: $white;
+            }
+        }
+        i {
+            margin: 5px;
+            color: $gray;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------
+// child Page
+//--------------------------------------------------------------------------------------------
+.stats {
+    margin: 0 -5px;
+    .row {
+        padding: 0;
+    }
+    .card {
+        padding: 0;
+        color: $white;
+        margin: 5px;
+        .chart-count {
+            text-align: center;
+            padding: 0 15px;
+            h2 {
+                font-size: 16px;
+                line-height: 24px;
+                font-weight: normal;
+                padding-top: 6px;
+                color: $white;
+            }
+            h1 {
+                font-size: 1.4em;
+                color: $white;
+            }
+        }
+        .chart-icon {
+            font-size: 5.2em;
+            padding: 10px;
+            width: 100%;
+            text-align: center;
+            background: rgba($black, .15);
+        }
+        &.stats-chart {
+            &.courses-chart {
+                background: nth($stats-colors, 1)
+            }
+            &.weeklytasks-chart {
+                background: nth($stats-colors, 2)
+            }
+            &.badge-chart {
+                background: nth($stats-colors, 3)
+            }
+            &.points-chart {
+                background: nth($stats-colors, 4)
+            }
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------
+///  currentcourses
+//--------------------------------------------------------------------------------------------
+.card.currentcourses {
+    padding: 0;
+    margin-top: 10px;
+    color: $white;
+    font-size: 16px;
+    .card-body {
+        background: nth($pie, 1);
+    }
+    .swiper-container {
+        padding-bottom: 0;
+    }
+    .card-footer {
+        padding: 15px;
+        @include display-flex;
+        @include justify-content(space-between);
+        @include align-items(center);
+        font-size: 18px;
+        background: #fff;
+        color: nth($pie, 4);
+    }
+    .pie-chart {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        @include display-flex;
+        @include justify-content(center);
+        @include align-items(center);
+        margin: 15px 0;
+        .pie-info {
+            position: absolute;
+            span {
+                display: block;
+                &.pie-percent {
+                    font-size: 2em;
+                }
+                &.pie-title {
+                    font-size: 18px;
+                    margin-bottom: 16px;
+                    max-width: 160px;
+                    color: #c9e4ca;
+                }
+            }
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------
+// weeklyschedule
+//--------------------------------------------------------------------------------------------
+.card.weeklyschedule {
+    padding: 0;
+    .swiper-container {
+        padding-bottom: 0;
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+        top: 0;
+        margin-top: 0;
+        height: 51px;
+        width: 40px;
+        -moz-background-size: 27px 20px;
+        -webkit-background-size: 27px 20px;
+        background-size: 27px 20px;
+        background-color: lighten($weeklybar, 3%);
+    }
+    .swiper-button-prev {
+        left: 0;
+    }
+    .swiper-button-next {
+        right: 0;
+    }
+    .swiper-button-next,
+    .swiper-container-rtl .swiper-button-prev {
+        background-image: url('#{$rightArr}');
+    }
+    .swiper-button-prev,
+    .swiper-container-rtl .swiper-button-next {
+        background-image: url('#{$leftArr}');
+    }
+    .item {
+        &.odd {
+            background-color: darken($white, 3%);
+        }
+        &.item-header {
+            background: $weeklybar;
+            padding: 16px 0;
+            h2 {
+                color: $white;
+            }
+        }
+        .icon {
+            &.ion-num {
+                &:before {
+                    content: attr(data-content);
+                    color: nth($pie, 1);
+                    height: 36px;
+                    width: 36px;
+                    line-height: 32px;
+                    font-weight: bolder;
+                    border-radius: 50%;
+                    font-size: 16px;
+                }
+            }
+        }
+        h3,
+        p {
+            span {
+                display: inline-block;
+                margin: 0 10px;
+            }
+            &:before {
+                color: $gray;
+                font-size: 16px;
+            }
+        }
+    }
+} //--------------------------------------------------------------------------------------------
+// lasttrack
+//--------------------------------------------------------------------------------------------
+.card.lasttrack {
+    padding: 0;
+    .card-header {
+        background: $lasttrackbar;
+        @include display-flex;
+        @include justify-content(space-between);
+        @include align-items(center);
+        span {
+            display: inline-block;
+            margin: 0 5px;
+        }
+    }
+    .item-info {
+        h3 {
+            display: inline-block;
+            margin: 5px 5px 0;
+            color: darken($gray, 25%);
+            font-weight: normal;
+        }
+        small {
+            float: right;
+        }
+    }
+    .itembody {
+        padding: 5px 15px;
+        border: 0;
+        .progress {
+            position: relative;
+            background: darken($white, 10%);
+            border-radius: 25px;
+            z-index: 1;
+            height: 7px;
+            span {
+                position: absolute;
+                z-index: -1;
+                background: #2196f3;
+                height: 100%;
+                border-radius: 25px;
+                &.passed {
+                    background: #4caf50;
+                }
+            }
+        }
+    }
+    .item-btn {
+        min-height: 0;
+        padding: 10px 0;
+        border-top-color: darken($white, 15%);
+        i {
+            margin-right: 5px;
+            color: $gray;
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------
+// attendence
+//--------------------------------------------------------------------------------------------
+.card.attendence-card {
+    .card-header {
+        background: $attendencebar;
+    }
+    .card-body {
+        padding: 25px;
+    }
+    .card-footer {
+        padding: 10px;
+        .chart-labels {
+            @include display-flex;
+            @include justify-content(space-between);
+            @include align-items(center);
+            li {
+                span {
+                    display: inline-block;
+                    text-transform: capitalize;
+                    &:first-child {
+                        width: 10px;
+                        height: 10px;
+                        margin: 0 3px;
+                        position: relative;
+                        top: 1px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.card.badges-box {
+    padding: 0;
+    .card-header {
+        background: mc(teal);
+    }
+}
+
+//--------------------------------------------------------------------------------------------
+// weekly-attendence
+//--------------------------------------------------------------------------------------------
+.weekly-attendence {
+    .card-header {
+        background: mc(purple);
+    }
+    .table {
+        overflow-x: auto;
+        min-height: .01%;
+        width: 100%;
+        table {
+            width: 100%;
+            td,
+            th {
+                text-align: center;
+                padding: 10px;
+            }
+            .zmdi-window-minimize {
+                color: mc(gray);
+            }
+        }
+    }
+}
+
+//--------------------------------------------------------------------------------------------
+// messages 
+//--------------------------------------------------------------------------------------------
+.messages-box {
+    .card-header {
+        background: mc(bluegray);
+    }
+    .list{
+		.item{
+			padding-top: 5px;
+			padding-bottom: 5px;
+			min-height: 60px;
+			&.item-avatar {
+				> img:first-child , .item-image {
+						top:9px;
+					}
+			}
+			&.odd{
+				background-color: darken($white,3%);
+			}
+			&.item-btn{
+				min-height: 0;
+				padding: 10px 0;
+				border-top-color:darken($white,15%);
+				i{
+					margin-right: 5px;
+					color :$gray;
+				}
+			}
+		}
+	}
+}
+//--------------------------------------------------------------------------------------------
+// weekly tasks 
+//--------------------------------------------------------------------------------------------
+ .weeklytasks-box{
+      .card-header {
+        background: mc(indigo);
+    }
+    .item {
+        
+    .item-image{
+        &.item-quiz{ 
+            background :mc(deeporange) url('../addons/parent/img/quiz.svg') center / 50% no-repeat;
+        }
+        &.item-assign{
+            background :mc(teal) url('../addons/parent/img/assign.svg') center / 50% no-repeat; 
+        }
+    } 
+    }
+ }
+
+//--------------------------------------------------------------------------------------------
+// stamps   
+//--------------------------------------------------------------------------------------------
+.card.stamps-box{
+    .card-header{
+        background: mc(brown);
+    }
+    .list{
+        .item{
+            
+            &.item-avatar{
+                border-radius: 0;
+            }
+        }
+    }
+}
+ /*3
+ <div class=" "> 
+			<div class="card-header">
+				{{ 'mma.parent.stamps' | translate }}
+			</div>
+			<div class="card-body">
+
+
+				<ion-list class=" ">
+					<div ng-repeat="stamp in stampslist">
+
+						<ion-item class="item item-divider">
+							{{stamp.coursename}}
+						</ion-item>
+
+						<ion-item ng-if="stamp.stamps && stamp.stamps.length > 0" ng-repeat="item in stamp.stamps" ng-class-even="'even'"
+						    class="item r" ng-click="readStamp(item)">
+							<img ng-src="{{item.stampimg}}" alt="">
+							<h3>{{item.stampname}}</h3>
+							<p>{{item.text}}</p>
+						</ion-item>
+
+					</div>
+				</ion-list>
+
+
+			</div>
+</div>
+
+ */

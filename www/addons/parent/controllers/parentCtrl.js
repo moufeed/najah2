@@ -12,16 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-angular.module('mm.core.parent')
+angular.module('mm.addons.parent')
 
-.factory('$mmParent', function($log, $q, $mmSite, $mmUtil, $translate, mmCoreUsersStore, $mmFilepool, $mmSitesManager,$resource ,mmCoreConfigConstants) {
-    var self = {};
-    $log = $log.getInstance('$mmParent');
-    var  api =  $mmSite.getURL() + '/local/ajax/parent.php';
-    
-    self.getChildren = function() {
-        return $resource(api).get({s: 'parent.childs' , wstoken: $mmSite.getToken() }).$promise;
-    }
-
-      return self;
-}) 
+/**
+ * Controller to handle parent section
+ *
+ * @module mm.core.mmParentCtrl
+ * @ngdoc controller
+ * @name mmParentCtrl
+ */
+.controller('mmaParentCtrl', function($scope ,$mmDB, $stateParams,$state,$log,$mmSite,$mmaParentHelper ,$mmaParentOffline) {
+      $mmaParentHelper.getChildren().then(function(data){
+        $scope.children = data.list;
+        $scope.children.noData = false;
+      });
+}); 

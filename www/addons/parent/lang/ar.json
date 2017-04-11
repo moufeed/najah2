@@ -1,0 +1,21 @@
+{
+   "title" 	: "Parent Page",
+    "childtitle" :"Child Page",
+	"programs" :"برامج دراسية",
+	"tracks" :"دورات فصلية",
+	"courses" :"الدورات",
+	"weekly_tasks" :"المهام الأسبوعية",
+	"badges" :"الأوسمة",
+	"points" :"النقاط",
+	"season" :"الفصل الدراسي",
+	"view_less" :"إغلاق",
+	"view_all" :"مشاهدة الكل",
+	"last_track" :"الفصل الأخير",
+	"messages" :"الرسائل",
+	"stamps" :"المتابعة",
+	"weekly_attendence" :"الدوام الأسبوعي",
+	"attendencetitle" :"الحضور والغياب ",
+	"current_courses" :"الدورات الحالية",
+	"weekly_schedule" :"البرنامج الأسبوعي",
+	"no_data" :"لايوجد بيانات لعرضها"
+}

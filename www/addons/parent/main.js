@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-angular.module('mm.core.parent', [])
+angular.module('mm.addons.parent', ['ksSwiper','easypiechart','chart.js'])
 
 
 .config(function($stateProvider) {
@@ -23,11 +23,20 @@ angular.module('mm.core.parent', [])
         url: '/parent',
         views: {
             'site': {
-                templateUrl: 'core/components/parent/templates/parent.html',
-                controller: 'mmParentCtrl'
+                templateUrl: 'addons/parent/templates/childrenlist.html',
+                controller: 'mmaParentCtrl'
+            }
+        }
+    })
+     .state('site.child', {
+        url: '/children/:id',
+        views: {
+            'site': {
+                templateUrl: 'addons/parent/templates/childpage.html',
+                controller: 'mmaChildCtrl'
             }
         }
     })
 })
  
-
+ 

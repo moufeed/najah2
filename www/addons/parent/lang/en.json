@@ -1,0 +1,22 @@
+{
+    "title" :"Parent Page",
+    "childtitle" :"Child Page",
+	"programs" :"programs",
+	"tracks" :"Tracks",
+	"courses" :"courses",
+	"weekly_tasks" :"weekly tasks",
+	"badges" :"badges",
+	"points" :"points",
+	"season" :"season",
+	"view_less" :"View less",
+	"view_all" :"View all",
+	"last_track" :"last track",
+	"messages" :"Messages",
+	"stamps" :"Stamps",
+	"weekly_attendence" :"Weekly Attendence",
+	"current_courses" :"current courses",
+	"attendencetitle" :"Attendence",
+	"weekly_schedule" :"Weekly Schedule",
+	"no_data" :"There is no Data to be shown"
+}
+
