@@ -13,9 +13,13 @@
 	"last_track" :"الفصل الأخير",
 	"messages" :"الرسائل",
 	"stamps" :"المتابعة",
+	"details" :"تفاصيل",
 	"weekly_attendence" :"الدوام الأسبوعي",
 	"attendencetitle" :"الحضور والغياب ",
 	"current_courses" :"الدورات الحالية",
 	"weekly_schedule" :"البرنامج الأسبوعي",
-	"no_data" :"لايوجد بيانات لعرضها"
+	"no_data" :"لايوجد بيانات لعرضها",
+	"errorfailedtoloaddata" :"خطأ في تحميل البيانات يرجى المحاولة لاحقاً",
+	"noconnection" :"الأتصال بالشبكة",
+	"noconnectionMessage" :" الرجاء التأكد من الاتصال والمحاولة من جديد"
 }

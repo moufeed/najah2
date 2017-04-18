@@ -13,10 +13,14 @@
 	"last_track" :"last track",
 	"messages" :"Messages",
 	"stamps" :"Stamps",
+	"details" :"Details",
 	"weekly_attendence" :"Weekly Attendence",
 	"current_courses" :"current courses",
 	"attendencetitle" :"Attendence",
 	"weekly_schedule" :"Weekly Schedule",
-	"no_data" :"There is no Data to be shown"
+	"no_data" :"There is no Data to be shown", 
+	"errorfailedtoloaddata" :"Failed to load data, please try again later",
+	"noconnection" :"internet connection",
+	"noconnectionMessage" :"Please check your internet connection and try again"
 }
 

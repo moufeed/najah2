@@ -9,23 +9,32 @@ $rightArr:'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
 $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ3Ny4xNzUgNDc3LjE3NSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDc3LjE3NSA0NzcuMTc1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPHBhdGggZD0iTTE0NS4xODgsMjM4LjU3NWwyMTUuNS0yMTUuNWM1LjMtNS4zLDUuMy0xMy44LDAtMTkuMXMtMTMuOC01LjMtMTkuMSwwbC0yMjUuMSwyMjUuMWMtNS4zLDUuMy01LjMsMTMuOCwwLDE5LjFsMjI1LjEsMjI1ICAgYzIuNiwyLjYsNi4xLDQsOS41LDRzNi45LTEuMyw5LjUtNGM1LjMtNS4zLDUuMy0xMy44LDAtMTkuMUwxNDUuMTg4LDIzOC41NzV6IiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==';
 .card {
     .card-header {
-            padding: 15px 10px;
-            color: $white;
-            font-size: 18px;
-        }
-    .item{
+        padding: 15px 10px;
+        color: $white;
+        font-size: 18px;
+    }
+    .item {
         &.even {
             background-color: darken($white, 3%);
         }
     }
 }
+
 //--------------------------------------------------------------------------------------------
 // parent page
 //--------------------------------------------------------------------------------------------
 .children-list {
+    .loadder{
+        position: absolute;
+        top: 0;
+        right: 4px;
+           svg {
+            fill: mc(indigo);
+        }
+    }
     >.card.child-card {
-        padding: 0;
-        margin: 10px 0;
+        padding: 0; 
+        margin: 10px 0; 
         box-shadow: 0 1px 1px rgba($black, .3);
     }
     .item-body {
@@ -49,11 +58,12 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
         color: $black;
         .link {
             padding: 5px 10px;
-            border: 1px solid nth($colors, 1);
+            background:  mc(green);
             border-radius: 2px;
-            color: nth($colors, 1);
+            color: $white;
+            font-weight: normal;
             &.activated {
-                background: nth($colors, 1);
+                background:darken( mc(green) ,10%);
                 color: $white;
             }
         }
@@ -122,7 +132,16 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
     padding: 0;
     margin-top: 10px;
     color: $white;
-    font-size: 16px;
+    font-size: 16px; 
+    position: relative;
+    .cc_loader{
+        position: absolute;
+        top: 5px;
+        right: 5px; 
+        svg {
+            stroke: $white;
+        }
+    }
     .card-body {
         background: nth($pie, 1);
     }
@@ -169,6 +188,17 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
 //--------------------------------------------------------------------------------------------
 .card.weeklyschedule {
     padding: 0;
+    position: relative;
+    .ws_spinner{
+        position: absolute;
+        top: 28px;
+        left: 45%; 
+        z-index: 12;
+        svg {
+            fill: $white;
+            stroke: $white;
+        }
+    }
     .swiper-container {
         padding-bottom: 0;
     }
@@ -239,6 +269,16 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
 //--------------------------------------------------------------------------------------------
 .card.lasttrack {
     padding: 0;
+    position: relative;
+    .lt_spinner{
+        position: absolute;
+        left: 48%;
+        top: 11px;
+        svg{
+            fill: $white;
+            stroke: $white;
+        }
+    }
     .card-header {
         background: $lasttrackbar;
         @include display-flex;
@@ -278,6 +318,9 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
                 &.passed {
                     background: #4caf50;
                 }
+                &.stillloading{
+                     background:mc(gray);
+                }
             }
         }
     }
@@ -296,6 +339,16 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
 // attendence
 //--------------------------------------------------------------------------------------------
 .card.attendence-card {
+    position: relative;
+    .atd_spinner{
+        position: absolute;
+        right:10px;
+        top: 11px;
+        svg{
+            fill: $white;
+            stroke: $white;
+        }
+    }
     .card-header {
         background: $attendencebar;
     }
@@ -326,6 +379,16 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
 }
 
 .card.badges-box {
+    position: relative;
+    .bd_spinner{
+        position: absolute;
+        top: 10px;
+        right:8px;
+        svg{
+            fill:$white;
+            stroke : $white;
+        }
+    }
     padding: 0;
     .card-header {
         background: mc(teal);
@@ -336,6 +399,16 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
 // weekly-attendence
 //--------------------------------------------------------------------------------------------
 .weekly-attendence {
+    position: relative;
+    .wa_spinner{
+        position: absolute;
+        right:10px;
+        top: 11px;
+        svg{
+            fill: $white;
+            stroke: $white;
+        }
+    }
     .card-header {
         background: mc(purple);
     }
@@ -361,97 +434,118 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
 // messages 
 //--------------------------------------------------------------------------------------------
 .messages-box {
+    position: relative;
+    .cm_spinner{
+        position: absolute;
+        right:10px;
+        top: 11px;
+        svg{
+            fill: $white;
+            stroke: $white;
+        }
+    }
     .card-header {
         background: mc(bluegray);
     }
-    .list{
-		.item{
-			padding-top: 5px;
-			padding-bottom: 5px;
-			min-height: 60px;
-			&.item-avatar {
-				> img:first-child , .item-image {
-						top:9px;
-					}
-			}
-			&.odd{
-				background-color: darken($white,3%);
-			}
-			&.item-btn{
-				min-height: 0;
-				padding: 10px 0;
-				border-top-color:darken($white,15%);
-				i{
-					margin-right: 5px;
-					color :$gray;
-				}
-			}
-		}
-	}
+    .list {
+        .item {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            min-height: 60px;
+            &.item-avatar {
+                >img:first-child,
+                .item-image {
+                    top: 9px;
+                }
+            }
+            &.odd {
+                background-color: darken($white, 3%);
+            }
+            &.item-btn {
+                min-height: 0;
+                padding: 10px 0;
+                border-top-color: darken($white, 15%);
+                i {
+                    margin-right: 5px;
+                    color: $gray;
+                }
+            }
+        }
+    }
 }
+
 //--------------------------------------------------------------------------------------------
 // weekly tasks 
 //--------------------------------------------------------------------------------------------
- .weeklytasks-box{
-      .card-header {
+.weeklytasks-box {
+    position:relative;
+    .wt_spinner{
+        position: absolute;
+        right:10px;
+        top: 11px;
+        svg{
+            fill: $white;
+            stroke: $white;
+        }
+    }
+    .card-header {
         background: mc(indigo);
     }
     .item {
-        
-    .item-image{
-        &.item-quiz{ 
-            background :mc(deeporange) url('../addons/parent/img/quiz.svg') center / 50% no-repeat;
+        .item-image {
+            &.item-quiz {
+                background: mc(deeporange) url('../addons/parent/img/quiz.svg') center / 50% no-repeat;
+            }
+            &.item-assign {
+                background: mc(teal) url('../addons/parent/img/assign.svg') center / 50% no-repeat;
+            }
+            &.stillloading{
+                background-color:mc(gray);
+            }
         }
-        &.item-assign{
-            background :mc(teal) url('../addons/parent/img/assign.svg') center / 50% no-repeat; 
-        }
-    } 
     }
- }
+}
 
 //--------------------------------------------------------------------------------------------
 // stamps   
 //--------------------------------------------------------------------------------------------
-.card.stamps-box{
-    .card-header{
+.card.stamps-box {
+    position: relative;
+    .st_spinner{
+        position: absolute;
+        right:10px;
+        top: 11px;
+        svg{
+            fill: $white;
+            stroke: $white;
+        }
+    }
+    .card-header {
         background: mc(brown);
     }
-    .list{
-        .item{
-            
-            &.item-avatar{
+    .list {
+        .item {
+            &.item-avatar {
                 border-radius: 0;
             }
         }
     }
 }
- /*3
- <div class=" "> 
-			<div class="card-header">
-				{{ 'mma.parent.stamps' | translate }}
-			</div>
-			<div class="card-body">
 
-
-				<ion-list class=" ">
-					<div ng-repeat="stamp in stampslist">
-
-						<ion-item class="item item-divider">
-							{{stamp.coursename}}
-						</ion-item>
-
-						<ion-item ng-if="stamp.stamps && stamp.stamps.length > 0" ng-repeat="item in stamp.stamps" ng-class-even="'even'"
-						    class="item r" ng-click="readStamp(item)">
-							<img ng-src="{{item.stampimg}}" alt="">
-							<h3>{{item.stampname}}</h3>
-							<p>{{item.text}}</p>
-						</ion-item>
-
-					</div>
-				</ion-list>
-
-
-			</div>
-</div>
-
- */
+.stats {
+    position: relative;
+    .card{
+        position: relative;
+    }
+    .spinner {
+        position: absolute;
+        top: 0;
+        left: 5px;
+        svg {
+            fill: $white; 
+    }
+}
+}
+.helf-opacity {
+    opacity: .5;
+}

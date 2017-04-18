@@ -1,34 +1,36 @@
 <ion-view view-title="{{ 'mma.parent.title' | translate }}">
-
     <ion-content padding="true" mm-state-class>
-
+         
         <div class="children-list">
-
+            
             <div ng-if="children" class="card child-card" ng-repeat="child in children">
-                <div class="item item-avatar">
+                <div class="item item-avatar item-icon-right">
+                    
                     <img ng-src="{{child.pic}}" src="addons/parent/img/avater.png"> 
                     <h4>{{child.firstname + " " + child.lastname}}</h4>
                     <p>{{child.lastprogram}}</p>
+                    	 <ion-spinner ng-if="loadding"  icon="dots" class="loadder "></ion-spinner>
                 </div>
                 <div class="item item-body">
-                    <div class="flex-footer">
+                    <div class="flex-footer" ng-class="{'helf-opacity' : loadding }">
                         <p> <span>{{ 'mma.parent.programs'  | translate }}  : </span><span class="total">{{child.programs}}</span></p>
                         <p><span>{{ 'mma.parent.tracks'  | translate }} : </span><span class="total">{{child.tracks}}</span></p>
                     </div>
                 </div>
                 <div class="item item-footer flex-footer">
-                    <span><i class="ion-ios-clock-outline"></i>{{child.lastlogin}}</span>
-                    <a ui-sref="site.child({id:child.id})" class="link icon-left ion-ios-information-outline"> تفاصيل</a>
+                    <span><i class="ion-ios-clock-outline" ng-class="{'helf-opacity' : loadding }" ng-class="{'helf-opacity' : loadding }" ></i>{{child.lastlogin}}</span>
+                    <a ui-sref="site.child({id:child.id})" class="link icon-left ion-ios-information-outline">  {{ 'mma.parent.details'  | translate }}</a>
                 </div>
             </div>
               
-            <div class="card emptymsg danger" ng-if="!children || children.length <= 0">
-                <div class="text-center">
-                      <ion-spinner icon="lines" ng-if="!children.noData"></ion-spinner>
-                      <span ng-show="children.noData"> {{ 'mma.parent.noChildren'  | translate }}</span>
-                </div> 
-            </div>
 
+              <mma-empty helper-class="primary inside" icon="ion-ios-people"  ng-if="!children || children.length <= 0">
+				<ion-spinner icon="lines" ng-if="!children.noData && isOnline" ></ion-spinner>
+				<span ng-show="children.noData || !isOnline">  {{ 'mma.parent.no_data' | translate }}</span>
+			 </mma-empty>
+
+
+ 
         </div>
     </ion-content>
 </ion-view>

@@ -1,6 +1,7 @@
 <ion-view view-title="{{ 'mma.parent.childtitle' | translate }}" class="child_Page">
 
 	<ion-content padding="true" mm-state-class>
+		
 		<mm-loading hide-until="child" loading-padding-top="loadingPaddingTop">
 			<ion-list class="list">
 				<ion-item class="item item-avatar">
@@ -11,31 +12,27 @@
 			</ion-list>
 		</mm-loading>
 
-
-
-
-
-
-
-
-
+ 
 		<div class="stats  ">
+			 
 			<div class="row">
 				<div class="col-50">
 					<div class="card stats-chart courses-chart">
+					 <ion-spinner ng-if="loadding"  icon="dots" class="spinner "></ion-spinner>
 						<div class="chart-icon"><i class="ion-android-document"></i></div>
 						<div class="chart-count">
 							<h2>{{ 'mma.parent.courses' | translate }}</h2>
-							<h1>{{ stats.courses }}</h1>
+							<h1 ng-class="{'helf-opacity' : loadding }">{{ stats.courses }}</h1>
 						</div>
 					</div>
 				</div>
 				<div class="col-50">
 					<div class="card stats-chart weeklytasks-chart">
+						 <ion-spinner ng-if="loadding"  icon="dots" class="spinner "></ion-spinner>
 						<div class="chart-icon"><i class="ion-clipboard"></i></div>
 						<div class="chart-count">
 							<h2>{{ 'mma.parent.weekly_tasks' | translate }} </h2>
-							<h1>{{ stats.weeklytasks }}</h1>
+							<h1 ng-class="{'helf-opacity' : loadding }">{{ stats.weeklytasks }}</h1>
 						</div>
 					</div>
 				</div>
@@ -43,19 +40,21 @@
 			<div class="row">
 				<div class="col-50">
 					<div class="card stats-chart badge-chart">
-						<div class="chart-icon"><i class="ion-ios-flower-outline"></i></div>
+						 <ion-spinner ng-if="loadding"  icon="dots" class="spinner "></ion-spinner>
+						<div class="chart-icon"><i class="ion-ribbon-b"></i></div>
 						<div class="chart-count">
 							<h2>{{ 'mma.parent.badges' | translate }}</h2>
-							<h1>{{ stats.badges }}</h1>
+							<h1 ng-class="{'helf-opacity' : loadding }">{{ stats.badges }}</h1>
 						</div>
 					</div>
 				</div>
 				<div class="col-50">
 					<div class="card stats-chart points-chart">
+						<ion-spinner ng-if="loadding"  icon="dots" class="spinner "></ion-spinner>
 						<div class="chart-icon"><i class="ion-android-star-half"></i></div>
 						<div class="chart-count">
 							<h2>{{ 'mma.parent.points' | translate }}</h2>
-							<h1>{{ stats.points }}</h1>
+							<h1 ng-class="{'helf-opacity' : loadding }">{{ stats.points }}</h1>
 						</div>
 					</div>
 				</div>
@@ -65,6 +64,7 @@
 
 
 		<div class="card currentcourses">
+			<ion-spinner icon="ripple" ng-if="cc_loadding" class="cc_loader"></ion-spinner>
 			<div ng-if="currentCourses.courses">
 				<div class="card-body">
 					<ks-swiper-container initial-slide="0" loop="false" show-nav-buttons="false" slides-per-view="1" space-between="0" pagination-clickable="false">
@@ -93,12 +93,13 @@
 
 
 		<div class=" card weeklyschedule">
+			 <ion-spinner ng-if="ws_loadding"  icon="dots" class="ws_spinner "></ion-spinner>
 			<ks-swiper-container ng-if="weeklyschedule.length > 0" initial-slide="Utils.initialSlide()" loop="false" show-nav-buttons="true"
 			    slides-per-view="1" space-between="0" pagination-clickable="false">
 				<ks-swiper-slide class="swiper-slide" ng-repeat="day in  weeklyschedule">
 					<ion-list class="list">
 						<ion-item class="item item-divider text-center item-header">
-							<h2> {{day.dayname}}</h2>
+							<h2 ng-class="{'helf-opacity' : ws_loadding }" > {{day.dayname}}</h2>
 						</ion-item>
 						<ion-item class="item item-icon-left" ng-repeat="schedule in day.data" ng-class-odd="'odd'">
 							<i class="icon ion-num" data-content="{{schedule.sessionid}}"></i>
@@ -116,6 +117,7 @@
 		</div>
 
 		<div class="card lasttrack">
+			 <ion-spinner ng-if="lt_loadding"  icon="lines" class="lt_spinner "></ion-spinner>
 			<div ng-if="lasttrack.courses.length > 0 ">
 				<div class="card-header text-center">
 					<span> {{lasttrack.program}} </span> <span> {{ 'mma.parent.season' | translate }} {{ lasttrack.term}}</span>
@@ -127,8 +129,8 @@
 								<h3>{{ course.name }}</h3>
 								<small>{{ course.total_grade }}%</small>
 							</div>
-							<div class="progress">
-								<span ng-class="{passed: course.total_grade > 70}" ng-style="{width: course.total_grade + '%'}"></span>
+							<div class="progress" >
+								<span ng-class="{passed: course.total_grade > 70 ,'stillloading' : lt_loadding  }" ng-style="{width: course.total_grade + '%'}"></span>
 							</div>
 						</ion-item>
 
@@ -150,10 +152,11 @@
 			</mma-empty>
 		</div>
 
-
+ 
 		<div class="card attendence-card">
+			 <ion-spinner ng-if="atd_loadding"  icon="dots" class="atd_spinner "></ion-spinner>
 			<div ng-if="attendence.data.length > 0">
-				<div class="card-header text-center">
+				<div class="card-header">
 					{{'mma.parent.attendencetitle' | translate }}
 				</div>
 				<div class="card-body card-padding">
@@ -181,6 +184,7 @@
 
 
 		<div class="card weekly-attendence">
+				<ion-spinner ng-if="wa_loadding"  icon="dots" class="wa_spinner"></ion-spinner>
 			<div ng-if="weeklyttendence">
 				<div class="card-header">
 					{{'mma.parent.weekly_attendence' | translate }}
@@ -218,6 +222,7 @@
 
 
 		<div class="card badges-box">
+			 <ion-spinner ng-if="bd_loadding"  icon="dots" class="bd_spinner "></ion-spinner>
 			<div ng-if="badges && badges.length > 0">
 				<div class="card-header">
 					{{ 'mma.parent.badges' | translate }}
@@ -246,7 +251,8 @@
 
 
 
-		<div class="card messages-box">
+		<div class="card messages-box"> 
+			<ion-spinner ng-if="cm_loadding"  icon="dots" class="cm_spinner "></ion-spinner>
 			<div ng-if="messages && messages.length > 0">
 				<div class="card-header">
 					{{ 'mma.parent.messages' | translate }}
@@ -276,6 +282,7 @@
 		</div>
 
 		<div class="card weeklytasks-box">
+		<ion-spinner ng-if="wt_loadding"  icon="dots" class="wt_spinner "></ion-spinner>
 		 <div ng-if="taskslist && taskslist.length > 0">
 			<div class="card-header">
 				{{ 'mma.parent.weekly_tasks' | translate }}
@@ -289,14 +296,14 @@
 						</ion-item>
 
 						<ion-item ng-if="task.weeklytasks.quiz && task.weeklytasks.quiz.length > 0" ng-repeat="quiz in task.weeklytasks.quiz" class="item item-avatar" ng-class-even="'even'">
-							<span class="item-image item-{{quiz.class}}"></span>
+							<span class="item-image item-{{quiz.class}}" ng-class="{'stillloading' : wt_loadding }"></span>
 							<h3>{{quiz.name}}</h3>
 							<p>{{quiz.section}}</p>
 						</ion-item>
 
 						<ion-item ng-if="task.weeklytasks.assign && task.weeklytasks.assign.length > 0" ng-repeat="assign in task.weeklytasks.assign" ng-class-even="'even'"
 						    class="item item-avatar">
-							<span class="item-image item-{{assign.class}}"></span>
+							<span class="item-image item-{{assign.class}}" ng-class="{'stillloading' : wt_loadding }"></span>
 							<h3>{{assign.name}}</h3>
 							<p>{{assign.section}}</p>
 						</ion-item>
@@ -316,6 +323,7 @@
 		</div>
 <!---->
 <div class="card stamps-box"> 
+	<ion-spinner ng-if="st_loadding"  icon="dots" class="st_spinner"></ion-spinner>
 	 <div ng-if="stampslist">
 			<div class="card-header">
 				{{ 'mma.parent.stamps' | translate }}

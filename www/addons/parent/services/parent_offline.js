@@ -11,94 +11,149 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
 angular.module('mm.addons.parent')
-
-    .constant('mmaParentOfflineParentStore', 'mma_parent_offline_children')
-
-    .config(function ($mmSitesFactoryProvider, mmaParentOfflineParentStore) {
-
+    .constant('mmaParentOfflineParentStore', 'mma_parent__children')
+    .constant('mmaParentOfflineStatistics', 'mma_parent__statistics')
+    .constant('mmaParentOfflineCurrentcourses', 'mma_parent__currentcourses')
+    .constant('mmaParentOfflineSchedule', 'mma_parent__schedule')
+    .constant('mmaParentOfflineLastTrack', 'mma_parent__lasttrack')
+    .constant('mmaParentOfflineAttendance', 'mma_parent__attendance')
+    .constant('mmaParentOfflineBadges', 'mma_parent__badges')
+    .constant('mmaParentOfflineWeeklytasks', 'mma_parent__weeklytasks')
+    .constant('mmaParentOfflineChildMessages', 'mma_parent__childmessages')
+    .constant('mmaParentOfflineWeeklyattendance', 'mma_parent__weeklyattendance')
+    .constant('mmaParentOfflineStamps', 'mma_parent__stamps')
+    .config(function ($mmSitesFactoryProvider, mmaParentOfflineBadges, mmaParentOfflineStamps, mmaParentOfflineAttendance, mmaParentOfflineWeeklytasks, mmaParentOfflineWeeklyattendance, mmaParentOfflineParentStore, mmaParentOfflineStatistics, mmaParentOfflineCurrentcourses, mmaParentOfflineSchedule, mmaParentOfflineLastTrack, mmaParentOfflineChildMessages) {
         var stores = [{
-            name: mmaParentOfflineParentStore,
-            keyPath: ['id','username','email'],
-            indexes: [
-                { name: 'id' },
-                { name: 'username' },
-                { name: 'firstname'},
-                { name: 'lastname' },
-                { name: 'email'},
-                { name: 'pic'},
-                { name: 'lastlogin'},
-                { name: 'gender'},
-                { name: 'phone'},
-                { name: 'mobile'},
-                { name: 'status'},
-                { name: 'programs'},
-                { name: 'lastprogram'},
-                { name: 'tracks'},
-                { name: 'lang'}
-            ]
-        }];
+                name: mmaParentOfflineParentStore,
+                keyPath: 'id'
+            }, {
+                name: mmaParentOfflineStatistics,
+                keyPath: 'id'
+            },
+            {
+                name: mmaParentOfflineCurrentcourses,
+                keyPath: ['userid'],
+                indexes: [{
+                        name: "userid",
+                        unique: true
+                    },
+                    {
+                        name: "term"
+                    },
+                    {
+                        name: "idnumber"
+                    },
+                    {
+                        name: "program"
+                    },
+                    {
+                        name: "courses",
+                    }
+                ]
+            },
+            {
+                name: mmaParentOfflineSchedule,
+                keyPath: 'userid',
+            },
+            {
+                name: mmaParentOfflineLastTrack,
+                keyPath: 'userid',
+            },
+            {
+                name: mmaParentOfflineAttendance,
+                keyPath: 'userid',
+            },
+            {
+                name: mmaParentOfflineBadges,
+                keyPath: 'userid',
+            },
+            {
+                name: mmaParentOfflineWeeklytasks,
+                keyPath: 'userid'
+            },
+            {
+                name: mmaParentOfflineChildMessages,
+                keyPath: 'userid'
+            },
+            {
+                name: mmaParentOfflineWeeklyattendance,
+                keyPath: 'userid'
+            },
+            {
+                name: mmaParentOfflineStamps,
+                keyPath: 'userid'
+            }
+        ]
         $mmSitesFactoryProvider.registerStores(stores);
     })
-
-
-  
-
-    .factory('$mmaParentOffline', function ($mmSitesManager, $log, $mmSite, $mmApp, $q, mmaParentOfflineParentStore) {
+    .factory('$mmaParentOffline', function ($mmSitesManager, $log, $mmSite, $mmApp, $q, mmaParentOfflineParentStore, mmaParentOfflineStatistics) {
         var self = {};
-          $log = $log.getInstance('$mmaParentOffline');
-
-            // Return all children
-        self.getAllChildren = function (siteId) {
+        $log = $log.getInstance('$mmaParentOffline');
+        self.getAllData = function (store, siteId) {
             siteId = siteId || $mmSite.getId();
             return $mmSitesManager.getSite(siteId).then(function (site) {
-                return site.getDb().getAll(mmaParentOfflineParentStore);
+                return site.getDb().getAll(store);
             });
         };
-        // Return Specific Child  
-        self.getchild = function (id, siteId) {
+        self.getItemData = function (store, id, siteId) {
             siteId = siteId || $mmSite.getId();
-
+            var key = id;
+            key.toString();
             return $mmSitesManager.getSite(siteId).then(function (site) {
-                return site.getDb().whereEqual(mmaParentOfflineParentStore, 'id', id);
+                return site.getDb().get(store, key);
             });
         };
-
-        self.saveChild = function(siteId) {
-        siteId = siteId || $mmSite.getId();
-
-        return $mmSitesManager.getSite(siteId,child).then(function(site) {
-            var db = site.getDb(),entry;
-            var entry = child;
-                if (typeof entry != "object") {
-                    $log.debug('Type of Entry Must Be an Object ');
+        self.saveItemData = function (store, item, siteId) {
+            siteId = siteId || $mmSite.getId();
+            return $mmSitesManager.getSite(siteId).then(function (site) {
+                var db = site.getDb(),
+                    entry;
+                if (typeof item != "object") {
+                    $log.debug('Type of Entry Must Be an Object');
                     return $q.reject();
                 }
-              entry = {
-                            "id": child.id,
-                            "username": child.username,
-                            "firstname": child.firstname,
-                            "lastname": child.lastname,
-                            "email":child.email,
-                            "pic":child.pic,
-                            "lastlogin": child.lastlogin,
-                            "gender": child.gender ,
-                            "phone": child.phone,
-                            "mobile": child.mobile,
-                            "status": child.status,
-                            "programs": child.programs,
-                            "lastprogram": child.lastprogram,
-                            "tracks": child.tracks,
-                            "lang": child.lang
-                        };
-            return db.insert(mmaParentOfflineParentStore, entry).then(function() {
-                return entry;
+                return db.insert(store, item).then(function (keyIndex) {
+                    return keyIndex;
+                });
             });
-        });
-    };
-
-
+        };
+        self.itemHasData = function (store, id, siteId) {
+            return self.getItemData(store, id, siteId).then(function (data) {
+                return !!Object.keys(data).length;
+            }, function (err) {
+                return !!err;
+            });
+        };
+        self.storeHasData = function (store, siteId) {
+            return self.getAllData(store, siteId).then(function (data) {
+                return !!data.length;
+            });
+        }
+        self.removeItem = function (store, id, siteId) {
+            siteId = siteId || $mmSite.getId();
+            var key = id;
+            key.toString();
+            return $mmSitesManager.getSite(siteId).then(function (site) {
+                return site.getDb().remove(store, key);
+            });
+        }
+        self.removeStoreData = function (store, siteId) {
+            siteId = siteId || $mmSite.getId();
+            return $mmSitesManager.getSite(siteId).then(function (site) {
+                return site.getDb().removeAll(store);
+            });
+        }
+        self.getItemWhere = function (store, index, key, siteId) {
+            siteId = siteId || $mmSite.getId();
+            return $mmSitesManager.getSite(siteId).then(function (site) {
+                return site.getDb().whereEqual(store, index, key);
+            });
+        };
+        self.itemHasDataWhere = function (store, index, key, siteId) {
+            return self.getItemWhere(store, index, key, siteId).then(function (data) {
+                return !!Object.keys(data).length;
+            });
+        }
         return self;
     });
-    

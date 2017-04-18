@@ -14,16 +14,37 @@
 
 angular.module('mm.addons.parent')
 
-/**
- * Controller to handle parent section
- *
- * @module mm.core.mmParentCtrl
- * @ngdoc controller
- * @name mmParentCtrl
- */
-.controller('mmaParentCtrl', function($scope ,$mmDB, $stateParams,$state,$log,$mmSite,$mmaParentHelper ,$mmaParentOffline) {
-      $mmaParentHelper.getChildren().then(function(data){
-        $scope.children = data.list;
-        $scope.children.noData = false;
-      });
-}); 
+  /**
+   * Controller to handle parent section
+   *
+   * @module mm.core.mmParentCtrl
+   * @ngdoc controller
+   * @name mmParentCtrl
+   */
+  .controller('mmaParentCtrl', function ($scope, $q, $mmDB, $stateParams, $state, $log, $mmSite, $mmaParentHelper, $mmaParentOffline, $mmApp, mmaParentOfflineParentStore) {
+    $scope.isOnline = $mmApp.isOnline();
+      
+    $mmaParentOffline.storeHasData(mmaParentOfflineParentStore).then(function (res) {
+      if (res) {
+        $mmaParentOffline.getAllData(mmaParentOfflineParentStore).then(function (data) {
+          $scope.children = data;
+        });
+      }
+
+      if ($mmApp.isOnline()) {
+        $scope.loadding = true;
+        $mmaParentHelper.getChildren(res).then(function (response) {
+            $scope.children = response;
+          })
+          .finally(function () {
+            $scope.loadding = false;
+            $scope.children.noData = true;
+          });
+
+        if (!$mmApp.isOnline() && !res) {
+          $mmUtil.showModal('mma.parent.noconnection', 'mma.parent.noconnectionMessage', 4000);
+        }
+      }
+    });
+
+  });
