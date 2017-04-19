@@ -14,8 +14,9 @@
 
 angular.module('mm.addons.parent', ['ksSwiper','easypiechart','chart.js'])
 
+.constant('mmaParentPriority', 400)
 
-.config(function($stateProvider) {
+.config(function($stateProvider ,$mmSideMenuDelegateProvider ,mmaParentPriority) {
 
     $stateProvider
 
@@ -36,7 +37,9 @@ angular.module('mm.addons.parent', ['ksSwiper','easypiechart','chart.js'])
                 controller: 'mmaChildCtrl'
             }
         }
-    })
+    });
+
+    $mmSideMenuDelegateProvider.registerNavHandler('mmaParent', '$mmaParentHandlers.sideMenuNav', mmaParentPriority);
 })
  
- 
+   

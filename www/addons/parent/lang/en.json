@@ -21,6 +21,7 @@
 	"no_data" :"There is no Data to be shown", 
 	"errorfailedtoloaddata" :"Failed to load data, please try again later",
 	"noconnection" :"internet connection",
-	"noconnectionMessage" :"Please check your internet connection and try again"
+	"noconnectionMessage" :"Please check your internet connection and try again",
+	"dashboard" :"dashboard"
 }
 

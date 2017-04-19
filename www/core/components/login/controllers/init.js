@@ -24,6 +24,7 @@ angular.module('mm.core.login')
 .controller('mmLoginInitCtrl', function($log, $ionicHistory, $state, $mmSitesManager, $mmSite, $mmApp, $mmLoginHelper) {
 
     $log = $log.getInstance('mmLoginInitCtrl');
+
     $mmApp.ready().then(function() {
 
         // Disable animation and back button for the next transition.
@@ -34,8 +35,6 @@ angular.module('mm.core.login')
 
         // Check if there was a pending redirect.
         var redirectData = $mmApp.getRedirect();
-
-
         if (redirectData.siteid && redirectData.state) {
             // Unset redirect data.
             $mmApp.storeRedirect('', '', '');

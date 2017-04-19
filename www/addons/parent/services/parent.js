@@ -10,6 +10,9 @@ angular.module('mm.addons.parent')
         $log = $log.getInstance('$mmaParentHelper');
         var siteUrl = $mmSite.getURL();
         var self = {};
+        self.isAvailable = function() {
+            return true;
+        };
         /**
          * Show Error Connecting To Server
          */

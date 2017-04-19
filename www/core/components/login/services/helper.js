@@ -187,11 +187,7 @@ angular.module('mm.core.login')
      * @name $mmLoginHelper#goToSiteInitialPage
      * @return {Promise} Promise resolved when the state changes.
      */
-    self.goToSiteInitialPage = function(userType) {
-            var userType = userType || localStorage.getItem('userType') ;
-         if (userType && userType == 'p')
-              return  $state.go('site.parent');
-
+    self.goToSiteInitialPage = function() {
         var myCoursesDisabled = $mmCourses.isMyCoursesDisabledInSite();
 
         if (myCoursesDisabled || ($mmSite.getInfo() && $mmSite.getInfo().userhomepage === 0)) {

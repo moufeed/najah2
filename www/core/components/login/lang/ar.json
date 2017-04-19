@@ -41,9 +41,5 @@
     "supplyinfo": "الرجاء إدخال تفاصيل أكثر",
     "username": "اسم المستخدم",
     "usernamerequired": "اسم المستخدم مطلوب",
-    "usernotaddederror": "المستخدم \"{{$a}}\" لم يتم إضافته - خطاء غير معروف",
-    "loginas" : "دخول كـ",
-    "student" : "طالب",
-    "teacher" : "معلم",
-    "parent"  : "ولي امر"
+    "usernotaddederror": "المستخدم \"{{$a}}\" لم يتم إضافته - خطاء غير معروف"
 }

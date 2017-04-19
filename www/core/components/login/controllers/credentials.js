@@ -22,11 +22,9 @@ angular.module('mm.core.login')
  * @name mmLoginCredentialsCtrl
  */
 .controller('mmLoginCredentialsCtrl', function($scope, $stateParams, $mmSitesManager, $mmUtil, $ionicHistory, $mmApp,
-            $q, $mmLoginHelper, $mmContentLinksDelegate, $mmContentLinksHelper, $translate,$state) {
+            $q, $mmLoginHelper, $mmContentLinksDelegate, $mmContentLinksHelper, $translate) {
 
     $scope.siteurl = $stateParams.siteurl;
-    $scope.showSiteInfo = false;    
-
     $scope.credentials = {
         username: $stateParams.username
     };
@@ -97,8 +95,6 @@ angular.module('mm.core.login')
         $scope.siteChecked = true;
     }
 
-    
- 
     $scope.login = function() {
 
         $mmApp.closeKeyboard();
@@ -106,9 +102,8 @@ angular.module('mm.core.login')
         // Get input data.
         var siteurl = $scope.siteurl,
             username = $scope.credentials.username,
-            password = $scope.credentials.password,
-            userType =  $scope.credentials.usertype;
-            
+            password = $scope.credentials.password;
+
         if (!$scope.siteChecked) {
             // Site wasn't checked (it failed), let's check again.
             return checkSite(siteurl).then(function() {
@@ -138,7 +133,7 @@ angular.module('mm.core.login')
             return $mmSitesManager.newSite(data.siteurl, data.token, data.privatetoken).then(function() {
                 delete $scope.credentials; // Delete username and password from the scope.
                 $ionicHistory.nextViewOptions({disableBack: true});
-                     
+
                 if (urlToOpen) {
                     // There's a content link to open.
                     return $mmContentLinksDelegate.getActionsFor(urlToOpen, undefined, username).then(function(actions) {
@@ -147,13 +142,11 @@ angular.module('mm.core.login')
                             // Action should only have 1 site because we're filtering by username.
                             action.action(action.sites[0]);
                         } else {
-                            localStorage.setItem('userType',userType);
-                            return $mmLoginHelper.goToSiteInitialPage(userType );
+                            return $mmLoginHelper.goToSiteInitialPage();
                         }
                     });
                 } else {
-                    localStorage.setItem('userType',userType);
-                    return $mmLoginHelper.goToSiteInitialPage(userType);  
+                    return $mmLoginHelper.goToSiteInitialPage();
                 }
             });
         }).catch(function(error) {
@@ -161,7 +154,6 @@ angular.module('mm.core.login')
         }).finally(function() {
             modal.dismiss();
         });
-         
     };
 
 });
