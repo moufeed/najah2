@@ -1,0 +1,20 @@
+{
+	"navbartitle" :"Teacher Page",
+	"view_less" :"View less",
+	"view_all" :"View all",
+	"no_data" :"There is no Data to be shown", 
+	"errorfailedtoloaddata" :"Failed to load data, please try again later",
+	"noconnection" :"internet connection",
+	"noconnectionMessage" :"Please check your internet connection and try again",
+	"dashboard" :"teacher dashboard",
+	"courses" :"courses",
+	"dailyschedule" :"Daily Schedule",
+	"division" :"Division",
+	"season" :"season",
+	"attendence" :"attendence",
+	"take_attendence" :"Take",
+	"edite_attendence" :"Edite",
+	"weekly_schedule": "Weekly Schedule",
+	"d_season" :"season"
+}
+

@@ -1,0 +1,19 @@
+{
+	"navbartitle":"الرئيسية",
+	"view_less" :"إغلاق",
+	"view_all" :"مشاهدة الكل",
+	"no_data" :"لايوجد بيانات لعرضها",
+	"errorfailedtoloaddata" :"خطأ في تحميل البيانات يرجى المحاولة لاحقاً",
+	"noconnection" :"الأتصال بالشبكة",
+	"noconnectionMessage" :" الرجاء التأكد من الاتصال والمحاولة من جديد",
+	"dashboard" :"صفحة المعلم",
+	"courses" :"مقرارات",
+	"dailyschedule" :"البرنامج اليومي",
+	"division" :"الحصة",
+	"season" :"الفصل الدراسي",
+	"attendence" :"الحضور و الغياب",
+	"take_attendence" :"تفقد",
+	"weekly_schedule": "الجدول الإسبوعي",
+	"edite_attendence" :"تعديل",
+	"d_season" :"الفصل"
+}

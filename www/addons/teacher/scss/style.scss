@@ -1,0 +1,198 @@
+$stats-colors: #C51609 #1275C3 #D00B4E #009688 !default;
+$black: #000 !default;
+$gray: #777 !default;
+$white :#fff !default;
+$weeklybar :#1275C3 !default;
+$lasttrackbar: #009688!default;
+$attendencebar: #D00B4E!default;
+$rightArr:'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjI0cHgiIGhlaWdodD0iMjRweCIgdmlld0JveD0iMCAwIDQ0NC44MTkgNDQ0LjgxOSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDQ0LjgxOSA0NDQuODE5OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTM1Mi4wMjUsMTk2LjcxMkwxNjUuODg0LDEwLjg0OEMxNTkuMDI5LDMuNjE1LDE1MC40NjksMCwxNDAuMTg3LDBjLTEwLjI4MiwwLTE4Ljg0MiwzLjYxOS0yNS42OTcsMTAuODQ4TDkyLjc5MiwzMi4yNjQgICBjLTcuMDQ0LDcuMDQzLTEwLjU2NiwxNS42MDQtMTAuNTY2LDI1LjY5MmMwLDkuODk3LDMuNTIxLDE4LjU2LDEwLjU2NiwyNS45ODFsMTM4Ljc1MywxMzguNDczTDkyLjc4NiwzNjEuMTY4ICAgYy03LjA0Miw3LjA0My0xMC41NjQsMTUuNjA0LTEwLjU2NCwyNS42OTNjMCw5Ljg5NiwzLjUyMSwxOC41NjIsMTAuNTY0LDI1Ljk4bDIxLjcsMjEuNDEzICAgYzcuMDQzLDcuMDQzLDE1LjYxMiwxMC41NjQsMjUuNjk3LDEwLjU2NGMxMC4wODksMCwxOC42NTYtMy41MjEsMjUuNjk3LTEwLjU2NGwxODYuMTQ1LTE4NS44NjQgICBjNy4wNDYtNy40MjMsMTAuNTcxLTE2LjA4NCwxMC41NzEtMjUuOTgxQzM2Mi41OTcsMjEyLjMyMSwzNTkuMDcxLDIwMy43NTUsMzUyLjAyNSwxOTYuNzEyeiIgZmlsbD0iIzgyODI4MiIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=';
+$leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjY0cHgiIGhlaWdodD0iNjRweCIgdmlld0JveD0iMCAwIDQ0NC41MzEgNDQ0LjUzMSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDQ0LjUzMSA0NDQuNTMxOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+CjxnPgoJPHBhdGggZD0iTTIxMy4xMywyMjIuNDA5TDM1MS44OCw4My42NTNjNy4wNS03LjA0MywxMC41NjctMTUuNjU3LDEwLjU2Ny0yNS44NDFjMC0xMC4xODMtMy41MTgtMTguNzkzLTEwLjU2Ny0yNS44MzUgICBsLTIxLjQwOS0yMS40MTZDMzIzLjQzMiwzLjUyMSwzMTQuODE3LDAsMzA0LjYzNywwcy0xOC43OTEsMy41MjEtMjUuODQxLDEwLjU2MUw5Mi42NDksMTk2LjQyNSAgIGMtNy4wNDQsNy4wNDMtMTAuNTY2LDE1LjY1Ni0xMC41NjYsMjUuODQxczMuNTIxLDE4Ljc5MSwxMC41NjYsMjUuODM3bDE4Ni4xNDYsMTg1Ljg2NGM3LjA1LDcuMDQzLDE1LjY2LDEwLjU2NCwyNS44NDEsMTAuNTY0ICAgczE4Ljc5NS0zLjUyMSwyNS44MzQtMTAuNTY0bDIxLjQwOS0yMS40MTJjNy4wNS03LjAzOSwxMC41NjctMTUuNjA0LDEwLjU2Ny0yNS42OTdjMC0xMC4wODUtMy41MTgtMTguNzQ2LTEwLjU2Ny0yNS45NzggICBMMjEzLjEzLDIyMi40MDl6IiBmaWxsPSIjODI4MjgyIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==';
+.mm-site_teacher {
+    .row.responsive-sm {
+        padding: 0;
+        .col.col-50 {
+            margin-bottom: 0;
+        }
+    }
+    .card {
+        margin: 8px 0;
+        .card-header {
+            padding: 15px 10px;
+            color: $white;
+            font-size: 18px;
+        }
+    }
+}
+
+
+/**
+*
+*/
+
+.courses-box {
+    .list.card {
+        padding-top: 0;
+        margin-bottom: 10px;
+        .card-header {
+            background: mc(cyan);
+        }
+    }
+}
+
+
+/**
+*
+*/
+
+.flex-display {
+    @include display-flex;
+    @include justify-content(space-between);
+    @include align-items(center);
+}
+
+.dailyschedule {
+    margin: 10px;
+    .card-header {
+        background: mc(teal)
+    }
+    .list {
+        padding-top: 0;
+        .item-avatar-left {
+            .linkbtn {
+                padding: 15px;
+                width: 100%;
+                height: 100%;
+                @include display-flex;
+                @include justify-content(center);
+                @include align-items(center);
+                border-radius: 2px;
+                color: $white;
+                &.add {
+                    background: mc(green);
+                    &.activated {
+                        background: darken( mc(green), 15%);
+                    }
+                }
+                &.edite {
+                    background: mc(orange);
+                    &.activated {
+                        background: darken( mc(orange), 15%);
+                    }
+                }
+            }
+        }
+        .item-info {
+            .flex-display {
+                strong {
+                    color: lighten($black, 25%);
+                    display: inline-block;
+                    margin-bottom: 4px;
+                }
+                small {
+                    color: lighten($black, 40%);
+                    &:last-child {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.weeklySchedule {
+    padding-top: 0;
+    .card-header {
+        background: mc(bluegray);
+    }
+    .swiper-container {
+        padding-bottom: 0;
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+        top: 0;
+        margin-top: 0;
+        height: 37px;
+        width: 40px;
+        -moz-background-size: 27px 20px;
+        -webkit-background-size: 27px 20px;
+        background-size: 27px 20px;
+    }
+    .swiper-button-prev {
+        left: 0;
+    }
+    .swiper-button-next {
+        right: 0;
+    }
+    .swiper-button-next,
+    .swiper-container-rtl .swiper-button-prev {
+        background-image: url('#{$rightArr}');
+    }
+    .swiper-button-prev,
+    .swiper-container-rtl .swiper-button-next {
+        background-image: url('#{$leftArr}');
+    }
+    .list {
+        .item-divider {
+            text-align: center;
+        }
+        .flex-display {
+            margin-bottom: 5px;
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------
+//------   daily attendance
+//----------------------------------------------------------------------------------------
+.dailyattendance {
+    padding-top: 0;
+    .card-header {
+        background: mc(indigo);
+    }
+    .swiper-button-next,
+    .swiper-button-prev {
+        top: 0;
+        margin-top: 0;
+        height: 37px;
+        width: 40px;
+        -moz-background-size: 27px 20px;
+        -webkit-background-size: 27px 20px;
+        background-size: 27px 20px;
+    }
+    .swiper-button-prev {
+        left: 0;
+    }
+    .swiper-button-next {
+        right: 0;
+    }
+    .swiper-button-next,
+    .swiper-container-rtl .swiper-button-prev {
+        background-image: url('#{$rightArr}');
+    }
+    .swiper-button-prev,
+    .swiper-container-rtl .swiper-button-next {
+        background-image: url('#{$leftArr}');
+    }
+    .item-footer {
+        padding: 10px;
+        .chart-labels {
+            @include display-flex;
+            @include justify-content(space-between);
+            @include align-items(center);
+            li {
+                span {
+                    display: inline-block;
+                    text-transform: capitalize;
+                    &:first-child {
+                        width: 10px;
+                        height: 10px;
+                        margin: 0 3px;
+                        position: relative;
+                        top: 0px;
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
+}
