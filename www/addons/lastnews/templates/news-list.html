@@ -1,0 +1,32 @@
+<ion-view class="latest_news">
+ 
+  <ion-nav-title>
+    <span>News title</span>
+  </ion-nav-title>
+  <ion-content>
+    <div class="list category-feeds">
+      <a ng-repeat="feed in feeds" class="item card feed-card" ui-sref="app.news-entry({newsId:feed.id})" ng-if="feeds.length > 0">
+          <div class="row  ">
+              <div class="col-67">
+                 <div class="info">
+                   <span class="title">{{feed.title}}</span>
+                 <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates ullam fugiat eum nobis, ipsa dicta?{{feed.text}}</p>
+                 <small class="date">{{feed.date | date:'medium'}}</small>  
+                 </div>
+              </div>
+              <div class="col-33">
+                     <pre-img ratio="_1_1" helper-class="">
+                        <img class="thumbnail" ng-src="{{feed.pic}}" spinner-on-load> 
+                     </pre-img>
+              </div>
+          </div>
+      </a>
+      <empty-msg  helper-class="danger" icon="ion-ios-information-outline" ng-if="feeds.length <= 0">
+          There is no News
+      </empty-msg>
+
+    </div>
+  </ion-content>
+</ion-view>
+
+ 
