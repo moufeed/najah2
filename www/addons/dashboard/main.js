@@ -15,9 +15,10 @@
 angular.module('mm.addons.dashboard', [])
 
 
-.constant('mmaDashboardPriority', 400)
+.constant('mmaDashboardPriority', 1500)
 
 .config(function($stateProvider, $mmSideMenuDelegateProvider, mmaDashboardPriority) {
+
     $stateProvider
         .state('site.dashboard', {
             url: '/dashboard',
@@ -26,6 +27,16 @@ angular.module('mm.addons.dashboard', [])
                     controller: 'mmaDashboardCtrl',
                     controllerAs: 'dashboard',
                     templateUrl: 'addons/dashboard/templates/list.html'
+                }
+            }
+        })
+        .state('site.dashCourse', {
+            url: '/course/:id',
+            views: {
+                'site': {
+                    controller: 'mmaDashboardCourseCtrl',
+                    controllerAs: 'dashboardCourse',
+                    templateUrl: 'addons/dashboard/templates/course.html'
                 }
             }
         });

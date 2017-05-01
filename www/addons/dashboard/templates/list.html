@@ -1,5 +1,5 @@
 <ion-view view-title="{{ 'mma.dashboard.dashboard' | translate }}">
-    <ion-content mm-state-class>
+    <ion-content mm-state-class class="dashboard">
         <mm-loading hide-until="dashboard.statsLoaded">
             <div class="stats">
                 <div class="card stats-chart courses-chart">
@@ -52,7 +52,8 @@
                 <div class="courses">
                     <ks-swiper-container loop="false" slides-per-view="2" space-between="5" on-ready="onReadySwiper(swiper)" class="swiper">
                         <ks-swiper-slide class="swiper-slide course" on-finish-render="ngRepeatFinished" ng-repeat="course in dashboard.currentCourses.courses">
-                            <a ui-sref="app.course({id: course.id})">
+                            <a href="#/site/course/{{ course.id }}">
+                                <!--  ng-click="dashboard.goToCourse(course.id)" -->
                                 <div class="name">
                                     <h2>{{ course.name }}</h2>
                                 </div>
