@@ -1,0 +1,40 @@
+<ion-view view-title="{{ programsDetails.program.name }}" class="programs-details">
+    <ion-content mm-state-class class="programs">
+        <mm-loading hide-until="programsDetails.programsDetailsLoaded">
+            <div class="card program-details">
+                <div class="header program-header">
+                    <h2>{{ 'mma.myprograms.school' | translate }}: {{ programsDetails.program.college }}</h2>
+                    <h5>{{ 'mma.myprograms.class' | translate }}: {{ programsDetails.program.name }}</h5>
+                </div>
+                <div class="course-tracks">
+                    <ul class="row">
+                        <li ng-repeat="track in programsDetails.program.tracks" class="col">
+                            <a ng-click="programsDetails.changeTrack(track.id)" class="button button-positive" ng-class="{active: trackId === track.id}">{{ track.name }}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="list list-{{ track.id }}" ng-if="trackId === track.id" ng-repeat="track in programsDetails.program.tracks">
+                    <div class="table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>{{ 'mma.myprograms.name' | translate }}</th>
+                                    <th>{{ 'mma.myprograms.mid_grade' | translate }}</th>
+                                    <th>{{ 'mma.myprograms.end_result' | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--d asd asd -->
+                                <tr ng-repeat="course in track.courses">
+                                    <td>{{ course.name }}</td>
+                                    <td>{{ course.mid_grade }}</td>
+                                    <td>{{ course.final_grade }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </mm-loading>
+    </ion-content>
+</ion-view>

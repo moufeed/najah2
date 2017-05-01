@@ -1,0 +1,29 @@
+<div class="course-content">
+    <div class="content {{ dashboardCourse.contentClass }}">
+        <div class="quizzes course-view">
+            <div class="card quizzes">
+                <div class="header">
+                    <h2>quizzes</h2>
+                </div>
+                <div class="list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>quiz name</th>
+                                <th>start date</th>
+                                <th>end date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="quiz in dashboardCourse.course.quizzes">
+                                <td>{{ quiz.data.name }}</td>
+                                <td>{{ quiz.data.timeopen }}</td>
+                                <td>{{ quiz.data.timeclose }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="course-content">
+    <div class="content {{ dashboardCourse.contentClass }}">
+        <div class="forums course-view">
+            <div class="card forums">
+                <div class="header">
+                    <h2>forums</h2>
+                </div>
+                <div class="list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Forum Name</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="forum in dashboardCourse.course.forums">
+                                <td>{{ forum.data.name }}</td>
+                                <td ng-bind-html="forum.data.intro"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
