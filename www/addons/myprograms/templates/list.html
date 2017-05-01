@@ -1,0 +1,15 @@
+<ion-view view-title="{{ 'mma.myprograms.programs' | translate }}">
+    <ion-content mm-state-class class="programs">
+        <mm-loading hide-until="myPrograms.programsLoaded">
+            <div class="card">
+                <ul class="list">
+                    <li class="item" ng-repeat="program in myPrograms.programs">
+                        <a class="program-item" ui-sref="site.programDetails({id: program.id})">
+                            {{ program.name }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </mm-loading>
+    </ion-content>
+</ion-view>

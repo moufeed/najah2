@@ -1,0 +1,29 @@
+<div class="course-content">
+    <div class="content {{ dashboardCourse.contentClass }}">
+        <div class="evaluating course-view">
+            <div class="card evaluating">
+                <div class="header">
+                    <h2>evaluating</h2>
+                </div>
+                <div class="list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Evaluation Type</th>
+                                <th>Evaluation info</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="stamp in dashboardCourse.course.stamps">
+                                <td>{{ stamp.stampname }}</td>
+                                <td>{{ stamp.text }}</td>
+                                <td><img ng-src="{{ stamp.stampimg }}" alt=""></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

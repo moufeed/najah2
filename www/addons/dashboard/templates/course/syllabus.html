@@ -1,0 +1,14 @@
+<div class="course-content">
+    <div class="content {{ dashboardCourse.contentClass }}">
+        <div class="syllabus course-view">
+            <div class="sections card">
+                <h2 class="section-title">sections</h2>
+                <ul class="list">
+                    <li ng-repeat="section in dashboardCourse.course.sections" class="item">
+                        <a ui-sref="site.mm_course-section({cid: dashboardCourse.course.id, sectionid: section.id})">{{ section.name }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

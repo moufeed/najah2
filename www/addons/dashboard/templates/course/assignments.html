@@ -1,0 +1,29 @@
+<div class="course-content">
+    <div class="content {{ dashboardCourse.contentClass }}">
+        <div class="assignments course-view">
+            <div class="card assignments">
+                <div class="header">
+                    <h2>assignments</h2>
+                </div>
+                <div class="list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Assignment Name</th>
+                                <th>Grade</th>
+                                <th>Submition Deadline</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="assign in dashboardCourse.course.weeklytasks">
+                                <td>{{ assign.data.name }}</td>
+                                <td>{{ assign.data.grade }}</td>
+                                <td>{{ assign.data.duedate }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
