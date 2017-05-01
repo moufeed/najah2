@@ -1,9 +1,8 @@
-<ion-view class="latest_news">
- 
-  <ion-nav-title>
-    <span>News title</span>
-  </ion-nav-title>
-  <ion-content>
+<ion-view view-title="{{ 'mma.lastnews.title' | translate }}" class="latest_news">
+
+<ion-content>
+  <div></div>
+    <ion-refresher on-refresh="doRefresh()"></ion-refresher>
     <div class="list category-feeds">
       <a ng-repeat="feed in feeds" class="item card feed-card" ui-sref="app.news-entry({newsId:feed.id})" ng-if="feeds.length > 0">
           <div class="row  ">
@@ -21,12 +20,23 @@
               </div>
           </div>
       </a>
-      <empty-msg  helper-class="danger" icon="ion-ios-information-outline" ng-if="feeds.length <= 0">
-          There is no News
-      </empty-msg>
-
+      
     </div>
+
+    <div class="card emptymsg info inside" ng-if="!feeds">
+      <div class="text-center">
+          <div class="zmdi zmdi-calendar-note icon"></div>
+          	<h4>{{ 'mma.lastnews.title' | translate }}</h4>
+				<ion-spinner icon="lines" ng-if="!nNews.noData"></ion-spinner>
+				<span ng-show="nNews.noData">  {{ 'mma.lastnews.no_data' | translate }}</span>
+      </div>
+    </div>
+ 
+
   </ion-content>
 </ion-view>
+
+
+ 
 
  

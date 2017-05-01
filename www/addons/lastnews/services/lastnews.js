@@ -25,9 +25,9 @@ angular.module('mm.addons.lastnews')
         }
         /**
          * Get data From Server
-         */
+         */ 
         self.call = function (service) {
-            return $http.get(siteUrl + '/local/ajax/parent.php?s=' + service).then(function (response) {
+            return $http.get(siteUrl + '/local/ajax/mobile.php?s=' + service).then(function (response) {
                 if (typeof response.data === 'object') {
                     return response.data;
                 } else {
@@ -36,6 +36,20 @@ angular.module('mm.addons.lastnews')
             }, function (response) {
                 return $q.reject(response.data);
             })
+        }
+
+         /**
+         *   Return List Of News
+         */ 
+        self.getNews = function(){
+            return self.call('general.latestnews')
+            .then(function(data){
+                return data ;
+            })
+            .catch(function (err) {
+                    showError();
+                    return false;
+            });
         }
          
         return self;

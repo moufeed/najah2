@@ -61,8 +61,8 @@ angular.module('mm.addons.lastnews')
              * @name $mmaLastNewsHandlers#sideMenuNav:controller
              */
             return function($scope) { 
-                $scope.icon = 'ion-person-stalker';
-                $scope.title = 'mma.lastnews.dashboard';
+                $scope.icon = 'ion-ios-paper';
+                $scope.title = 'mma.lastnews.news';
                 $scope.state = 'site.lastnews';
                 $scope.class = 'mma-lastnews-handler';
             };

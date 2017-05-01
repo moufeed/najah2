@@ -21,7 +21,24 @@ angular.module('mm.addons.lastnews')
    * @ngdoc controller
    * @name mmalastNewsCtrl
    */
-  .controller('mmalastNewsCtrl', function ($scope, $q, $mmDB, $stateParams, $state, $log, $mmSite, $mmApp) {
+  .controller('mmalastNewsCtrl', function ($scope, $q, $mmDB, $stateParams, $state, $mmUtil, $log, $mmSite, $mmApp,$mmaLastNewsHelper) {
     $scope.isOnline = $mmApp.isOnline();
+    getNews();
+      function getNews(){
+         $mmaLastNewsHelper.getNews()
+         .then(function(data){
+                $scope.feeds = data.list;
+        })
+        .finally(function(data){
+          $scope.nNews.noData = true;
+        });
+      }
      
-  });
+
+
+    $scope.doRefresh = function(){
+      if($scope.isOnline) getNews();
+      else $mmUtil.showToast('mma.lastnews.nointernet', true, 1500);
+      $scope.$broadcast('scroll.refreshComplete');
+    }
+  }); 
