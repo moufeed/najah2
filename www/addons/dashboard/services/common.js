@@ -77,6 +77,13 @@ angular.module('mm.addons.dashboard')
         });
     };
 
+    self.course = function(id) {
+        return $http({
+            method: 'GET',
+            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=student.syllabus&courseid=' + id
+        });
+    };
+
     self.weeklySchedule = function() {
         return $http({
             method: 'GET',
