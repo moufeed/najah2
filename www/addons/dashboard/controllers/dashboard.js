@@ -21,7 +21,7 @@ angular.module('mm.addons.dashboard')
  * @ngdoc controller
  * @name mmadashboardSettingsCtrl
  */
-.controller('mmaDashboardCtrl', function($scope, $mmaDashboard, $mmEvents, $mmSite, $mmUser, $mmaDashboardCommon, $sce) {
+.controller('mmaDashboardCtrl', function($scope, $mmaDashboard, $mmEvents, $mmSite, $mmUser, $mmaDashboardCommon, $sce, $state) {
     var self = this;
     self.statsLoaded = false;
     self.performanceLoaded = false;
@@ -168,6 +168,10 @@ angular.module('mm.addons.dashboard')
 
     $scope.onReadySwiper = function(swiper) {
         swiper.initObservers();
+    };
+
+    self.goToCourse = function(id) {
+        $state.go('site.dashCourse.syllabus', { id: id });
     };
 
 });
