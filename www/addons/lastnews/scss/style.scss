@@ -1,0 +1,102 @@
+
+$gray: #777 !default;
+$material : (
+  blue:                   #2196F3,
+  red:                    #F44336,
+  purple:                 #9C27B0,
+  deeppurple:               #673AB7,
+  lightblue:              #03A9F4,  
+  cyan:                   #00BCD4, 
+  teal:                   #009688,
+  green:                  #4CAF50,
+  lightgreen:             #8BC34A,
+  lime:                   #CDDC39,
+  yellow:                 #FFEB3B,
+  amber:                    #FFC107,
+  orange:                 #FF9800,
+  deeporange:               #FF5722,
+  gray:                   #9E9E9E,
+  bluegray:                 #607D8B,
+  indigo:                 #3F51B5,
+  pink:                   #E91E63,
+  brown:                  #795548
+) !default;
+//----------------------------------------------------------------------------------------
+//------   preloader Image
+//----------------------------------------------------------------------------------------
+
+ .pre-img{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     &.finish-loading
+        {
+            background-color: transparent;
+            border: none;
+
+                img
+            {
+                    visibility: visible;
+                    opacity: 1;
+            }
+        }
+         img
+  {
+		visibility: hidden;
+		opacity: 0;
+		@include transition(visibility 0s linear, opacity 0.5s linear); 
+        width: 100%;
+  }
+} 
+//----------------------------------------------------------------------------------------
+//------   categories Feeds 
+//----------------------------------------------------------------------------------------
+ .category-feeds{
+    .card.feed-card{
+        border:0;
+        padding: 0;
+        margin:10px;
+        border-top-width: 3px;
+        border-top-style: solid;
+        border-top-color:  #1275C3; 
+       .title{
+          white-space:normal;
+       }
+       small.date{
+           font-size: 12px;
+           color:$gray; 
+       }
+       .pre-img{
+           min-height: 75px;
+       }
+       .info{
+        padding: 5px;
+       }
+        @for $i from 1 through length($listcolors){
+          &:nth-child(#{$i}){ 
+               border-top-color: nth(nth($material , $i) , 2);
+          }
+     }
+    }
+ }
+ 
+  //----------------------------------------------------------------------------------------
+//------ post news 
+//----------------------------------------------------------------------------------------
+  .post-news{
+    .card-header{
+        background: #009688;
+        p{
+            color: #fff;
+        }
+    }
+    .post-full-image{
+        max-width: 100%;
+        height: auto;
+    }
+    .post-title{
+        margin-bottom: 15px;
+    }
+}
+ 

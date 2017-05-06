@@ -14,30 +14,49 @@
     @include justify-content(space-between);
     @include align-items(center);
 }
-a ,.link{
-    text-decoration: none ;
+
+a,
+.link {
+    text-decoration: none;
 }
 
-.emptymsg{
+.emptymsg {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     background: $light;
     display: block;
-    padding:15px;
+    padding: 15px;
     text-align: center;
-    &.inside{
-        box-shadow :none;
+    &.inside {
+        box-shadow: none;
     }
-    .icon{
+    .icon {
         font-size: 6em;
-        margin-bottom:15px; 
-    } 
-    &.primary .icon{color:$primary;}
-    &.success .icon{color:$success;}
-    &.warning .icon{color:$warning;}
-    &.danger .icon{color:$danger;}
-    &.info .icon{color:$info;}
-    
+        margin-bottom: 15px;
+    }
+    &.primary .icon {
+        color: $primary;
+    }
+    &.success .icon {
+        color: $success;
+    }
+    &.warning .icon {
+        color: $warning;
+    }
+    &.danger .icon {
+        color: $danger;
+    }
+    &.info .icon {
+        color: $info;
+    }
 }
-.swiper-wrapper{
+
+.swiper-wrapper {
     position: relative;
+}
+
+.even {
+    background-color: darken($white, 3%);
+    &.item-select select {
+        background-color: darken($white, 3%);
+    }
 }

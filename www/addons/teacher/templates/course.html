@@ -1,0 +1,106 @@
+<ion-view view-title="{{course.fullname}}" class="teacher_course">
+<ion-content padding="true" mm-state-class scroll="false">
+       
+               <mma-tab-slide-box tab="0"  ng-if="course">
+		    	<div class="tsb-icons">
+		    		<div class="tsb-ic-wrp">
+                           <ion-scroll direction="x" class="tsb-hscroll">
+                           <a href="javascript:;" class="ico syllabus-icon"> 
+                               <img src="addons/teacher/img/icons/syllabus.png">
+                               <small>{{'mma.teacher.syllabus' | translate}}</small>
+                           </a>
+                           <!--<a href="javascript:;" class="ico calendar-icon"> 
+                               <img src="addons/teacher/img/icons/calendar.png">
+                               <small>{{'mma.teacher.calendar' | translate}}</small>
+                               </a> -->
+                           <a href="javascript:;" class="ico quizzes-icon"> 
+                               <img src="addons/teacher/img/icons/quizzes.png">
+                               <small>{{'mma.teacher.quizzes' | translate}}</small>
+                               </a>
+                           <a href="javascript:;" class="ico assignments-icon"> 
+                               <img src="addons/teacher/img/icons/assignments.png">
+                               <small>{{'mma.teacher.assignments' | translate}}</small>
+                               </a>
+                           <a href="javascript:;" class="ico forums-icon"> 
+                               <img src="addons/teacher/img/icons/forums.png">
+                               <small>{{'mma.teacher.forums' | translate}}</small>
+                               </a> 
+                           <a href="javascript:;" class="ico resources-icon"> 
+                               <img src="addons/teacher/img/icons/resources.png">
+                               <small>{{'mma.teacher.resources' | translate}}</small>
+                           </a>
+                           <a href="javascript:;" class="ico students-icon"> 
+                               <img src="addons/teacher/img/icons/students.png">
+                               <small>{{'mma.teacher.students' | translate}}</small>
+                           </a>
+                           <a href="javascript:;" class="ico grades-icon"> 
+                               <img src="addons/teacher/img/icons/grades.png">
+                               <small>{{'mma.teacher.grades' | translate}}</small>
+                               </a>
+                        <a href="javascript:;" class="ico stamps-icon"> 
+                               <img src="addons/teacher/img/icons/stamps.png">
+                               <small>{{'mma.teacher.stamps' | translate}}</small>
+                               </a>
+                          <!--    <a href="javascript:;" class="ico questionsBank-icon"> 
+                               <img src="addons/teacher/img/icons/questionsBank.png">
+                               <small>{{'mma.teacher.questionsBank' | translate}}</small>
+                               </a>
+                           <a href="javascript:;" class="ico elearning-icon"> 
+                               <img src="addons/teacher/img/icons/elearning.png">
+                               <small>{{'mma.teacher.elearning' | translate}}</small>
+                               </a>
+                           <a href="javascript:;" class="ico vsessions-icon"> 
+                               <img src="addons/teacher/img/icons/vsessions.png">
+                               <small>{{'mma.teacher.vsessions' | translate}}</small>
+                           </a>-->
+                       </ion-scroll>
+                           
+					</div>
+		    	</div>
+		        <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+                       <ion-slide>
+                            <ng-include src="'addons/teacher/templates/course/syllabus.html'"></ng-include>
+                       </ion-slide>
+                       <!--<ion-slide>
+                            <ng-include src="'addons/teacher/templates/course/calendar.html'"></ng-include>
+                       </ion-slide>-->
+                       <ion-slide>
+                           <ng-include src="'addons/teacher/templates/course/quizzes.html'"></ng-include>
+                       </ion-slide>
+                       <ion-slide>
+                           <ng-include src="'addons/teacher/templates/course/assignments.html'"></ng-include>
+                       </ion-slide>
+                       <ion-slide>
+                            <ng-include src="'addons/teacher/templates/course/forums.html'"></ng-include>
+                       </ion-slide>
+                       <ion-slide>
+                            <ng-include src="'addons/teacher/templates/course/resources.html'"></ng-include>
+                       </ion-slide>
+                       <ion-slide>
+                            <ng-include src="'addons/teacher/templates/course/students.html'"></ng-include>
+                       </ion-slide>
+                       <ion-slide>
+                            <ng-include src="'addons/teacher/templates/course/grades.html'"></ng-include>
+                       </ion-slide>
+                       <ion-slide>
+                            <ng-include src="'addons/teacher/templates/course/stamps.html'"></ng-include>
+                       </ion-slide>
+                    <!--   <ion-slide>
+                            <ng-include src="'addons/teacher/templates/course/questionsBank.html'"></ng-include>
+                       </ion-slide>
+                       <ion-slide>
+                            <ng-include src="'addons/teacher/templates/course/elearning.html'"></ng-include>
+                       </ion-slide>
+                       <ion-slide>
+                            <ng-include src="'addons/teacher/templates/course/vsessions.html'"></ng-include>
+                       </ion-slide>-->
+	        </ion-slide-box>
+         	</mma-tab-slide-box>
+           <mma-tempty helper-class="info inside" icon="zmdi zmdi-assignment" ng-if="!course">
+			<h4>{{ 'mma.teacher.courses' | translate }}</h4>
+			<ion-spinner icon="lines" ng-if="!myCourse.noData"></ion-spinner>
+			<span ng-show="myCourse.noData">  {{ 'mma.teacher.no_data' | translate }}</span>
+		</mma-tempty>
+</ion-content>
+</ion-view>
+          

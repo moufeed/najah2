@@ -1,0 +1,17 @@
+<ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+            <button class="button button-clear button-primary " ng-click="modal.hide()">{{'mma.lastnews.close' | translate}}</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+            <div class="list card post-news">
+                <div class="item card-header">
+                    <p>{{post.date}}</p>
+                </div>
+                <div class="item item-body text-center">
+                     <img class="post-full-image" src="{{post.pic}}" >
+                     <h3 class="post-title">{{post.title}}</h3>
+                     <div ng-bind-html="post.text | trustHtml" ></div>
+                </div>
+                </div>
+        </ion-content>
+      </ion-modal-view>

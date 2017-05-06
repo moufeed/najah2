@@ -1,0 +1,30 @@
+<ion-scroll style="height:100%">
+    <div class="grades-slide">
+        <ion-list class="list">
+            <div ng-repeat="group in groups" class="item-grade">
+                <ion-item class="item-class item-complex" ng-class-even="'even'" ng-class="{active: isGroupShown(group)}">
+                    <div class="classname" ng-click="toggleGroup(group)">
+                        <i class="icon" ng-class="isGroupShown(group) ? 'ion-close-round' : 'ion-navicon'"></i>
+                        <span> {{'mma.teacher.class'| translate}} &nbsp; {{group.name}}</span>
+                    </div>
+                    <button class="button-icon link-group" ng-click="openGroup(group)"> 
+                        <i class="icon  ion-compose"></i>
+                    </button>
+                </ion-item>
+                <ion-item class="item-accordion item-group" ng-repeat="item in group.items  " ng-show="isGroupShown(group)">
+                    <div class="item-subgrade" ng-class="{active: isSubGroupShown(item)}">
+                        <ion-item class="item-subclass" ng-click="toggleSubGroup(item)" ng-class="{active: isSubGroupShown(item)}">
+                            <span>{{item[0]}}</span>
+                            <i class="icon" ng-class="isSubGroupShown(item) ? 'ion-ios-minus-outline' : 'ion-ios-plus-outline'"></i>
+                        </ion-item>
+                        <ion-item ng-repeat="i in item.slice(1,item.length)  track by $index " ng-if="$index > 0" class="item-accordion item-info flex-display"
+                            ng-show="isSubGroupShown(item)">
+                            <span>{{course.grades.cols[$index]}}</span>
+                            <strong>{{i}}</strong>
+                        </ion-item>
+                    </div>
+                </ion-item>
+            </div>
+        </ion-list>
+    </div>
+<ion-scroll>

@@ -28,9 +28,27 @@ angular.module('mm.addons.teacher', [])
                 controller: 'mmaTeacherCtrl'
             } 
         }
-    }) ;
+    }) 
+    .state('site.attendence', {
+            url: '/attendence/:divId/:recId',
+            views: {
+            'site': {
+                templateUrl: 'addons/teacher/templates/attendence.html',
+                controller: 'mmaTeacherattendenceCtrl'
+            } 
+        } 
+    })
+    .state('site.teacher_course', {
+            url: '/course/:id',
+            views: {
+            'site': {
+                templateUrl: 'addons/teacher/templates/course.html',
+                controller: 'mmaTeachercourseCtrl'
+            }
+        } 
+    });
 
      $mmSideMenuDelegateProvider.registerNavHandler('mmaTeacher', '$mmaTeacherHandlers.sideMenuNav', mmaTeacherPriority);
 })
  
-    
+     

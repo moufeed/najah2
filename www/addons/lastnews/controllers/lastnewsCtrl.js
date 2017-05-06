@@ -21,24 +21,41 @@ angular.module('mm.addons.lastnews')
    * @ngdoc controller
    * @name mmalastNewsCtrl
    */
-  .controller('mmalastNewsCtrl', function ($scope, $q, $mmDB, $stateParams, $state, $mmUtil, $log, $mmSite, $mmApp,$mmaLastNewsHelper) {
+  .controller('mmalastNewsCtrl', function ($scope, $q, $mmDB,$ionicModal,$stateParams, $state, $mmUtil, $log, $mmSite, $mmApp, $mmaLastNewsHelper) {
     $scope.isOnline = $mmApp.isOnline();
+    var count = 0;
     getNews();
-      function getNews(){
-         $mmaLastNewsHelper.getNews()
-         .then(function(data){
-                $scope.feeds = data.list;
+    function getNews() {
+      $mmaLastNewsHelper.getNews()
+        .then(function (data) {
+          if (data.list.length != count ) {
+            $scope.feeds = data.list;
+            count = data.list.length;
+          }
+          
         })
-        .finally(function(data){
-          $scope.nNews.noData = true;
+        .finally(function (data) {
+          $scope.nNews_noData = true;
+          
         });
-      }
-     
+    }
 
-
-    $scope.doRefresh = function(){
-      if($scope.isOnline) getNews();
+    $scope.doRefresh = function () {
+      if ($scope.isOnline) getNews();
       else $mmUtil.showToast('mma.lastnews.nointernet', true, 1500);
       $scope.$broadcast('scroll.refreshComplete');
     }
-  }); 
+
+    
+	    $scope.openNews = function(post){ 
+            $scope.post = post;
+             $ionicModal.fromTemplateUrl('addons/lastnews/templates/modal.html', {
+                scope: $scope
+            }).then(function(modal) {
+                $scope.modal = modal;
+                modal.show();
+            });
+        }
+
+
+  });

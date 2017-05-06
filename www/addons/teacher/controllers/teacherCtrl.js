@@ -21,7 +21,7 @@ angular.module('mm.addons.teacher')
    * @ngdoc controller
    * @name mmaTeacherCtrl
    */
-  .controller('mmaTeacherCtrl', function ($scope, $q, $mmDB, $stateParams, $state,$mmaTeacherHelper, $log, $mmSite, $mmApp) {
+  .controller('mmaTeacherCtrl', function ($scope, $q, $mmDB, $stateParams, $state,$mmaTeacherHelper, $log,$sce, $mmSite,$mmUtil,$ionicModal, $mmApp) {
     $scope.isOnline = $mmApp.isOnline();
     $scope.initialSlide = function(){
           var date = new Date();
@@ -81,11 +81,42 @@ angular.module('mm.addons.teacher')
         });
         $q.all(response.list).then(function () {
             $scope.dailyattendance = response.list;
-            console.log($scope.dailyattendance);
+            
         });
       })
       .finally(function(data){
           $scope.Dlessons.noData = true;
       });
+/**
+ * latest News
+ */
+      $mmaTeacherHelper.getFeeds()
+      .then(function(response){
+          $scope.feeds= response.list;
+      })
+      .finally(function(data){
+          $scope.lnews.noData = true;
+      });
 
+     
+        $scope.openNews = function(post){
+            $scope.post = post;
+             $ionicModal.fromTemplateUrl('addons/teacher/templates/modal.html', {
+                scope: $scope
+            }).then(function(modal) {
+                $scope.modal = modal;
+                modal.show();
+            });
+        }
+        
+      /**
+       * calender
+       */
+    /*  $mmaTeacherHelper.getCalender() 
+        .then(function(data){
+            $scope.mCalendar = $sce.trustAsHtml(data.mini);
+        })
+      .finally(function(data){
+          $scope.lcalendar.noData = true;
+      });*/
   });

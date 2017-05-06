@@ -9,9 +9,22 @@ angular.module('mm.addons.lastnews')
         $log = $log.getInstance('$mmaLastNewsHelper');
         var siteUrl = $mmSite.getURL();
         var self = {};
-        self.isAvailable = function() {
-            return true;
+		var token  = $mmSite.getToken();
+
+         self.isAvailable = function () {
+            return self.call({s: 'general.usertype' })
+                .then(function (data) {
+                    if (data.usertype === 'parent'){
+                        return false;
+                    }
+                    return true;
+                })
+                .catch(function (err) {
+                    showError();
+                    return false;
+                });
         };
+
         /**
          * Show Error Connecting To Server
          */
@@ -26,8 +39,14 @@ angular.module('mm.addons.lastnews')
         /**
          * Get data From Server
          */ 
-        self.call = function (service) {
-            return $http.get(siteUrl + '/local/ajax/mobile.php?s=' + service).then(function (response) {
+        self.call = function (service ,url) {
+            var reqUrl = url ? url : siteUrl + '/local/ajax/mobile2.php';
+           service.wstoken = token; 
+            return $http({
+                url: reqUrl,
+                method: "GET",
+                params: service
+            }).then(function (response) {
                 if (typeof response.data === 'object') {
                     return response.data;
                 } else {
@@ -42,7 +61,7 @@ angular.module('mm.addons.lastnews')
          *   Return List Of News
          */ 
         self.getNews = function(){
-            return self.call('general.latestnews')
+            return self.call({s:'general.latestnews'})
             .then(function(data){
                 return data ;
             })

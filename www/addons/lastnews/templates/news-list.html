@@ -1,34 +1,33 @@
 <ion-view view-title="{{ 'mma.lastnews.title' | translate }}" class="latest_news">
 
 <ion-content>
-  <div></div>
-    <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+  <div ng-if="feeds">
+    <ion-refresher on-refresh="doRefresh()"  pulling-text="{{ 'mma.lastnews.pulltorefresh' | translate }}" ></ion-refresher>
     <div class="list category-feeds">
-      <a ng-repeat="feed in feeds" class="item card feed-card" ui-sref="app.news-entry({newsId:feed.id})" ng-if="feeds.length > 0">
+      <a ng-repeat="feed in feeds" class="item card feed-card"  ng-click="openNews(feed)" ng-if="feeds.length > 0">
           <div class="row  ">
               <div class="col-67">
                  <div class="info">
                    <span class="title">{{feed.title}}</span>
-                 <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates ullam fugiat eum nobis, ipsa dicta?{{feed.text}}</p>
                  <small class="date">{{feed.date | date:'medium'}}</small>  
                  </div>
               </div>
               <div class="col-33">
-                     <pre-img ratio="_1_1" helper-class="">
-                        <img class="thumbnail" ng-src="{{feed.pic}}" spinner-on-load> 
-                     </pre-img>
+                     <mma-pre-img ratio="_1_1" helper-class="">
+                        <img class="thumbnail" ng-src="{{feed.pic}}" mma-spinner-on-load> 
+                     </mma-pre-img>
               </div>
           </div>
       </a>
       
     </div>
-
+</div>
     <div class="card emptymsg info inside" ng-if="!feeds">
       <div class="text-center">
-          <div class="zmdi zmdi-calendar-note icon"></div>
+          <div class="ion-ios-paper icon"></div>
           	<h4>{{ 'mma.lastnews.title' | translate }}</h4>
-				<ion-spinner icon="lines" ng-if="!nNews.noData"></ion-spinner>
-				<span ng-show="nNews.noData">  {{ 'mma.lastnews.no_data' | translate }}</span>
+				<ion-spinner icon="lines" ng-if="!nNews_noData"></ion-spinner>
+				<span ng-show="nNews_noData">  {{ 'mma.lastnews.no_data' | translate }}</span>
       </div>
     </div>
  

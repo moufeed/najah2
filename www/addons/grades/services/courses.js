@@ -21,7 +21,7 @@ angular.module('mm.addons.grades')
  * @ngdoc service
  * @name $mmaCoursesGrades
  */
-.factory('$mmaCoursesGrades', function($q, $log, $mmSite, $mmCourses, $mmSitesManager, $mmCourses) {
+.factory('$mmaCoursesGrades', function($q, $log, $mmSite, $mmCourses, $mmSitesManager) {
 
     $log = $log.getInstance('$mmaCoursesGrades');
 

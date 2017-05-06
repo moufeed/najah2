@@ -29,7 +29,7 @@ angular.module('mm.core.login')
  */
 .factory('$mmLoginHelper', function($q, $log, $mmConfig, mmLoginSSOCode, mmLoginSSOInAppCode, mmLoginLaunchData, $mmEvents,
             md5, $mmSite, $mmSitesManager, $mmLang, $mmUtil, $state, $mmAddonManager, $translate, mmCoreConfigConstants,
-            mmCoreEventSessionExpired, mmUserProfileState, $mmCourses) {
+            mmCoreEventSessionExpired, mmUserProfileState, $mmCourses,$http) {
 
     $log = $log.getInstance('$mmLoginHelper');
 
@@ -179,6 +179,7 @@ angular.module('mm.core.login')
         }
     };
 
+   
     /**
      * Go to the initial page of a site depending on 'userhomepage' setting.
      *
@@ -188,6 +189,7 @@ angular.module('mm.core.login')
      * @return {Promise} Promise resolved when the state changes.
      */
     self.goToSiteInitialPage = function() {
+         self.getUserType();
         var myCoursesDisabled = $mmCourses.isMyCoursesDisabledInSite();
 
         if (myCoursesDisabled || ($mmSite.getInfo() && $mmSite.getInfo().userhomepage === 0)) {
@@ -206,6 +208,7 @@ angular.module('mm.core.login')
                     return $state.go(mmUserProfileState, {userid: $mmSite.getUserId()});
                 });
             }
+
         }
 
         if (!myCoursesDisabled) {

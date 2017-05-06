@@ -1,0 +1,42 @@
+<ion-view view-title="{{ 'mma.teacher.attendence' | translate }}" class="teacher_attendance">
+	<ion-content padding="true" mm-state-class>
+       <div ng-if="course">
+            <div class="card card-courseInfo">
+                <div class="item item-text-wrap"> 
+                      <span> {{'mma.teacher.program' | translate }} </span> <strong> {{course.pgmname}}</strong>
+                </div>
+                <div class="item item-text-wrap"> 
+                     <span> {{'mma.teacher.course_name' | translate }} </span> <strong> {{course.crsname}}</strong>
+                </div>
+            </div>
+            <div class="card students-list">
+                <div class="card-header">
+                             {{'mma.teacher.students' | translate }}  
+                </div>
+                <div class="card-body">
+                    <ion-list class="list">
+						<ion-item class="item item-input item-select item-icon-left" ng-repeat="usr in course.usrs"  ng-class-even="'even'">
+                             <div class="input-label">
+                                <a class="btn-note ion-compose" ng-click="showPrompt(usr)"></a>
+                             {{usr.name}}
+                             </div>
+                                <select ng-model="stds[usr.id].option"  ng-init="stds[usr.id].option = (usr.status ? usr.status : addStatus(usr))" >
+                                <option value="val"  ng-repeat="(val, label) in course.options" ng-selected="(usr.status == val) || (val == 1) " >{{label}}</option>       
+                                </select>
+						</ion-item>
+					</ion-list>
+                        <button class="save-button" ng-click="postAttend()">
+                             {{'mma.teacher.save' | translate }}
+                        </button>
+                </div>
+            </div>
+       </div>
+       <mma-tempty helper-class="info " icon="zmdi zmdi-calendar" ng-if="!course">
+				<h4>{{ 'mma.teacher.attendence' | translate }}</h4>
+				<ion-spinner icon="lines" ng-if="!attendance.noData"></ion-spinner>
+				<span ng-show="attendance.noData">  {{ 'mma.teacher.no_data' | translate }}</span>
+	</mma-tempty>
+	</ion-content>
+</ion-view>
+
+           

@@ -1,6 +1,6 @@
 {
-   "title" 	: "Parent Page",
-    "childtitle" :"Child Page",
+   "title" 	: "الأبناء",
+    "childtitle" :"",
 	"programs" :"برامج دراسية",
 	"tracks" :"دورات فصلية",
 	"courses" :"الدورات",
@@ -22,5 +22,5 @@
 	"errorfailedtoloaddata" :"خطأ في تحميل البيانات يرجى المحاولة لاحقاً",
 	"noconnection" :"الأتصال بالشبكة",
 	"noconnectionMessage" :" الرجاء التأكد من الاتصال والمحاولة من جديد",
-	"dashboard" :" الرئيسية"
+	"dashboard" :"الأبناء"
 }

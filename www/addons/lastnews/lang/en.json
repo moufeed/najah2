@@ -2,6 +2,8 @@
     "title" :"last news",
     "nointernet" :"no Internet ",
 	"news" :"news",
-    "no_data" :"There is no Data to be shown"
+    "no_data" :"There is no Data to be shown",
+    "pulltorefresh": "Pull to refresh",
+	"close" : "Close"
 }
 
