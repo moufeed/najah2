@@ -6,7 +6,7 @@
 	"errorfailedtoloaddata" :"Failed to load data, please try again later",
 	"noconnection" :"internet connection",
 	"noconnectionMessage" :"Please check your internet connection and try again",
-	"dashboard" :"teacher dashboard",
+	"dashboard" :"Dashboard",
 	"courses" :"courses",
 	"dailyschedule" :"Daily Schedule",
 	"division" :"Division",

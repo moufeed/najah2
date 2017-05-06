@@ -95,11 +95,13 @@ angular.module('mm.core.login')
 
     $scope.login = function(siteId) {
         var modal = $mmUtil.showModalLoading();
-
         $mmSitesManager.loadSite(siteId).then(function() {
             if (!$mmLoginHelper.isSiteLoggedOut()) {
+                $mmLoginHelper.getUserType().then(function(data){
                 $ionicHistory.nextViewOptions({disableBack: true});
-                return $mmLoginHelper.goToSiteInitialPage();
+                return $mmLoginHelper.goToSiteInitialPage(data);
+                });
+                
             }
         }, function(error) {
             $log.error('Error loading site ' + siteId);

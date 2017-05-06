@@ -491,6 +491,8 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
                 padding: 5px;
                 margin-top: 10px;
                 span {
+                        max-width: 30%;
+                        white-space: normal;
                     small,
                     strong {
                         display: block;

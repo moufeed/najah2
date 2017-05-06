@@ -179,7 +179,28 @@ angular.module('mm.core.login')
         }
     };
 
-   
+   self.getUserType = function(){
+    return  $http({
+                url:  $mmSite.getURL() + '/local/ajax/mobile2.php',
+                method: "GET",
+                params: {s: 'general.usertype' ,wstoken : $mmSite.getToken() }
+            }).then(function (response) {
+                    return response.data.usertype;
+        })
+   }
+
+    self.goDashboard= function(userType,myCoursesDisabled){
+        if(userType === 'parent' )
+          return $state.go('site.parent');
+        else if(userType === 'sisteacher' )
+          return $state.go('site.teacher');
+        else if(userType === 'sisstudent' )
+          return $state.go('site.dashboard');
+        else  if (!myCoursesDisabled) {
+            return $state.go('site.mm_courses');
+        }
+        return $state.go(mmUserProfileState, {userid: $mmSite.getUserId()});
+    }
     /**
      * Go to the initial page of a site depending on 'userhomepage' setting.
      *
@@ -188,8 +209,9 @@ angular.module('mm.core.login')
      * @name $mmLoginHelper#goToSiteInitialPage
      * @return {Promise} Promise resolved when the state changes.
      */
-    self.goToSiteInitialPage = function() {
-    
+   
+    self.goToSiteInitialPage = function(user) {
+
         var myCoursesDisabled = $mmCourses.isMyCoursesDisabledInSite();
 
         if (myCoursesDisabled || ($mmSite.getInfo() && $mmSite.getInfo().userhomepage === 0)) {
@@ -199,25 +221,27 @@ angular.module('mm.core.login')
                 return $mmaFrontpage.isFrontpageAvailable().then(function() {
                     return $state.go('site.frontpage');
                 }).catch(function() {
-                    if (!myCoursesDisabled) {
-                        // Site Home not available, go to My Courses.
-                        return $state.go('site.mm_courses');
-                    }
+                   return self.goDashboard(user,myCoursesDisabled);
+                    
+                    // if (!myCoursesDisabled) {
+                    //     // Site Home not available, go to My Courses.
+                    //     return $state.go('site.mm_courses');
+                    // }
 
                     // Both Site Home and My Courses aren't available, go to the user profile.
-                    return $state.go(mmUserProfileState, {userid: $mmSite.getUserId()});
+                    // return $state.go(mmUserProfileState, {userid: $mmSite.getUserId()});
                 });
             }
 
         }
 
-        if (!myCoursesDisabled) {
-            // Site Home not available, go to My Courses.
-            return $state.go('site.mm_courses');
-        }
-
+        // if (!myCoursesDisabled) {
+        //     // Site Home not available, go to My Courses.
+        //     return $state.go('site.mm_courses');
+        // }
+        return self.goDashboard(user,myCoursesDisabled); 
         // Both Site Home and My Courses aren't available, go to the user profile.
-        return $state.go(mmUserProfileState, {userid: $mmSite.getUserId()});
+        // return $state.go(mmUserProfileState, {userid: $mmSite.getUserId()});
     };
 
     /**
