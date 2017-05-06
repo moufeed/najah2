@@ -4,9 +4,30 @@
  * Use it to customise the look and feel of the app.
  */
 
-// Colors.
-$positive: #387ef5;
-$stable: #f5f5f5;
+$dir: ltr;
+$black: #000;
+$primary: #337ab7;
+$success: #5cb85c;
+$info: #5bc0de;
+$warning: #f0ad4e;
+$danger: #d9534f;
+$flagW: 24px;
+$white: #fff;
+$colors: #386FDF #1C3144 #2C302E #191923 #FFB100;
+$pie: #608097 #FAFFFD #3f5e72 #555;
+$light: #fff !default;
+$stable: #f8f8f8 !default;
+$positive: #387ef5 !default;
+$calm: #11c1f3 !default;
+$balanced: #33cd5f !default;
+$energized: #ffc900 !default;
+$assertive: #ef473a !default;
+$royal: #886aea !default;
+$dark: #444 !default;
+$gray: #777;
+$item-border-color: #eee;
+//contacts
+$contactIcon: #3A6EDE;
 $base-background-color: #fcfcfc;
 $item-default-bg: white;
 $item-divider-bg: #f1f1f1;
@@ -18,95 +39,109 @@ $button-default-active-bg: $positive;
 $button-default-active-border: $positive;
 $tabs-off-opacity: 0.6;
 $tabs-striped-off-opacity: $tabs-off-opacity;
+$material: ( blue: #2196F3, red: #F44336, purple: #9C27B0, deeppurple: #673AB7, lightblue: #03A9F4, cyan: #00BCD4, teal: #009688, green: #4CAF50, lightgreen: #8BC34A, lime: #CDDC39, yellow: #FFEB3B, amber: #FFC107, orange: #FF9800, deeporange: #FF5722, gray: #9E9E9E, bluegray: #607D8B, indigo: #3F51B5, pink: #E91E63, brown: #795548);
+$listcolors: ( light: #fff, stable :#f8f8f8, positive: #387ef5, calm: #11c1f3, balanced: #33cd5f, energized: #ffc900, assertive: #ef473a, royal: #886aea, dark: #444444, gray: #777777);
+$stats-colors: #C51609 #1275C3 #D00B4E #009688;
+@function mc($key) {
+    @if map-has-key($material, $key) {
+        @return map-get($material, $key);
+    }
+}
+
+// Bar content.
+$bar-content-bg: mc(blue);
+$button-large-icon-size: 23px;
+//mixins
+@import "mixins/gradient";
 // The path to the font icons.
 $ionicons-font-path: "../lib/ionic/release/fonts" !default;
 // Include all of Ionic.
 @import "www/lib/ionic/scss/ionic";
-// Tmp fix until Ionic adds !default to $button-default-border and $button-default-active-border.
-$button-default-bg: white;
-$button-default-text: $positive;
-$button-default-border: $positive;
-$button-default-active-bg: $positive;
-$button-default-active-border: $positive;
-// Setting the default button to button-outline.
-.button.active,
-.button.activated {
-    background-color: $button-default-active-bg;
-    box-shadow: none;
-    color: #fff;
-}
-
-.button,
-.button.button-light,
-.button.button-stable,
-.button.button-positive,
-.button.button-calm,
-.button.button-assertive,
-.button.button-balanced,
-.button.button-energized,
-.button.button-royal,
-.button.button-dark {
-    border-color: $button-default-border;
-    &.activated,
-    &.active {
-        border-color: $button-default-active-border;
-    }
-}
-
-.button.button-light,
-.button.button-stable,
-.button.button-calm,
-.button.button-assertive,
-.button.button-balanced,
-.button.button-energized,
-.button.button-royal,
-.button.button-dark {
-    color: $button-default-text;
-}
-
-.button-clear,
-.button.button-clear {
-    color: $button-default-text;
-    &.activated,
-    &.active {
-        background: none;
-    }
-}
-
-.button-outline,
-.button.button-outline {
-    border-color: $button-default-border;
-    &.activated,
-    &.active {
-        background-color: $button-default-active-bg;
-    }
-}
-
-.button.button-icon,
-.button-icon {
-    border-color: transparent;
-    color: $button-default-text;
-    background-color: transparent;
-}
-
 // Include all of Moodle Mobile.
 @import "www/build/mm.bundle.scss";
+@import "partials/button",
+"partials/base64",
+"partials/bar",
+"partials/loginpage",
+"partials/common";
+.has-error {
+    border-color: #ff5959;
+}
 
-/* Empty. Add your own CSS if you like */
+.has-error span {
+    color: #ff5959;
+}
 
-@import url('https://fonts.googleapis.com/css?family=Dosis:400,700');
-body {
+.spinner svg {
+    position: relative;
+    top: 5px;
+    stroke: #396cd9;
+    fill: #fff;
+}
+
+.logo {
+    text-align: center;
+    border-bottom: 2px solid #EDAD1D;
+    background-color: #E6E6E6;
+    padding: 20px 0;
+}
+
+.logo img {
+    width: 150px;
+}
+
+.menu .list .item i {
+    font-size: 1.3em;
+    background: #3361C5;
+    color: #fff;
+    padding: 6px 3px;
+    margin: 0 20px;
+    border-radius: 50%;
+    position: relative;
+    top: 2px;
+    display: inline-block;
+}
+
+.menu .list .item-icon-left {
+    padding: 10px;
+}
+
+// .dashboard {
+ion-content .pane-header {
+    margin: 20px 10px;
+    padding: 0 20px;
+    display: flex;
+}
+
+ion-content .pane-header h2 {
+    font-size: 15pt;
+}
+
+.box {
+    height: 150px;
+}
+
+label.item {
+    border-top: none;
+}
+
+.card .header {
+    margin: -15px -20px;
+}
+
+.card .header>h2 {
+    font-size: 18pt;
+    line-height: 60px;
+    text-align: left;
+    padding: 0 20px;
     font-family: 'Dosis', sans-serif;
+    text-transform: capitalize;
 }
 
 .pane {
     display: flex;
     flex: 1;
     background: #edecec;
-}
-
-.login-page {
-    background: linear-gradient(#3A6EDE, #3361C5);
 }
 
 .pane .content {
@@ -128,100 +163,6 @@ button.button {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-
-/*.has-header {
-    top: 80px;
-}*/
-
-.has-error {
-    border-color: #ff5959;
-}
-
-.has-error span {
-    color: #ff5959;
-}
-
-.card .header {
-    margin: -15px -20px;
-}
-
-.card .header>h2 {
-    font-size: 18pt;
-    line-height: 60px;
-    text-align: left;
-    padding: 0 20px;
-    font-family: 'Dosis', sans-serif;
-    text-transform: capitalize;
-}
-
-.spinner svg {
-    position: relative;
-    top: 5px;
-    stroke: #396cd9;
-    fill: #fff;
-}
-
-.logo {
-    text-align: center;
-    border-bottom: 2px solid #EDAD1D;
-    background-color: #E6E6E6;
-    padding: 20px 0;
-}
-
-.logo img {
-    width: 150px;
-}
-
-
-/*.bar {
-    height: 80px;
-}
-
-.bar .title {
-    line-height: 80px;
-    height: 80px;
-}*/
-
-
-/*button.ion-navicon {
-    position: relative;
-    top: 10px;
-}*/
-
-ion-content .pane-header {
-    margin: 20px 10px;
-    padding: 0 20px;
-    display: flex;
-}
-
-ion-content .pane-header h2 {
-    font-size: 15pt;
-}
-
-.box {
-    height: 150px;
-}
-
-label.item {
-    border-top: none;
-}
-
-.menu .list .item i {
-    font-size: 1.3em;
-    background: #3361C5;
-    color: #fff;
-    padding: 6px 3px;
-    margin: 0 20px;
-    border-radius: 50%;
-    position: relative;
-    top: 2px;
-    display: inline-block;
-}
-
-.menu .list .item-icon-left {
-    padding: 10px;
 }
 
 .stats .card {
@@ -272,8 +213,8 @@ label.item {
 
 
 /*ion-slides {
-    height: 250px;
-}*/
+        height: 250px;
+    }*/
 
 .swiper-wrapper {
     position: static;
@@ -288,6 +229,14 @@ label.item {
 }
 
 .weekly-schedule .header h2 {
+    color: #fff;
+}
+
+.points .header {
+    background: #009688;
+}
+
+.points .header h2 {
     color: #fff;
 }
 
@@ -533,6 +482,7 @@ table {
 .calendar-card.table table th {
     background: #3A6EDE;
     color: #fff;
+    border: none;
 }
 
 .calendar-card.table {
@@ -838,10 +788,6 @@ ul.pagination li.active a {
     color: #fff;
 }
 
-.course-single .pages {
-    margin-top: 25px;
-}
-
 .course-single .swiper-container {
     padding: 0;
 }
@@ -852,10 +798,10 @@ ul.pagination li.active a {
 
 
 /*.course-single .page a:after {
-    content: " ";
-    display: block;
-    clear: both;
-}*/
+        content: " ";
+        display: block;
+        clear: both;
+    }*/
 
 .course-single .page a {
     display: inline-block;
@@ -1012,4 +958,104 @@ td p {
 
 .bar-content {
     background: linear-gradient(#3A6EDE, #3361C5);
+}
+
+// }
+.slidingTabs {
+    height: 125px;
+}
+
+.slidingTabs ul {
+    background: transparent;
+    height: 125px;
+}
+
+.slidingTabs ul li {
+    height: 125px;
+    min-width: 150px;
+    line-height: normal;
+    padding: 20px 15px;
+}
+
+.slidingTabs ul li div {
+    background: #fff;
+    padding: 15px 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.slidingTabs ul li img {
+    width: 50px;
+}
+
+.slidingTabs ul li h3 {
+    font-size: 1.3em
+}
+
+.slidingTabs .tab-indicator-wrapper .tab-indicator {
+    background: #3768d3;
+}
+
+.slidingTabs ul li .ink.animate {
+    -webkit-animation: none;
+    animation: none;
+}
+
+.course-content .swiper-pagination {
+    display: none;
+}
+
+.dash-pop {
+    height: 55px;
+}
+
+.my-points .card {
+    padding: 15px 0;
+}
+
+.my-points .card .header {
+    padding: 0 20px;
+}
+
+.my-points .item-divider {
+    padding: 8px 0;
+}
+
+.my-points .item-divider h3 {
+    padding: 5px 15px;
+}
+
+.courses-vert {
+    margin: 0 -20px;
+}
+
+.courses-vert a {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.courses-vert a img {
+    width: 100%;    
+}
+
+.courses-vert a .name {
+    position: absolute;
+    z-index: 5;
+    background: rgba(0,0,0, .7);
+    width: 100%;
+}
+
+.courses-vert a .name h2 {
+    color: #fff;
+    text-align: center;
+    padding: 10px 15px;
+    margin: 0;
+}
+
+#grades th,
+#grades td {
+    border: 1px solid #eee ; 
+    vertical-align: middle;
 }

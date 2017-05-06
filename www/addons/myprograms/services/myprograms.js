@@ -27,7 +27,9 @@ angular.module('mm.addons.myprograms')
 
     $log = $log.getInstance('$mmaMyPrograms');
 
-    var self = {}
+    var self = {};
+
+    var token = $mmSite.getToken();
 
     self.isAvailable = function() {
         return true;
@@ -37,14 +39,14 @@ angular.module('mm.addons.myprograms')
     self.programs = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=student.programs'
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.programs&wstoken=' + token
         });
     };
 
     self.programDetails = function(id) {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=student.programdetails&programid=' + id
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.programdetails&programid=' + id + '&wstoken=' + token
         });
     };
 

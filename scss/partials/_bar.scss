@@ -1,0 +1,22 @@
+.bar{
+    &.bar-content{
+            .button{
+                &.button-icon{
+                    color :$white;
+                   
+                }
+            } 
+    }
+}
+
+
+/*
+
+.bar-content 
+<ion-header-bar class="  bar-header" align-title="left"><button ng-click="$ionicGoBack()" class="button back-button hide buttons  button-clear header-item"><i class="icon ion-android-arrow-back"></i> 
+            <span class="back-text"></span></button><div class="buttons buttons-left header-item"><span class="left-buttons">
+                <button menu-toggle="left" class="button button-icon icon ion-navicon" aria-label="Toggle menu"></button>
+            </span></div><div class="title title-left header-item" style="left: 66px; right: 20px;">My courses</div><div class="buttons buttons-right"><span class="secondary-buttons">
+        <!-- ngIf: searchEnabled -->
+    </span></div></ion-header-bar>
+*/ 

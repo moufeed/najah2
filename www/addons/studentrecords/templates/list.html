@@ -1,0 +1,25 @@
+<ion-view view-title="{{ 'mma.studentrecords.myrecords' | translate }}">
+    <ion-content mm-state-class class="myrecords">
+        <mm-loading hide-until="studentRecords.dataLoaded">
+            <div class="card">
+                <div class="header">
+                    <h2>{{ 'mma.studentrecords.academic_records' | translate }}</h2>
+                </div>
+                <div class="list">
+                    <table ng-table="studentRecords.tableParams" class="table" show-filter="true">
+                        <tr ng-repeat="user in $data">
+                            <td title="'mma.studentrecords.course_name' | translate" filter="{ coursename: 'text'}" sortable="'name'">
+                                {{user.coursename}}</td>
+                            <td title="'mma.studentrecords.final_grade' | translate" filter="{ finalgrade: 'number'}" sortable="'finalgrade'">
+                                {{user.finalgrade}}</td>
+                            <td title="'mma.studentrecords.program_name' | translate" filter="{ programname: 'number'}" sortable="'programname'">
+                                {{user.programname}}</td>
+                            <td title="'mma.studentrecords.track_name' | translate" filter="{ trackname: 'number'}" sortable="'trackname'">
+                                {{user.trackname}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </mm-loading>
+    </ion-content>
+</ion-view>

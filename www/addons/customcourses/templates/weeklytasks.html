@@ -1,0 +1,45 @@
+<ion-view view-title="{{ 'mma.dashboard.weekly_tasks' | translate }}">
+    <ion-content mm-state-class class="mybadges">
+        <mm-loading hide-until="weeklytasks.weeklyTasksLoaded">
+            <div class="card weekly-tasks">
+                <div class="header">
+                    <h2>{{ 'mma.dashboard.weekly_tasks' | translate }}</h2>
+                </div>
+                <div class="list" ng-if="weeklytasks.weeklyTasks.length">
+                    <div class="item-stamp" ng-repeat="course in weeklytasks.weeklyTasks">
+                        <div class="course">
+                            <p>{{ course.coursename }}</p>
+                        </div>
+                        <div class="item-badge" ng-repeat="assign in course.weeklytasks.assign">
+                            <a ui-sref="site.mod_assign({module: assign, courseid: course.id})">
+                                <div class="image">
+                                    <img src="img/icons/assign.png" alt="{{ assign.name }} - {{ assign.section }}">
+                                </div>
+                                <div class="text">
+                                    <h3>{{ assign.name }}</h3>
+                                    <small>{{ assign.section }}</small>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="item-badge" ng-repeat="quiz in course.weeklytasks.quiz">
+                            <a ui-sref="site.mod_quiz({module: quiz, courseid: course.id})">
+                                <div class="image">
+                                    <img src="img/icons/quizzes.png" alt="{{ quiz.name }} - {{ quiz.section }}">
+                                </div>
+                                <div class="text">
+                                    <h3>{{ quiz.name }}</h3>
+                                    <small>{{ quiz.section }}</small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="no-data" ng-if="!weeklytasks.weeklyTasks.length">
+                    <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
+                    <p>{{ 'mma.dashboard.no_data' | translate }}</p>
+                </div>
+            </div>
+            <!-- card weekly-tasks -->
+        </mm-loading>
+    </ion-content>
+</ion-view>

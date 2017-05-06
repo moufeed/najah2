@@ -1,0 +1,31 @@
+<ion-view view-title="{{ 'mma.dashboard.points' | translate }}">
+    <ion-content mm-state-class class="my-points">
+        <mm-loading hide-until="points.pointsLoaded">
+            <div class="card points">
+                <div class="header">
+                    <h2>{{ 'mma.dashboard.points' | translate }}</h2>
+                </div>
+                <div class="list" ng-repeat="point in points.points">
+                    <div class="item item-divider">
+                        <h3>{{ point.section_name }}</h3>
+                        <div class="list points-action" ng-repeat="action in point.actions">
+                            <div class="item">
+                                {{ action.action_name }}
+                            </div>
+                            <div class="item">
+                                {{ action.action_count }}
+                            </div>
+                            <div class="item">
+                                {{ action.action_points }}
+                            </div>
+                            <div class="item">
+                                {{ action.points }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- card badges -->
+        </mm-loading>
+    </ion-content>
+</ion-view>

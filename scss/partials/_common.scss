@@ -1,0 +1,43 @@
+.pane {
+    background: darken($stable, 3%);
+}
+
+@for $i from 1 through length($listcolors) {
+    .border-top-#{nth(nth($listcolors , $i) , 1)} {
+        border: 0;
+        border-top: 3px solid nth(nth($listcolors, $i), 2);
+    }
+}
+
+.flex-footer {
+    @include display-flex;
+    @include justify-content(space-between);
+    @include align-items(center);
+}
+a ,.link{
+    text-decoration: none ;
+}
+
+.emptymsg{
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    background: $light;
+    display: block;
+    padding:15px;
+    text-align: center;
+    &.inside{
+        box-shadow :none;
+    }
+    .icon{
+        font-size: 6em;
+        margin-bottom:15px; 
+    } 
+    &.primary .icon{color:$primary;}
+    &.success .icon{color:$success;}
+    &.warning .icon{color:$warning;}
+    &.danger .icon{color:$danger;}
+    &.info .icon{color:$info;}
+    
+}
+.swiper-wrapper{
+    position: relative;
+}

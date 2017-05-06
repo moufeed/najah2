@@ -19,7 +19,6 @@ angular.module('mm.addons.myprograms')
     self.programsDetailsLoaded = false;
     $mmaMyPrograms.programDetails($stateParams.id).then(function(res) {
         self.program = res.data.list;
-        console.error(self.program);
         $scope.trackId = res.data.list.tracks[0].id;
     }, function(rej) {
 

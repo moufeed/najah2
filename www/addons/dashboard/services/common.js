@@ -20,17 +20,19 @@ angular.module('mm.addons.dashboard')
 
     var self = {};
 
+    var token = $mmSite.getToken();
+
     self.profile = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=general.initialdata'
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.initialdata&wstoken=' + token
         });
     };
 
     self.userDetails = function(layout) {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=general.getcomponents&layout=' + layout
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.getcomponents&layout=' + layout + '&wstoken=' + token
         });
     };
 
@@ -59,105 +61,112 @@ angular.module('mm.addons.dashboard')
     self.stats = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=student.statistics'
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.statistics&wstoken=' + token
         });
     };
 
     self.performance = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=student.getperformance'
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.getperformance&wstoken=' + token
         });
     };
 
     self.courses = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=student.currentcourses'
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.currentcourses&wstoken=' + token
         });
     };
 
     self.course = function(id) {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=student.syllabus&courseid=' + id
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.syllabus&courseid=' + id + '&wstoken=' + token
         });
     };
 
     self.weeklySchedule = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=student.schedule'
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.schedule&wstoken=' + token
         });
     };
 
     self.weeklyAttendence = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=student.weeklyattendance'
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.weeklyattendance&wstoken=' + token
         });
     };
 
     self.attendence = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=student.attendance'
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.attendance&wstoken=' + token
         });
     };
 
     self.news = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=general.latestnews'
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.latestnews&wstoken=' + token
         });
     };
 
     self.lastTrackCourses = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=student.getlasttrackcourses'
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.getlasttrackcourses&wstoken=' + token
         });
     };
 
     self.badges = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=student.badges'
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.badges&wstoken=' + token
         });
     };
 
     self.stamps = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=student.stamps'
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.stamps&wstoken=' + token
         });
     };
 
     self.weeklyTasks = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=student.weeklytasks'
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.weeklytasks&wstoken=' + token
         });
     };
 
     self.calendar = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=general.calendar'
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.calendar&wstoken=' + token
         });
     };
 
     self.feedback = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=general.feedback'
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.feedback&wstoken=' + token
         });
     };
 
     self.messages = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile.php?s=general.messages'
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.messages&wstoken=' + token
+        });
+    };
+
+    self.gradebook = function(id) {
+        return $http({
+            method: 'GET',
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.gradebook&wstoken=' + token + '&courseid=' + id
         });
     };
 

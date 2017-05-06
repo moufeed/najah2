@@ -1,53 +1,64 @@
 <ion-view view-title="{{ 'mma.dashboard.dashboard' | translate }}">
+    <ion-nav-buttons side="secondary">
+        <button ng-click="openPopover($event)" class="button button-icon icon ion-more"></button>
+    </ion-nav-buttons>
     <ion-content mm-state-class class="dashboard">
         <mm-loading hide-until="dashboard.statsLoaded">
             <div class="stats">
                 <div class="card stats-chart courses-chart">
-                    <div class="chart-icon"><i class="ion-android-document"></i></div>
-                    <div class="chart-count">
-                        <h2>courses</h2>
-                        <h1>{{ dashboard.stats.courses }}</h1>
-                    </div>
+                    <a ui-sref="site.customcourses">
+                        <div class="chart-icon"><i class="ion-android-document"></i></div>
+                        <div class="chart-count">                        
+                            <h2>{{ 'mma.dashboard.courses' | translate }}</h2>
+                            <h1>{{ dashboard.stats.courses }}</h1>
+                        </div>
+                    </a>
                 </div>
                 <div class="card stats-chart weeklytasks-chart">
-                    <div class="chart-icon"><i class="ion-clipboard"></i></div>
-                    <div class="chart-count">
-                        <h2>weekly tasks</h2>
-                        <h1>{{ dashboard.stats.weeklytasks }}</h1>
-                    </div>
+                    <a ui-sref="site.customweeklytasks">
+                        <div class="chart-icon"><i class="ion-clipboard"></i></div>
+                        <div class="chart-count">
+                            <h2>{{ 'mma.dashboard.weekly_tasks' | translate }}</h2>
+                            <h1>{{ dashboard.stats.weeklytasks }}</h1>
+                        </div>
+                    </a>
                 </div>
                 <div class="card stats-chart badge-chart">
-                    <div class="chart-icon"><i class="ion-ios-flower-outline"></i></div>
-                    <div class="chart-count">
-                        <h2>badges</h2>
-                        <h1>{{ dashboard.stats.badges }}</h1>
-                    </div>
+                    <a ui-sref="site.custombadges">
+                        <div class="chart-icon"><i class="ion-ios-flower-outline"></i></div>
+                        <div class="chart-count">
+                            <h2>{{ 'mma.dashboard.badges' | translate }}</h2>
+                            <h1>{{ dashboard.stats.badges }}</h1>
+                        </div>
+                    </a>
                 </div>
                 <div class="card stats-chart points-chart">
-                    <div class="chart-icon"><i class="ion-android-star-half"></i></div>
-                    <div class="chart-count">
-                        <h2>points</h2>
-                        <h1>{{ dashboard.stats.points }}</h1>
-                    </div>
+                    <a ui-sref="site.custompoints">
+                        <div class="chart-icon"><i class="ion-android-star-half"></i></div>
+                        <div class="chart-count">
+                            <h2>{{ 'mma.dashboard.points' | translate }}</h2>
+                            <h1>{{ dashboard.stats.points }}</h1>
+                        </div>
+                    </a>
                 </div>
             </div>
         </mm-loading>
         <mm-loading hide-until="dashboard.performanceLoaded">
             <div class="card">
                 <div class="header">
-                    <h2>performance</h2>
+                    <h2>{{ 'mma.dashboard.performance' | translate }}</h2>
                 </div>
                 <div class="flot-chart" data-bar-chart style="width:100%;height:400px" performance="dashboard.performance" ng-if="dashboard.performance"></div>
                 <div class="no-data" ng-if="!dashboard.performance">
                     <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
-                    <p>There is no Data to be shown</p>
+                    <p>{{ 'mma.dashboard.no_data' | translate }}</p>
                 </div>
             </div>
         </mm-loading>
         <mm-loading hide-until="dashboard.coursesLoaded">
             <div class="card courses">
                 <div class="header">
-                    <h2>courses <small>{{ dashbaord.currentCourses.name }}</small></h2>
+                    <h2>{{ 'mma.dashboard.courses' | translate }} <small>{{ dashbaord.currentCourses.name }}</small></h2>
                 </div>
                 <div class="courses">
                     <ks-swiper-container loop="false" slides-per-view="2" space-between="5" on-ready="onReadySwiper(swiper)" class="swiper">
@@ -68,7 +79,7 @@
         <mm-loading hide-until="dashboard.scheduleLoaded">
             <div class="card weekly-schedule">
                 <div class="header">
-                    <h2>Weekly Schedule</h2>
+                    <h2>{{ 'mma.dashboard.weekly_schedule' | translate }}</h2>
                 </div>
                 <ion-slides options="home.options" slider="data.slider" ng-if="dashboard.schedule.hasData" class="weekly-schedule">
                     <ion-slide-page ng-repeat="week in dashboard.schedule">
@@ -80,9 +91,9 @@
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>class</th>
-                                            <th>course</th>
-                                            <th>teacher name</th>
+                                            <th>{{ 'mma.dashboard.weekly_schedule' | translate }}</th>
+                                            <th>{{ 'mma.dashboard.course_name' | translate }}</th>
+                                            <th>{{ 'mma.dashboard.teacher_name' | translate }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -99,7 +110,7 @@
                 </ion-slides>
                 <div class="no-data" ng-if="!dashboard.schedule.hasData">
                     <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
-                    <p>There is no Data to be shown</p>
+                    <p>{{ 'mma.dashboard.no_data' | translate }}</p>
                 </div>
             </div>
             <!-- weekly-schedule -->
@@ -108,7 +119,7 @@
         <mm-loading hide-until="dashboard.weeklyAttendenceLoaded">
             <div class="card weekly-attendence">
                 <div class="header">
-                    <h2>Weekly Attendence</h2>
+                    <h2>{{ 'mma.dashboard.weekly_attendence' | translate }}</h2>
                 </div>
                 <div class="list">
                     <div class="table">
@@ -136,20 +147,20 @@
         </mm-loading>
 
         <mm-loading hide-until="dashboard.calendarLoaded">
-            <div ng-bind-html="dashboard.miniCalendar" class="calendar-card table"></div>
+            <div ng-bind-html="dashboard.miniCalendar" ng-if="dashboard.miniCalendar" class="calendar-card table"></div>
         </mm-loading>
 
         <mm-loading hide-until="dashboard.attendenceLoaded">
             <div class="card attendence">
                 <div class="header">
-                    <h2>attendence</h2>
+                    <h2>{{ 'mma.dashboard.attendence' | translate }}</h2>
                 </div>
                 <div class="list">
                     <div id="pie-chart" style="width:100%;height:400px" class="flot-chart-pie" ng-if="!dashboard.noChartData" data-pie-donut-stu chart-attendence="dashboard.chartAttendence"></div>
                     <div class="flc-pie"></div>
                     <div class="no-data" ng-if="dashboard.noChartData">
                         <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
-                        <p>There is no Data to be shown</p>
+                        <p>{{ 'mma.dashboard.no_data' | translate }}</p>
                     </div>
                 </div>
             </div>
@@ -159,7 +170,7 @@
         <mm-loading hide-until="dashboard.newsLoaded">
             <div class="card news">
                 <div class="header">
-                    <h2>news</h2>
+                    <h2>{{ 'mma.dashboard.news' | translate }}</h2>
                 </div>
                 <div class="list">
                     <div class="news-item" ng-repeat="item in dashboard.news">
@@ -169,12 +180,9 @@
                                     <h3>{{ item.title }}</h3>
                                     <small>{{ item.date }}</small>
                                 </div>
-                                <div class="desc">
-                                    <p>{{ item.text }}</p>
-                                </div>
                             </div>
                             <div class="image">
-                                <img src="img/ionic.png" alt="{{ item.title }}">
+                                <img ng-src="{{item.pic}}" alt="{{ item.title }}">
                             </div>
                         </a>
                     </div>
@@ -186,7 +194,7 @@
         <mm-loading hide-until="dashboard.lastTrackCoursesLoaded">
             <div class="card last-tracks">
                 <div class="header">
-                    <h2>Last track courses <small>{{ dashboard.trackCourses.name }}</small></h2>
+                    <h2>{{ 'mma.dashboard.Last_track_courses' | translate }} <small>{{ dashboard.trackCourses.name }}</small></h2>
                 </div>
                 <div class="list">
                     <div class="tracks-results" ng-if="dashboard.trackCourses.courses.length">
@@ -202,7 +210,7 @@
                     </div>
                     <div class="no-data" ng-if="!dashboard.trackCourses.courses.length">
                         <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
-                        <p>There is no Data to be shown</p>
+                        <p>{{ 'mma.dashboard.no_data' | translate }}</p>
                     </div>
                 </div>
             </div>
@@ -212,13 +220,13 @@
         <mm-loading hide-until="dashboard.badgesLoaded">
             <div class="card badges">
                 <div class="header">
-                    <h2>badges</h2>
+                    <h2>{{ 'mma.dashboard.badges' | translate }}</h2>
                 </div>
                 <div class="list">
                     <div class="dash-badges" ng-if="dashboard.badges.length">
                         <div class="item-badge" ng-repeat="badge in dashboard.badges">
-                            <div class="image">
-                                <img src="img/ionic.png" alt="{{ badge.name }} - {{ badge.coursename }}">
+                            <div class="image" ng-bind-html="badge.img">
+                                <!--<img src="img/ionic.png" alt="{{ badge.name }} - {{ badge.coursename }}">-->
                             </div>
                             <div class="text">
                                 <h3>{{ badge.name }}</h3>
@@ -228,7 +236,7 @@
                     </div>
                     <div class="no-data" ng-if="!dashboard.badges.length">
                         <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
-                        <p>There is no Data to be shown</p>
+                        <p>{{ 'mma.dashboard.no_data' | translate }}</p>
                     </div>
                 </div>
             </div>
@@ -237,7 +245,7 @@
         <mm-loading hide-until="dashboard.stampsLoaded">
             <div class="card stamps">
                 <div class="header">
-                    <h2>stamps</h2>
+                    <h2>{{ 'mma.dashboard.stamps' | translate }}</h2>
                 </div>
                 <div class="list">
                     <div class="dash-stamps" ng-if="dashboard.stamps.length">
@@ -246,8 +254,8 @@
                                 <p>{{ course.coursename }}</p>
                             </div>
                             <div class="item-badge" ng-repeat="stamp in course.stamps">
-                                <div class="image">
-                                    <img src="img/ionic.png" alt="{{ stamp.stampname }} - {{ stamp.giver }}">
+                                <div class="image" ng-bind-html="stamp.img">
+                                    <!--<img src="img/ionic.png" alt="{{ stamp.stampname }} - {{ stamp.giver }}">-->
                                 </div>
                                 <div class="text">
                                     <h3>{{ stamp.stampname }}</h3>
@@ -258,7 +266,7 @@
                     </div>
                     <div class="no-data" ng-if="!dashboard.stamps.length">
                         <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
-                        <p>There is no Data to be shown</p>
+                        <p>{{ 'mma.dashboard.no_data' | translate }}</p>
                     </div>
 
                 </div>
@@ -268,7 +276,7 @@
         <mm-loading hide-until="dashboard.weeklyTasksLoaded">
             <div class="card weekly-tasks">
                 <div class="header">
-                    <h2>Weekly Tasks</h2>
+                    <h2>{{ 'mma.dashboard.weekly_tasks' | translate }}</h2>
                 </div>
                 <div class="list" ng-if="dashboard.weeklyTasks.length">
                     <div class="item-stamp" ng-repeat="course in dashboard.weeklyTasks">
@@ -277,7 +285,7 @@
                         </div>
                         <div class="item-badge" ng-repeat="assign in course.weeklytasks.assign">
                             <div class="image">
-                                <img src="img/ionic.png" alt="{{ assign.name }} - {{ assign.section }}">
+                                <img src="img/icons/assign.png" alt="{{ assign.name }} - {{ assign.section }}">
                             </div>
                             <div class="text">
                                 <h3>{{ assign.name }}</h3>
@@ -286,7 +294,7 @@
                         </div>
                         <div class="item-badge" ng-repeat="quiz in course.weeklytasks.quiz">
                             <div class="image">
-                                <img src="img/ionic.png" alt="{{ quiz.name }} - {{ quiz.section }}">
+                                <img ng-src="img/icons/quizzes.png" alt="{{ quiz.name }} - {{ quiz.section }}">
                             </div>
                             <div class="text">
                                 <h3>{{ quiz.name }}</h3>
@@ -297,7 +305,7 @@
                 </div>
                 <div class="no-data" ng-if="!dashboard.weeklyTasks.length">
                     <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
-                    <p>There is no Data to be shown</p>
+                    <p>{{ 'mma.dashboard.no_data' | translate }}</p>
                 </div>
             </div>
             <!-- card weekly-tasks -->
@@ -305,12 +313,12 @@
         <mm-loading hide-until="dashboard.feedbackLoaded">
             <div class="card feedback">
                 <div class="header">
-                    <h2>messages</h2>
+                    <h2>{{ 'mma.dashboard.messages' | translate }}</h2>
                 </div>
                 <div class="list" ng-if="dashboard.feedback.length">
-                    <div class="message item-badge" ng-repeat="msg in dashbaord.feedback">
+                    <div class="message item-badge" ng-repeat="msg in dashboard.feedback">
                         <div class="image">
-                            <img src="img/ionic.png" alt="{{ msg.firstname }} {{ msg.lastname }}">
+                            <img ng-src="{{ msg.picture }}" alt="{{ msg.firstname }} {{ msg.lastname }}">
                         </div>
                         <div class="text">
                             <h3>{{ msg.firstname }} {{ msg.lastname }}</h3>
@@ -321,7 +329,7 @@
                 </div>
                 <div class="no-data" ng-if="!dashboard.feedback.length">
                     <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
-                    <p>There is no Data to be shown</p>
+                    <p>{{ 'mma.dashboard.no_data' | translate }}</p>
                 </div>
             </div>
             <!-- card feedback -->
