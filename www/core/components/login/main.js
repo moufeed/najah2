@@ -188,7 +188,7 @@ angular.module('mm.core.login', [])
                 }
             } else {
                 lastInAppUrl = event.url;
-            }
+            } 
         }
     });
 
@@ -207,7 +207,7 @@ angular.module('mm.core.login', [])
     });
 
     // Redirect depending on user session.
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState,$window, fromParams) {
             
         // Prevent state changes while the app is not ready.
         if (!$mmApp.isReady() && toState.name !== 'mm_login.init') {
@@ -241,7 +241,14 @@ angular.module('mm.core.login', [])
                 disableAnimate: true,
                 disableBack: true
             });
-            $mmLoginHelper.goToSiteInitialPage();
+            //$mmLoginHelper.goToSiteInitialPage();
+            if(!$mmApp.isOnline()){
+                        $mmLoginHelper.getUserType().then(function(data){
+                            $mmLoginHelper.goToSiteInitialPage(data);
+                        });
+                   }else{
+                         $mmLoginHelper.goToSiteInitialPage($window.localStorage[$mmSite.getToken()]);
+                   }
         }
 
     });
@@ -384,7 +391,14 @@ angular.module('mm.core.login', [])
                 // State defined, go to that state instead of site initial page.
                 $state.go(siteData.statename, siteData.stateparams);
             } else {
-                $mmLoginHelper.goToSiteInitialPage();
+                //$mmLoginHelper.goToSiteInitialPage();
+                if(!$mmApp.isOnline()){
+                        $mmLoginHelper.getUserType().then(function(data){
+                            $mmLoginHelper.goToSiteInitialPage(data);
+                        });
+                   }else{
+                         $mmLoginHelper.goToSiteInitialPage($window.localStorage[$mmSite.getToken()]);
+                   }
             }
         }).catch(function(errorMessage) {
             if (typeof errorMessage === 'string' && errorMessage !== '') {

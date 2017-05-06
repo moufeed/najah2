@@ -27,9 +27,9 @@ angular.module('mm.core.login')
  * @ngdoc service
  * @name $mmLoginHelper
  */
-.factory('$mmLoginHelper', function($q, $log, $mmConfig, mmLoginSSOCode, mmLoginSSOInAppCode, mmLoginLaunchData, $mmEvents,
+.factory('$mmLoginHelper', function($q, $mmApp ,$log, $mmConfig, mmLoginSSOCode, mmLoginSSOInAppCode, mmLoginLaunchData, $mmEvents,
             md5, $mmSite, $mmSitesManager, $mmLang, $mmUtil, $state, $mmAddonManager, $translate, mmCoreConfigConstants,
-            mmCoreEventSessionExpired, mmUserProfileState, $mmCourses,$http) {
+            mmCoreEventSessionExpired, mmUserProfileState, $mmCourses,$http,$window) {
 
     $log = $log.getInstance('$mmLoginHelper');
 
@@ -180,13 +180,16 @@ angular.module('mm.core.login')
     };
 
    self.getUserType = function(){
-    return  $http({
+       if($mmApp.isOnline()){
+            return  $http({
                 url:  $mmSite.getURL() + '/local/ajax/mobile2.php',
                 method: "GET",
                 params: {s: 'general.usertype' ,wstoken : $mmSite.getToken() }
             }).then(function (response) {
+                    $window.localStorage[$mmSite.getToken()] = response.data.usertype;
                     return response.data.usertype;
-        })
+          })
+       }
    }
 
     self.goDashboard= function(userType,myCoursesDisabled){

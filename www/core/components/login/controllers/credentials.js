@@ -142,18 +142,23 @@ angular.module('mm.core.login')
                             // Action should only have 1 site because we're filtering by username.
                             action.action(action.sites[0]);
                         } else {
-                           return $mmLoginHelper.getUserType().then(function(data){
-                             
-                             return $mmLoginHelper.goToSiteInitialPage(data);
-                           });
-                            // 
+                            if(!$mmApp.isOnline()){
+                                return $mmLoginHelper.goToSiteInitialPage($window.localStorage[$mmSite.getToken()]);
+                            }else{
+                                 return $mmLoginHelper.getUserType().then(function(data){
+                                    return $mmLoginHelper.goToSiteInitialPage(data);
+                                 });
+                            }
                         }
                     });
                 } else {
-                     return $mmLoginHelper.getUserType().then(function(data){
-                              
-                             return $mmLoginHelper.goToSiteInitialPage(data);
-                     });
+                    if(!$mmApp.isOnline()){
+                                return $mmLoginHelper.goToSiteInitialPage($window.localStorage[$mmSite.getToken()]);
+                        }else{
+                                 return $mmLoginHelper.getUserType().then(function(data){
+                                    return $mmLoginHelper.goToSiteInitialPage(data);
+                        });
+                    }
                     // return $mmLoginHelper.goToSiteInitialPage();
                 }
             });
