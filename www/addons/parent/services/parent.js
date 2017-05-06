@@ -20,7 +20,7 @@ angular.module('mm.addons.parent')
                     return false;
                 })
                 .catch(function (err) {
-                    showError();
+                   // showError();
                     return false;
                 });
         };

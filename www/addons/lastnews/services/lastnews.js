@@ -20,7 +20,7 @@ angular.module('mm.addons.lastnews')
                     return true;
                 })
                 .catch(function (err) {
-                    showError();
+                  //  showError();
                     return false;
                 });
         };

@@ -19,7 +19,7 @@ angular.module('mm.addons.teacher')
                     return false;
                 })
                 .catch(function (err) {
-                    showError();
+                    //showError();
                     return false;
                 });
             
