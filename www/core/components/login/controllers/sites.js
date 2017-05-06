@@ -21,7 +21,7 @@ angular.module('mm.core.login')
  * @ngdoc controller
  * @name mmLoginSitesCtrl
  */
-.controller('mmLoginSitesCtrl', function($scope,$window, $mmSitesManager, $log, $translate, $mmUtil, $ionicHistory, $mmText, $mmLoginHelper,
+.controller('mmLoginSitesCtrl', function($scope, $mmSitesManager, $log, $translate, $mmUtil, $ionicHistory, $mmText, $mmLoginHelper,
             $mmAddonManager) {
 
     $log = $log.getInstance('mmLoginSitesCtrl');
@@ -97,15 +97,8 @@ angular.module('mm.core.login')
         var modal = $mmUtil.showModalLoading();
         $mmSitesManager.loadSite(siteId).then(function() {
             if (!$mmLoginHelper.isSiteLoggedOut()) {
-            if(!$mmApp.isOnline()){
-                $ionicHistory.nextViewOptions({disableBack: true});
-                return $mmLoginHelper.goToSiteInitialPage($window.localStorage[$mmSite.getToken()]);
-            }else{
-                $mmLoginHelper.getUserType().then(function(data){
-                    $ionicHistory.nextViewOptions({disableBack: true});
-                    return $mmLoginHelper.goToSiteInitialPage(data);
-                });
-            } 
+                 $ionicHistory.nextViewOptions({disableBack: true});
+                  return $mmLoginHelper.redirectApp(siteId);  
             }
         }, function(error) {
             $log.error('Error loading site ' + siteId);

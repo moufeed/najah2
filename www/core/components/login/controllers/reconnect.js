@@ -21,7 +21,7 @@ angular.module('mm.core.login')
  * @ngdoc controller
  * @name mmLoginReconnectCtrl
  */
-.controller('mmLoginReconnectCtrl', function($scope,$window, $state, $stateParams, $mmSitesManager, $mmApp, $mmUtil, $ionicHistory,
+.controller('mmLoginReconnectCtrl', function($scope, $state, $stateParams, $mmSitesManager, $mmApp, $mmUtil, $ionicHistory,
             $mmLoginHelper, $mmSite) {
 
     var infositeurl = $stateParams.infositeurl, // Siteurl in site info. It might be different than siteurl (http/https).
@@ -83,14 +83,7 @@ angular.module('mm.core.login')
                         // State defined, go to that state instead of site initial page.
                         return $state.go(stateName, stateParams);
                     } else {
-
-                        if(!$mmApp.isOnline()){
-                            return $mmLoginHelper.goToSiteInitialPage($window.localStorage[$mmSite.getToken()]);
-                        }else{
-                            $mmLoginHelper.getUserType().then(function(data){
-                                return $mmLoginHelper.goToSiteInitialPage(data);
-                            });
-                        }  
+                        return $mmLoginHelper.redirectApp();
                     }
                 });
             }, function() {

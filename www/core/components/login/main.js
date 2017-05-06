@@ -242,13 +242,7 @@ angular.module('mm.core.login', [])
                 disableBack: true
             });
             //$mmLoginHelper.goToSiteInitialPage();
-            if(!$mmApp.isOnline()){
-                        $mmLoginHelper.getUserType().then(function(data){
-                            $mmLoginHelper.goToSiteInitialPage(data);
-                        });
-                   }else{
-                         $mmLoginHelper.goToSiteInitialPage($window.localStorage[$mmSite.getToken()]);
-                   }
+              $mmLoginHelper.redirectApp();
         }
 
     });
@@ -392,13 +386,7 @@ angular.module('mm.core.login', [])
                 $state.go(siteData.statename, siteData.stateparams);
             } else {
                 //$mmLoginHelper.goToSiteInitialPage();
-                if(!$mmApp.isOnline()){
-                        $mmLoginHelper.getUserType().then(function(data){
-                            $mmLoginHelper.goToSiteInitialPage(data);
-                        });
-                   }else{
-                         $mmLoginHelper.goToSiteInitialPage($window.localStorage[$mmSite.getToken()]);
-                   }
+                $mmLoginHelper.redirectApp();
             }
         }).catch(function(errorMessage) {
             if (typeof errorMessage === 'string' && errorMessage !== '') {

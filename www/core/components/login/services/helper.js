@@ -179,6 +179,19 @@ angular.module('mm.core.login')
         }
     };
 
+    self.redirectApp = function(siteId){
+            siteId = siteId || $mmSite.getId();
+          if($mmApp.isOnline()){
+                return self.getUserType().then(function(type){
+                  return self.goToSiteInitialPage(type);
+                });
+            }else{
+                var type = $window.localStorage[siteId];
+                 return self.goToSiteInitialPage(type);
+            }
+    }
+
+ 
    self.getUserType = function(){
        if($mmApp.isOnline()){
             return  $http({
@@ -186,7 +199,8 @@ angular.module('mm.core.login')
                 method: "GET",
                 params: {s: 'general.usertype' ,wstoken : $mmSite.getToken() }
             }).then(function (response) {
-                    $window.localStorage[$mmSite.getToken()] = response.data.usertype;
+                console.log(response.data.usertype,$mmSite.getId())
+                    $window.localStorage[$mmSite.getId()] = response.data.usertype;
                     return response.data.usertype;
           })
        }

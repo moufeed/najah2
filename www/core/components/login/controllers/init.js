@@ -21,7 +21,7 @@ angular.module('mm.core.login')
  * @ngdoc controller
  * @name mmLoginInitCtrl
  */
-.controller('mmLoginInitCtrl', function($log, $ionicHistory,$window, $state, $mmSitesManager, $mmSite, $mmApp, $mmLoginHelper) {
+.controller('mmLoginInitCtrl', function($log, $ionicHistory, $state, $mmSitesManager, $mmSite, $mmApp, $mmLoginHelper) {
 
     $log = $log.getInstance('mmLoginInitCtrl');
 
@@ -57,16 +57,8 @@ angular.module('mm.core.login')
 
     function loadCurrent() {
         if ($mmSite.isLoggedIn()) {
-             
             if (!$mmLoginHelper.isSiteLoggedOut()) {
-                   if(!$mmApp.isOnline()){
-                        $mmLoginHelper.getUserType().then(function(data){
-                            $mmLoginHelper.goToSiteInitialPage(data);
-                        });
-                   }else{
-                         $mmLoginHelper.goToSiteInitialPage($window.localStorage[$mmSite.getToken()]);
-                   }
-               
+                return $mmLoginHelper.redirectApp();
             }
         } else {
             $mmSitesManager.hasSites().then(function() {
