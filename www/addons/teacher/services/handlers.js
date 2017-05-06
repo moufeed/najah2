@@ -25,7 +25,7 @@ angular.module('mm.addons.teacher')
  */
 .factory('$mmaTeacherHandlers', function($log, $mmaTeacherHelper) {
     $log = $log.getInstance('$mmaTeacherHandlers');
-    var self = {};
+    var self = {}; 
     /**
      * Side menu nav handler.
      *

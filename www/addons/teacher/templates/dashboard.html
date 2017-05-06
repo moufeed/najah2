@@ -8,16 +8,23 @@
 		<div class="courses-box">
 			<ks-swiper-container ng-if="courses" initial-slide="0" loop="false" show-nav-buttons="false" slides-per-view="(courses.length > 1) ? 2 : 1 "
 			    space-between="5" pagination-clickable="false">
-				<ks-swiper-slide class="swiper-slide" ng-repeat="course in courses">
-					<div class="list card">
-						<div class=" card-header">
+				<ks-swiper-slide class="swiper-slide" ng-repeat="course in courses" >
+					<div class="list card" ui-sref = "site.teacher_course({id:{{course.id}}})">
+						<div class=" card-header " >
 							{{course.name}}
 						</div>
 						<div class="item item-image">
-							<img ng-src="{{course.img | extImage}}">
+							<img ng-src="{{course.img | extImage}}" style="max-height:175px;">
 						</div>
-						<div class="item">
-							<p><strong>{{ 'mma.teacher.season' | translate}} </strong> <span>{{course.division}}</span></p>
+						<div class="item " ng-class="(courses.length < 2) ? 'item-icon-right' : ''" >
+							<div ng-if="courses.length < 2">
+								<p><strong> </strong> <span></span></p>
+								<i class="icon icon-accessory ion-chevron-right"></i>
+							</div>
+							<div  ng-if="courses.length > 1" class="text-center">
+								<p>{{ 'mma.teacher.season' | translate}}</p>
+								<p>{{course.division}}</p>
+							</div>
 						</div>
 					</div>
 				</ks-swiper-slide>
@@ -39,7 +46,7 @@
 					<ion-list class="list ">
 						<ion-item class="item item-avatar-left" ng-repeat="lesson in lessons | limitTo:lessonMaxItems" ng-class-even="'even'">
 							<div class="item-image">
-								<a href="#/attendence/{{ lesson.divid}}/{{ lesson.recordid}}" class="linkbtn {{ (lesson.status == 'edit') ? 'edite' : 'add' }}">
+		<a ui-sref = "site.attendence({divId:{{ lesson.divid}} ,recId : {{ lesson.recordid}} })" class="linkbtn {{ (lesson.status == 'edit') ? 'edite' : 'add' }}">
                             {{ (lesson.status == 'add') ? ('mma.teacher.take_attendence' | translate ) : ('mma.teacher.edite_attendence' | translate) }}
                             </a>
 							</div>
@@ -146,5 +153,49 @@
 		</div>
 </div>
 </div> <!-- </row> -->
+<div class = "row responsive-sm">
+	<div class="col col-50">
+		<div class="card latest_news">
+			<div  ng-if="feeds">
+			<div class="card-header">
+					{{ 'mma.teacher.lastnews' | translate }}
+			</div>
+			<div class="card-body">
+				<ion-list class="list">
+					<ion-item class="item item-thumbnail-left" ng-repeat="feed in feeds"  ng-class-even="'even'" ng-click="openNews(feed)">
+						<img ng-src="{{feed.pic}}">
+						 <h2>{{feed.title }}</h2>
+						  <small class="date">{{feed.date | date:'medium'}}</small>
+						 
+					</ion-item>
+				</ion-list>
+			</div>
+			</div>
+			<mma-tempty helper-class="info inside" icon="zmdi zmdi-calendar" ng-if="!feeds">
+				<h4>	{{ 'mma.teacher.lastnews' | translate }}</h4>
+				<ion-spinner icon="lines" ng-if="!lnews.noData"></ion-spinner>
+				<span ng-show="lnews.noData">  {{ 'mma.teacher.no_data' | translate }}</span>
+			</mma-tempty>
+
+		</div>
+	</div>
+	<!--
+		<div class="col col-50">
+		<div class="card calender-card">
+			<div ng-if="mCalendar">
+				<div class="card-header">
+					{{ 'mma.teacher.calendar' | translate }}
+				</div>
+				<div ng-bind-html="mCalendar" class="calendar-card table"></div>
+			</div>
+			<mma-tempty helper-class="info inside" icon="zmdi zmdi-calendar" ng-if="!mCalendar">
+				<h4>{{ 'mma.teacher.calendar' | translate }}</h4>
+				<ion-spinner icon="lines" ng-if="!lcalendar.noData"></ion-spinner>
+				<span ng-show="lcalendar.noData">  {{ 'mma.teacher.no_data' | translate }}</span>
+			</mma-tempty>
+		</div>
+	</div>-->
+</div><!-- </row> -->
 	</ion-content>
 </ion-view>
+

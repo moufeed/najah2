@@ -24,6 +24,12 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
     }
 }
 
+%itemtitle {
+    margin: 0 5px 10px 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
 
 /**
 *
@@ -196,3 +202,568 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
         }
     }
 }
+
+//----------------------------------------------------------------------------------------
+//------  Course Info  
+//----------------------------------------------------------------------------------------
+.card-courseInfo {
+    .item {
+        span {
+            padding: 0 5px;
+        }
+        strong {}
+    }
+}
+
+//----------------------------------------------------------------------------------------
+//------  students list
+//----------------------------------------------------------------------------------------
+.students-list {
+    .card-header {
+        background: $attendencebar;
+    }
+    .profile-link {
+        color: $gray;
+    }
+    .save-button {
+        width: 100%;
+        background: mc(teal);
+        border: 0;
+        padding: 15px;
+        color: #fff;
+        margin-top: 10px;
+        &.activated {
+            background: darken(mc(teal), 5%);
+        }
+    }
+    .btn-note {
+        padding: 5px 10px;
+        color: $gray;
+        border-radius: 2px;
+        &.activated {
+            background: darken(mc(teal), 5%);
+            color: #fff;
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------
+//------  latest News
+//----------------------------------------------------------------------------------------
+.latest_news {
+    .card-header {
+        background: $lasttrackbar;
+    }
+    .date {
+        font-size: 70%;
+    }
+}
+
+//----------------------------------------------------------------------------------------
+//------  latest News
+//----------------------------------------------------------------------------------------
+.calender-card {
+    .card-header {
+        background: $gray;
+    }
+}
+
+.minicalendar {
+    width: 100%;
+    caption {
+        background: #f1f1f1;
+        padding: 5px 15px;
+    }
+    .calendar-controls {
+        .current {
+            height: 35px;
+            font-size: 24px;
+            a {
+                color: #3e3e3e;
+                line-height: 35px;
+            }
+        }
+        .arrow_link {
+            .arrow {
+                display: none;
+            }
+            font-size: 0;
+            color: transparent;
+            width: 35px;
+            height: 35px;
+            display:inline-block;
+            position: relative;
+            &:before {
+                font-size: 27px;
+                color: #828282;
+                display: inline-block;
+                font-family: "Ionicons";
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                line-height: 35px;
+                text-align: center;
+            }
+            &.next {
+                float: right;
+                &:before {
+                    content: "\f125";
+                }
+            }
+            &.previous {
+                float: left;
+                &:before {
+                    content: "\f124";
+                }
+            }
+        }
+    }
+    .weekdays {
+        background: #607D8B;
+        color: #fff;
+        th {
+            padding: 5px 0;
+        }
+    }
+    .day {
+        text-align: center;
+        padding: 5px 0;
+        color: #555;
+    }
+}
+
+//----------------------------------------------------------------------------------------
+//------  tabbed  slidebox
+//----------------------------------------------------------------------------------------
+.tabbed-slidebox {
+    .slider {
+        height: 100%;
+    }
+    &.btm {
+        .slider {
+            margin-bottom: -50px;
+        }
+    }
+    .slider-slides {
+        width: 100%;
+    }
+    .slider-slide {
+        padding-top: 0px;
+        color: #000;
+        background-color: #fff;
+        text-align: center;
+        font-weight: 300;
+    }
+    .tsb-icons {
+        text-align: center;
+        margin: 0 0 10px 0;
+        position: relative;
+        background-color: #fff;
+        a {
+            display: inline-block; //width: 54px;
+            color: rgba(0, 0, 0, 0.3);
+            -webkit-transform: translate3d(0, 8px, 0);
+            &.active {
+                color: rgba(0, 0, 0, 1);
+                -webkit-transform: translate3d(0, 0, 0);
+            }
+            img {
+                width: 48px;
+                height: 48px;
+            }
+            small {
+                display: block;
+            }
+        }
+    }
+    .tsb-ic-wrp {
+        display: flex;
+        position: relative;
+        -webkit-transition: -webkit-transform 0.3s;
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+    .tabbed-slidebox {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+    }
+    .scroll {
+        position: relative;
+        a {
+            width: auto;
+            text-decoration: none;
+            margin: 0 10px;
+            border-bottom: 3px solid transparent;
+            &.active {}
+        }
+    }
+}
+
+.tsb-hscroll.scroll-view {
+    white-space: nowrap;
+    margin: 0 auto;
+    .scroll-bar {
+        visibility: hidden;
+    }
+    .scroll.onscroll {
+        -webkit-transition: -webkit-transform 0.3s;
+        /* For Safari 3.1 to 6.0 */
+    }
+}
+
+//----------------------------------------------------------------------------------------
+//------ Quizzes Slide
+//----------------------------------------------------------------------------------------
+.quizzes-slide {
+    padding-bottom: 35px;
+    .list {
+        .item-quiz {
+            text-align: left;
+            padding: 16px 10px;
+            padding-bottom: 2px;
+            h3 {
+                @extend %itemtitle;
+            }
+            p {
+                text-overflow: inherit;
+                white-space: normal;
+                span {}
+                img.ico {
+                    width: 16px;
+                    height: auto;
+                    margin: 0 3px;
+                }
+            }
+        }
+        .item-footer {
+            border-top: 1px solid #f0f0f0;
+            .btn-link {
+                color: #000;
+                display: block;
+                width: 100%;
+                padding: 8px 6px;
+                text-align: center;
+                margin: 0;
+                &.activated {
+                    color: #3498db;
+                    background: rgba(#000, .1);
+                }
+                i {}
+                span {
+                    display: inline-block;
+                    margin: 0 5px;
+                }
+            }
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------
+//------ Assignments Slide
+//----------------------------------------------------------------------------------------
+.assignments-slide {
+    .list {
+        .item-assign {
+            text-align: left;
+            padding: 16px 10px;
+            padding-bottom: 2px;
+            h3 {
+                @extend %itemtitle;
+            }
+            img.ico {
+                width: 16px;
+                height: auto;
+                margin: 0 3px;
+            }
+            .date {
+                padding: 5px;
+                text-overflow: inherit;
+                white-space: normal;
+                font-size: 13px;
+            }
+            .assignments_info {
+                @include display-flex();
+                @include align-items(center);
+                @include justify-content(space-between);
+                text-align: center;
+                padding: 5px;
+                margin-top: 10px;
+                span {
+                    small,
+                    strong {
+                        display: block;
+                    }
+                    strong {
+                        margin-top: 7px;
+                    }
+                }
+            }
+            .item-footer {
+                border-top: 1px solid #f0f0f0;
+                .btn-link {
+                    color: #000;
+                    display: block;
+                    width: 100%;
+                    padding: 8px 6px;
+                    text-align: center;
+                    margin: 0;
+                    &.activated {
+                        color: #3498db;
+                        background: rgba(#000, .1);
+                    }
+                    i {}
+                    span {
+                        display: inline-block;
+                        margin: 0 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------
+//------ forums Slide
+//----------------------------------------------------------------------------------------
+.forums-slide {
+    .list {
+        .item-forum {
+            .item-content {
+                background-color: transparent;
+            }
+            text-align: left;
+            h3 {
+                @extend %itemtitle;
+            }
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------
+//------ forums Slide
+//----------------------------------------------------------------------------------------
+.syllabus-slide {
+    .list {
+        .item-section {
+            text-align: left;
+            .item-content {
+                background-color: transparent;
+                margin: 0;
+            }
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------
+//------ Resources Slide
+//----------------------------------------------------------------------------------------
+.resources-slide {
+    .list {
+        .item-resource {
+            text-align: left;
+            h3 {
+                @extend %itemtitle;
+            }
+            .button {
+                top: 23%;
+            }
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------
+//------ Resources Slide
+//----------------------------------------------------------------------------------------
+.students-slide {
+    .list {
+        .item-student {
+            text-align: left;
+            .item-content {
+                background-color: transparent;
+                margin: 0;
+            }
+        }
+    }
+}
+
+//----------------------------------------------------------------------------------------
+//------ post news 
+//----------------------------------------------------------------------------------------
+.post-news {
+    .card-header {
+        background: $lasttrackbar;
+        p {
+            color: #fff;
+        }
+    }
+    .post-full-image {
+        max-width: 100%;
+        height: auto;
+    }
+    .post-title {
+        margin-bottom: 15px;
+    }
+}
+//----------------------------------------------------------------------------------------
+//------ grades slide 
+//----------------------------------------------------------------------------------------
+.grades-slide {
+    .list {
+        .item-class {
+            padding: 10px 16px;
+            text-align: left;
+            &.active {
+                background-color: #f1f1f1;
+            }
+            .item-info {
+                text-align: left;
+            }
+        }
+        .item-subclass {
+            padding: 10px 16px;
+            text-align: left;
+            background-color: #f7f7f7;
+            i {
+                float: right;
+            }
+            &.active{
+                background-color:transparent; 
+                color: $lasttrackbar;
+            }
+        }
+        .item {
+            @include transition(0.09s all linear);
+            &.item-group {
+                padding: 0;
+            }
+            &.ng-hide {
+                line-height: 0px;
+            }
+            &.ng-hide-add,
+            .ng-hide-remove {
+                display: block !important;
+            }
+        }
+        .item-info{
+            padding: 5px 10px;
+            strong{
+                padding: 0 5px;
+                color: #34495e;
+            }
+        }
+        
+    }
+    .item-subgrade.active{
+                border-bottom: 10px solid #ecf0f1;
+    }
+    .buttons{
+        float: right;
+
+    }
+    .classname{
+        line-height: 28px;
+        display: inline-block;
+        margin: 0;
+        width: 80%;
+        width:calc(100% - 40px);
+        i{
+            color: #bdc3c7;
+            margin-right:8px;
+        }
+    }
+    .link-group{
+        width: 40px;
+        line-height: 20px;
+        color: #000;
+    }
+}
+//----------------------------------------------------------------------------------------
+//------ stamps slide
+//----------------------------------------------------------------------------------------
+.stamps-slide{
+    .list{
+        .item{
+            padding: 10px;
+            text-align: left;
+            @include transition(0.09s all linear);
+            &.ng-hide {
+                line-height: 0px;
+            }
+            &.ng-hide-add,
+            .ng-hide-remove {
+                display: block !important;
+            }
+        }
+        .item-classrooms{
+            .item-classroom{
+                i{
+                    color: #bdc3c7;
+                    margin-right: 8px;
+                }
+                span{}
+                &.active{
+                      background-color: #f1f1f1;
+                }
+            }
+            .item-students{
+                padding: 0;
+                .student-name{
+                    background-color: #f7f7f7;
+                     &.active{
+                background-color:transparent; 
+                color: $lasttrackbar;
+            }
+                    span{}
+                    i{
+                        float: right;
+                        color:#34495e;
+                    }
+                }
+                .item-stamps{
+                    text-overflow: inherit;
+                    white-space: initial;
+                    strong{
+                        display: block;
+                        font-weight: normal;
+                        font-size: 14px;
+                    }
+                    span{
+                        display: block;
+                        font-size: 90%;
+                        color: $gray;
+                    }
+                }
+            }
+        }
+    }
+}
+ 
+
+ /*
+  <div class="">
+        <ion-list class="">
+                  <div ng-repeat="clsroom in clsrooms" class="item-classrooms">
+                       <ion-item class="item item-classroom" ng-class-even="'even'" >
+                            <i class="icon ion-close-round"></i>
+                          <span> {{'mma.teacher.class'| translate}} &nbsp; {{clsroom.name}}</span>
+                      </ion-item>
+
+
+                      <ion-item class="item item-students" ng-repeat="student in clsroom.students" ng-if="student.stamps.length > 0" >
+                       <div >
+                          <ion-item class="item student-name" >
+                            <span>{{student.name}}</span>
+                            <i class="icon ion-close-round"></i>
+                          </ion-item>
+                          <ion-item ng-repeat="stamp in student.stamps" class="item item-stamps">
+                            <strong>{{stamp.text}}</strong>
+                            <span>{{stamp.date}}</span>
+                          </ion-item>
+                       </div>
+                      </ion-item>
+                  </div>
+        </ion-list>
+    </div>*
+ */

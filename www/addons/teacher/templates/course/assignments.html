@@ -1,0 +1,25 @@
+<ion-scroll style="height:100%">
+    <div class="assignments-slide">
+        <ion-list class="list" ng-if="course.weeklytasks">
+            <ion-item class="item item-assign" ng-repeat="assign in course.weeklytasks"  ng-class-even="'even'">
+                    <h3>{{ assign.data.name }}</h3>
+                    <div class="date"><img src="addons/teacher/img/end.svg" class="ico" >{{assign.duedate}}</div> 
+                    <div class="assignments_info">
+                       <span> <small>{{'mma.teacher.assgin_participants_count' | translate}}</small> <strong>{{assign.submitted_count}}</strong></span> 
+                       <span> <small>{{'mma.teacher.assgin_students_count' | translate}}</small> <strong>{{assign.users_count}}</strong></span> 
+                       <span> <small>{{'mma.teacher.assgin_grade' | translate}}</small><strong>{{ assign.data.grade }}</strong></span> 
+                   </div>
+                   <div class="item-footer" >
+                               <a class="btn-link " ui-sref="site.mod_assign({module: assign, courseid: courseid})">  
+                                     <i class="icon ion-eye"></i>
+                                   <span>{{'mma.teacher.preview' | translate}}</span>
+                              </a>
+                        </div>
+            </ion-item>
+        </ion-list>
+        <div class="text-center" ng-if="!course.weeklytasks">
+            <h5>{{ 'mma.teacher.no_data' | translate }}</h5>
+        </div>
+    </div>
+  <ion-scroll>
+  

@@ -41,7 +41,7 @@ angular.module('mm.core')
  */
 .directive('mmFile', function($q, $mmUtil, $mmFilepool, $mmSite, $mmApp, $mmEvents, $mmFS, mmCoreDownloaded, mmCoreDownloading,
             mmCoreNotDownloaded, mmCoreOutdated) {
-
+                
     /**
      * Convenience function to get the file state and set scope variables based on it.
      *

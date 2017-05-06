@@ -1,6 +1,6 @@
 {
-    "title" :"Parent Page",
-    "childtitle" :"Child Page",
+    "title" :"Sons Page",
+    "childtitle" :"",
 	"programs" :"programs",
 	"tracks" :"Tracks",
 	"courses" :"courses",
@@ -22,6 +22,5 @@
 	"errorfailedtoloaddata" :"Failed to load data, please try again later",
 	"noconnection" :"internet connection",
 	"noconnectionMessage" :"Please check your internet connection and try again",
-	"dashboard" :"dashboard"
+	"dashboard" :"Sons"
 }
-

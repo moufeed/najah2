@@ -1,0 +1,31 @@
+ 
+ <ion-scroll style="height:100%">
+    <div class="stamps-slide">
+        <ion-list class="list">
+                  <div ng-repeat="clsroom in clsrooms" class="item-classrooms"   >
+                       <ion-item class="item item-classroom" ng-class="{active: isclsroomShown(clsroom)}" ng-click="toggleClsrom(clsroom)" >
+                            <i class="icon" ng-class="isclsroomShown(clsroom) ? 'ion-close-round' : 'ion-navicon'"></i>
+                          <span> {{'mma.teacher.class'| translate}} &nbsp; {{clsroom.name}}</span>
+                      </ion-item>
+                      <ion-item class="item item-accordion item-students" 
+                                ng-repeat="student in clsroom.students" 
+                                ng-if="student.stamps.length > 0" 
+                                ng-class-even="'even'" 
+                                ng-show="isclsroomShown(clsroom)" >
+                       <div >
+                          <ion-item class="item student-name" ng-click="toggleStudent(student)" ng-class="isStudentShown(student) ? 'active' : ''">
+                            <span>{{student.name}}</span>
+                            <i class="icon" ng-class="isStudentShown(student) ? 'ion-ios-minus-outline' : 'ion-ios-plus-outline'"></i>
+                          </ion-item>
+                          <ion-item ng-repeat="stamp in student.stamps" class="item item-stamps" ng-show="isStudentShown(student)" >
+                            <strong>{{stamp.text}}</strong>
+                            <span>{{stamp.date}}</span>
+                          </ion-item>
+                       </div>
+                      </ion-item>
+                  </div>
+        </ion-list>
+    </div>
+  <ion-scroll>
+ 
+ 
