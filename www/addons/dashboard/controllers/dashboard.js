@@ -21,7 +21,7 @@ angular.module('mm.addons.dashboard')
  * @ngdoc controller
  * @name mmadashboardSettingsCtrl
  */
-.controller('mmaDashboardCtrl', function($scope, $mmaDashboard, $mmEvents, $mmSite, $mmUser, $mmaDashboardCommon, $sce, $state) {
+.controller('mmaDashboardCtrl', function($scope, $mmaDashboard, $mmEvents, $mmSite, $mmUser, $mmaDashboardCommon, $sce, $state, $mmApp, $ionicPopover, $q) {
     var self = this;
     self.statsLoaded = false;
     self.performanceLoaded = false;
@@ -33,32 +33,142 @@ angular.module('mm.addons.dashboard')
     self.newsLoaded = false;
     self.lastTrackCoursesLoaded = false;
 
-    $mmaDashboardCommon.stats().then(function(res) {
-        self.stats = res.data;
-    }, function(reject) {
+    var localStorageName = $mmSite.getToken();
 
-    }).finally(function() {
+    if ($mmApp.isOnline()) {
+        $mmaDashboardCommon.stats().then(function(res) {
+            self.stats = res.data;
+        }, function(reject) {
+
+        }).finally(function() {
+            self.statsLoaded = true;
+        });
+
+        $mmaDashboardCommon.performance().then(function(res) {
+            self.performance = res.data;
+        }, function(reject) {
+
+        }).finally(function() {
+            self.performanceLoaded = true;
+        });
+
+        $mmaDashboardCommon.courses().then(function(res) {
+            self.currentCourses = res.data.list[0];
+        }, function(reject) {
+
+        }).finally(function() {
+            self.coursesLoaded = true;
+        });
+
+        $mmaDashboardCommon.weeklySchedule().then(function(res) {
+            self.schedule = res.data.list;
+            self.schedule.hasData = false;
+            for (var i = 0; i < self.schedule.length; i++) {
+                if (self.schedule[i].data.length) {
+                    self.schedule.hasData = true;
+                    break;
+                }
+            }
+        }, function(reject) {
+
+        }).finally(function() {
+            self.scheduleLoaded = true;
+        });
+
+        $mmaDashboardCommon.weeklyAttendence().then(function(res) {
+            self.attendence = res.data.list;
+        }, function(reject) {
+
+        }).finally(function() {
+            self.weeklyAttendenceLoaded = true;
+        });
+
+        $mmaDashboardCommon.calendar().then(function(res) {
+            self.miniCalendar = $sce.trustAsHtml(res.data.mini);
+        }, function(reject) {
+
+        }).finally(function() {
+            self.calendarLoaded = true;
+        });
+
+        $mmaDashboardCommon.attendence().then(function(res) {
+            self.chartAttendence = res.data.list;
+            self.noChartData = true;
+            for (var key in self.chartAttendence) {
+                if (self.chartAttendence.hasOwnProperty(key)) {
+                    if (self.chartAttendence[key]) {
+                        self.noChartData = false;
+                        break;
+                    }
+                }
+            }
+        }, function(reject) {
+
+        }).finally(function() {
+            self.attendenceLoaded = true;
+        });
+
+        $mmaDashboardCommon.news().then(function(res) {
+            self.news = res.data.list;
+        }, function(reject) {
+
+        }).finally(function() {
+            self.newsLoaded = true;
+        });
+
+        $mmaDashboardCommon.lastTrackCourses().then(function(res) {
+            self.trackCourses = res.data.list[0];
+        }, function(reject) {
+
+        }).finally(function() {
+            self.lastTrackCoursesLoaded = true;
+        });
+
+        self.badgesLoaded = false;
+        $mmaDashboardCommon.badges().then(function(res) {
+            self.badges = res.data.list;
+        }, function(reject) {
+
+        }).finally(function() {
+            self.badgesLoaded = true;
+        });
+
+        self.stampsLoaded = false;
+        $mmaDashboardCommon.stamps().then(function(res) {
+            self.stamps = res.data.list;
+        }, function(reject) {
+
+        }).finally(function() {
+            self.stampsLoaded = true;
+        });
+
+        self.weeklyTasksLoaded = false;
+        $mmaDashboardCommon.weeklyTasks().then(function(res) {
+            self.weeklyTasks = res.data.list;
+        }, function(reject) {
+
+        }).finally(function() {
+            self.weeklyTasksLoaded = true;
+        });
+
+        self.feedbackLoaded = false;
+        $mmaDashboardCommon.feedback().then(function(res) {
+            self.feedback = res.data.list;
+        }, function(reject) {
+
+        }).finally(function() {
+            self.feedbackLoaded = true;
+        });
+        
+    } else {
+        self.stats = getData('stats');
         self.statsLoaded = true;
-    });
-
-    $mmaDashboardCommon.performance().then(function(res) {
-        self.performance = res.data;
-    }, function(reject) {
-
-    }).finally(function() {
+        self.performance = getData('performance');
         self.performanceLoaded = true;
-    });
-
-    $mmaDashboardCommon.courses().then(function(res) {
-        self.currentCourses = res.data.list[0];
-    }, function(reject) {
-
-    }).finally(function() {
+        self.currentCourses = getData('currentCourses');
         self.coursesLoaded = true;
-    });
-
-    $mmaDashboardCommon.weeklySchedule().then(function(res) {
-        self.schedule = res.data.list;
+        self.schedule = getData('schedule');
+        self.scheduleLoaded = true;
         self.schedule.hasData = false;
         for (var i = 0; i < self.schedule.length; i++) {
             if (self.schedule[i].data.length) {
@@ -66,99 +176,63 @@ angular.module('mm.addons.dashboard')
                 break;
             }
         }
-    }, function(reject) {
-
-    }).finally(function() {
-        self.scheduleLoaded = true;
-    });
-
-    $mmaDashboardCommon.weeklyAttendence().then(function(res) {
-        self.attendence = res.data.list;
-    }, function(reject) {
-
-    }).finally(function() {
+        self.attendence = getData('attendence');
         self.weeklyAttendenceLoaded = true;
-    });
-
-    $mmaDashboardCommon.calendar().then(function(res) {
-        self.miniCalendar = $sce.trustAsHtml(res.data.mini);
-    }, function(reject) {
-
-    }).finally(function() {
+        
+        self.miniCalendar = null;
         self.calendarLoaded = true;
-    });
-
-    $mmaDashboardCommon.attendence().then(function(res) {
-        self.chartAttendence = res.data.list;
-        self.noChartData = true;
-        for (var key in self.chartAttendence) {
-            if (self.chartAttendence.hasOwnProperty(key)) {
-                if (self.chartAttendence[key]) {
-                    self.noChartData = false;
-                    break;
-                }
-            }
-        }
-    }, function(reject) {
-
-    }).finally(function() {
+        self.chartAttendence = getData('chartAttendence');
         self.attendenceLoaded = true;
-    });
-
-    $mmaDashboardCommon.news().then(function(res) {
-        self.news = res.data.list;
-    }, function(reject) {
-
-    }).finally(function() {
+        self.news = getData('news');
         self.newsLoaded = true;
-    });
-
-    $mmaDashboardCommon.lastTrackCourses().then(function(res) {
-        self.trackCourses = res.data.list[0];
-    }, function(reject) {
-
-    }).finally(function() {
+        self.trackCourses = getData('trackCourses');
         self.lastTrackCoursesLoaded = true;
-    });
-
-
-    self.badgesLoaded = false;
-    $mmaDashboardCommon.badges().then(function(res) {
-        self.badges = res.data.list;
-    }, function(reject) {
-
-    }).finally(function() {
+        self.badges = getData('badges');        
         self.badgesLoaded = true;
-    });
-
-    self.stampsLoaded = false;
-    $mmaDashboardCommon.stamps().then(function(res) {
-        self.stamps = res.data.list;
-    }, function(reject) {
-
-    }).finally(function() {
+        self.stamps = getData('stamps');
         self.stampsLoaded = true;
-    });
-
-    $mmaDashboardCommon.userDetails('home');
-
-    self.weeklyTasksLoaded = false;
-    $mmaDashboardCommon.weeklyTasks().then(function(res) {
-        self.weeklyTasks = res.data.list;
-    }, function(reject) {
-
-    }).finally(function() {
+        self.weeklyTasks = getData('weeklyTasks');
         self.weeklyTasksLoaded = true;
-    });
-
-    self.feedbackLoaded = false;
-    $mmaDashboardCommon.feedback().then(function(res) {
-        self.feedback = res.data.list;
-    }, function(reject) {
-
-    }).finally(function() {
+        self.feedback = getData('feedback');
         self.feedbackLoaded = true;
-    });
+    }
+
+    $scope.saveOff = function() {
+        saveData('stats', self.stats);
+        saveData('performance', self.performance);
+        saveData('currentCourses', self.currentCourses);
+        saveData('schedule', self.schedule);
+        saveData('attendence', self.attendence);
+        saveData('miniCalendar', self.miniCalendar);
+        saveData('chartAttendence', self.chartAttendence);
+        saveData('news', self.news);
+        saveData('trackCourses', self.trackCourses);
+        saveData('badges', self.badges);
+        saveData('stamps', self.stamps);
+        saveData('weeklyTasks', self.weeklyTasks);
+        saveData('feedback', self.feedback);
+        
+        $scope.closePopover();
+    };
+
+    function saveData(name, data) {
+        if (data) {
+            localStorage.setItem(localStorageName + name, JSON.stringify(data));
+        } else {
+            localStorage.setItem(localStorageName + name, JSON.stringify([]));
+        }
+    }
+
+    function getData(name) {
+        var data = localStorage.getItem(localStorageName + name);
+        if (data) {
+            return JSON.parse(data);
+        } else {
+            return null;
+        }
+    }
+
+    //$mmaDashboardCommon.userDetails('home');
 
     this.options = {
         loop: false,
@@ -173,5 +247,31 @@ angular.module('mm.addons.dashboard')
     self.goToCourse = function(id) {
         $state.go('site.dashCourse.syllabus', { id: id });
     };
+
+    var template = '<ion-popover-view class="dash-pop"><ion-content><div class="list"><div class="item item-button-right">Save Offline<button ng-click="saveOff()" class="button button-positive"><i class="icon ion-ios-cloud-download"></i></button></div></div></ion-content></ion-popover-view>';
+
+    $scope.popover = $ionicPopover.fromTemplate(template, {
+        scope: $scope
+    });
+
+
+    $scope.openPopover = function($event) {
+        $scope.popover.show($event);
+    };
+    $scope.closePopover = function() {
+        $scope.popover.hide();
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.popover.remove();
+    });
+    // Execute action on hidden popover
+    $scope.$on('popover.hidden', function() {
+        // Execute action
+    });
+    // Execute action on remove popover
+    $scope.$on('popover.removed', function() {
+        // Execute action
+    });
 
 });

@@ -63,7 +63,7 @@ angular.module('mm.addons.myprograms')
              * @name $mmaCalendarHandlers#sideMenuNav:controller
              */
             return function($scope) {
-                $scope.icon = 'ion-calendar';
+                $scope.icon = 'ion-ios-bookmarks-outline';
                 $scope.title = 'mma.myprograms.programs';
                 $scope.state = 'site.mycusprograms';
                 $scope.class = 'mma-dashboard-handler';

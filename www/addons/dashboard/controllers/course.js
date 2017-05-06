@@ -21,38 +21,93 @@ angular.module('mm.addons.dashboard')
  * @ngdoc controller
  * @name mmadashboardSettingsCtrl
  */
-.controller('mmaDashboardCourseCtrl', function($scope, $mmaDashboardCommon, $sce, $stateParams, $templateCache) {
+.controller('mmaDashboardCourseCtrl', function($scope, $mmaDashboardCommon, $sce, $stateParams, $templateCache, $ionicPopover, $mmApp, $mmSite) {
     var self = this;
-    this.pages = [
-        { state: 'site.dashCourse.syllabus', icon: 'syllabus.png', title: 'Syllabus' },
-        { state: 'site.dashCourse.calendar', icon: 'calendar.png', title: 'calendar' },
-        { state: 'site.dashCourse.quizzes', icon: 'quizzes.png', title: 'quizzes' },
-        { state: 'site.dashCourse.assignments', icon: 'assignments.png', title: 'assignments' },
-        { state: 'site.dashCourse.forums', icon: 'forums.png', title: 'forums' },
-        { state: 'site.dashCourse.resources', icon: 'resources.png', title: 'resources' },
-        { state: 'site.dashCourse.evaluating', icon: 'evaluating.png', title: 'evaluating' },
-        // {state: 'site.dashCourse.onlineSessions', icon: 'onlineSessions.png', title: 'online Sessions'},
-        // {state: 'site.dashCourse.games', icon: 'games.png', title: 'games'},
-        // {state: 'site.dashCourse.gradebook', icon: 'gradebook.png', title: 'gradebook'},
-        // {state: 'site.dashCourse.badges', icon: 'badges.png', title: 'badges'}
-    ];
 
-    self.courseLoaded = false;
+    var localStorageName = $mmSite.getToken();
 
-    $mmaDashboardCommon.course($stateParams.id).then(function(res) {
-        self.course = res.data.course;
-    }, function(rej) {
+    if ($mmApp.isOnline()) {
+        self.courseLoaded = false;
+        $mmaDashboardCommon.course($stateParams.id).then(function(res) {
+            self.course = res.data.course;
+        }, function(rej) {
 
-    }).finally(function() {
+        }).finally(function() {
+            self.courseLoaded = true;
+        });
+
+        self.calendarLoaded = false;
+        $mmaDashboardCommon.calendar().then(function(res) {
+            self.miniCalendar = $sce.trustAsHtml(res.data.mini);
+        }, function(reject) {
+
+        }).finally(function() {
+            self.calendarLoaded = true;
+        });
+
+        self.gradebookLoaded = false;
+        $mmaDashboardCommon.gradebook($stateParams.id).then(function(res) {
+            self.gradebook = res.data.list;
+        }, function(reject) {
+
+        }).finally(function() {
+            self.gradebookLoaded = true;
+        });
+    } else {
+        self.course = getData('course' + $stateParams.id);
         self.courseLoaded = true;
+        self.miniCalendar = null;
+        self.calendarLoaded = true;
+        self.gradebook = getData('gradebook' + $stateParams.id);
+        self.gradebookLoaded = true;
+    }
+
+    $scope.saveOff = function() {
+        saveData('course' + $stateParams.id, self.course);
+        saveData('gradebook' + $stateParams.id, self.gradebook);
+        $scope.closePopover();
+    };
+
+    function saveData(name, data) {
+        if (data) {
+            localStorage.setItem(localStorageName + name, JSON.stringify(data));
+        } else {
+            localStorage.setItem(localStorageName + name, JSON.stringify([]));
+        }
+    }
+
+    function getData(name) {
+        var data = localStorage.getItem(localStorageName + name);
+        if (data) {
+            return JSON.parse(data);
+        } else {
+            return null;
+        }
+    }
+
+    var template = '<ion-popover-view class="dash-pop"><ion-content><div class="list"><div class="item item-button-right">Save Offline<button ng-click="saveOff()" class="button button-positive"><i class="icon ion-ios-cloud-download"></i></button></div></div></ion-content></ion-popover-view>';
+
+    $scope.popover = $ionicPopover.fromTemplate(template, {
+        scope: $scope
     });
 
-    self.calendarLoaded = false;
-    $mmaDashboardCommon.calendar().then(function(res) {
-        self.miniCalendar = $sce.trustAsHtml(res.data.mini);
-    }, function(reject) {
 
-    }).finally(function() {
-        self.calendarLoaded = true;
+    $scope.openPopover = function($event) {
+        $scope.popover.show($event);
+    };
+    $scope.closePopover = function() {
+        $scope.popover.hide();
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function() {
+        $scope.popover.remove();
+    });
+    // Execute action on hidden popover
+    $scope.$on('popover.hidden', function() {
+        // Execute action
+    });
+    // Execute action on remove popover
+    $scope.$on('popover.removed', function() {
+        // Execute action
     });
 });

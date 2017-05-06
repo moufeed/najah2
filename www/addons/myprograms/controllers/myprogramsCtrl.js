@@ -23,7 +23,6 @@ angular.module('mm.addons.myprograms')
  */
 .controller('mmaMyProgramsCtrl', function($scope, $sce, $mmaMyPrograms) {
     var self = this;
-    // console.error($mmaMyPrograms.programs());
     self.programsLoaded = false;
     $mmaMyPrograms.programs().then(function(res) {
         self.programs = res.data.list;

@@ -9,6 +9,7 @@
   <allow-navigation href="content:*"/>
   <allow-navigation href="data:*"/>
   <allow-navigation href="*"/>
+  <allow-navigation href="http://192.168.1.42:8100"/>
   <allow-intent href="*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
