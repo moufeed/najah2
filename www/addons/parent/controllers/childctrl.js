@@ -9,7 +9,7 @@ angular.module('mm.addons.parent')
      * @ngdoc controller
      * @name mmParentCtrl
      */
-    .controller('mmaChildCtrl', function ($mmApp, $mmUtil, $scope, $stateParams, $state, $log, $mmaParentHelper, $ionicPopup, $mmaParentOffline, mmaParentOfflineStamps, mmaParentOfflineWeeklyattendance, mmaParentOfflineWeeklytasks, mmaParentOfflineBadges, mmaParentOfflineAttendance, mmaParentOfflineParentStore, mmaParentOfflineStatistics, mmaParentOfflineCurrentcourses, mmaParentOfflineSchedule, mmaParentOfflineLastTrack, mmaParentOfflineChildMessages) {
+    .controller('mmaChildCtrl', function ($mmApp, $mmUtil, $scope,$ionicModal, $stateParams, $state, $log, $mmaParentHelper, $ionicPopup, $mmaParentOffline, mmaParentOfflineStamps, mmaParentOfflineWeeklyattendance, mmaParentOfflineWeeklytasks, mmaParentOfflineBadges, mmaParentOfflineAttendance, mmaParentOfflineParentStore, mmaParentOfflineStatistics, mmaParentOfflineCurrentcourses, mmaParentOfflineSchedule, mmaParentOfflineLastTrack, mmaParentOfflineChildMessages) {
         $scope.isOnline = $mmApp.isOnline();
         var self = this;
         $scope.piechartOptions = {
@@ -30,11 +30,14 @@ angular.module('mm.addons.parent')
             data: [],
             labels: [],
             colors: finalColors
-        };
+        }; 
         $scope.readMsg = function (item) {
-            $ionicPopup.alert({
-                title: item.firstname + ' ' + item.lastname,
-                template: item.msg
+            $scope.message = item;
+             $ionicModal.fromTemplateUrl('addons/parent/templates/modal.html', {
+                scope: $scope
+            }).then(function(modal) {
+                $scope.modal = modal;
+                modal.show();
             });
         }
         $scope.readStamp = function (item) {

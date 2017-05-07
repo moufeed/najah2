@@ -189,8 +189,8 @@
 				<div class="card-header">
 					{{'mma.parent.weekly_attendence' | translate }}
 				</div>
-				<div class="list">
-					 <ion-scroll direction="x">
+				<div class="list with-height">
+					 <ion-scroll direction="x" style="height:100%"  zooming="true" min-zoom="1">
 						<table>
 							<thead>
 								<tr>
@@ -262,7 +262,7 @@
 						<ion-item ng-repeat="msg in messages | limitTo:messages.maxItems" class="item item-avatar" ng-click="readMsg(msg)" ng-class-odd="'odd'">
 							<img ng-src="{{msg.pic}}" />
 							<h2>{{msg.firstname +' ' + msg.lastname}}</h2>
-							<p>{{msg.msg}}</p>
+							<div ng-bind-html="msg.msg | trustedHtml"  class="embeddhtml"></div>
 						</ion-item>
 						<ion-item class="item text-center item-btn" ng-click="messages.maxItems = messages.length" ng-show="messages.maxItems == 5 && messages.length > 5">
 							<i class="ion-chevron-down"></i> {{ 'mma.parent.view_all' | translate }}

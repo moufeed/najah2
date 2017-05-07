@@ -1,12 +1,11 @@
 <ion-modal-view>
         <ion-header-bar class="bar bar-header bar-positive">
             <button class="button button-clear button-primary " ng-click="modal.hide()">{{'mma.teacher.close' | translate}}</button>
+            <h2 class="title">{{post.date}}</h2>
         </ion-header-bar>
         <ion-content class="padding">
-            <div class="list card post-news">
-                <div class="item card-header">
-                    <p>{{post.date}}</p>
-                </div>
+            <div class=" post-news">
+
                 <div class="item item-body text-center">
                      <img class="post-full-image" src="{{post.pic}}" >
                      <h3 class="post-title">{{post.title}}</h3>

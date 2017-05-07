@@ -5,25 +5,33 @@ angular.module('mm.addons.parent')
      * @module mm.addons.parent
      * @name $mmaParentHelper
      */
-    .factory('$mmaParentHelper', function ($q, $log, $mmSite, $mmSitesManager, $mmUser, $mmUtil, $http, $mmApp, $mmaParentOffline,
+    .factory('$mmaParentHelper', function ($q, $log,$window, $mmSite, $mmSitesManager, $mmUser, $mmUtil, $http, $mmApp, $mmaParentOffline,
         mmaParentOfflineParentStore, mmaParentOfflineStatistics, mmaParentOfflineCurrentcourses, mmaParentOfflineWeeklytasks, mmaParentOfflineSchedule, mmaParentOfflineStamps, mmaParentOfflineWeeklyattendance, mmaParentOfflineLastTrack, mmaParentOfflineBadges, mmaParentOfflineAttendance, mmaParentOfflineChildMessages) {
         $log = $log.getInstance('$mmaParentHelper');
         var siteUrl = $mmSite.getURL();
         var self = {};
       
-        self.isAvailable = function () {
-            return self.call({s: 'general.usertype' })
-                .then(function (data) {
-                    if (data.usertype === 'parent'){
-                        return true;
-                    }
-                    return false;
-                })
-                .catch(function (err) {
-                   // showError();
-                    return false;
+ 
+        self.isAvailable = function (siteId) {
+                  siteId = siteId || $mmSite.getId();
+        if( $window.localStorage[siteId] != 'undefined' && $window.localStorage[siteId] == 'parent'){
+            return true;
+            }else if($mmApp.isOnline()){
+                return self.call({s: 'general.usertype' })
+                    .then(function (data) {
+                        if (data.usertype === 'parent') {
+                            $window.localStorage[siteId] = data.usertype;
+                            return true;
+                        }
+                        return false;
+                    })
+                    .catch(function (err) {
+                        return false;
                 });
+            }
+            return false;
         };
+
         /**
          * Show Error Connecting To Server
          */

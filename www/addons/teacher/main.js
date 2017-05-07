@@ -22,6 +22,7 @@ angular.module('mm.addons.teacher', [])
 
     .state('site.teacher', {
         url: '/teacher',
+        cache: false,
         views: {
             'site': {
                 templateUrl: 'addons/teacher/templates/dashboard.html',

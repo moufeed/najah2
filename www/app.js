@@ -18,8 +18,10 @@ angular.module('mm', ['ionic', 'ngCordova', 'angular-md5', 'pascalprecht.transla
     'ngMessages', 'ksSwiper', 'ngTable'
 ])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$mmLog) {
+     $mmLog.enabled(false);
     $ionicPlatform.ready(function() {
+        
         if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
             window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(false);
             window.cordova.plugins.Keyboard.disableScroll(true);

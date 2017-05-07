@@ -23,21 +23,34 @@ angular.module('mm.addons.dashboard')
  * @ngdoc service
  * @name $mmaCalendar
  */
-.factory('$mmaDashboard', function($log, $q, $mmaDashboardCommon) {
+.factory('$mmaDashboard', function($log, $q,$window,$mmApp, $mmaDashboardCommon) {
 
     $log = $log.getInstance('$mmaDashboard');
 
     var self = {}
 
-    self.isAvailable = function() {
-        return $mmaDashboardCommon.getType().then(function(res) {
-            if (res.data.usertype === 'sisstudent') {
-                    return true;
-            }
-            return false;
-        });
+    self.isAvailable = function(siteId) {
+        
 
     };
 
     return self;
 });
+
+
+self.isAvailable = function (siteId) {
+        siteId = siteId || $mmSite.getId();
+        if( $window.localStorage[siteId] != 'undefined' && $window.localStorage[siteId] == 'sisstudent'){
+            return true;
+        }
+        else if($mmApp.isOnline()){
+                return $mmaDashboardCommon.getType().then(function(res) {
+                    if (res.data.usertype === 'sisstudent') {
+                        $window.localStorage[siteId] = res.data.usertype;
+                            return true;
+                    }
+                    return false;
+                });
+            }
+        return false;
+};

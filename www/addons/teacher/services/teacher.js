@@ -5,24 +5,42 @@ angular.module('mm.addons.teacher')
      * @module mm.addons.teacher
      * @name $mmaTeacherHelper
      */
-    .factory('$mmaTeacherHelper', function ($q, $log, $mmSite, $mmUtil, $http) {
+    .factory('$mmaTeacherHelper', function ($q, $log, $mmSite, $mmUtil, $http,$window,$mmApp) {
         $log = $log.getInstance('$mmaTeacherHelper');
         var siteUrl = $mmSite.getURL();
         var self = {};
-        var siteId = siteId || $mmSite.getId();
-        self.isAvailable = function () {
-            return self.call({s: 'general.usertype' })
-                .then(function (data) {
-                    if (data.usertype === 'sisteacher') {
-                         return true;
-                    }
-                    return false;
-                })
-                .catch(function (err) {
-                    //showError();
-                    return false;
+      
+        
+
+        /**
+         *  siteId = siteId || $mmSite.getId();
+          if($mmApp.isOnline()){
+                return self.getUserType().then(function(type){
+                  return self.goToSiteInitialPage(type);
                 });
-            
+            }else{
+                var type = $window.localStorage[siteId];
+                 return self.goToSiteInitialPage(type);
+            }
+         */
+        self.isAvailable = function (siteId) {
+                  siteId = siteId || $mmSite.getId();
+        if( $window.localStorage[siteId] != 'undefined' && $window.localStorage[siteId] == 'sisteacher'){
+            return true;
+            }else if($mmApp.isOnline()){
+                return self.call({s: 'general.usertype' })
+                    .then(function (data) {
+                        if (data.usertype === 'sisteacher') {
+                            $window.localStorage[siteId] = data.usertype;
+                            return true;
+                        }
+                        return false;
+                    })
+                    .catch(function (err) {
+                        return false;
+                });
+            }
+            return false;
         };
 
         self.call = function (service ,url) {

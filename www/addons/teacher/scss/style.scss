@@ -236,6 +236,14 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
     .profile-link {
         color: $gray;
     }
+    .item-input.item-select{
+        padding: 5px;
+        select{
+            color:darken($gray,4%);
+            font-weight: 500;
+            padding: 0 42px 0 16px;
+        }
+    }
     .save-button {
         width: 100%;
         background: mc(teal);
@@ -245,12 +253,19 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
         margin-top: 10px;
         &.activated {
             background: darken(mc(teal), 5%);
+            
         }
     }
     .btn-note {
         padding: 5px 10px;
         color: $gray;
         border-radius: 2px;
+        &.ion-edit{
+            color:mc(teal);
+        }
+        &.ion-compose{
+            color:mc(orange);
+        }
         &.activated {
             background: darken(mc(teal), 5%);
             color: #fff;

@@ -185,16 +185,16 @@ angular.module('mm.core', ['pascalprecht.translate'])
 })
 
 .run(function($ionicPlatform, $ionicBody, $window, $mmEvents, $mmInitDelegate, mmCoreEventKeyboardShow, mmCoreEventKeyboardHide,
-        $mmApp, $timeout, mmCoreEventOnline, mmCoreEventOnlineStatusChanged, $mmUtil, $ionicScrollDelegate, $mmLog) {
+        $mmApp, $timeout, mmCoreEventOnline, mmCoreEventOnlineStatusChanged, $mmUtil, $ionicScrollDelegate) {
 
-            //stop app log
-            $mmLog.enabled(false)
+            
 
     // Execute all the init processes.
         $mmInitDelegate.executeInitProcesses();
 
     // When the platform is ready.
     $ionicPlatform.ready(function() {
+        
         var checkTablet = function() {
             $ionicBody.enableClass($ionicPlatform.isTablet(), 'tablet');
         };

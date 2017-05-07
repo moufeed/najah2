@@ -1,4 +1,4 @@
-<ion-view view-title="{{ 'mma.teacher.attendence' | translate }}" class="teacher_attendance">
+<ion-view view-title="{{ 'mma.teacher.attendence' | translate }}" class="teacher_attendance" >
 	<ion-content padding="true" mm-state-class>
        <div ng-if="course">
             <div class="card card-courseInfo">
@@ -21,7 +21,8 @@
                                 <a class="btn-note " ng-class="usr.note ? 'ion-compose active': 'ion-edit'" ng-click="showPrompt(usr)"></a>
                                  {{ usr.name }} 
                              </div>
-                                <select ng-model="stds[usr.id].option"  ng-init="stds[usr.id].option = (usr.status ? usr.status : addStatus(usr))" >
+                                 
+                                <select ng-model="stds[usr.id].option"  ng-init="stds[usr.id].option = (usr.status ?  usr.status  : '1')" >
                                 <option value="{{val}}"  ng-repeat="(val, label) in course.options" ng-selected="(usr.status == val) || (val == 1) " >{{label}}</option>       
                                 </select>
 						</ion-item>

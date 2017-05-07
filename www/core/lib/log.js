@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-angular.module('mm.core')
+angular.module('mm.core') 
 
-.constant('mmCoreLogEnabledDefault', true) // Default value for logEnabled.
+.constant('mmCoreLogEnabledDefault', false) // Default value for logEnabled.
 .constant('mmCoreLogEnabledConfigName', 'debug_enabled')
 
 /**

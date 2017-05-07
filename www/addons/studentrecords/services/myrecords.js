@@ -14,22 +14,30 @@
 
 angular.module('mm.addons.studentrecords')
 
-.factory('$mmaStudentRecords', function($log, $q, $mmSite, $http) {
+.factory('$mmaStudentRecords', function($log, $q,$mmApp, $window, $mmSite, $http) {
 
     $log = $log.getInstance('$mmaStudentRecords');
 
     var self = {};
 
     var token = $mmSite.getToken();
-
-    self.isAvailable = function() {
-        return self.getType().then(function(res) {
-            if (res.data.usertype === 'sisstudent') {
-                    return true;
+ 
+      self.isAvailable = function (siteId) {
+        siteId = siteId || $mmSite.getId();
+        if( $window.localStorage[siteId] != 'undefined' && $window.localStorage[siteId] == 'sisstudent'){
+            return true;
+        }
+        else if($mmApp.isOnline()){
+                return self.getType().then(function(res) {
+                    if (res.data.usertype === 'sisstudent') {
+                        $window.localStorage[siteId] = res.data.usertype;
+                            return true;
+                    }
+                    return false;
+                });
             }
-            return false;
-        });
-    };
+        return false;
+};
 
     self.getType = function() {
         return $http({

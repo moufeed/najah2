@@ -23,22 +23,30 @@ angular.module('mm.addons.myprograms')
  * @ngdoc service
  * @name $mmaCalendar
  */
-.factory('$mmaMyPrograms', function($log, $q, $http, $mmSite) {
+.factory('$mmaMyPrograms', function($log,$window,$mmApp, $q, $http, $mmSite) {
 
     $log = $log.getInstance('$mmaMyPrograms');
 
     var self = {};
 
     var token = $mmSite.getToken();
-
-    self.isAvailable = function() {
-        return self.getType().then(function(res) {
-            if (res.data.usertype === 'sisstudent') {
-                    return true;
+ 
+    self.isAvailable = function (siteId) {
+        siteId = siteId || $mmSite.getId();
+        if( $window.localStorage[siteId] != 'undefined' && $window.localStorage[siteId] == 'sisstudent'){
+            return true;
+        }
+        else if($mmApp.isOnline()){
+                return self.getType().then(function(res) {
+                    if (res.data.usertype === 'sisstudent') {
+                        $window.localStorage[siteId] = res.data.usertype;
+                            return true;
+                    }
+                    return false;
+                });
             }
-            return false;
-        });
-    };
+        return false;
+};
 
     self.getType = function() {
         return $http({
