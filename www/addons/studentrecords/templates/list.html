@@ -5,7 +5,8 @@
                 <div class="header">
                     <h2>{{ 'mma.studentrecords.academic_records' | translate }}</h2>
                 </div>
-                <div class="list">
+                <div class="list" style="height:75vh;">   
+                       <ion-scroll direction="xy" style="height:100%"  zooming="true" min-zoom="1">                 
                     <table ng-table="studentRecords.tableParams" class="table" show-filter="true">
                         <tr ng-repeat="user in $data">
                             <td title="'mma.studentrecords.course_name' | translate" filter="{ coursename: 'text'}" sortable="'name'">
@@ -18,6 +19,7 @@
                                 {{user.trackname}}</td>
                         </tr>
                     </table>
+                       </ion-scroll>
                 </div>
             </div>
         </mm-loading>

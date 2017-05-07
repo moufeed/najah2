@@ -15,10 +15,10 @@
 angular.module('mm.addons.dashboard', [])
 
 
-.constant('mmaDashboardPriority', 1500)
+.constant('mmaDashboardPriority', 2000)
 
 .config(function($stateProvider, $mmSideMenuDelegateProvider, mmaDashboardPriority) {
-
+   
     $stateProvider
         .state('site.dashboard', {
             url: '/dashboard',

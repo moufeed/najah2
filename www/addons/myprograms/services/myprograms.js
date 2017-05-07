@@ -1,3 +1,4 @@
+
 // (C) Copyright 2015 Martin Dougiamas
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -45,6 +46,7 @@ angular.module('mm.addons.myprograms')
                     return false;
                 });
             }
+ 
         return false;
 };
 
@@ -66,7 +68,7 @@ angular.module('mm.addons.myprograms')
     self.programDetails = function(id) {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.programdetails&programid=' + id + '&wstoken=' + $mmSite.getToken()
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.programdetails&programid=' + id + '&wstoken=' + token
         });
     };
 

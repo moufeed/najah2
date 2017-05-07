@@ -14,7 +14,7 @@
 
 angular.module('mm.core')
 
-.constant('mmCoreLogEnabledDefault', true) // Default value for logEnabled.
+.constant('mmCoreLogEnabledDefault', false) // Default value for logEnabled.
 .constant('mmCoreLogEnabledConfigName', 'debug_enabled')
 
 /**
@@ -22,7 +22,7 @@ angular.module('mm.core')
  *
  * @module mm.core
  * @ngdoc provider
- * @name $mmLog
+ * @name $mmLog 
  * @description
  * $mmLogProvider.logDecorator function is designed to decorate '$log'. It should be used like this:
  *     $provide.decorator('$log', ['$delegate', $mmLogProvider.logDecorator]);

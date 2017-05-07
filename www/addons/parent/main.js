@@ -14,7 +14,7 @@
 
 angular.module('mm.addons.parent', ['ksSwiper','easypiechart','chart.js'])
 
-.constant('mmaParentPriority', 400)
+.constant('mmaParentPriority', 2000)
 
 .config(function($stateProvider ,$mmSideMenuDelegateProvider ,mmaParentPriority) {
 

@@ -68,31 +68,6 @@ label.item {
     font-size: 70%;
 }
 
-.pane {
-    display: flex;
-    flex: 1;
-    background: #edecec;
-}
-
-.pane .content {
-    display: flex;
-    /* flex-direction: row; */
-    align-items: center;
-    justify-content: center;
-}
-
-.pane .card {
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: center;
-    flex: 1;
-}
-
-button.button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 
 
@@ -958,6 +933,7 @@ td p {
     padding: 0;
     .news-col {
         padding: 0;
+        margin: 0;
     }
 }
 
@@ -984,4 +960,10 @@ td p {
 
 .feedback .card-header {
     background: #9E9E9E;
+}
+ 
+.badge-image {
+    position: absolute;
+    left: 30px;
+    top: 30px;
 }

@@ -5,7 +5,7 @@
                 <ion-item class="item-class item-complex" ng-class-even="'even'" ng-class="{active: isGroupShown(group)}">
                     <div class="classname" ng-click="toggleGroup(group)">
                         <i class="icon" ng-class="isGroupShown(group) ? 'ion-close-round' : 'ion-navicon'"></i>
-                        <span> {{'mma.teacher.class'| translate}} &nbsp; {{group.name}}</span>
+                        <span> {{ 'mma.teacher.class' | translate }}   &nbsp; {{group.name}}</span>
                     </div>
                     <button class="button-icon link-group" ng-click="openGroup(group)"> 
                         <i class="icon  ion-compose"></i>

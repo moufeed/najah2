@@ -21,7 +21,7 @@ angular.module('mm.addons.dashboard')
  * @ngdoc controller
  * @name mmadashboardSettingsCtrl
  */
-.controller('mmaDashboardCtrl', function($scope, $mmaDashboard, $mmEvents, $mmSite, $mmUser, $mmaDashboardCommon, $sce, $state, $mmApp, $ionicPopover, $q, $ionicModal) {
+.controller('mmaDashboardCtrl', function($scope, $mmaDashboard, $mmEvents, $mmSite, $mmUser, $mmaDashboardCommon, $sce, $state, $mmApp, $ionicPopover, $q, $ionicModal, $window) {
     var self = this;
     self.statsLoaded = false;
     self.performanceLoaded = false;
@@ -158,8 +158,7 @@ angular.module('mm.addons.dashboard')
 
         }).finally(function() {
             self.feedbackLoaded = true;
-        });
-        
+        });        
     } else {
         self.stats = getData('stats');
         self.statsLoaded = true;
@@ -234,7 +233,7 @@ angular.module('mm.addons.dashboard')
 
     //$mmaDashboardCommon.userDetails('home');
 
-    this.options = {
+    self.options = {
         loop: false,
         effect: 'slide',
         speed: 500,
@@ -284,5 +283,5 @@ angular.module('mm.addons.dashboard')
     $scope.$on('popover.removed', function() {
         // Execute action
     });
-
+console.log('222222222222222222222')
 });

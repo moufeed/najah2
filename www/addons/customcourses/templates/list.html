@@ -1,0 +1,20 @@
+<ion-view view-title="{{ 'mma.customcourses.mycourses' | translate }}">
+    <ion-content mm-state-class class="mycourses">
+        <mm-loading hide-until="courses.coursesLoaded">
+            <div class="card courses">
+                <div class="card-header">
+                    courses <small>{{ courses.currentCourses.name }}</small>
+                </div>
+                <div class="courses-vert">
+                    <a ng-repeat="course in courses.currentCourses.courses" href="#/site/course/{{ course.id }}">
+                        <!--  ng-click="dashboard.goToCourse(course.id)" -->
+                        <div class="name">
+                            <h2>{{ course.name }}</h2>
+                        </div>
+                        <div class="image" ng-bind-html="course.img"></div>
+                    </a>
+                </div>
+            </div>
+        </mm-loading>
+    </ion-content>
+</ion-view>

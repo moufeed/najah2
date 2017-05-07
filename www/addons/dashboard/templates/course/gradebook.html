@@ -6,19 +6,21 @@
                     <div class="header">
                         <h2>{{ 'mma.dashboard.gradebook' | translate }}</h2>
                     </div>
-                    <div class="list">
-                        <div id="grades">
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <tr ng-repeat="item in dashboardCourse.gradebook">
-                                        <th ng-if="$parent.$first" ng-repeat="one in item track by $index" ng-bind-html="one"></th>
-                                        <td ng-if="!$parent.$first && !$parent.$last" ng-repeat="one in item track by $index" ng-bind-html="one"></td>
-                                        <th ng-if="$parent.$last" ng-repeat="one in item track by $index" ng-bind-html="one"></th>
-                                    </tr>
-                                </table>
+                    <ion-scroll direction="x" style="height: 100%">
+                        <div class="list">
+                            <div id="grades">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <tr ng-repeat="item in dashboardCourse.gradebook">
+                                            <th ng-if="$parent.$first" ng-repeat="one in item track by $index" ng-bind-html="one"></th>
+                                            <td ng-if="!$parent.$first && !$parent.$last" ng-repeat="one in item track by $index" ng-bind-html="one"></td>
+                                            <th ng-if="$parent.$last" ng-repeat="one in item track by $index" ng-bind-html="one"></th>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </ion-scroll>
                 </div>
             </div>
         </div>

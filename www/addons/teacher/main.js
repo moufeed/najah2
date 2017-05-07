@@ -14,7 +14,7 @@
 
 angular.module('mm.addons.teacher', [])
 
-.constant('mmaTeacherPriority', 400)
+.constant('mmaTeacherPriority', 2000)
 
 .config(function($stateProvider ,$mmSideMenuDelegateProvider ,mmaTeacherPriority) {
 

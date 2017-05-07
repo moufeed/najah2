@@ -132,32 +132,37 @@
         </mm-loading>
 
         <mm-loading hide-until="dashboard.weeklyAttendenceLoaded">
-            <div class="card weekly-attendence">
-                <div class="header">
-                    <h2>{{ 'mma.dashboard.weekly_attendence' | translate }}</h2>
-                </div>
-                <div class="list">
-                    <div class="table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th ng-repeat="head in dashboard.attendence.header">{{ head }}</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="(sess, data) in dashboard.attendence.data">
-                                    <td><i class="zmdi zmdi-collection-item-{{ sess }} zmdi-hc-fw color-green"></i></td>
-                                    <td ng-repeat="s in data track by $index">
-                                        <span tooltip-placement="top" tooltip="{{ s[1] }}" class="waves-effect" tooltip-class="tooltip-green">
-                                            <i class="zmdi {{ s[0] }} {{ s[2] }} zmdi-hc-fw"></i>
-                                        </span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+           
+
+
+        <div class="card weekly-attendence">
+			<div ng-if="dashboard.weeklyAttendenceLoaded">
+				<div class="card-header">
+					{{ 'mma.dashboard.weekly_attendence' | translate }} 
+				</div>
+				<div class="list with-height">
+					 <ion-scroll direction="x" style="height:100%"  zooming="true" min-zoom="1">
+						<table>
+							<thead>
+								<tr>
+									<th ng-repeat="head in dashboard.attendence.header" style="white-space: pre" >{{ head }}</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="(sess, data) in dashboard.attendence.data">
+									<td><i class="zmdi zmdi-collection-item-{{ sess }} zmdi-hc-fw color-green"></i></td>
+									<td ng-repeat="s in data track by $index">
+										<i class="zmdi {{ s[0] }} {{ s[2] }} zmdi-hc-fw"></i>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</ion-scroll>
+				</div>
+			</div>
+		</div>
+
+
             <!-- weekly-attendence -->
         </mm-loading>
 
@@ -249,7 +254,7 @@
                             <div class="card-body">
                                 <ion-list class="list">
                                     <ion-item class="item item-thumbnail-left" ng-repeat="badge in dashboard.badges"  ng-class-even="'even'">
-                                        <img ng-bind-html="badge.img">
+                                        <div class="badge-image" ng-bind-html="badge.img"></div>
                                         <h2>{{badge.name }}</h2>
                                         <small>{{ badge.coursename }}</small>
                                     </ion-item>
@@ -333,7 +338,7 @@
 
             <!-- card weekly-tasks -->
         </mm-loading>
-        <mm-loading hide-until="dashboard.feedbackLoaded">
+        <!--<mm-loading hide-until="dashboard.feedbackLoaded">
             <div class = "row responsive-sm news-wrapper">
                 <div class="col news-col">
                     <div class="card feedback">
@@ -360,8 +365,7 @@
                 </div>
             </div>
 
-            <!-- card feedback -->
-        </mm-loading>
+        </mm-loading>-->
 
     </ion-content>
 </ion-view>
