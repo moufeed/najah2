@@ -28,6 +28,7 @@ angular.module('mm.core.course')
         sectionId = $stateParams.sid,
         moduleId = $stateParams.moduleid,
         courseFullName = $stateParams.coursefullname;
+
     $scope.courseId = courseId;
     $scope.sectionToLoad = 2; // Load "General" section by default.
     $scope.fullname = courseFullName;

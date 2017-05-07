@@ -80,6 +80,7 @@ angular.module('mm.core')
         siteurl = preSets.siteurl + '/webservice/rest/server.php?moodlewsrestformat=json';
 
         var ajaxData = data;
+
         var promise = getPromiseHttp('post', preSets.siteurl, ajaxData);
 
         if (!promise) {

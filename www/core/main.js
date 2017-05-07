@@ -82,7 +82,7 @@ angular.module('mm.core', ['pascalprecht.translate'])
      * $log = $log.getInstance('MyFactory')
      * $log.debug('My message') -> "dd/mm/aaaa hh:mm:ss MyFactory: My message"
      */
-     $provide.decorator('$log', ['$delegate', $mmLogProvider.logDecorator]);
+    $provide.decorator('$log', ['$delegate', $mmLogProvider.logDecorator]);
 
     $stateProvider
         .state('redirect', {
@@ -186,15 +186,11 @@ angular.module('mm.core', ['pascalprecht.translate'])
 
 .run(function($ionicPlatform, $ionicBody, $window, $mmEvents, $mmInitDelegate, mmCoreEventKeyboardShow, mmCoreEventKeyboardHide,
         $mmApp, $timeout, mmCoreEventOnline, mmCoreEventOnlineStatusChanged, $mmUtil, $ionicScrollDelegate) {
-
-            
-
     // Execute all the init processes.
-        $mmInitDelegate.executeInitProcesses();
+    $mmInitDelegate.executeInitProcesses();
 
     // When the platform is ready.
     $ionicPlatform.ready(function() {
-        
         var checkTablet = function() {
             $ionicBody.enableClass($ionicPlatform.isTablet(), 'tablet');
         };

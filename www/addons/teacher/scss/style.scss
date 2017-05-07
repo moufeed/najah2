@@ -365,7 +365,8 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
 //----------------------------------------------------------------------------------------
 .tabbed-slidebox {
     .slider {
-        height: 100%;
+        height: 78%;
+        height: calc(100% - 100px);
     }
     &.btm {
         .slider {
@@ -443,7 +444,7 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
 //------ Quizzes Slide
 //----------------------------------------------------------------------------------------
 .quizzes-slide {
-    padding-bottom: 35px;
+    // padding-bottom: 35px;
     .list {
         .item-quiz {
             text-align: left;

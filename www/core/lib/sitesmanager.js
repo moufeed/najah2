@@ -365,8 +365,7 @@ angular.module('mm.core')
      */
     self.determineService = function(siteurl) {
         // We need to try siteurl in both https or http (due to loginhttps setting).
-		console.clear();
-		console.log(services);
+
         // First http://
         siteurl = siteurl.replace("https://", "http://");
         if (services[siteurl]) {

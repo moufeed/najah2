@@ -858,7 +858,6 @@ angular.module('mm.addons.messages')
         siteId = siteId || $mmSite.getId();
 
         return $mmSitesManager.getSite(siteId).then(function(site) {
-             
             var enabled = site.canUseAdvancedFeature('messaging', 'unknown');
 
             if (enabled === 'unknown') {
