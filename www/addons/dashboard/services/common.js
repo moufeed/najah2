@@ -25,14 +25,23 @@ angular.module('mm.addons.dashboard')
     self.profile = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.initialdata&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.initialdata&wstoken=' + $mmSite.getToken()
         });
     };
+
+    self.getType = function() {
+        return $http({
+            method: 'GET',
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.usertype&wstoken=' + $mmSite.getToken()
+        });
+    };
+
+    
 
     self.userDetails = function(layout) {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.getcomponents&layout=' + layout + '&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.getcomponents&layout=' + layout + '&wstoken=' + $mmSite.getToken()
         });
     };
 
@@ -61,112 +70,112 @@ angular.module('mm.addons.dashboard')
     self.stats = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.statistics&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.statistics&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.performance = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.getperformance&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.getperformance&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.courses = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.currentcourses&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.currentcourses&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.course = function(id) {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.syllabus&courseid=' + id + '&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.syllabus&courseid=' + id + '&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.weeklySchedule = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.schedule&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.schedule&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.weeklyAttendence = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.weeklyattendance&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.weeklyattendance&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.attendence = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.attendance&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.attendance&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.news = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.latestnews&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.latestnews&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.lastTrackCourses = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.getlasttrackcourses&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.getlasttrackcourses&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.badges = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.badges&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.badges&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.stamps = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.stamps&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.stamps&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.weeklyTasks = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.weeklytasks&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.weeklytasks&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.calendar = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.calendar&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.calendar&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.feedback = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.feedback&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.feedback&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.messages = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.messages&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.messages&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.gradebook = function(id) {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.gradebook&wstoken=' + token + '&courseid=' + id
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.gradebook&wstoken=' + $mmSite.getToken() + '&courseid=' + id
         });
     };
 

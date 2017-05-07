@@ -21,7 +21,7 @@ angular.module('mm.addons.dashboard')
  * @ngdoc controller
  * @name mmadashboardSettingsCtrl
  */
-.controller('mmaDashboardCtrl', function($scope, $mmaDashboard, $mmEvents, $mmSite, $mmUser, $mmaDashboardCommon, $sce, $state, $mmApp, $ionicPopover, $q) {
+.controller('mmaDashboardCtrl', function($scope, $mmaDashboard, $mmEvents, $mmSite, $mmUser, $mmaDashboardCommon, $sce, $state, $mmApp, $ionicPopover, $q, $ionicModal) {
     var self = this;
     self.statsLoaded = false;
     self.performanceLoaded = false;
@@ -37,7 +37,7 @@ angular.module('mm.addons.dashboard')
 
     if ($mmApp.isOnline()) {
         $mmaDashboardCommon.stats().then(function(res) {
-            self.stats = res.data;
+            self.stats = res.data;            
         }, function(reject) {
 
         }).finally(function() {
@@ -236,9 +236,20 @@ angular.module('mm.addons.dashboard')
 
     this.options = {
         loop: false,
-        effect: 'fade',
+        effect: 'slide',
         speed: 500,
+        pagination: false
     };
+
+    self.openNews = function(post){
+        $scope.post = post;
+            $ionicModal.fromTemplateUrl('addons/dashboard/templates/modal.html', {
+            scope: $scope
+        }).then(function(modal) {
+            $scope.modal = modal;
+            modal.show();
+        });
+    }
 
     $scope.onReadySwiper = function(swiper) {
         swiper.initObservers();

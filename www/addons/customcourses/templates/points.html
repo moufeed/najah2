@@ -2,8 +2,8 @@
     <ion-content mm-state-class class="my-points">
         <mm-loading hide-until="points.pointsLoaded">
             <div class="card points">
-                <div class="header">
-                    <h2>{{ 'mma.dashboard.points' | translate }}</h2>
+                <div class="card-header">
+                    {{ 'mma.dashboard.points' | translate }}
                 </div>
                 <div class="list" ng-repeat="point in points.points">
                     <div class="item item-divider">

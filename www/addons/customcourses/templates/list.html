@@ -2,8 +2,8 @@
     <ion-content mm-state-class class="mycourses">
         <mm-loading hide-until="courses.coursesLoaded">
             <div class="card courses">
-                <div class="header">
-                    <h2>courses <small>{{ courses.currentCourses.name }}</small></h2>
+                <div class="card-header">
+                    courses <small>{{ courses.currentCourses.name }}</small>
                 </div>
                 <div class="courses-vert">
                     <a ng-repeat="course in courses.currentCourses.courses" href="#/site/course/{{ course.id }}">

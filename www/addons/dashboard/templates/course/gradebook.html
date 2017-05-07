@@ -1,2 +1,26 @@
-<h2>asd asd asd asd sad </h2>
-asd asd asd asd sda 
+<ion-scroll style="height:100%">
+    <div class="course-content">
+        <div class="content {{ dashboardCourse.contentClass }}">
+            <div class="resources course-view">
+                <div class="card resources">
+                    <div class="header">
+                        <h2>{{ 'mma.dashboard.gradebook' | translate }}</h2>
+                    </div>
+                    <div class="list">
+                        <div id="grades">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tr ng-repeat="item in dashboardCourse.gradebook">
+                                        <th ng-if="$parent.$first" ng-repeat="one in item track by $index" ng-bind-html="one"></th>
+                                        <td ng-if="!$parent.$first && !$parent.$last" ng-repeat="one in item track by $index" ng-bind-html="one"></td>
+                                        <th ng-if="$parent.$last" ng-repeat="one in item track by $index" ng-bind-html="one"></th>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ion-scroll>

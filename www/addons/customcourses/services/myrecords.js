@@ -30,28 +30,28 @@ angular.module('mm.addons.customcourses')
     self.courses = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.currentcourses&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.currentcourses&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.badges = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.badges&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.badges&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.weeklyTasks = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.weeklytasks&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.weeklytasks&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.points = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.points&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.points&wstoken=' + $mmSite.getToken()
         });
     };
 

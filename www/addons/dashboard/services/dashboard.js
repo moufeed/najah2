@@ -23,14 +23,20 @@ angular.module('mm.addons.dashboard')
  * @ngdoc service
  * @name $mmaCalendar
  */
-.factory('$mmaDashboard', function($log, $q) {
+.factory('$mmaDashboard', function($log, $q, $mmaDashboardCommon) {
 
     $log = $log.getInstance('$mmaDashboard');
 
     var self = {}
 
     self.isAvailable = function() {
-        return true;
+        return $mmaDashboardCommon.getType().then(function(res) {
+            if (res.data.usertype === 'sisstudent') {
+                    return true;
+            }
+            return false;
+        });
+
     };
 
     return self;

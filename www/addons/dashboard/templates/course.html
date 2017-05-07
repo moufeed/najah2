@@ -1,209 +1,67 @@
-<ion-view>
+<ion-view> 
     <ion-nav-title>{{ dashboardCourse.course.fullname }}</ion-nav-title>
-    <ion-nav-buttons side="secondary">
-        <button ng-click="openPopover($event)" class="button button-icon icon ion-more"></button>
-    </ion-nav-buttons>
-    <ion-content mm-state-class class="course-content">
+    <ion-content padding="true" mm-state-class scroll="false">
         <mm-loading hide-until="dashboardCourse.courseLoaded">
-            <ion-slides slider="slider" ion-slides-tabs slide-tabs-scrollable="true">
-                <ion-slide-page ion-slide-tab-label="<div><img src='img/icons/syllabus.png' /></div>">
-                    <div class="course-content">
-                        <div class="content {{ dashboardCourse.contentClass }}">
-                            <div class="syllabus course-view">
-                                <div class="sections card">
-                                    <h2 class="section-title">{{ 'mma.dashboard.sections' | translate }}</h2>
-                                    <ul class="list">
-                                        <li ng-repeat="section in dashboardCourse.course.sections" class="item">
-                                            <a ui-sref="site.mm_course-section({cid: dashboardCourse.course.id, sectionid: section.id})">{{ section.name }}</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ion-slide-page>
-                <ion-slide-page ion-slide-tab-label="<div><img src='img/icons/calendar.png' /></div>">
-                    <div ng-bind-html="dashboardCourse.miniCalendar" class="calendar-card table"></div>
-                </ion-slide-page>
-                <ion-slide-page ion-slide-tab-label="<div><img src='img/icons/quizzes.png' /></div>">
-                    <div class="course-content">
-                        <div class="content {{ dashboardCourse.contentClass }}">
-                            <div class="quizzes course-view">
-                                <div class="card quizzes">
-                                    <div class="header">
-                                        <h2>{{ 'mma.dashboard.quizzes' | translate }}</h2>
-                                    </div>
-                                    <div id="grades" class="list">
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>{{ 'mma.dashboard.quiz_name' | translate }}</th>
-                                                    <th>{{ 'mma.dashboard.start_date' | translate }}</th>
-                                                    <th>{{ 'mma.dashboard.end_date' | translate }}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr ng-repeat="quiz in dashboardCourse.course.quizzes">
-                                                    <td><a ui-sref="site.mod_quiz({module: quiz, courseid: dashboardCourse.course.id})">{{ quiz.data.name }}</a></td>
-                                                    <td>{{ quiz.data.timeopen }}</td>
-                                                    <td>{{ quiz.data.timeclose }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ion-slide-page>
-                <ion-slide-page ion-slide-tab-label="<div><img src='img/icons/assignments.png' /></div>">
-                    <div class="course-content">
-                        <div class="content {{ dashboardCourse.contentClass }}">
-                            <div class="assignments course-view">
-                                <div class="card assignments">
-                                    <div class="header">
-                                        <h2>{{ 'mma.dashboard.assignments' | translate }}</h2>
-                                    </div>
-                                    <div id="grades" class="list">
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>{{ 'mma.dashboard.assignment_name' | translate }}</th>
-                                                    <th>{{ 'mma.dashboard.grade' | translate }}</th>
-                                                    <th>{{ 'mma.dashboard.submition_deadline' | translate }}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr ng-repeat="assign in dashboardCourse.course.weeklytasks">
-                                                    <td><a ui-sref="site.mod_assign({module: assign, courseid: dashboardCourse.course.id})">{{ assign.data.name }}</a></td>
-                                                    <td>{{ assign.data.grade }}</td>
-                                                    <td>{{ assign.data.duedate }}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ion-slide-page>
-                <ion-slide-page ion-slide-tab-label="<div><img src='img/icons/forums.png' /></div>">
-                    <div class="course-content">
-                        <div class="content {{ dashboardCourse.contentClass }}">
-                            <div class="forums course-view">
-                                <div class="card forums">
-                                    <div class="header">
-                                        <h2>{{ 'mma.dashboard.forums' | translate }}</h2>
-                                    </div>
-                                    <div id="grades" class="list">
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>{{ 'mma.dashboard.forum_name' | translate }}</th>
-                                                    <th>{{ 'mma.dashboard.description' | translate }}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr ng-repeat="forum in dashboardCourse.course.forums">
-                                                    <td><a ui-sref="site.mod_forum({module: forum, courseid: dashboardCourse.course.id})">{{ forum.data.name }}</a></td>
-                                                    <td ng-bind-html="forum.data.intro"></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ion-slide-page>
-                <ion-slide-page ion-slide-tab-label="<div><img src='img/icons/resources.png' /></div>">
-                    <div class="course-content">
-                        <div class="content {{ dashboardCourse.contentClass }}">
-                            <div class="resources course-view">
-                                <div class="card resources">
-                                    <div class="header">
-                                        <h2>{{ 'mma.dashboard.resources' | translate }}</h2>
-                                    </div>
-                                    <div id="grades" class="list">
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>{{ 'mma.dashboard.resource' | translate }}</th>
-                                                    <th>{{ 'mma.dashboard.section' | translate }}</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr ng-repeat="forum in dashboardCourse.course.resources">
-                                                    <td><a ui-sref="site.mod_resource({module: forum, courseid: dashboardCourse.course.id})">{{ forum.data.name }}</a></td>
-                                                    <td ng-bind-html="forum.data.intro"></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ion-slide-page>
-                <ion-slide-page ion-slide-tab-label="<div><img src='img/icons/gradebook.png' /></div>">
-                    <div class="course-content">
-                        <div class="content {{ dashboardCourse.contentClass }}">
-                            <div class="resources course-view">
-                                <div class="card resources">
-                                    <div class="header">
-                                        <h2>{{ 'mma.dashboard.gradebook' | translate }}</h2>
-                                    </div>
-                                    <div class="list">
-                                        <div id="grades">
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered">
-                                                    <tr ng-repeat="item in dashboardCourse.gradebook">
-                                                        <th ng-if="$parent.$first" ng-repeat="one in item track by $index" ng-bind-html="one"></th>
-                                                        <td ng-if="!$parent.$first && !$parent.$last" ng-repeat="one in item track by $index" ng-bind-html="one"></td>
-                                                        <th ng-if="$parent.$last" ng-repeat="one in item track by $index" ng-bind-html="one"></th>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ion-slide-page>
-                <!--<ion-slide-page ion-slide-tab-label="<div><img src='img/icons/evaluating.png' /></div>">
-                    <div class="course-content">
-                        <div class="content {{ dashboardCourse.contentClass }}">
-                            <div class="evaluating course-view">
-                                <div class="card evaluating">
-                                    <div class="header">
-                                        <h2>{{ 'mma.dashboard.evaluating' | translate }}</h2>
-                                    </div>
-                                    <div class="list">
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <th>{{ 'mma.dashboard.evaluation_yype' | translate }}</th>
-                                                    <th>{{ 'mma.dashboard.evaluation_info' | translate }}</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr ng-repeat="stamp in dashboardCourse.course.stamps">
-                                                    <td>{{ stamp.stampname }}</td>
-                                                    <td>{{ stamp.text }}</td>
-                                                    <td><img ng-src="{{ stamp.stampimg }}" alt=""></td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ion-slide-page>-->
-            </ion-slides>
-            <ui-view/>
+               <mma-tab-slide-box tab="0"  ng-if="dashboardCourse.course">
+		    	<div class="tsb-icons">
+		    		<div class="tsb-ic-wrp">
+                           <ion-scroll direction="x" class="tsb-hscroll">
+                           <a href="javascript:;" class="ico syllabus-icon"> 
+                               <img src="addons/dashboard/img/icons/syllabus.png">
+                               <small>{{'mma.dashboard.syllabus' | translate}}</small>
+                           </a>
+                           <!--<a href="javascript:;" class="ico calendar-icon"> 
+                               <img src="addons/dashboard/img/icons/calendar.png">
+                               <small>{{'mma.teacher.calendar' | translate}}</small>
+                               </a> -->
+                           <a href="javascript:;" class="ico quizzes-icon"> 
+                               <img src="addons/dashboard/img/icons/quizzes.png">
+                               <small>{{'mma.dashboard.quizzes' | translate}}</small>
+                               </a>
+                           <a href="javascript:;" class="ico assignments-icon"> 
+                               <img src="addons/dashboard/img/icons/assignments.png">
+                               <small>{{'mma.dashboard.assignments' | translate}}</small>
+                               </a>
+                           <a href="javascript:;" class="ico forums-icon"> 
+                               <img src="addons/dashboard/img/icons/forums.png">
+                               <small>{{'mma.dashboard.forums' | translate}}</small>
+                               </a> 
+                           <a href="javascript:;" class="ico resources-icon"> 
+                               <img src="addons/dashboard/img/icons/resources.png">
+                               <small>{{'mma.dashboard.resources' | translate}}</small>
+                           </a>
+                        <a href="javascript:;" class="ico stamps-icon"> 
+                               <img src="addons/dashboard/img/icons/gradebook.png">
+                               <small>{{'mma.dashboard.gradebook' | translate}}</small>
+                        </a>
+                       </ion-scroll>
+                           
+					</div>
+		    	</div>
+		        <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+                       <ion-slide>
+                            <ng-include src="'addons/dashboard/templates/course/syllabus.html'"></ng-include>
+                       </ion-slide>
+                       <!--<ion-slide>
+                            <ng-include src="'addons/dashboard/templates/course/calendar.html'"></ng-include>
+                       </ion-slide>-->
+                       <ion-slide>
+                           <ng-include src="'addons/dashboard/templates/course/quizzes.html'"></ng-include>
+                       </ion-slide>
+                       <ion-slide>
+                           <ng-include src="'addons/dashboard/templates/course/assignments.html'"></ng-include>
+                       </ion-slide>
+                       <ion-slide>
+                            <ng-include src="'addons/dashboard/templates/course/forums.html'"></ng-include>
+                       </ion-slide>
+                       <ion-slide>
+                            <ng-include src="'addons/dashboard/templates/course/resources.html'"></ng-include>
+                       </ion-slide>
+                       <ion-slide>
+                            <ng-include src="'addons/dashboard/templates/course/gradebook.html'"></ng-include>
+                       </ion-slide>
+	        </ion-slide-box>
+         	</mma-tab-slide-box>
         </mm-loading>
     </ion-content>
 </ion-view>

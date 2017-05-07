@@ -23,7 +23,19 @@ angular.module('mm.addons.studentrecords')
     var token = $mmSite.getToken();
 
     self.isAvailable = function() {
-        return true;
+        return self.getType().then(function(res) {
+            if (res.data.usertype === 'sisstudent') {
+                    return true;
+            }
+            return false;
+        });
+    };
+
+    self.getType = function() {
+        return $http({
+            method: 'GET',
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.usertype&wstoken=' + $mmSite.getToken()
+        });
     };
 
     self.academicRecords = function() {

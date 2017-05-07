@@ -1,27 +1,15 @@
-<div class="course-content">
-    <div class="content {{ dashboardCourse.contentClass }}">
-        <div class="resources course-view">
-            <div class="card resources">
-                <div class="header">
-                    <h2>resources</h2>
-                </div>
-                <div class="list">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Resource</th>
-                                <th>Section</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="forum in dashboardCourse.course.resources">
-                                <td>{{ forum.data.name }}</td>
-                                <td ng-bind-html="forum.data.intro"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+ 
+<ion-scroll style="height:100%">
+    <div class="resources-slide">
+        <ion-list class="list">
+            <ion-item class="item item-resource item-button-right" ng-repeat="resource in dashboardCourse.course.resources"  ng-class-even="'even'"  >
+                    <h3>{{ resource.data.name }}</h3>
+                    <div ng-bind-html="resource.data.intro | trustedHtml" class="intro"></div>
+                    <a class="button button-icon"  ui-sref="site.mod_resource({module: resource, courseid: dashboardCourse.course.id})" >
+                         <i class="icon ion-eye"></i>
+                    </a>
+            </ion-item>
+        </ion-list>
     </div>
-</div>
+  <ion-scroll>
+  

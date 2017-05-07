@@ -1,14 +1,12 @@
-<div class="course-content">
-    <div class="content {{ dashboardCourse.contentClass }}">
-        <div class="syllabus course-view">
-            <div class="sections card">
-                <h2 class="section-title">sections</h2>
-                <ul class="list">
-                    <li ng-repeat="section in dashboardCourse.course.sections" class="item">
-                        <a ui-sref="site.mm_course-section({cid: dashboardCourse.course.id, sectionid: section.id})">{{ section.name }}</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+ 
+<ion-scroll style="height:100%">
+    <div class="syllabus-slide">
+        <ion-list class="list">
+            <ion-item class="item item-section item-icon-right" ng-repeat="section in dashboardCourse.course.sections"  ng-class-even="'even'" 
+                ui-sref="site.mm_course-section({cid: dashboardCourse.course.id, sectionid: section.id})">
+                    <h3>{{ section.name }}</h3>
+                    <i class="icon icon-accessory ion-chevron-right"></i>
+            </ion-item>
+        </ion-list>
     </div>
-</div>
+  <ion-scroll>

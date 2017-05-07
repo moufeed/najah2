@@ -32,21 +32,33 @@ angular.module('mm.addons.myprograms')
     var token = $mmSite.getToken();
 
     self.isAvailable = function() {
-        return true;
+        return self.getType().then(function(res) {
+            if (res.data.usertype === 'sisstudent') {
+                    return true;
+            }
+            return false;
+        });
+    };
+
+    self.getType = function() {
+        return $http({
+            method: 'GET',
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.usertype&wstoken=' + $mmSite.getToken()
+        });
     };
 
 
     self.programs = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.programs&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.programs&wstoken=' + $mmSite.getToken()
         });
     };
 
     self.programDetails = function(id) {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.programdetails&programid=' + id + '&wstoken=' + token
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.programdetails&programid=' + id + '&wstoken=' + $mmSite.getToken()
         });
     };
 
