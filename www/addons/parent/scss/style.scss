@@ -156,6 +156,11 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
         font-size: 18px;
         background: #fff;
         color: nth($pie, 4);
+        span{
+            &:last-child{
+                white-space: pre;
+            }
+        }
     }
     .pie-chart {
         position: relative;
@@ -167,8 +172,13 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
         margin: 15px 0;
         .pie-info {
             position: absolute;
-            top: auto;
-            left: auto;
+            // top : 50px;
+            // left: 37%;
+            // top : calc(50% - 46px);
+            // left: calc(50% - 40px);
+            canvas{
+                position: absolute;
+            }
             span {
                 display: block;
                 &.pie-percent {
@@ -415,9 +425,9 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
         background: mc(purple);
     }
     .table {
-        overflow-x: auto;
-        min-height: .01%;
-        width: 100%;
+        // overflow-x: auto;
+        // min-height: .01%;
+        // width: 100%;
         table {
             width: 100%;
             td,

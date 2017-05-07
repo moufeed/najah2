@@ -5,7 +5,7 @@
 
 <div class = "row responsive-sm">
 	<div class="col col-50">
-		<div class="courses-box">
+		<div class="courses-box" hide-until="courses">
 			<ks-swiper-container ng-if="courses" initial-slide="0" loop="false" show-nav-buttons="false" slides-per-view="(courses.length > 1) ? 2 : 1 "
 			    space-between="5" pagination-clickable="false">
 				<ks-swiper-slide class="swiper-slide" ng-repeat="course in courses" >
@@ -37,7 +37,7 @@
 		</div>
 	</div>
 	<div class="col col-50">
-		<div class="card dailyschedule">
+		<div class="card dailyschedule" hide-until="lessons">
 			<div ng-if="lessons">
 				<div class="card-header">
 					{{ 'mma.teacher.dailyschedule' | translate }}
@@ -47,7 +47,7 @@
 						<ion-item class="item item-avatar-left" ng-repeat="lesson in lessons | limitTo:lessonMaxItems" ng-class-even="'even'">
 							<div class="item-image">
 		<a ui-sref = "site.attendence({divId:{{ lesson.divid}} ,recId : {{ lesson.recordid}} })" class="linkbtn {{ (lesson.status == 'edit') ? 'edite' : 'add' }}">
-                            {{ (lesson.status == 'add') ? ('mma.teacher.take_attendence' | translate ) : ('mma.teacher.edite_attendence' | translate) }}
+           	<i class="{{ (lesson.status == 'add') ? 'ion-edit' : 'ion-compose' }}"></i>
                             </a>
 							</div>
 							<div class="item-info">
@@ -79,7 +79,7 @@
 	</div>
 </div> <!-- </row> -->
 <div class = "row responsive-sm">
-	<div class="col col-50">
+	<div class="col col-50" hide-until="dailyattendance">
 	<div class="card dailyattendance">
 			<div ng-if="dailyattendance">
 					<div class="card-header">
@@ -117,7 +117,7 @@
 
 </div>
 <div class="col col-50">
-		<div class="card weeklySchedule">
+		<div class="card weeklySchedule" hide-until="weeklySchedule">
 			<div ng-if="weeklySchedule">
 				<div class="card-header">
 					{{ 'mma.teacher.weekly_schedule' | translate }}
@@ -155,7 +155,7 @@
 </div> <!-- </row> -->
 <div class = "row responsive-sm">
 	<div class="col col-50">
-		<div class="card latest_news">
+		<div class="card latest_news" hide-until="feeds">
 			<div  ng-if="feeds">
 			<div class="card-header">
 					{{ 'mma.teacher.lastnews' | translate }}
@@ -198,4 +198,3 @@
 </div><!-- </row> -->
 	</ion-content>
 </ion-view>
-

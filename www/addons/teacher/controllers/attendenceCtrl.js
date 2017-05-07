@@ -153,16 +153,22 @@ angular.module('mm.addons.teacher')
   
          $mmaTeacherAttendanceHelper.getAttendance($stateParams.divId, $stateParams.recId)
             .then(function (response) {
-                if (data.list.old_data) {
-                    mergeData(data.list.old_data, response.list.users).then(function (res) {
-                        data.list.usrs = res;
-                        $scope.course = data.list;
+                if (response.list.old_data) {
+                    mergeData(response.list.old_data, response.list.users).then(function (res) {
+                        response.list.usrs = res;
+                        $scope.course = response.list;
+                        console.log('data.list.usrs',response.list.usrs)
+                        console.log(' $scope.course', $scope.course)
+                        console.log('res',res)
                     })
                 } else {
-                    $scope.course = data.list;
+                    response.list.usrs = response.list.users;
+                    console.log('asd',response)
+                    $scope.course = response.list;
                 }
             })
             .finally(function () {
+
                 $scope.attendance.noData = true;
             }); 
 
@@ -207,6 +213,4 @@ angular.module('mm.addons.teacher')
                 });
 
         }
-
-
     });

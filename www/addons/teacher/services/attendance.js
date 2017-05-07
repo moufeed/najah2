@@ -46,7 +46,7 @@ angular.module('mm.addons.teacher')
          * Return Attendance
          */
         self.getAttendance = function(divid,id){
-                return self.call({s : 'teacher.todayattendance' , divid : divid ,id :id}) 
+                return self.call({s : 'attendance.attendanceform' , divid : divid ,id :id}) 
                 .then(function(data){
                     return data ;
                 })

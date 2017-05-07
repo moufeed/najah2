@@ -15,13 +15,14 @@
                 </div>
                 <div class="card-body">
                     <ion-list class="list">
+                        
 						<ion-item class="item item-input item-select item-icon-left" ng-repeat="usr in course.usrs"  ng-class-even="'even'">
                              <div class="input-label">
-                                <a class="btn-note ion-compose" ng-click="showPrompt(usr)"></a>
-                             {{usr.name}}
+                                <a class="btn-note " ng-class="usr.note ? 'ion-compose active': 'ion-edit'" ng-click="showPrompt(usr)"></a>
+                                 {{ usr.name }} 
                              </div>
                                 <select ng-model="stds[usr.id].option"  ng-init="stds[usr.id].option = (usr.status ? usr.status : addStatus(usr))" >
-                                <option value="val"  ng-repeat="(val, label) in course.options" ng-selected="(usr.status == val) || (val == 1) " >{{label}}</option>       
+                                <option value="{{val}}"  ng-repeat="(val, label) in course.options" ng-selected="(usr.status == val) || (val == 1) " >{{label}}</option>       
                                 </select>
 						</ion-item>
 					</ion-list>

@@ -63,3 +63,8 @@ $ionicons-font-path: "../lib/ionic/release/fonts" !default;
 "partials/bar",
 "partials/loginpage",
 "partials/common";
+
+
+h1, h2, .item .item-heading, .mm-grades-table .itemcenter .item-heading, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+    line-height: 1.4;
+}
