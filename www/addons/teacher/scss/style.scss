@@ -71,18 +71,20 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
                 @include display-flex;
                 @include justify-content(center);
                 @include align-items(center);
-                border-radius: 2px;
+                border-radius: 50%;
                 color: $white;
                 &.add {
                     background: mc(green);
+                    box-shadow: 0 0 0 4px lighten(mc(green),35%);
                     &.activated {
-                        background: darken( mc(green), 15%);
+                        background: darken( mc(green), 7%);
                     }
                 }
                 &.edite {
                     background: mc(orange);
+                    box-shadow: 0 0 0 4px lighten(mc(orange),35%); 
                     &.activated {
-                        background: darken( mc(orange), 15%);
+                        background: darken( mc(orange), 7%);
                     }
                 }
             }
@@ -93,9 +95,11 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
                     color: lighten($black, 25%);
                     display: inline-block;
                     margin-bottom: 4px;
+                    font-weight:normal;
                 }
                 small {
                     color: lighten($black, 40%);
+                   
                     &:last-child {
                         font-weight: bold;
                     }
@@ -208,10 +212,17 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
 //----------------------------------------------------------------------------------------
 .card-courseInfo {
     .item {
+        &.item-input.item-select{
+            padding: 5px;
+        }
         span {
             padding: 0 5px;
         }
-        strong {}
+        .btn-note {
+            &.active{
+                color:#009688;
+            }
+        }
     }
 }
 
