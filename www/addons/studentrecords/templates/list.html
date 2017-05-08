@@ -1,4 +1,4 @@
-<ion-view view-title="{{ 'mma.studentrecords.myrecords' | translate }}">
+<ion-view view-title="{{ 'mma.studentrecords.myrecords' | translate }}" scroll="false">
     <ion-content mm-state-class class="myrecords">
         <mm-loading hide-until="studentRecords.dataLoaded">
             <div class="card">
@@ -6,7 +6,7 @@
                     <h2>{{ 'mma.studentrecords.academic_records' | translate }}</h2>
                 </div>
                 <div class="list" style="height:75vh;">   
-                       <ion-scroll direction="xy" style="height:100%"  zooming="true" min-zoom="1">                 
+                       <ion-scroll direction="xy" style="height:75vh"  zooming="true" min-zoom="1">                 
                     <table ng-table="studentRecords.tableParams" class="table" show-filter="true">
                         <tr ng-repeat="user in $data">
                             <td title="'mma.studentrecords.course_name' | translate" filter="{ coursename: 'text'}" sortable="'name'">
