@@ -348,12 +348,12 @@
                                 <ion-list class="list list-divider stamp-course">
                                     <!--<p>{{ course.coursename }}</p>-->
                                     <ion-list class="list">
-                                        <ion-item ui-sref="site.mod_assign({module: assign, courseid: tasks.course})" class="item item-thumbnail-left" ng-class-even="'even'" ng-repeat="assign in dashboard.weeklyTasks.assign | limitTo:2">
+                                        <ion-item ui-sref="site.mod_assign({module: assign, courseid: assign.course})" class="item item-thumbnail-left" ng-class-even="'even'" ng-repeat="assign in dashboard.weeklyTasks.assign | limitTo:2">
                                             <img ng-src="img/icons/{{ assign.class }}.png">
                                             <h2>{{ assign.data.name }}</h2>
                                             <small>{{ assign.section }}</small>
                                         </ion-item>
-                                        <ion-item ui-sref="site.mod_quiz({module: quiz, courseid: tasks.course})" class="item item-thumbnail-left" ng-class-even="'even'" ng-repeat="quiz in dashboard.weeklyTasks.quiz | limitTo:2">
+                                        <ion-item ui-sref="site.mod_quiz({module: quiz, courseid: quiz.course})" class="item item-thumbnail-left" ng-class-even="'even'" ng-repeat="quiz in dashboard.weeklyTasks.quiz | limitTo:2">
                                             <img ng-src="img/icons/{{ quiz.class }}.png">
                                             <h2>{{ quiz.data.name }}</h2>
                                             <small>{{ quiz.section }}</small>
