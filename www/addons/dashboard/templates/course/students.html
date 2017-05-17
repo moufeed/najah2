@@ -1,13 +1,16 @@
-<ion-scroll style="height: 77vh;">
+<ion-scroll class="course-scroll-student">
     <div class="students-slide">
         <ion-list class="list" ng-if="participants && participants.length > 0">
-            <ion-item class="item item-avatar item-student item-icon-right" ng-repeat="participant in participants" ng-class-even="'even'" ui-sref="{{userStateName}}({courseid: courseid, userid: participant.id})">
-                <img ng-src="{{participant.profileimageurl}}" alt="{{ 'mm.core.pictureof' | translate:{$a: participant.fullname} }}" mm-external-content>
-                <mm-format-text>{{participant.fullname}}</mm-format-text>
-                <i class="icon icon-accessory ion-chevron-right"></i>
+            <ion-item class="item item-avatar item-student item-icon-right" ng-repeat="participant in participants"  ng-class-even="'even'" ui-sref="{{userStateName}}({courseid: courseid, userid: participant.id})">
+                 <img ng-src="{{participant.profileimageurl}}" alt="{{ 'mm.core.pictureof' | translate:{$a: participant.fullname} }}" mm-external-content>
+                 <mm-format-text>{{participant.fullname}}</mm-format-text>
+                 <i class="icon icon-accessory ion-chevron-right"></i>
             </ion-item>
         </ion-list>
-        <ion-infinite-scroll ng-if="canLoadMore" immediate-check="false" on-infinite="loadMoreParticipants()">
+        <ion-infinite-scroll ng-if="canLoadMore"
+                        immediate-check="false"
+                        on-infinite="loadMoreParticipants()" >
         </ion-infinite-scroll>
     </div>
-    <ion-scroll>
+  <ion-scroll>
+  

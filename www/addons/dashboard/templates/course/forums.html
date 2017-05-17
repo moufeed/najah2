@@ -1,11 +1,13 @@
-<ion-scroll style="height: 77vh;">
+<ion-scroll class="course-scroll-student">
     <div class="forums-slide">
         <ion-list class="list">
-            <ion-item class="item item-forum item-icon-right" ng-repeat="forum in dashboardCourse.course.forums" ng-class-even="'even'" ui-sref="site.mod_forum({module: forum, courseid: dashboardCourse.course.id})">
-                <h3>{{ forum.data.name }}</h3>
-                <div ng-bind-html="forum.data.intro | trustedHtml" class="intro"></div>
-                <i class="icon icon-accessory ion-chevron-right"></i>
+            <ion-item class="item item-forum item-icon-right" ng-repeat="forum in dashboardCourse.course.forums"  ng-class-even="'even'" 
+            ui-sref="site.mod_forum({module: forum, courseid: dashboardCourse.course.id})">
+                    <h3>{{ forum.data.name }}</h3>
+                    <div ng-bind-html="forum.data.intro | trustedHtml" class="intro"></div>
+                      <i class="icon icon-accessory ion-chevron-right"></i>
             </ion-item>
         </ion-list>
     </div>
-    <ion-scroll>
+<ion-scroll>
+   

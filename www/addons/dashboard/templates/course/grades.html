@@ -1,4 +1,4 @@
-<ion-scroll style="height: 77vh;">
+<ion-scroll class="course-scroll-student">
     <div class="grades-slide">
         <ion-list class="list">
             <div ng-repeat="group in groups" class="item-grade">
@@ -17,7 +17,8 @@
                             <span>{{item[0]}}</span>
                             <i class="icon" ng-class="isSubGroupShown(item) ? 'ion-ios-minus-outline' : 'ion-ios-plus-outline'"></i>
                         </ion-item>
-                        <ion-item ng-repeat="i in item.slice(1,item.length)  track by $index " ng-if="$index > 0" class="item-accordion item-info flex-display" ng-show="isSubGroupShown(item)">
+                        <ion-item ng-repeat="i in item.slice(1,item.length)  track by $index " ng-if="$index > 0" class="item-accordion item-info flex-display"
+                            ng-show="isSubGroupShown(item)">
                             <span>{{course.grades.cols[$index]}}</span>
                             <strong>{{i}}</strong>
                         </ion-item>
@@ -26,4 +27,4 @@
             </div>
         </ion-list>
     </div>
-    <ion-scroll>
+<ion-scroll>
