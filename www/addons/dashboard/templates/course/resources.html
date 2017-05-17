@@ -1,15 +1,13 @@
- 
-<ion-scroll style="height:100%">
+<ion-scroll style="height: 77vh;">
     <div class="resources-slide">
         <ion-list class="list">
-            <ion-item class="item item-resource item-button-right" ng-repeat="resource in dashboardCourse.course.resources"  ng-class-even="'even'"  >
-                    <h3>{{ resource.data.name }}</h3>
-                    <div ng-bind-html="resource.data.intro | trustedHtml" class="intro"></div>
-                    <a class="button button-icon"  ui-sref="site.mod_resource({module: resource, courseid: dashboardCourse.course.id})" >
-                         <i class="icon ion-eye"></i>
-                    </a>
+            <ion-item class="item item-resource item-button-right" ng-repeat="resource in dashboardCourse.course.resources" ng-class-even="'even'">
+                <h3>{{ resource.data.name }}</h3>
+                <div ng-bind-html="resource.data.intro | trustedHtml" class="intro"></div>
+                <a class="button button-icon" ui-sref="site.mod_resource({module: resource, courseid: dashboardCourse.course.id})">
+                    <i class="icon ion-eye"></i>
+                </a>
             </ion-item>
         </ion-list>
     </div>
-  <ion-scroll>
-  
+    <ion-scroll>

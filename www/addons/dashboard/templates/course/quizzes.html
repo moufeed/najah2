@@ -1,19 +1,17 @@
-<ion-scroll style="height:100%" delegate-handle="slide1Scroll" >
+<ion-scroll style="height: 77vh;" delegate-handle="slide1Scroll">
     <div class="quizzes-slide">
         <ion-list class="list">
-            <ion-item class="item item-quiz" ng-repeat="quiz in dashboardCourse.course.quizzes"  ng-class-even="'even'">
-                    <h3>{{ quiz.data.name }}</h3>
-                   <p><img src="addons/teacher/img/start.svg" class="ico"><span>{{ quiz.data.timeopen }}</span> </p> 
-                   <p><img src="addons/teacher/img/end.svg" class="ico" ><span> {{ quiz.data.timeclose }}</span> </p> 
-                        <div class="item-footer" >
-                               <a class="btn-link " ui-sref="site.mod_quiz({module: quiz, courseid: dashboardCourse.course.id})">  
-                                     <i class="icon ion-eye"></i>
-                                   <span>{{'mma.teacher.preview' | translate}}</span>
-                                   </a>
-                        </div>
+            <ion-item class="item item-quiz" ng-repeat="quiz in dashboardCourse.course.quizzes" ng-class-even="'even'">
+                <h3>{{ quiz.data.name }}</h3>
+                <p><img src="addons/teacher/img/start.svg" class="ico"><span>{{ quiz.data.timeopen }}</span> </p>
+                <p><img src="addons/teacher/img/end.svg" class="ico"><span> {{ quiz.data.timeclose }}</span> </p>
+                <div class="item-footer">
+                    <a class="btn-link " ui-sref="site.mod_quiz({module: quiz, courseid: dashboardCourse.course.id})">
+                        <i class="icon ion-eye"></i>
+                        <span>{{'mma.teacher.preview' | translate}}</span>
+                    </a>
+                </div>
             </ion-item>
         </ion-list>
     </div>
-  <ion-scroll>
-
-      
+    <ion-scroll>

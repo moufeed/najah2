@@ -1,12 +1,10 @@
- 
-<ion-scroll style="height:100%">
+<ion-scroll style="height: 77vh;">
     <div class="syllabus-slide">
         <ion-list class="list">
-            <ion-item class="item item-section item-icon-right" ng-repeat="section in dashboardCourse.course.sections"  ng-class-even="'even'" 
-                ui-sref="site.mm_course-section({cid: dashboardCourse.course.id, sectionid: section.id})">
-                    <h3>{{ section.name }}</h3>
-                    <i class="icon icon-accessory ion-chevron-right"></i>
+            <ion-item class="item item-section item-icon-right" ng-repeat="section in dashboardCourse.course.sections" ng-class-even="'even'" ui-sref="site.mm_course-section({cid: dashboardCourse.course.id, sectionid: section.id})">
+                <h3>{{ section.name }}</h3>
+                <i class="icon icon-accessory ion-chevron-right"></i>
             </ion-item>
         </ion-list>
     </div>
-  <ion-scroll>
+    <ion-scroll>
