@@ -7,11 +7,11 @@
 
 
         <div class="stats  ">
-			 
-			<div class="row">
-				<div class="col-50">
-					<div class="card stats-chart courses-chart">
-					 <ion-spinner ng-if="!dashboard.statsLoaded"  icon="dots" class="spinner "></ion-spinner>
+
+            <div class="row">
+                <div class="col-50">
+                    <div class="card stats-chart courses-chart">
+                        <ion-spinner ng-if="!dashboard.statsLoaded" icon="dots" class="spinner "></ion-spinner>
                         <a ui-sref="site.customcourses">
                             <div class="chart-icon"><i class="ion-android-document"></i></div>
                             <div class="chart-count">
@@ -19,37 +19,37 @@
                                 <h1 ng-class="{'helf-opacity' : dashboard.statsLoaded }">{{ dashboard.stats.courses }}</h1>
                             </div>
                         </a>
-					</div>
-				</div>
-				<div class="col-50">
-					<div class="card stats-chart weeklytasks-chart">
-						 <ion-spinner ng-if="!dashboard.statsLoaded"  icon="dots" class="spinner "></ion-spinner>
-                         <a ui-sref="site.customweeklytasks">
+                    </div>
+                </div>
+                <div class="col-50">
+                    <div class="card stats-chart weeklytasks-chart">
+                        <ion-spinner ng-if="!dashboard.statsLoaded" icon="dots" class="spinner "></ion-spinner>
+                        <a ui-sref="site.customweeklytasks">
                             <div class="chart-icon"><i class="ion-clipboard"></i></div>
                             <div class="chart-count">
                                 <h2>{{ 'mma.parent.weekly_tasks' | translate }} </h2>
                                 <h1 ng-class="{'helf-opacity' : dashboard.statsLoaded }">{{ dashboard.stats.weeklytasks }}</h1>
                             </div>
-                         </a>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-50">
-					<div class="card stats-chart badge-chart">
-						 <ion-spinner ng-if="!dashboard.statsLoaded"  icon="dots" class="spinner "></ion-spinner>
-                         <a ui-sref="site.custombadges">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-50">
+                    <div class="card stats-chart badge-chart">
+                        <ion-spinner ng-if="!dashboard.statsLoaded" icon="dots" class="spinner "></ion-spinner>
+                        <a ui-sref="site.custombadges">
                             <div class="chart-icon"><i class="ion-ribbon-b"></i></div>
                             <div class="chart-count">
                                 <h2>{{ 'mma.parent.badges' | translate }}</h2>
                                 <h1 ng-class="{'helf-opacity' : dashboard.statsLoaded }">{{ dashboard.stats.badges }}</h1>
                             </div>
-                         </a>
-					</div>
-				</div>
-				<div class="col-50">
-					<div class="card stats-chart points-chart">
-						<ion-spinner ng-if="!dashboard.statsLoaded"  icon="dots" class="spinner "></ion-spinner>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-50">
+                    <div class="card stats-chart points-chart">
+                        <ion-spinner ng-if="!dashboard.statsLoaded" icon="dots" class="spinner "></ion-spinner>
                         <a ui-sref="site.custompoints">
                             <div class="chart-icon"><i class="ion-android-star-half"></i></div>
                             <div class="chart-count">
@@ -57,10 +57,10 @@
                                 <h1 ng-class="{'helf-opacity' : dashboard.statsLoaded }">{{ dashboard.stats.points }}</h1>
                             </div>
                         </a>
-					</div>
-				</div>
-			</div>
-		</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <mm-loading hide-until="dashboard.performanceLoaded">
             <div class="card performance">
@@ -132,35 +132,35 @@
         </mm-loading>
 
         <mm-loading hide-until="dashboard.weeklyAttendenceLoaded">
-           
 
 
-        <div class="card weekly-attendence">
-			<div ng-if="dashboard.weeklyAttendenceLoaded">
-				<div class="card-header">
-					{{ 'mma.dashboard.weekly_attendence' | translate }} 
-				</div>
-				<div class="list with-height">
-					 <ion-scroll direction="x" style="height:100%"  zooming="true" min-zoom="1">
-						<table>
-							<thead>
-								<tr>
-									<th ng-repeat="head in dashboard.attendence.header" style="white-space: pre" >{{ head }}</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr ng-repeat="(sess, data) in dashboard.attendence.data">
-									<td><i class="zmdi zmdi-collection-item-{{ sess }} zmdi-hc-fw color-green"></i></td>
-									<td ng-repeat="s in data track by $index">
-										<i class="zmdi {{ s[0] }} {{ s[2] }} zmdi-hc-fw"></i>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</ion-scroll>
-				</div>
-			</div>
-		</div>
+
+            <div class="card weekly-attendence">
+                <div ng-if="dashboard.weeklyAttendenceLoaded">
+                    <div class="card-header">
+                        {{ 'mma.dashboard.weekly_attendence' | translate }}
+                    </div>
+                    <div class="list with-height">
+                        <ion-scroll direction="x" style="height:100%" zooming="true" min-zoom="1">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th ng-repeat="head in dashboard.attendence.header" style="white-space: pre">{{ head }}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="(sess, data) in dashboard.attendence.data">
+                                        <td><i class="zmdi zmdi-collection-item-{{ sess }} zmdi-hc-fw color-green"></i></td>
+                                        <td ng-repeat="s in data track by $index">
+                                            <i class="zmdi {{ s[0] }} {{ s[2] }} zmdi-hc-fw"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </ion-scroll>
+                    </div>
+                </div>
+            </div>
 
 
             <!-- weekly-attendence -->
@@ -188,20 +188,20 @@
         </mm-loading>
 
         <mm-loading hide-until="dashboard.newsLoaded">
-            <div class = "row responsive-sm news-wrapper">
+            <div class="row responsive-sm news-wrapper">
                 <div class="col news-col">
                     <div class="card latest_news">
-                        <div  ng-if="dashboard.news.length">
+                        <div ng-if="dashboard.news.length">
                             <div class="card-header">
-                                    {{ 'mma.dashboard.news' | translate }}
+                                {{ 'mma.dashboard.news' | translate }}
                             </div>
                             <div class="card-body">
                                 <ion-list class="list">
-                                    <ion-item class="item item-thumbnail-left" ng-repeat="item in dashboard.news"  ng-class-even="'even'" ng-click="dashboard.openNews(item)">
+                                    <ion-item class="item item-thumbnail-left" ng-repeat="item in dashboard.news" ng-class-even="'even'" ng-click="dashboard.openNews(item)">
                                         <img ng-src="{{item.pic}}">
                                         <h2>{{item.title }}</h2>
                                         <small class="date">{{item.date | date:'medium'}}</small>
-                                        
+
                                     </ion-item>
                                 </ion-list>
                             </div>
@@ -244,16 +244,16 @@
         </mm-loading>
 
         <mm-loading hide-until="dashboard.badgesLoaded">
-            <div class = "row responsive-sm news-wrapper">
+            <div class="row responsive-sm news-wrapper">
                 <div class="col news-col">
                     <div class="card badges">
-                        <div  ng-if="dashboard.badges.length">
+                        <div ng-if="dashboard.badges.length">
                             <div class="card-header">
-                                    {{ 'mma.dashboard.badges' | translate }}
+                                {{ 'mma.dashboard.badges' | translate }}
                             </div>
                             <div class="card-body">
                                 <ion-list class="list">
-                                    <ion-item class="item item-thumbnail-left" ng-repeat="badge in dashboard.badges"  ng-class-even="'even'">
+                                    <ion-item class="item item-thumbnail-left" ng-repeat="badge in dashboard.badges" ng-class-even="'even'">
                                         <div class="badge-image" ng-bind-html="badge.img"></div>
                                         <h2>{{badge.name }}</h2>
                                         <small>{{ badge.coursename }}</small>
@@ -273,8 +273,8 @@
             <!-- card badges -->
         </mm-loading>
         <mm-loading hide-until="dashboard.stampsLoaded">
-            
-            <div class = "row responsive-sm news-wrapper">
+
+            <div class="row responsive-sm news-wrapper">
                 <div class="col news-col">
                     <div class="card stamps">
                         <div>
@@ -299,7 +299,7 @@
             </div>
             <!-- card stamps -->
         </mm-loading>
-        <mm-loading hide-until="dashboard.weeklyTasksLoaded">
+        <!--<mm-loading hide-until="dashboard.weeklyTasksLoaded">
             <div class = "row responsive-sm news-wrapper">
                 <div class="col news-col">
                     <div class="card weekly-tasks">
@@ -334,10 +334,54 @@
                     </div>
                 </div>
             </div>
+        </mm-loading>-->
 
-
+        <mm-loading hide-until="dashboard.weeklyTasksLoaded">
+            <div class="row responsive-sm news-wrapper">
+                <div class="col news-col">
+                    <div class="card weekly-tasks">
+                        <div ng-if="dashboard.weeklyTasks.length">
+                            <div class="card-header">
+                                {{ 'mma.dashboard.weekly_tasks' | translate }}
+                            </div>
+                            <div class="card-body">
+                                <ion-list class="list list-divider stamp-course">
+                                    <!--<p>{{ course.coursename }}</p>-->
+                                    <ion-list class="list">
+                                        <ion-item ui-sref="site.mod_assign({module: assign, courseid: tasks.course})" class="item item-thumbnail-left" ng-class-even="'even'" ng-repeat="assign in dashboard.weeklyTasks.assign | limitTo:2">
+                                            <img ng-src="img/icons/{{ assign.class }}.png">
+                                            <h2>{{ assign.data.name }}</h2>
+                                            <small>{{ assign.section }}</small>
+                                        </ion-item>
+                                        <ion-item ui-sref="site.mod_quiz({module: quiz, courseid: tasks.course})" class="item item-thumbnail-left" ng-class-even="'even'" ng-repeat="quiz in dashboard.weeklyTasks.quiz | limitTo:2">
+                                            <img ng-src="img/icons/{{ quiz.class }}.png">
+                                            <h2>{{ quiz.data.name }}</h2>
+                                            <small>{{ quiz.section }}</small>
+                                        </ion-item>
+                                        <ion-item ui-sref="site.customweeklytasks" class="item text-center item-btn">
+                                            {{ 'mma.parent.view_all' | translate }}
+                                        </ion-item>
+                                    </ion-list>
+                                    <!--<ion-list class="list" ng-repeat="quiz in course.weeklytasks.quiz">
+                                            <ion-item class="item item-thumbnail-left" ng-class-even="'even'">
+                                                <img ng-src="img/icons/quizzes.png">
+                                                <h2>{{ quiz.name }}</h2>
+                                                <small>{{ quiz.section }}</small>
+                                            </ion-item>
+                                        </ion-list>-->
+                                </ion-list>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="no-data" ng-if="!dashboard.weeklyTasks.length">
+                <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
+                <p>{{ 'mma.dashboard.no_data' | translate }}</p>
+            </div>
             <!-- card weekly-tasks -->
         </mm-loading>
+
         <!--<mm-loading hide-until="dashboard.feedbackLoaded">
             <div class = "row responsive-sm news-wrapper">
                 <div class="col news-col">

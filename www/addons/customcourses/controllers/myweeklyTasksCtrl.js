@@ -26,7 +26,8 @@ angular.module('mm.addons.customcourses')
 
     self.weeklyTasksLoaded = false;
     $mmaCustomCourses.weeklyTasks().then(function(res) {
-        self.weeklyTasks = res.data.list;
+        self.data = res.data;
+        console.log(self.weeklyTasks);
     }, function(reject) {
 
     }).finally(function() {
