@@ -34,7 +34,15 @@ angular.module('mm.core.sidemenu')
             $state.go('mm_login.sites');
         });
     };
-
+    /**
+     * site logout
+     *  key mjlog
+     */
+      $scope.sitelogout = function (){
+           $mmSitesManager.setSiteLoggedOut($mmSite.getId(),true).finally(function(res){
+               $state.go('mm_login.reconnect');
+           });
+      };
     function loadSiteInfo() {
         var config = $mmSite.getStoredConfig();
 

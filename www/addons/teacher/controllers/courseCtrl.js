@@ -81,17 +81,30 @@ angular.module('mm.addons.teacher')
             }
         };
 
+        function notEmpty(obj) {
+            console.log(Object.keys(obj).length) 
+            if (typeof obj == "object" && Object.keys(obj).length > 0)
+                return true;
+            return false;
+        }
  
 /**
  * get Course Informations
  */
         $mmaTeacherCourseHelper.getCourse(courseid).then(function (data) {
             $scope.course = data.course;
-            makeGroup();
+            $scope.WT_NotEmpty = notEmpty(data.course.weeklytasks);
+            $scope.QZ_NotEmpty = notEmpty(data.course.quizzes);  
+            $scope.FM_NotEmpty = notEmpty(data.course.forums);  
+
+            makeGroup(); 
             makeStamps();
         }).finally(function () {
             $scope.myCourse.noData = true;
-        });
+            });
+        
+         
+     
         /**
          * grades tab
          */
@@ -161,7 +174,7 @@ angular.module('mm.addons.teacher')
          * stamps tab
          */
         function makeStamps(){
-            console.log('start');
+           
             var cls ={};
             for (cl in $scope.course.grades.groups ){
                  cls[cl]={
@@ -176,8 +189,6 @@ angular.module('mm.addons.teacher')
             }
             $q.all(cls).then(function () {
                 $scope.clsrooms = cls;
-                console.log('------------ -',cls);
-                
             });
         }
     });

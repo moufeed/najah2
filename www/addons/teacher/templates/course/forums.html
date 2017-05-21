@@ -1,6 +1,6 @@
 <ion-scroll style="height:100%">
     <div class="forums-slide">
-        <ion-list class="list">
+        <ion-list class="list" ng-if="FM_NotEmpty">
             <ion-item class="item item-forum item-icon-right" ng-repeat="forum in course.forums"  ng-class-even="'even'" 
             ui-sref="site.mod_forum({module: forum, courseid: courseid})">
                     <h3>{{ forum.data.name }}</h3>
@@ -8,6 +8,9 @@
                       <i class="icon icon-accessory ion-chevron-right"></i>
             </ion-item>
         </ion-list>
+        <div class="text-center" ng-if="!FM_NotEmpty">
+            <h5>{{ 'mma.teacher.no_data' | translate }}</h5>
+        </div>
     </div>
 <ion-scroll>
    

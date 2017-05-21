@@ -1,6 +1,6 @@
 <ion-scroll style="height:100%">
     <div class="assignments-slide">
-        <ion-list class="list" ng-if="course.weeklytasks">
+        <ion-list class="list" ng-if="WT_NotEmpty">
             <ion-item class="item item-assign" ng-repeat="assign in course.weeklytasks"  ng-class-even="'even'">
                     <h3>{{ assign.data.name }}</h3>
                     <div class="date"><img src="addons/teacher/img/end.svg" class="ico" >{{assign.duedate}}</div> 
@@ -17,7 +17,7 @@
                         </div>
             </ion-item>
         </ion-list>
-        <div class="text-center" ng-if="!course.weeklytasks">
+        <div class="text-center" ng-if="!WT_NotEmpty">
             <h5>{{ 'mma.teacher.no_data' | translate }}</h5>
         </div>
     </div>
