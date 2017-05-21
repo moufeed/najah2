@@ -36,7 +36,7 @@ angular.module('mm.addons.dashboard')
         });
     };
 
-    
+
 
     self.userDetails = function(layout) {
         return $http({
@@ -147,7 +147,7 @@ angular.module('mm.addons.dashboard')
     self.weeklyTasks = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.weeklytasks&wstoken=' + $mmSite.getToken()
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.weeklytasks2&wstoken=' + $mmSite.getToken()
         });
     };
 

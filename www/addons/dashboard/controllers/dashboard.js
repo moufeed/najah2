@@ -37,7 +37,7 @@ angular.module('mm.addons.dashboard')
 
     if ($mmApp.isOnline()) {
         $mmaDashboardCommon.stats().then(function(res) {
-            self.stats = res.data;            
+            self.stats = res.data;
         }, function(reject) {
 
         }).finally(function() {
@@ -144,7 +144,16 @@ angular.module('mm.addons.dashboard')
 
         self.weeklyTasksLoaded = false;
         $mmaDashboardCommon.weeklyTasks().then(function(res) {
-            self.weeklyTasks = res.data.list;
+            self.weeklyTasks = res.data;
+            self.weeklyTasks.assign = [];
+            self.weeklyTasks.quiz = [];
+            for (var i = 0; i < self.weeklyTasks.length; i++) {
+                if (self.weeklyTasks[i].class == 'quiz') {
+                    self.weeklyTasks.quiz.push(self.weeklyTasks[i]);
+                } else if (self.weeklyTasks[i].class == 'assign') {
+                    self.weeklyTasks.assign.push(self.weeklyTasks[i]);
+                }
+            }
         }, function(reject) {
 
         }).finally(function() {
@@ -158,7 +167,7 @@ angular.module('mm.addons.dashboard')
 
         }).finally(function() {
             self.feedbackLoaded = true;
-        });        
+        });
     } else {
         self.stats = getData('stats');
         self.statsLoaded = true;
@@ -177,7 +186,7 @@ angular.module('mm.addons.dashboard')
         }
         self.attendence = getData('attendence');
         self.weeklyAttendenceLoaded = true;
-        
+
         self.miniCalendar = null;
         self.calendarLoaded = true;
         self.chartAttendence = getData('chartAttendence');
@@ -186,7 +195,7 @@ angular.module('mm.addons.dashboard')
         self.newsLoaded = true;
         self.trackCourses = getData('trackCourses');
         self.lastTrackCoursesLoaded = true;
-        self.badges = getData('badges');        
+        self.badges = getData('badges');
         self.badgesLoaded = true;
         self.stamps = getData('stamps');
         self.stampsLoaded = true;
@@ -210,7 +219,7 @@ angular.module('mm.addons.dashboard')
         saveData('stamps', self.stamps);
         saveData('weeklyTasks', self.weeklyTasks);
         saveData('feedback', self.feedback);
-        
+
         $scope.closePopover();
     };
 
@@ -240,9 +249,9 @@ angular.module('mm.addons.dashboard')
         pagination: false
     };
 
-    self.openNews = function(post){
+    self.openNews = function(post) {
         $scope.post = post;
-            $ionicModal.fromTemplateUrl('addons/dashboard/templates/modal.html', {
+        $ionicModal.fromTemplateUrl('addons/dashboard/templates/modal.html', {
             scope: $scope
         }).then(function(modal) {
             $scope.modal = modal;
@@ -283,5 +292,5 @@ angular.module('mm.addons.dashboard')
     $scope.$on('popover.removed', function() {
         // Execute action
     });
-console.log('222222222222222222222')
+    console.log('222222222222222222222')
 });

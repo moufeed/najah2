@@ -44,7 +44,7 @@ angular.module('mm.addons.customcourses')
     self.weeklyTasks = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.weeklytasks&wstoken=' + $mmSite.getToken()
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=student.weeklytasks2&wstoken=' + $mmSite.getToken()
         });
     };
 

@@ -1,4 +1,4 @@
-<ion-scroll style="height:100%">
+<ion-scroll class="course-scroll-student">
     <div class="students-slide">
         <ion-list class="list" ng-if="participants && participants.length > 0">
             <ion-item class="item item-avatar item-student item-icon-right" ng-repeat="participant in participants"  ng-class-even="'even'" ui-sref="{{userStateName}}({courseid: courseid, userid: participant.id})">
