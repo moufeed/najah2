@@ -18,7 +18,7 @@
                         
 						<ion-item class="item item-input item-select item-icon-left" ng-repeat="usr in course.usrs"  ng-class-even="'even'">
                              <div class="input-label">
-                                <a class="btn-note " ng-class="usr.note ? 'ion-compose active': 'ion-edit'" ng-click="showPrompt(usr)"></a>
+                                <a class="btn-note " ng-class="usr.note ? 'ion-compose active': 'ion-edit'" ng-init="stds[usr.id].note = usr.note" ng-click="showPrompt(usr)"></a>
                                  {{ usr.name }} 
                              </div>
                                  

@@ -1,6 +1,8 @@
 <ion-scroll style="height:100%" delegate-handle="slide1Scroll" >
     <div class="quizzes-slide">
-        <ion-list class="list" ng-if="!QZ_NotEmpty">
+            
+        <ion-list class="list" ng-if="QZ_NotEmpty">
+          
             <ion-item class="item item-quiz" ng-repeat="quiz in course.quizzes"  ng-class-even="'even'">
                     <h3>{{ quiz.data.name }}</h3>
                    <p><img src="addons/teacher/img/start.svg" class="ico"><span>{{ quiz.data.timeopen }}</span> </p> 

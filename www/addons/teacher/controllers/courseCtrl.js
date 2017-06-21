@@ -82,7 +82,7 @@ angular.module('mm.addons.teacher')
         };
 
         function notEmpty(obj) {
-            console.log(Object.keys(obj).length) 
+          
             if (typeof obj == "object" && Object.keys(obj).length > 0)
                 return true;
             return false;
@@ -96,7 +96,6 @@ angular.module('mm.addons.teacher')
             $scope.WT_NotEmpty = notEmpty(data.course.weeklytasks);
             $scope.QZ_NotEmpty = notEmpty(data.course.quizzes);  
             $scope.FM_NotEmpty = notEmpty(data.course.forums);  
-
             makeGroup(); 
             makeStamps();
         }).finally(function () {
@@ -134,7 +133,6 @@ angular.module('mm.addons.teacher')
             };
             $q.all(groups).then(function () {
                 $scope.groups = groups;
-                console.log('--------------------', $scope.groups);
                 return $scope.groups;
             });
         }

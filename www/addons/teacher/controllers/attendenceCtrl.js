@@ -61,6 +61,7 @@ angular.module('mm.addons.teacher')
         $scope.showPrompt = function (usr) {
             var $this =  $scope.stds[usr.id];
             $this.note =  usr.note ||  $this.note;
+             
             var popup = $ionicPopup.show({
                 template: '<textarea ng-model="stds[' + usr.id + '].note" rows="5"></textarea>',
                 title: $translate.instant('mma.teacher.notes'),
@@ -76,6 +77,7 @@ angular.module('mm.addons.teacher')
                         text: '<b>' + $translate.instant('mma.teacher.save') + '</b>',
                         type: 'button-positive',
                         onTap: function (e) {
+                            usr.note = $this.note;
                             return  $this ;
                         }
                     }
