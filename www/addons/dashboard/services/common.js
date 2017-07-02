@@ -36,8 +36,6 @@ angular.module('mm.addons.dashboard')
         });
     };
 
-
-
     self.userDetails = function(layout) {
         return $http({
             method: 'GET',

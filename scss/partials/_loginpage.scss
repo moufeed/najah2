@@ -8,10 +8,10 @@
         padding: 15px 0px;
         .item {
             border-color: transparent;
-            input[type="text"]:not([name="password"]),.item-input-inset{
+            input[type="text"]:not([name="password"]),
+            .item-input-inset {
                 border-bottom: 1px solid #eee;
             }
-             
         }
     }
 }

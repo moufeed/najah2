@@ -69,8 +69,6 @@ label.item {
 }
 
 
-
-
 /*ion-slides {
         height: 250px;
     }*/
@@ -389,7 +387,6 @@ a {
 // .stamps .list {
 //     margin-top: 14px;
 // }
-
 .menu-item a.item-content {
     padding: 10px;
 }
@@ -881,13 +878,13 @@ td p {
 }
 
 .courses-vert a img {
-    width: 100%;    
+    width: 100%;
 }
 
 .courses-vert a .name {
     position: absolute;
     z-index: 5;
-    background: rgba(0,0,0, .7);
+    background: rgba(0, 0, 0, .7);
     width: 100%;
 }
 
@@ -900,7 +897,7 @@ td p {
 
 #grades th,
 #grades td {
-    border: 1px solid #eee ; 
+    border: 1px solid #eee;
     vertical-align: middle;
 }
 
@@ -961,7 +958,7 @@ td p {
 .feedback .card-header {
     background: #9E9E9E;
 }
- 
+
 .badge-image {
     position: absolute;
     left: 30px;

@@ -15,10 +15,10 @@
 angular.module('mm.core.login')
 
 .constant('mmLoginSSOCode', 2) // SSO in browser window is required.
-.constant('mmLoginSSOInAppCode', 3) // SSO in embedded browser is required.
-.constant('mmLoginLaunchSiteURL', 'mmLoginLaunchSiteURL') // @deprecated since version 3.2.1. Use mmLoginLaunchData instead.
-.constant('mmLoginLaunchPassport', 'mmLoginLaunchPassport') // @deprecated since version 3.2.1. Use mmLoginLaunchData instead.
-.constant('mmLoginLaunchData', 'mmLoginLaunchData')
+    .constant('mmLoginSSOInAppCode', 3) // SSO in embedded browser is required.
+    .constant('mmLoginLaunchSiteURL', 'mmLoginLaunchSiteURL') // @deprecated since version 3.2.1. Use mmLoginLaunchData instead.
+    .constant('mmLoginLaunchPassport', 'mmLoginLaunchPassport') // @deprecated since version 3.2.1. Use mmLoginLaunchData instead.
+    .constant('mmLoginLaunchData', 'mmLoginLaunchData')
 
 /**
  * Service to provide some helper functionalities for the login component.
@@ -27,9 +27,9 @@ angular.module('mm.core.login')
  * @ngdoc service
  * @name $mmLoginHelper
  */
-.factory('$mmLoginHelper', function($q, $mmApp ,$log, $mmConfig, mmLoginSSOCode, mmLoginSSOInAppCode, mmLoginLaunchData, $mmEvents,
-            md5, $mmSite, $mmSitesManager, $mmLang, $mmUtil, $state, $mmAddonManager, $translate, mmCoreConfigConstants,
-            mmCoreEventSessionExpired, mmUserProfileState, $mmCourses,$http,$window) {
+.factory('$mmLoginHelper', function($q, $mmApp, $log, $mmConfig, mmLoginSSOCode, mmLoginSSOInAppCode, mmLoginLaunchData, $mmEvents,
+    md5, $mmSite, $mmSitesManager, $mmLang, $mmUtil, $state, $mmAddonManager, $translate, mmCoreConfigConstants,
+    mmCoreEventSessionExpired, mmUserProfileState, $mmCourses, $http, $window) {
 
     $log = $log.getInstance('$mmLoginHelper');
 
@@ -173,60 +173,60 @@ angular.module('mm.core.login')
     self.goToAddSite = function() {
         if (mmCoreConfigConstants.siteurl) {
             // Fixed URL is set, go to credentials page.
-            return $state.go('mm_login.credentials', {siteurl: mmCoreConfigConstants.siteurl});
+            return $state.go('mm_login.credentials', { siteurl: mmCoreConfigConstants.siteurl });
         } else {
             return $state.go('mm_login.site');
         }
     };
 
-    self.redirectApp = function(siteId){
-            siteId = siteId || $mmSite.getId();
-          if($mmApp.isOnline()){
-                return self.getUserType().then(function(type){
-                  return self.goToSiteInitialPage(type);
-                });
-            }else{
-                var type = $window.localStorage[siteId];
-                 return self.goToSiteInitialPage(type);
-            }
-    }
-
- 
-   self.getUserType = function(){
-       if($mmApp.isOnline()){
-            return  $http({
-                url:  $mmSite.getURL() + '/local/ajax/mobile2.php',
-                method: "GET",
-                params: {s: 'general.usertype' ,wstoken : $mmSite.getToken() }
-            }).then(function (response) {
-                console.log(response.data.usertype,$mmSite.getId())
-                    $window.localStorage[$mmSite.getId()] = response.data.usertype;
-                    return response.data.usertype;
-          })
-       }
-   }
-
-    self.goDashboard= function(userType,myCoursesDisabled){
-        if(userType === 'parent' )
-          return $state.go('site.parent');
-        else if(userType === 'sisteacher' )
-          return $state.go('site.teacher');
-        else if(userType === 'sisstudent' )
-          return $state.go('site.dashboard');
-        else  if (!myCoursesDisabled) {
-            return $state.go('site.mm_courses');
+    self.redirectApp = function(siteId) {
+        siteId = siteId || $mmSite.getId();
+        if ($mmApp.isOnline()) {
+            return self.getUserType().then(function(type) {
+                return self.goToSiteInitialPage(type);
+            });
+        } else {
+            var type = $window.localStorage[siteId];
+            return self.goToSiteInitialPage(type);
         }
-        return $state.go(mmUserProfileState, {userid: $mmSite.getUserId()});
     }
-    /**
-     * Go to the initial page of a site depending on 'userhomepage' setting.
-     *
-     * @module mm.core.login
-     * @ngdoc method
-     * @name $mmLoginHelper#goToSiteInitialPage
-     * @return {Promise} Promise resolved when the state changes.
-     */
-   
+
+
+    self.getUserType = function() {
+        if ($mmApp.isOnline()) {
+            return $http({
+                url: $mmSite.getURL() + '/local/ajax/mobile2.php',
+                method: "GET",
+                params: { s: 'general.usertype', wstoken: $mmSite.getToken() }
+            }).then(function(response) {
+                console.log(response.data.usertype, $mmSite.getId())
+                $window.localStorage[$mmSite.getId()] = response.data.usertype;
+                return response.data.usertype;
+            })
+        }
+    }
+
+    self.goDashboard = function(userType, myCoursesDisabled) {
+            if (userType === 'parent')
+                return $state.go('site.parent');
+            else if (userType === 'sisteacher')
+                return $state.go('site.teacher');
+            else if (userType === 'sisstudent')
+                return $state.go('site.dashboard');
+            else if (!myCoursesDisabled) {
+                return $state.go('site.mm_courses');
+            }
+            return $state.go(mmUserProfileState, { userid: $mmSite.getUserId() });
+        }
+        /**
+         * Go to the initial page of a site depending on 'userhomepage' setting.
+         *
+         * @module mm.core.login
+         * @ngdoc method
+         * @name $mmLoginHelper#goToSiteInitialPage
+         * @return {Promise} Promise resolved when the state changes.
+         */
+
     self.goToSiteInitialPage = function(user) {
 
         var myCoursesDisabled = $mmCourses.isMyCoursesDisabledInSite();
@@ -238,8 +238,8 @@ angular.module('mm.core.login')
                 return $mmaFrontpage.isFrontpageAvailable().then(function() {
                     return $state.go('site.frontpage');
                 }).catch(function() {
-                   return self.goDashboard(user,myCoursesDisabled);
-                    
+                    return self.goDashboard(user, myCoursesDisabled);
+
                     // if (!myCoursesDisabled) {
                     //     // Site Home not available, go to My Courses.
                     //     return $state.go('site.mm_courses');
@@ -256,7 +256,7 @@ angular.module('mm.core.login')
         //     // Site Home not available, go to My Courses.
         //     return $state.go('site.mm_courses');
         // }
-        return self.goDashboard(user,myCoursesDisabled); 
+        return self.goDashboard(user, myCoursesDisabled);
         // Both Site Home and My Courses aren't available, go to the user profile.
         // return $state.go(mmUserProfileState, {userid: $mmSite.getUserId()});
     };
@@ -399,8 +399,8 @@ angular.module('mm.core.login')
         $mmConfig.set(mmLoginLaunchData, {
             siteurl: siteUrl,
             passport: passport,
-            statename: stateName || '',
-            stateparams: stateParams || {}
+            statename: stateName  || '',
+            stateparams: stateParams  || {}
         });
 
         return loginUrl;
@@ -417,7 +417,7 @@ angular.module('mm.core.login')
      */
     self.shouldShowSSOConfirm = function(typeOfLogin) {
         return !self.isSSOEmbeddedBrowser(typeOfLogin) &&
-                    (!mmCoreConfigConstants.skipssoconfirmation || mmCoreConfigConstants.skipssoconfirmation === 'false');
+            (!mmCoreConfigConstants.skipssoconfirmation || mmCoreConfigConstants.skipssoconfirmation === 'false');
     };
 
     /**
@@ -462,8 +462,8 @@ angular.module('mm.core.login')
                     stateparams: data.stateparams
                 };
             } else {
-                $log.debug('Inalid signature in the URL request yours: ' + params[0] + ' mine: '
-                                + signature + ' for passport ' + passport);
+                $log.debug('Inalid signature in the URL request yours: ' + params[0] + ' mine: ' +
+                    signature + ' for passport ' + passport);
                 return $mmLang.translateAndReject('mm.core.unexpectederror');
             }
         });

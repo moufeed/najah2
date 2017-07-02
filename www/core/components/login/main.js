@@ -20,11 +20,11 @@ angular.module('mm.core.login', [])
 
     $stateProvider
 
-    .state('mm_login', {
+        .state('mm_login', {
         url: '/mm_login',
         abstract: true,
         templateUrl: 'core/components/login/templates/base.html',
-        cache: false,   // Disable caching to force controller reload.
+        cache: false, // Disable caching to force controller reload.
         onEnter: function($ionicHistory) {
             // Ensure that there is no history stack when getting here.
             $ionicHistory.clearHistory();
@@ -69,7 +69,7 @@ angular.module('mm.core.login', [])
         onEnter: function($state, $stateParams) {
             // Do not allow access to this page when the URL was not passed.
             if (!$stateParams.siteurl) {
-              $state.go('mm_login.init');
+                $state.go('mm_login.init');
             }
         }
     })
@@ -120,8 +120,8 @@ angular.module('mm.core.login', [])
 })
 
 .run(function($log, $state, $mmUtil, $translate, $mmSitesManager, $rootScope, $mmSite, $mmURLDelegate, $ionicHistory, $timeout,
-                $mmEvents, $mmLoginHelper, mmCoreEventSessionExpired, $mmApp, $ionicPlatform, mmCoreConfigConstants, $mmText,
-                mmCoreEventPasswordChangeForced, mmCoreEventUserNotFullySetup, mmCoreEventSitePolicyNotAgreed, $q) {
+    $mmEvents, $mmLoginHelper, mmCoreEventSessionExpired, $mmApp, $ionicPlatform, mmCoreConfigConstants, $mmText,
+    mmCoreEventPasswordChangeForced, mmCoreEventUserNotFullySetup, mmCoreEventSitePolicyNotAgreed, $q) {
 
     $log = $log.getInstance('mmLogin');
 
@@ -154,7 +154,7 @@ angular.module('mm.core.login', [])
             return;
         }
 
-        $ionicHistory.nextViewOptions({disableBack: true});
+        $ionicHistory.nextViewOptions({ disableBack: true });
         $state.go('mm_login.sitepolicy', {
             siteid: siteId
         });
@@ -188,7 +188,7 @@ angular.module('mm.core.login', [])
                 }
             } else {
                 lastInAppUrl = event.url;
-            } 
+            }
         }
     });
 
@@ -207,8 +207,8 @@ angular.module('mm.core.login', [])
     });
 
     // Redirect depending on user session.
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState,$window, fromParams) {
-            
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, $window, fromParams) {
+
         // Prevent state changes while the app is not ready.
         if (!$mmApp.isReady() && toState.name !== 'mm_login.init') {
             event.preventDefault();
@@ -217,9 +217,9 @@ angular.module('mm.core.login', [])
             return;
         }
 
-        var isLoginStateWithSession = toState.name === 'mm_login.reconnect' || toState.name === 'mm_login.sitepolicy';
-            
-        if (toState.name.substr(0, 8) === 'redirect' || toState.name.substr(0, 15) === 'mm_contentlinks') {
+        var isLoginStateWithSession = toState.name === 'mm_login.reconnect' ||  toState.name === 'mm_login.sitepolicy';
+
+        if (toState.name.substr(0, 8) === 'redirect' ||  toState.name.substr(0, 15) === 'mm_contentlinks') {
             return;
         } else if ((toState.name.substr(0, 8) !== 'mm_login' || isLoginStateWithSession) && !$mmSite.isLoggedIn()) {
             // We are not logged in.
@@ -232,7 +232,7 @@ angular.module('mm.core.login', [])
             });
             $state.transitionTo('mm_login.init');
         } else if (toState.name.substr(0, 8) === 'mm_login' && !isLoginStateWithSession && $mmSite.isLoggedIn()) {
-             
+
             // We are logged in and requested the login page.
             event.preventDefault();
             $log.debug('Redirect to course page, request was: ' + toState.name);
@@ -242,7 +242,7 @@ angular.module('mm.core.login', [])
                 disableBack: true
             });
             //$mmLoginHelper.goToSiteInitialPage();
-              $mmLoginHelper.redirectApp();
+            console.log($mmLoginHelper.redirectApp());
         }
 
     });
@@ -277,7 +277,7 @@ angular.module('mm.core.login', [])
 
                     if ($mmLoginHelper.shouldShowSSOConfirm(result.code)) {
                         promise = $mmUtil.showConfirm($translate.instant(
-                                'mm.login.' + ($mmSite.isLoggedOut() ? 'loggedoutssodescription' : 'reconnectssodescription')));
+                            'mm.login.' + ($mmSite.isLoggedOut() ? 'loggedoutssodescription' : 'reconnectssodescription')));
                     } else {
                         promise = $q.when();
                     }
@@ -285,7 +285,7 @@ angular.module('mm.core.login', [])
                     promise.then(function() {
                         waitingForBrowser = true;
                         $mmLoginHelper.openBrowserForSSOLogin(result.siteurl, result.code, result.service,
-                                result.config && result.config.launchurl, data.statename, data.stateparams);
+                            result.config && result.config.launchurl, data.statename, data.stateparams);
                     }).catch(function() {
                         // User cancelled, logout him.
                         logout();
@@ -296,7 +296,7 @@ angular.module('mm.core.login', [])
             } else {
                 var info = $mmSite.getInfo();
                 if (typeof info != 'undefined' && typeof info.username != 'undefined') {
-                    $ionicHistory.nextViewOptions({disableBack: true});
+                    $ionicHistory.nextViewOptions({ disableBack: true });
                     $state.go('mm_login.reconnect', {
                         siteurl: result.siteurl,
                         username: info.username,
@@ -319,7 +319,7 @@ angular.module('mm.core.login', [])
 
     // Function to open in app browser to change password or complete user profile.
     function openInAppForEdit(siteId, path, alertMessage) {
-        if (!siteId || siteId !== $mmSite.getId()) {
+        if (!siteId ||  siteId !== $mmSite.getId()) {
             // Site that triggered the event is not current site, nothing to do.
             return;
         }
@@ -368,7 +368,7 @@ angular.module('mm.core.login', [])
         // Decode from base64.
         try {
             url = atob(url);
-        } catch(err) {
+        } catch (err) {
             // Error decoding the parameter.
             $log.error('Error decoding parameter received for login SSO');
             return false;
@@ -403,7 +403,7 @@ angular.module('mm.core.login', [])
     // Logout the user if needed.
     function checkLogout() {
         if (!$mmApp.isSSOAuthenticationOngoing() && $mmSite.isLoggedIn() && $mmSite.isLoggedOut() &&
-                $state.current.name != 'mm_login.reconnect') {
+            $state.current.name != 'mm_login.reconnect') {
             // User must reauthenticate but he closed the InAppBrowser without doing so, logout him and go to sites list.
             logout();
         }

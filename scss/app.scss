@@ -47,6 +47,7 @@ $stats-colors: #C51609 #1275C3 #D00B4E #009688;
         @return map-get($material, $key);
     }
 }
+
 // Bar content.
 $bar-content-bg: mc(blue);
 $button-large-icon-size: 23px;
@@ -63,11 +64,298 @@ $ionicons-font-path: "../lib/ionic/release/fonts" !default;
 "partials/bar",
 "partials/loginpage",
 "partials/common";
-
-
-h1, h2, .item .item-heading, .mm-grades-table .itemcenter .item-heading, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+h1,
+h2,
+.item .item-heading,
+.mm-grades-table .itemcenter .item-heading,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
     line-height: 1.4;
 }
-.modal{
+
+.modal {
     background: #f5f5f5;
+}
+
+$male: #3c8190;
+$female: rgba(244, 13, 121, 1);
+.login-page {
+    @include radial-gradient($male, darken($male, 21%));
+}
+
+.button.active,
+.button.activated {
+    background-color: $male;
+    box-shadow: none;
+    color: #fff;
+}
+
+.button,
+.button.button-light,
+.button.button-stable,
+.button.button-positive,
+.button.button-calm,
+.button.button-assertive,
+.button.button-balanced,
+.button.button-energized,
+.button.button-royal,
+.button.button-dark {
+    border-color: $male;
+    background: $male;
+    color: $white;
+    &.activated,
+    &.active {
+        border-color: $male;
+    }
+}
+
+.button.button-light,
+.button.button-stable,
+.button.button-calm,
+.button.button-assertive,
+.button.button-balanced,
+.button.button-energized,
+.button.button-royal,
+.button.button-dark {
+    color: $male;
+}
+
+.button-clear,
+.button.button-clear {
+    color: $white;
+    &.activated,
+    &.active {
+        background: none;
+    }
+}
+
+.button-outline,
+.button.button-outline {
+    border-color: $male;
+    &.activated,
+    &.active {
+        background-color: $male;
+    }
+}
+
+.button.button-icon,
+.button.icon {
+    border-color: transparent;
+    color: $male;
+    background-color: transparent;
+}
+
+.button.button-positive.button-outline {
+    color: $white;
+}
+
+.bar-content {
+    background: $male;
+}
+
+.menu {
+    .list {
+        .item {
+            .icon {
+                color: $male;
+            }
+        }
+    }
+}
+
+.item.mm-tab-handlers .tabs-icon-round,
+.mm-grades-table .mm-tab-handlers.itemcenter .tabs-icon-round,
+.mm-tab-handlers .tabs-icon-round {
+    color: $male;
+}
+
+.bar.bar-positive {
+    border-color: darken($male, 5%);
+    background-color: $male;
+    background-image: linear-gradient(0deg, $male, $male 50%, transparent 50%);
+    color: #fff;
+}
+
+body[data-gender="m"] {
+    .login-page {
+        @include radial-gradient($male, darken($male, 21%));
+    }
+    .button.active,
+    .button.activated {
+        background-color: $male;
+        box-shadow: none;
+        color: #fff;
+    }
+    .button,
+    .button.button-light,
+    .button.button-stable,
+    .button.button-positive,
+    .button.button-calm,
+    .button.button-assertive,
+    .button.button-balanced,
+    .button.button-energized,
+    .button.button-royal,
+    .button.button-dark {
+        border-color: $male;
+        background: $male;
+        color: $white;
+        &.activated,
+        &.active {
+            border-color: $male;
+        }
+    }
+    .button.button-light,
+    .button.button-stable,
+    .button.button-calm,
+    .button.button-assertive,
+    .button.button-balanced,
+    .button.button-energized,
+    .button.button-royal,
+    .button.button-dark {
+        color: $male;
+    }
+    .button-clear,
+    .button.button-clear {
+        color: $white;
+        &.activated,
+        &.active {
+            background: none;
+        }
+    }
+    .button-outline,
+    .button.button-outline {
+        border-color: $male;
+        &.activated,
+        &.active {
+            background-color: $male;
+        }
+    }
+    .button.button-icon,
+    .button.icon {
+        border-color: transparent;
+        color: $male;
+        background-color: transparent;
+    }
+    .button.button-positive.button-outline {
+        color: $white;
+    }
+    .bar-content {
+        background: $male;
+    }
+    .menu {
+        .list {
+            .item {
+                .icon {
+                    color: $male;
+                }
+            }
+        }
+    }
+    .item.mm-tab-handlers .tabs-icon-round,
+    .mm-grades-table .mm-tab-handlers.itemcenter .tabs-icon-round,
+    .mm-tab-handlers .tabs-icon-round {
+        color: $male;
+    }
+    .bar.bar-positive {
+        border-color: darken($male, 5%);
+        background-color: $male;
+        background-image: linear-gradient(0deg, $male, $male 50%, transparent 50%);
+        color: #fff;
+    }
+}
+
+body[data-gender="f"] {
+    .login-page {
+        @include radial-gradient($female, darken($female, 21%));
+    }
+    .button.active,
+    .button.activated {
+        background-color: $female;
+        box-shadow: none;
+        color: #fff;
+    }
+    .button,
+    .button.button-light,
+    .button.button-stable,
+    .button.button-positive,
+    .button.button-calm,
+    .button.button-assertive,
+    .button.button-balanced,
+    .button.button-energized,
+    .button.button-royal,
+    .button.button-dark {
+        border-color: $female;
+        color: $white;
+        background: $female;
+        &.activated,
+        &.active {
+            border-color: $female;
+        }
+    }
+    .button.button-light,
+    .button.button-stable,
+    .button.button-calm,
+    .button.button-assertive,
+    .button.button-balanced,
+    .button.button-energized,
+    .button.button-royal,
+    .button.button-dark {
+        color: $female;
+    }
+    .button-clear,
+    .button.button-clear {
+        color: $white;
+        &.activated,
+        &.active {
+            background: none;
+        }
+    }
+    .button-outline,
+    .button.button-outline {
+        border-color: $female;
+        &.activated,
+        &.active {
+            background-color: $female;
+        }
+    }
+    .button.button-icon,
+    .button.icon {
+        border-color: transparent;
+        color: $female;
+        background-color: transparent;
+    }
+    .button.button-positive.button-outline {
+        color: $white;
+    }
+    .bar-content {
+        background: $female;
+    }
+    .menu {
+        .list {
+            .item {
+                .icon {
+                    color: $female;
+                }
+            }
+        }
+    }
+    .item.mm-tab-handlers .tabs-icon-round,
+    .mm-grades-table .mm-tab-handlers.itemcenter .tabs-icon-round,
+    .mm-tab-handlers .tabs-icon-round {
+        color: $female;
+    }
+    .bar.bar-positive {
+        border-color: darken($female, 5%);
+        background-color: $female;
+        background-image: linear-gradient(0deg, $female, $female 50%, transparent 50%);
+        color: #fff;
+    }
 }

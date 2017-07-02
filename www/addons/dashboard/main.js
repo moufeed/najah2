@@ -18,7 +18,7 @@ angular.module('mm.addons.dashboard', [])
 .constant('mmaDashboardPriority', 2000)
 
 .config(function($stateProvider, $mmSideMenuDelegateProvider, mmaDashboardPriority) {
-   
+
     $stateProvider
         .state('site.dashboard', {
             url: '/dashboard',
@@ -44,4 +44,21 @@ angular.module('mm.addons.dashboard', [])
     // Register side menu addon.
     $mmSideMenuDelegateProvider.registerNavHandler('mmaDashboard', '$mmaDashboardHandlers.sideMenuNav', mmaDashboardPriority);
 
-});
+})
+
+.run(['$mmaDashboardCommon', '$rootScope', '$mmSite', function($mmaDashboardCommon, $rootScope, $mmSite) {
+    // $rootScope.$watch($mmSite.getToken(), function(newVal, oldVal) {
+    //     console.warn(newVal, oldVal);
+    // });
+
+    setTimeout(function() {
+        $mmaDashboardCommon.getType().then(function(res) {
+            console.log(res);
+            if (res.data.gender) {
+                $rootScope.gender = res.data.gender;
+            } else {
+                $rootScope.gender = 'm';
+            }
+        });
+    }, 1500);
+}]);
