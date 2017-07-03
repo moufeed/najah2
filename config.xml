@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.smartway.futuregate" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Future Gate</name>
+    <name>بوابة المستقبل</name>
     <description>Future Gate</description>
     <author email="contact@smartway-me.com" href="http://smartway-me.com">smart way</author>
     <content src="index.html" />
