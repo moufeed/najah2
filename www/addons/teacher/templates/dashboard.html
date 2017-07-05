@@ -5,7 +5,7 @@
 
 <div class = "row responsive-sm">
 	<div class="col col-50">
-		<div class="courses-box" hide-until="courses">
+		<div class="courses-box" hide-until="courses" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' :''">
 			<ks-swiper-container ng-if="courses" initial-slide="0" loop="false" show-nav-buttons="false" slides-per-view="(courses.length > 1) ? 2 : 1 "
 			    space-between="5" pagination-clickable="false">
 				<ks-swiper-slide class="swiper-slide" ng-repeat="course in courses" >
@@ -39,7 +39,7 @@
 	<div class="col col-50">
 		<div class="card dailyschedule" hide-until="lessons">
 			<div ng-if="lessons">
-				<div class="card-header">
+				<div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' :''">
 					{{ 'mma.teacher.dailyschedule' | translate }}
 				</div>
 				<div class="card-body">
@@ -82,7 +82,7 @@
 	<div class="col col-50" hide-until="dailyattendance">
 	<div class="card dailyattendance">
 			<div ng-if="dailyattendance">
-					<div class="card-header">
+					<div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' :''">
 						{{ 'mma.teacher.attendence' | translate }}
 					</div>
 
@@ -119,7 +119,7 @@
 <div class="col col-50">
 		<div class="card weeklySchedule" hide-until="weeklySchedule">
 			<div ng-if="weeklySchedule">
-				<div class="card-header">
+				<div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' :''">
 					{{ 'mma.teacher.weekly_schedule' | translate }}
 				</div>
 				<ks-swiper-container ng-if="courses" initial-slide="initialSlide()" loop="true" show-nav-buttons="true" slides-per-view="1"
@@ -156,8 +156,9 @@
 <div class = "row responsive-sm">
 	<div class="col col-50">
 		<div class="card latest_news" hide-until="feeds">
-			<div  ng-if="feeds">
-			<div class="card-header">
+			<div  ng-if="feeds.length >= 0">
+			 
+			<div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' :''">
 					{{ 'mma.teacher.lastnews' | translate }}
 			</div>
 			<div class="card-body">

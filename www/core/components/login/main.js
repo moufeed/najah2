@@ -121,7 +121,7 @@ angular.module('mm.core.login', [])
 
 .run(function($log, $state, $mmUtil, $translate, $mmSitesManager, $rootScope, $mmSite, $mmURLDelegate, $ionicHistory, $timeout,
     $mmEvents, $mmLoginHelper, mmCoreEventSessionExpired, $mmApp, $ionicPlatform, mmCoreConfigConstants, $mmText,
-    mmCoreEventPasswordChangeForced, mmCoreEventUserNotFullySetup, mmCoreEventSitePolicyNotAgreed, $q) {
+    mmCoreEventPasswordChangeForced, mmCoreEventUserNotFullySetup, mmCoreEventSitePolicyNotAgreed, $q,$http) {
 
     $log = $log.getInstance('mmLogin');
 
@@ -208,7 +208,7 @@ angular.module('mm.core.login', [])
 
     // Redirect depending on user session.
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, $window, fromParams) {
-
+       
         // Prevent state changes while the app is not ready.
         if (!$mmApp.isReady() && toState.name !== 'mm_login.init') {
             event.preventDefault();
@@ -244,7 +244,15 @@ angular.module('mm.core.login', [])
             //$mmLoginHelper.goToSiteInitialPage();
             console.log($mmLoginHelper.redirectApp());
         }
-
+         // get user gender  female or male
+        $timeout(function(){
+            $http({
+            method: 'GET',
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.usertype&wstoken=' + $mmSite.getToken()
+            }).then(function(res) {
+                $rootScope.gender  = (res.data.gender == 'f')  ? 'f' : 'm';
+            });
+        },350)
     });
 
     // Function to handle session expired events.

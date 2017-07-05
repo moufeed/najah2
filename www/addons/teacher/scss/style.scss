@@ -36,6 +36,28 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
 */
 
 .courses-box {
+    &.gf {
+        @for $i from 1 to length($female-stats-colors) + 1 {
+            .swiper-slide:nth-child(#{$i}) {
+                .list.card {
+                    .card-header {
+                         background: nth($female-stats-colors, $i);
+                    }
+                }
+            }
+        }
+    }
+    &.gm {
+        @for $i from 1 to length($male-stats-colors) + 1 {
+            .swiper-slide:nth-child(#{$i}) {
+                .list.card {
+                    .card-header {
+                         background: nth($male-stats-colors, $i);
+                    }
+                }
+            }
+        }
+    }
     .list.card {
         padding-top: 0;
         margin-bottom: 10px;
@@ -59,7 +81,13 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
 .dailyschedule {
     margin: 10px;
     .card-header {
-        background: mc(teal)
+        background: mc(teal);
+        &.gf {
+            background: $gf-move;
+        }
+        &.gm {
+            background: $gm-move;
+        }
     }
     .list {
         padding-top: 0;
@@ -75,14 +103,14 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
                 color: $white;
                 &.add {
                     background: mc(green);
-                    box-shadow: 0 0 0 4px lighten(mc(green),35%);
+                    box-shadow: 0 0 0 4px lighten(mc(green), 35%);
                     &.activated {
                         background: darken( mc(green), 7%);
                     }
                 }
                 &.edite {
                     background: mc(orange);
-                    box-shadow: 0 0 0 4px lighten(mc(orange),35%); 
+                    box-shadow: 0 0 0 4px lighten(mc(orange), 35%);
                     &.activated {
                         background: darken( mc(orange), 7%);
                     }
@@ -95,11 +123,10 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
                     color: lighten($black, 25%);
                     display: inline-block;
                     margin-bottom: 4px;
-                    font-weight:normal;
+                    font-weight: normal;
                 }
                 small {
                     color: lighten($black, 40%);
-                   
                     &:last-child {
                         font-weight: bold;
                     }
@@ -113,6 +140,12 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
     padding-top: 0;
     .card-header {
         background: mc(bluegray);
+        &.gf {
+            background: $female_brown;
+        }
+        &.gm {
+            background: $female_brown;
+        }
     }
     .swiper-container {
         padding-bottom: 0;
@@ -158,6 +191,12 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
     padding-top: 0;
     .card-header {
         background: mc(indigo);
+        &.gf {
+            background: $female_green;
+        }
+        &.gm {
+            background: $female_green;
+        }
     }
     .swiper-button-next,
     .swiper-button-prev {
@@ -212,15 +251,15 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
 //----------------------------------------------------------------------------------------
 .card-courseInfo {
     .item {
-        &.item-input.item-select{
+        &.item-input.item-select {
             padding: 5px;
         }
         span {
             padding: 0 5px;
         }
         .btn-note {
-            &.active{
-                color:#009688;
+            &.active {
+                color: #009688;
             }
         }
     }
@@ -236,10 +275,10 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
     .profile-link {
         color: $gray;
     }
-    .item-input.item-select{
+    .item-input.item-select {
         padding: 5px;
-        select{
-            color:darken($gray,4%);
+        select {
+            color: darken($gray, 4%);
             font-weight: 500;
             padding: 0 42px 0 16px;
         }
@@ -253,18 +292,17 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
         margin-top: 10px;
         &.activated {
             background: darken(mc(teal), 5%);
-            
         }
     }
     .btn-note {
         padding: 5px 10px;
         color: $gray;
         border-radius: 2px;
-        &.ion-edit{
-            color:mc(teal);
+        &.ion-edit {
+            color: mc(teal);
         }
-        &.ion-compose{
-            color:mc(orange);
+        &.ion-compose {
+            color: mc(orange);
         }
         &.activated {
             background: darken(mc(teal), 5%);
@@ -279,6 +317,12 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
 .latest_news {
     .card-header {
         background: $lasttrackbar;
+        &.gf {
+            background: $female_lightred;
+        }
+        &.gm {
+            background: $male_lightred;
+        }
     }
     .date {
         font-size: 70%;
@@ -518,8 +562,8 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
                 padding: 5px;
                 margin-top: 10px;
                 span {
-                        max-width: 30%;
-                        white-space: normal;
+                    max-width: 30%;
+                    white-space: normal;
                     small,
                     strong {
                         display: block;
@@ -635,6 +679,7 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
         margin-bottom: 15px;
     }
 }
+
 //----------------------------------------------------------------------------------------
 //------ grades slide 
 //----------------------------------------------------------------------------------------
@@ -657,8 +702,8 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
             i {
                 float: right;
             }
-            &.active{
-                background-color:transparent; 
+            &.active {
+                background-color: transparent;
                 color: $lasttrackbar;
             }
         }
@@ -675,45 +720,44 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
                 display: block !important;
             }
         }
-        .item-info{
+        .item-info {
             padding: 5px 10px;
-            strong{
+            strong {
                 padding: 0 5px;
                 color: #34495e;
             }
         }
-        
     }
-    .item-subgrade.active{
-                border-bottom: 10px solid #ecf0f1;
+    .item-subgrade.active {
+        border-bottom: 10px solid #ecf0f1;
     }
-    .buttons{
+    .buttons {
         float: right;
-
     }
-    .classname{
+    .classname {
         line-height: 28px;
         display: inline-block;
         margin: 0;
         width: 80%;
-        width:calc(100% - 40px);
-        i{
+        width: calc(100% - 40px);
+        i {
             color: #bdc3c7;
-            margin-right:8px;
+            margin-right: 8px;
         }
     }
-    .link-group{
+    .link-group {
         width: 40px;
         line-height: 20px;
         color: #000;
     }
 }
+
 //----------------------------------------------------------------------------------------
 //------ stamps slide
 //----------------------------------------------------------------------------------------
-.stamps-slide{
-    .list{
-        .item{
+.stamps-slide {
+    .list {
+        .item {
             padding: 10px;
             text-align: left;
             @include transition(0.09s all linear);
@@ -725,40 +769,40 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
                 display: block !important;
             }
         }
-        .item-classrooms{
-            .item-classroom{
-                i{
+        .item-classrooms {
+            .item-classroom {
+                i {
                     color: #bdc3c7;
                     margin-right: 8px;
                 }
-                span{}
-                &.active{
-                      background-color: #f1f1f1;
+                span {}
+                &.active {
+                    background-color: #f1f1f1;
                 }
             }
-            .item-students{
+            .item-students {
                 padding: 0;
-                .student-name{
+                .student-name {
                     background-color: #f7f7f7;
-                     &.active{
-                background-color:transparent; 
-                color: $lasttrackbar;
-            }
-                    span{}
-                    i{
+                    &.active {
+                        background-color: transparent;
+                        color: $lasttrackbar;
+                    }
+                    span {}
+                    i {
                         float: right;
-                        color:#34495e;
+                        color: #34495e;
                     }
                 }
-                .item-stamps{
+                .item-stamps {
                     text-overflow: inherit;
                     white-space: initial;
-                    strong{
+                    strong {
                         display: block;
                         font-weight: normal;
                         font-size: 14px;
                     }
-                    span{
+                    span {
                         display: block;
                         font-size: 90%;
                         color: $gray;
@@ -768,9 +812,9 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
         }
     }
 }
- 
 
- /*
+
+/*
   <div class="">
         <ion-list class="">
                   <div ng-repeat="clsroom in clsrooms" class="item-classrooms">

@@ -53,12 +53,7 @@ angular.module('mm.addons.dashboard', [])
 
     setTimeout(function() {
         $mmaDashboardCommon.getType().then(function(res) {
-            console.log(res);
-            if (res.data.gender) {
-                $rootScope.gender = res.data.gender;
-            } else {
-                $rootScope.gender = 'm';
-            }
+             $rootScope.gender  = (res.data.gender == 'f')  ? 'f' : 'm';
         });
     }, 1500);
 }]);
