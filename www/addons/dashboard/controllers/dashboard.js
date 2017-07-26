@@ -292,5 +292,5 @@ angular.module('mm.addons.dashboard')
     $scope.$on('popover.removed', function() {
         // Execute action
     });
-    console.log('222222222222222222222')
+
 });

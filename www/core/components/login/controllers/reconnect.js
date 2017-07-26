@@ -22,7 +22,7 @@ angular.module('mm.core.login')
  * @name mmLoginReconnectCtrl
  */
 .controller('mmLoginReconnectCtrl', function($scope, $state, $stateParams, $mmSitesManager, $mmApp, $mmUtil, $ionicHistory,
-            $mmLoginHelper, $mmSite) {
+    $mmLoginHelper, $mmSite) {
 
     var infositeurl = $stateParams.infositeurl, // Siteurl in site info. It might be different than siteurl (http/https).
         stateName = $stateParams.statename,
@@ -74,11 +74,12 @@ angular.module('mm.core.login')
 
         // Start the authentication process.
         $mmSitesManager.getUserToken(siteurl, username, password).then(function(data) {
+            console.table(data);
             $mmSitesManager.updateSiteToken(infositeurl, username, data.token, data.privatetoken).then(function() {
                 // Update site info too because functions might have changed (e.g. unisntall local_mobile).
                 $mmSitesManager.updateSiteInfoByUrl(infositeurl, username).finally(function() {
                     delete $scope.credentials; // Delete password from the scope.
-                    $ionicHistory.nextViewOptions({disableBack: true});
+                    $ionicHistory.nextViewOptions({ disableBack: true });
                     if (stateName) {
                         // State defined, go to that state instead of site initial page.
                         return $state.go(stateName, stateParams);

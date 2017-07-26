@@ -22,7 +22,7 @@ angular.module('mm.core.login')
  * @name mmLoginCredentialsCtrl
  */
 .controller('mmLoginCredentialsCtrl', function($scope, $stateParams, $mmSitesManager, $mmUtil, $ionicHistory, $mmApp,
-            $q, $mmLoginHelper, $mmContentLinksDelegate, $mmContentLinksHelper, $translate) {
+    $q, $mmLoginHelper, $mmContentLinksDelegate, $mmContentLinksHelper, $translate) {
 
     $scope.siteurl = $stateParams.siteurl;
     $scope.credentials = {
@@ -59,7 +59,7 @@ angular.module('mm.core.login')
                 // Check that there's no SSO authentication ongoing and the view hasn't changed.
                 if (!$mmApp.isSSOAuthenticationOngoing() && !$scope.$$destroyed) {
                     $mmLoginHelper.confirmAndOpenBrowserForSSOLogin(
-                                result.siteurl, result.code, result.service, result.config && result.config.launchurl);
+                        result.siteurl, result.code, result.service, result.config && result.config.launchurl);
                 }
             } else {
                 $scope.isBrowserSSO = false;
@@ -93,6 +93,16 @@ angular.module('mm.core.login')
         checkSite($scope.siteurl);
     } else {
         $scope.siteChecked = true;
+    }
+
+    window.test = function() {
+        console.log(this);
+        window.iframe = this;
+        // return $mmSitesManager.newSite('https://smartway-dev.com', '1b14e494ec9c19ccb24eb9846da81d6c', '').then(function() {
+        //     console.warn('https://smartway-dev.com', '1b14e494ec9c19ccb24eb9846da81d6c', '');
+        //     $ionicHistory.nextViewOptions({ disableBack: true });
+        //     return $mmLoginHelper.redirectApp();
+        // });
     }
 
     $scope.login = function() {
@@ -132,7 +142,7 @@ angular.module('mm.core.login')
         return $mmSitesManager.getUserToken(siteurl, username, password).then(function(data) {
             return $mmSitesManager.newSite(data.siteurl, data.token, data.privatetoken).then(function() {
                 delete $scope.credentials; // Delete username and password from the scope.
-                $ionicHistory.nextViewOptions({disableBack: true});
+                $ionicHistory.nextViewOptions({ disableBack: true });
 
                 if (urlToOpen) {
                     // There's a content link to open.
@@ -142,11 +152,11 @@ angular.module('mm.core.login')
                             // Action should only have 1 site because we're filtering by username.
                             action.action(action.sites[0]);
                         } else {
-                                $mmLoginHelper.redirectApp();
+                            $mmLoginHelper.redirectApp();
                         }
                     });
                 } else {
-                       return $mmLoginHelper.redirectApp();
+                    return $mmLoginHelper.redirectApp();
                     // return $mmLoginHelper.goToSiteInitialPage();
                 }
             });

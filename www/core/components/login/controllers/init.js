@@ -32,7 +32,6 @@ angular.module('mm.core.login')
             disableAnimate: true,
             disableBack: true
         });
-
         // Check if there was a pending redirect.
         var redirectData = $mmApp.getRedirect();
         if (redirectData.siteid && redirectData.state) {
@@ -70,6 +69,3 @@ angular.module('mm.core.login')
     }
 
 });
-
-
- 
