@@ -293,4 +293,5 @@ angular.module('mm.addons.dashboard')
         // Execute action
     });
 
+
 });

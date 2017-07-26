@@ -68,6 +68,54 @@ label.item {
     font-size: 70%;
 }
 
+.card {
+    &.performance {
+        .card-header {
+            background: $primary;
+            &.gf {
+                background: $gf-move;
+            }
+            &.gm {
+                background: $gm-move;
+            }
+        }
+    }
+    &.attendence {
+        .card-header {
+            background: mc(teal);
+            &.gf {
+                background: $female_lightred;
+            }
+            &.gm {
+                background: $male_lightred;
+            }
+        }
+    }
+    &.last-tracks {
+        .card-header {
+            background: mc(deeppurple);
+            &.gf {
+                background: $female-border;
+            }
+            &.gm {
+                background: $male-border;
+            }
+        }
+    }
+    .badges .card-header {}
+    &.badges {
+        .card-header {
+            background: mc(red);
+            &.gm {
+                background: mc(purple);
+            }
+            &.gf {
+                background: mc(teal);
+            }
+        }
+    }
+}
+
 
 /*ion-slides {
         height: 250px;
@@ -77,8 +125,14 @@ label.item {
     position: static;
 }
 
-.weekly-schedule .header {
+.weekly-schedule .card-header {
     background: #607D8B;
+    &.gf {
+        background: $female_brown
+    }
+    &.gm {
+        background: $male_brown
+    }
 }
 
 .weekly-schedule .header h2 {
@@ -117,12 +171,14 @@ label.item {
     font-weight: bold;
 }
 
-.weekly-attendence .header {
+.weekly-attendence .card-header {
     background: #607d8b;
-}
-
-.weekly-attendence .header h2 {
-    color: #fff;
+    &.gf {
+        background: $female_brown
+    }
+    &.gm {
+        background: $male_brown
+    }
 }
 
 
@@ -423,14 +479,6 @@ a {
     background: #4caf50;
 }
 
-.badges .header {
-    background: #ff5722;
-}
-
-.badges .header h2 {
-    color: #fff;
-}
-
 .item-badge {
     font-size: 0;
 }
@@ -624,6 +672,12 @@ ul.pagination li.active a {
 
 .card.courses .card-header {
     background: #C2185B;
+    &.gf {
+        background: $female_green;
+    }
+    &.gm {
+        background: $male_green;
+    }
 }
 
 .card.courses .header h2 {
@@ -942,6 +996,12 @@ td p {
 .stamps .card-header {
     background: #546E7A;
     color: #fff;
+    &.gf {
+        background: #9B6A6C;
+    }
+    &.gm {
+        background: #5F5449;
+    }
 }
 
 .stamp-course p {

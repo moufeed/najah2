@@ -3,7 +3,7 @@
          
         <div class="children-list">
             
-            <div ng-if="children" class="card child-card" ng-repeat="child in children">
+            <div ng-if="children" class="card child-card" ng-repeat="child in children" ng-class="(child.gender == 'f') ? 'child-female' : (child.gender == 'm') ? 'child-male' : '' ">
                 <div class="item item-avatar item-icon-right">
                     
                     <img ng-src="{{child.pic}}" src="addons/parent/img/avater.png"> 

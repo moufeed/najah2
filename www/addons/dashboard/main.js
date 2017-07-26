@@ -61,5 +61,6 @@ angular.module('mm.addons.dashboard', [])
                 }
             });
         }
+
     }, 1500);
 }]);

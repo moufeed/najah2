@@ -1,10 +1,13 @@
 $stats-colors: #C51609 #1275C3 #D00B4E #009688 !default;
+
+
 $black: #000 !default;
 $gray: #777 !default;
 $white :#fff !default;
 $weeklybar :#1275C3 !default;
 $lasttrackbar: #009688!default;
 $attendencebar: #D00B4E!default;
+
 $rightArr:'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ3Ny4xNzUgNDc3LjE3NSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDc3LjE3NSA0NzcuMTc1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPHBhdGggZD0iTTM2MC43MzEsMjI5LjA3NWwtMjI1LjEtMjI1LjFjLTUuMy01LjMtMTMuOC01LjMtMTkuMSwwcy01LjMsMTMuOCwwLDE5LjFsMjE1LjUsMjE1LjVsLTIxNS41LDIxNS41ICAgYy01LjMsNS4zLTUuMywxMy44LDAsMTkuMWMyLjYsMi42LDYuMSw0LDkuNSw0YzMuNCwwLDYuOS0xLjMsOS41LTRsMjI1LjEtMjI1LjFDMzY1LjkzMSwyNDIuODc1LDM2NS45MzEsMjM0LjI3NSwzNjAuNzMxLDIyOS4wNzV6ICAgIiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==';
 $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ3Ny4xNzUgNDc3LjE3NSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNDc3LjE3NSA0NzcuMTc1OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjE2cHgiIGhlaWdodD0iMTZweCI+CjxnPgoJPHBhdGggZD0iTTE0NS4xODgsMjM4LjU3NWwyMTUuNS0yMTUuNWM1LjMtNS4zLDUuMy0xMy44LDAtMTkuMXMtMTMuOC01LjMtMTkuMSwwbC0yMjUuMSwyMjUuMWMtNS4zLDUuMy01LjMsMTMuOCwwLDE5LjFsMjI1LjEsMjI1ICAgYzIuNiwyLjYsNi4xLDQsOS41LDRzNi45LTEuMyw5LjUtNGM1LjMtNS4zLDUuMy0xMy44LDAtMTkuMUwxNDUuMTg4LDIzOC41NzV6IiBmaWxsPSIjRkZGRkZGIi8+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==';
 .card {
@@ -36,6 +39,22 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
         padding: 0; 
         margin: 10px 0; 
         box-shadow: 0 1px 1px rgba($black, .3);
+        &.child-female{
+            border-top : 5px solid $female-border;
+            .item-footer {
+                .link{
+                    background:$female;  
+                }
+            }
+        }
+        &.child-male{
+             border-top : 5px solid $male-border;
+             .item-footer {
+                .link{
+                    background: $male;  
+                }
+            }
+        }
     }
     .item-body {
         p {
@@ -121,6 +140,38 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
             }
             &.points-chart {
                 background: nth($stats-colors, 4)
+            }
+        }
+    }
+    &.s-female{
+        .card{
+            &.courses-chart {
+                background: nth($female-stats-colors, 1)
+            }
+            &.weeklytasks-chart {
+                background: nth($female-stats-colors, 2)
+            }
+            &.badge-chart {
+                background: nth($female-stats-colors, 3)
+            }
+            &.points-chart {
+                background: nth($female-stats-colors, 4)
+            }
+        }
+    }
+    &.s-male{
+        .card{
+            &.courses-chart {
+                background: nth($male-stats-colors, 1)
+            }
+            &.weeklytasks-chart {
+                background: nth($male-stats-colors, 2)
+            }
+            &.badge-chart {
+                background: nth($male-stats-colors, 3)
+            }
+            &.points-chart {
+                background: nth($male-stats-colors, 4)
             }
         }
     }
@@ -254,6 +305,7 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
             h2 {
                 color: $white;
             }
+           
         }
         .icon {
             &.ion-num {
@@ -281,6 +333,15 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
             }
         }
     }
+    // gender colors
+     &.gf{
+        .item.item-header {  background: $gf-move;}
+        .swiper-button-next,.swiper-button-prev { background-color: lighten($gf-move, 3%); }
+    }
+    &.gm{
+        .item.item-header {  background: $gm-move;}
+        .swiper-button-next,.swiper-button-prev { background-color: lighten($gm-move, 3%); }
+    }
 } //--------------------------------------------------------------------------------------------
 // lasttrack
 //--------------------------------------------------------------------------------------------
@@ -298,6 +359,12 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
     }
     .card-header {
         background: $lasttrackbar;
+        &.gf{
+             background: $female_green;
+        }
+        &.gm{
+             background: $male_green;
+        }
         @include display-flex;
         @include justify-content(space-between);
         @include align-items(center);
@@ -306,6 +373,7 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
             margin: 0 5px;
         }
     }
+
     .item-info {
         h3 {
             display: inline-block;
@@ -368,6 +436,12 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
     }
     .card-header {
         background: $attendencebar;
+        &.gf{
+                  background: $female_brown; 
+            }
+        &.gm{
+                background:$male_brown;
+            }
     }
     .card-body {
         padding: 25px;
@@ -429,6 +503,12 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
     }
     .card-header {
         background: mc(purple);
+            &.gf{
+                  background:nth($femaleColors, 1); 
+            }
+            &.gm{
+                background:nth($maleColors, 1);
+            }
     }
  
         
@@ -444,6 +524,13 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
             width: 100%;
             thead{
                 background: #E4DEE4;
+                &.gf{
+                  background:nth($femaleColors, 2);
+                  color:#fff;
+                }
+                &.gm{
+                    background:nth($maleColors, 2);
+                }
                 th{
                     padding: 10px;
                     font-weight: normal;

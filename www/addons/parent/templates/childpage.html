@@ -1,4 +1,4 @@
-<ion-view view-title="{{ 'mma.parent.childtitle' | translate }}" class="child_Page">
+<ion-view view-title="{{ 'mma.parent.childtitle' | translate }}" class="child_Page" >
 
 	<ion-content padding="true" mm-state-class>
 		
@@ -13,7 +13,7 @@
 		</mm-loading>
 
  
-		<div class="stats  ">
+		<div class="stats  " ng-class="(child.gender == 'f') ? 's-female' : (child.gender == 'm') ? 's-male' : '' ">
 			 
 			<div class="row">
 				<div class="col-50">
@@ -92,13 +92,13 @@
 		</div>
 
 
-		<div class=" card weeklyschedule">
+		<div class=" card weeklyschedule" ng-class="(child.gender == 'f') ? 'gf' : (child.gender == 'm') ? 'gm' : '' ">
 			 <ion-spinner ng-if="ws_loadding"  icon="dots" class="ws_spinner "></ion-spinner>
 			<ks-swiper-container ng-if="weeklyschedule.length > 0" initial-slide="Utils.initialSlide()" loop="false" show-nav-buttons="true"
 			    slides-per-view="1" space-between="0" pagination-clickable="false">
 				<ks-swiper-slide class="swiper-slide" ng-repeat="day in  weeklyschedule">
 					<ion-list class="list">
-						<ion-item class="item item-divider text-center item-header">
+						<ion-item class="item item-divider text-center item-header" >
 							<h2 ng-class="{'helf-opacity' : ws_loadding }" > {{day.dayname}}</h2>
 						</ion-item>
 						<ion-item class="item item-icon-left" ng-repeat="schedule in day.data" ng-class-odd="'odd'">
@@ -116,10 +116,10 @@
 			</mma-empty>
 		</div>
 
-		<div class="card lasttrack">
+		<div class="card lasttrack" >
 			 <ion-spinner ng-if="lt_loadding"  icon="lines" class="lt_spinner "></ion-spinner>
 			<div ng-if="lasttrack.courses.length > 0 ">
-				<div class="card-header text-center">
+				<div class="card-header text-center" ng-class="(child.gender == 'f') ? 'gf' : (child.gender == 'm') ? 'gm' : '' ">
 					<span> {{lasttrack.program}} </span> <span> {{ 'mma.parent.season' | translate }} {{ lasttrack.term}}</span>
 				</div>
 				<div class="card-body">
@@ -156,10 +156,10 @@
 		<div class="card attendence-card">
 			 <ion-spinner ng-if="atd_loadding"  icon="dots" class="atd_spinner "></ion-spinner>
 			<div ng-if="attendence.data.length > 0">
-				<div class="card-header">
+				<div class="card-header" ng-class="(child.gender == 'f') ? 'gf' : (child.gender == 'm') ? 'gm' : '' ">
 					{{'mma.parent.attendencetitle' | translate }}
 				</div>
-				<div class="card-body card-padding">
+				<div class="card-body card-padding" >
 					<canvas id="doughnut" class="chart chart-pie" chart-data="attendence.data" chart-labels="attendence.labels" chart-colors="attendence.colors"
 					    chart-legend="true">
 					</canvas>
@@ -186,13 +186,13 @@
 		<div class="card weekly-attendence">
 				<ion-spinner ng-if="wa_loadding"  icon="dots" class="wa_spinner"></ion-spinner>
 			<div ng-if="weeklyttendence">
-				<div class="card-header">
+				<div class="card-header " ng-class="(child.gender == 'f') ? 'gf' : (child.gender == 'm') ? 'gm' : '' ">
 					{{'mma.parent.weekly_attendence' | translate }}
 				</div>
 				<div class="list with-height">
 					 <ion-scroll direction="x" style="height:100%"  zooming="true" min-zoom="1">
 						<table>
-							<thead>
+							<thead ng-class="(child.gender == 'f') ? 'gf' : (child.gender == 'm') ? 'gm' : '' ">
 								<tr>
 									<th ng-repeat="head in weeklyttendence.header">{{ head }}</th>
 								</tr>
