@@ -1,0 +1,47 @@
+<mm-loading hide-until="dashboard.weeklyTasksLoaded">
+    <div class="row responsive-sm news-wrapper">
+        <div class="col news-col">
+            <div class="card weekly-tasks">
+                <div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' : '' ">
+                    {{ 'mma.dashboard.weekly_tasks' | translate }}
+                </div>
+                <div ng-if="dashboard.weeklyTasks.length">
+
+                    <div class="card-body">
+                        <ion-list class="list list-divider stamp-course">
+                            <!--<p>{{ course.coursename }}</p>-->
+                            <ion-list class="list">
+                                <ion-item ui-sref="site.mod_assign({module: assign, courseid: assign.course})" class="item item-thumbnail-left" ng-class-even="'even'" ng-repeat="assign in dashboard.weeklyTasks.assign | limitTo:2">
+                                    <img ng-src="img/icons/{{ assign.class }}.png">
+                                    <h2>{{ assign.data.name }}</h2>
+                                    <small>{{ assign.section }}</small>
+                                </ion-item>
+                                <ion-item ui-sref="site.mod_quiz({module: quiz, courseid: quiz.course})" class="item item-thumbnail-left" ng-class-even="'even'" ng-repeat="quiz in dashboard.weeklyTasks.quiz | limitTo:2">
+                                    <img ng-src="img/icons/{{ quiz.class }}.png">
+                                    <h2>{{ quiz.data.name }}</h2>
+                                    <small>{{ quiz.section }}</small>
+                                </ion-item>
+                                <ion-item ui-sref="site.customweeklytasks" class="item text-center item-btn">
+                                    {{ 'mma.parent.view_all' | translate }}
+                                </ion-item>
+                            </ion-list>
+                            <!--<ion-list class="list" ng-repeat="quiz in course.weeklytasks.quiz">
+                                            <ion-item class="item item-thumbnail-left" ng-class-even="'even'">
+                                                <img ng-src="img/icons/quizzes.png">
+                                                <h2>{{ quiz.name }}</h2>
+                                                <small>{{ quiz.section }}</small>
+                                            </ion-item>
+                                        </ion-list>-->
+                        </ion-list>
+                    </div>
+                </div>
+                <div class="no-data" ng-if="!dashboard.weeklyTasks.length">
+                    <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
+                    <p>{{ 'mma.dashboard.no_data' | translate }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- card weekly-tasks -->
+</mm-loading>

@@ -1,0 +1,35 @@
+<div class="card lasttrack">
+    <ion-spinner ng-if="lt_loadding" icon="lines" class="lt_spinner "></ion-spinner>
+    <div ng-if="lasttrack.courses.length > 0 ">
+        <div class="card-header text-center" ng-class="(child.gender == 'f') ? 'gf' : (child.gender == 'm') ? 'gm' : '' ">
+            <span> {{lasttrack.program}} </span> <span> {{ 'mma.parent.season' | translate }} {{ lasttrack.term}}</span>
+        </div>
+        <div class="card-body">
+            <ion-list class="list">
+                <ion-item class="item itembody" ng-repeat="course in lasttrack.courses | limitTo:lasttrack.maxItems">
+                    <div class="item-info">
+                        <h3>{{ course.name }}</h3>
+                        <small>{{ course.total_grade }}%</small>
+                    </div>
+                    <div class="progress">
+                        <span ng-class="{passed: course.total_grade > 70 ,'stillloading' : lt_loadding  }" ng-style="{width: course.total_grade + '%'}"></span>
+                    </div>
+                </ion-item>
+
+                <ion-item class="item text-center item-btn" ng-click="lasttrack.maxItems = lasttrack.courses.length" ng-show="lasttrack.maxItems == 6 && lasttrack.courses.length > 6">
+                    <i class="ion-chevron-down"></i> {{ 'mma.parent.view_all' | translate }}
+                </ion-item>
+
+                <ion-item class="item text-center item-btn" ng-click="lasttrack.maxItems = 6" ng-show="lasttrack.maxItems > 6">
+                    <i class="ion-chevron-up"></i> {{ 'mma.parent.view_less' | translate }}
+                </ion-item>
+
+            </ion-list>
+        </div>
+    </div>
+    <mma-empty helper-class="info inside" icon="ion-ios-book-outline" ng-if="!lasttrack || !lasttrack.courses">
+        <h4> {{ 'mma.parent.last_track' | translate }} </h4>
+        <ion-spinner icon="lines" ng-if="!lasttrack.noData"></ion-spinner>
+        <span ng-show="lasttrack.noData">  {{ 'mma.parent.no_data' | translate }} </span>
+    </mma-empty>
+</div>

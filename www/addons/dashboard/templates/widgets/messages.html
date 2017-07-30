@@ -1,0 +1,28 @@
+<!--<mm-loading hide-until="dashboard.feedbackLoaded">
+    <div class = "row responsive-sm news-wrapper">
+        <div class="col news-col">
+            <div class="card feedback">
+                <div ng-if="dashboard.feedback.length">
+                    <div class="card-header">
+                        {{ 'mma.dashboard.messages' | translate }}
+                    </div>
+                    <div class="card-body">
+                        <ion-list class="list list-divider">
+                            <ion-item class="item item-thumbnail-left" ng-repeat="msg in dashboard.feedback" ng-class-even="'even'">
+                                <img ng-src="{{ msg.picture }}">
+                                <h3>{{ msg.firstname }} {{ msg.lastname }}</h3>
+                                <p>{{ msg.msg }}</p>
+                                <small>{{ msg.msgtime }}</small>
+                            </ion-item>
+                        </ion-list>
+                    </div>
+                </div>
+                <div class="no-data" ng-if="!dashboard.feedback.length">
+                    <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
+                    <p>{{ 'mma.dashboard.no_data' | translate }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</mm-loading>-->

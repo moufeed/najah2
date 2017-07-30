@@ -36,6 +36,15 @@ angular.module('mm.addons.dashboard')
         });
     };
 
+    self.layout = function() {
+        return $http({
+            method: 'GET',
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.getlayout&wstoken=' + $mmSite.getToken()
+        });
+    };
+
+    window.asd = self;
+
     self.userDetails = function(layout) {
         return $http({
             method: 'GET',

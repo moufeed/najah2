@@ -1,0 +1,16 @@
+<ion-view>
+    <ion-nav-title>{{'mma.portfolio.views' | translate}}</ion-nav-title>
+    <ion-content padding="true" mm-state-class>
+        <div class="cv-slide">
+            <mm-loading hide-until="$ctrl.viewsLoaded">
+                <div class="list" ng-repeat="view in $ctrl.views">
+                    <a class="item" ui-sref="site.view({ uId: view.userid, vId: view.id })">
+                        <h2>{{ view.name }}</h2>
+                        <div ng-bind-html="$ctrl.renderHtml(view.description)"></div>
+                        <small>{{ view.timemodified | date }}</small>
+                    </a>
+                </div>
+            </mm-loading>
+        </div>
+    </ion-content>
+</ion-view>

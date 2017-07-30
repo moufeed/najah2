@@ -1,0 +1,27 @@
+<mm-loading hide-until="dashboard.stampsLoaded">
+
+    <div class="row responsive-sm news-wrapper">
+        <div class="col news-col">
+            <div class="card stamps">
+                <div>
+                    <div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' : '' ">
+                        {{ 'mma.dashboard.stamps' | translate }}
+                    </div>
+                    <div class="card-body">
+                        <ion-list class="list list-divider stamp-course" ng-repeat="course in dashboard.stamps">
+                            <p>{{ course.coursename }}</p>
+                            <ion-list class="list" ng-repeat="stamp in course.stamps">
+                                <ion-item class="item item-thumbnail-left" ng-class-even="'even'">
+                                    <img ng-src="{{stamp.stampimg}}">
+                                    <h2>{{stamp.stampname }}</h2>
+                                    <small>{{ stamp.giver }}</small>
+                                </ion-item>
+                            </ion-list>
+                        </ion-list>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- card stamps -->
+</mm-loading>

@@ -1,0 +1,12 @@
+<mm-loading hide-until="dashboard.performanceLoaded">
+    <div class="card performance">
+        <div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' : '' ">
+            {{ 'mma.dashboard.performance' | translate }}
+        </div>
+        <div class="flot-chart" data-bar-chart style="width:100%;height:400px" performance="dashboard.performance" ng-if="dashboard.performance.programname"></div>
+        <div class="no-data" ng-if="!dashboard.performance.programname">
+            <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
+            <p>{{ 'mma.dashboard.no_data' | translate }}</p>
+        </div>
+    </div>
+</mm-loading>

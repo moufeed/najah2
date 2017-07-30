@@ -1,0 +1,27 @@
+<div class="card currentcourses">
+    <ion-spinner icon="ripple" ng-if="cc_loadding" class="cc_loader"></ion-spinner>
+    <div ng-if="currentCourses.courses">
+        <div class="card-body">
+            <ks-swiper-container initial-slide="0" loop="false" show-nav-buttons="false" slides-per-view="1" space-between="0" pagination-clickable="false">
+                <ks-swiper-slide class="swiper-slide" ng-repeat="course in  currentCourses.courses">
+                    <div class="text-center">
+                        <span class="pie-chart" easypiechart percent="course.progress" options="piechartOptions">
+								<div class="pie-info">
+									<span class="pie-title">{{course.name}}</span>
+                        <span class="pie-percent">{{course.progress+ '%'}}</span>
+                    </div>
+                    </span>
+        </div>
+        </ks-swiper-slide>
+        </ks-swiper-container>
+    </div>
+    <div class=" card-footer">
+        <span> {{currentCourses.program}} </span> <span> {{ 'mma.parent.season' | translate }} {{ currentCourses.term}}</span>
+    </div>
+</div>
+<mma-empty helper-class="primary inside" icon="ion-ios-book-outline" ng-if="!currentCourses || !currentCourses.courses ">
+    <h4>{{ 'mma.parent.current_courses' | translate }} </h4>
+    <ion-spinner icon="lines" ng-if="!currentCourses.noData"></ion-spinner>
+    <span ng-show="currentCourses.noData"> {{ 'mma.parent.no_data' | translate }}</span>
+</mma-empty>
+</div>

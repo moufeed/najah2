@@ -1,0 +1,29 @@
+<div class="card messages-box">
+    <ion-spinner ng-if="cm_loadding" icon="dots" class="cm_spinner "></ion-spinner>
+    <div ng-if="messages && messages.length > 0">
+        <div class="card-header">
+            {{ 'mma.parent.messages' | translate }}
+        </div>
+        <div class="card-body">
+            <ion-list class="list ">
+                <ion-item ng-repeat="msg in messages | limitTo:messages.maxItems" class="item item-avatar" ng-click="readMsg(msg)" ng-class-odd="'odd'">
+                    <img ng-src="{{msg.pic}}" />
+                    <h2>{{msg.firstname +' ' + msg.lastname}}</h2>
+                    <div ng-bind-html="msg.msg | trustedHtml" class="embeddhtml"></div>
+                </ion-item>
+                <ion-item class="item text-center item-btn" ng-click="messages.maxItems = messages.length" ng-show="messages.maxItems == 5 && messages.length > 5">
+                    <i class="ion-chevron-down"></i> {{ 'mma.parent.view_all' | translate }}
+                </ion-item>
+                <ion-item class="item text-center item-btn" ng-click="messages.maxItems = 5" ng-show="messages.maxItems > 5">
+                    <i class="ion-chevron-up"></i> {{ 'mma.parent.view_less' | translate }}
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+    <mma-empty helper-class="info inside" icon="ion-ios-email-outline" ng-if="!messages">
+        <h4>{{ 'mma.parent.messages' | translate }}</h4>
+        <ion-spinner icon="lines" ng-if="!messages.noData"></ion-spinner>
+        <span ng-show="messages.noData">  {{ 'mma.parent.no_data' | translate }}</span>
+    </mma-empty>
+
+</div>

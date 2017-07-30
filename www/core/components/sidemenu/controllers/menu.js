@@ -22,7 +22,7 @@ angular.module('mm.core.sidemenu')
  * @name mmSideMenuCtrl
  */
 .controller('mmSideMenuCtrl', function($scope, $state, $mmSideMenuDelegate, $mmSitesManager, $mmSite, $mmEvents,
-            $timeout, mmCoreEventLanguageChanged, mmCoreEventSiteUpdated, $mmSideMenu, $mmCourses) {
+            $timeout, mmCoreEventLanguageChanged, mmCoreEventSiteUpdated, $mmSideMenu, $mmCourses, $http) {
 
     $mmSideMenu.setScope($scope);
     $scope.handlers = $mmSideMenuDelegate.getNavHandlers();
@@ -31,7 +31,9 @@ angular.module('mm.core.sidemenu')
 
     $scope.logout = function() {
         $mmSitesManager.logout().finally(function() {
-            $state.go('mm_login.sites');
+            $mmSitesManager.deleteSite($mmSite.getId());
+            // $state.go('mm_login.sites');
+            $state.go('mm_login.logoutNoor');
         });
     };
     /**
@@ -40,7 +42,9 @@ angular.module('mm.core.sidemenu')
      */
       $scope.sitelogout = function (){
            $mmSitesManager.setSiteLoggedOut($mmSite.getId(),true).finally(function(res){
-               $state.go('mm_login.reconnect');
+                $mmSitesManager.deleteSite($mmSite.getId());
+               // $state.go('mm_login.reconnect');
+               $state.go('mm_login.logoutNoor');
            });
       };
     function loadSiteInfo() {

@@ -1,0 +1,39 @@
+<div class="card weeklytasks-box">
+    <ion-spinner ng-if="wt_loadding" icon="dots" class="wt_spinner "></ion-spinner>
+    <div ng-if="taskslist && taskslist.length > 0">
+        <div class="card-header">
+            {{ 'mma.parent.weekly_tasks' | translate }}
+        </div>
+        <div class="card-body">
+            <ion-list class="list ">
+                <div ng-repeat="task in taskslist">
+
+                    <ion-item class="item item-divider">
+                        {{task.coursename}}
+                    </ion-item>
+
+                    <ion-item ng-if="task.weeklytasks.quiz && task.weeklytasks.quiz.length > 0" ng-repeat="quiz in task.weeklytasks.quiz" class="item item-avatar" ng-class-even="'even'">
+                        <span class="item-image item-{{quiz.class}}" ng-class="{'stillloading' : wt_loadding }"></span>
+                        <h3>{{quiz.name}}</h3>
+                        <p>{{quiz.section}}</p>
+                    </ion-item>
+
+                    <ion-item ng-if="task.weeklytasks.assign && task.weeklytasks.assign.length > 0" ng-repeat="assign in task.weeklytasks.assign" ng-class-even="'even'" class="item item-avatar">
+                        <span class="item-image item-{{assign.class}}" ng-class="{'stillloading' : wt_loadding }"></span>
+                        <h3>{{assign.name}}</h3>
+                        <p>{{assign.section}}</p>
+                    </ion-item>
+
+                </div>
+
+            </ion-list>
+        </div>
+    </div>
+
+    <mma-empty helper-class="info inside" icon="ion-calendar" ng-if="!taskslist">
+        <h4>{{ 'mma.parent.weekly_tasks' | translate }}</h4>
+        <ion-spinner icon="lines" ng-if="!taskslist.noData"></ion-spinner>
+        <span ng-show="taskslist.noData">  {{ 'mma.parent.no_data' | translate }}</span>
+    </mma-empty>
+
+</div>

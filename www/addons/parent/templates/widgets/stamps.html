@@ -1,0 +1,31 @@
+<div class="card stamps-box">
+    <ion-spinner ng-if="st_loadding" icon="dots" class="st_spinner"></ion-spinner>
+    <div ng-if="stampslist">
+        <div class="card-header">
+            {{ 'mma.parent.stamps' | translate }}
+        </div>
+        <div class="card-body">
+            <ion-list class="list ">
+                <div ng-repeat="stamp in stampslist">
+
+                    <ion-item class="item item-divider">
+                        {{stamp.coursename}}
+                    </ion-item>
+
+                    <ion-item ng-if="stamp.stamps && stamp.stamps.length > 0" ng-repeat="item in stamp.stamps" ng-class-even="'even'" class="item item-avatar" ng-click="readStamp(item)">
+                        <img ng-src="{{item.stampimg}}" alt="">
+                        <h3>{{item.stampname}}</h3>
+                        <p>{{item.giver}}</p>
+                    </ion-item>
+
+                </div>
+            </ion-list>
+        </div>
+    </div>
+    <mma-empty helper-class="info inside" icon="zmdi zmdi-assignment" ng-if="!stampslist">
+        <h4>{{ 'mma.parent.stamps' | translate }}</h4>
+        <ion-spinner icon="lines" ng-if="!stampslist.noData"></ion-spinner>
+        <span ng-show="stampslist.noData">  {{ 'mma.parent.no_data' | translate }}</span>
+    </mma-empty>
+
+</div>

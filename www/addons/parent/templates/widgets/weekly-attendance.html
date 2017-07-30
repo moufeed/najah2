@@ -1,0 +1,32 @@
+<div class="card weekly-attendence">
+    <ion-spinner ng-if="wa_loadding" icon="dots" class="wa_spinner"></ion-spinner>
+    <div ng-if="weeklyttendence">
+        <div class="card-header " ng-class="(child.gender == 'f') ? 'gf' : (child.gender == 'm') ? 'gm' : '' ">
+            {{'mma.parent.weekly_attendence' | translate }}
+        </div>
+        <div class="list with-height">
+            <ion-scroll direction="x" style="height:100%" zooming="true" min-zoom="1">
+                <table>
+                    <thead ng-class="(child.gender == 'f') ? 'gf' : (child.gender == 'm') ? 'gm' : '' ">
+                        <tr>
+                            <th ng-repeat="head in weeklyttendence.header">{{ head }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="(sess, data) in weeklyttendence.data">
+                            <td><i class="zmdi zmdi-collection-item-{{ sess }} zmdi-hc-fw color-green"></i></td>
+                            <td ng-repeat="s in data track by $index">
+                                <i class="zmdi {{ s[0] }} {{ s[2] }} zmdi-hc-fw"></i>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </ion-scroll>
+        </div>
+    </div>
+    <mma-empty helper-class="info inside" icon="ion-android-calendar" ng-if="!weeklyttendence">
+        <h4>{{'mma.parent.weekly_attendence' | translate }}</h4>
+        <ion-spinner icon="lines" ng-if="!weeklyttendence.noData"></ion-spinner>
+        <span ng-show="weeklyttendence.noData"> {{ 'mma.parent.no_data' | translate }} </span>
+    </mma-empty>
+</div>

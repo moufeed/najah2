@@ -1,0 +1,30 @@
+<mm-loading hide-until="dashboard.newsLoaded">
+    <div class="row responsive-sm news-wrapper">
+        <div class="col news-col">
+            <div class="card latest_news">
+                <div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' : '' ">
+                    {{ 'mma.dashboard.news' | translate }}
+                </div>
+                <div ng-if="dashboard.news.length">
+
+                    <div class="card-body">
+                        <ion-list class="list">
+                            <ion-item class="item item-thumbnail-left" ng-repeat="item in dashboard.news" ng-class-even="'even'" ng-click="dashboard.openNews(item)">
+                                <img ng-src="{{item.pic}}">
+                                <h2>{{item.title }}</h2>
+                                <small class="date">{{item.date | date:'medium'}}</small>
+
+                            </ion-item>
+                        </ion-list>
+                    </div>
+                </div>
+                <div class="no-data" ng-if="!dashboard.news.length">
+                    <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
+                    <p>{{ 'mma.dashboard.no_data' | translate }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</mm-loading>

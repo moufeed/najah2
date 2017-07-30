@@ -35,6 +35,32 @@ angular.module('mm.addons.dashboard')
 
     var localStorageName = $mmSite.getToken();
 
+    $mmaDashboardCommon.layout().then(function(res) {
+        if (res.data.list) {
+            self.widgets = res.data.list;
+        } else {
+            self.widgets = [
+                { "name": "stats", "active": true, "size": 12, "resizeable": true, "sizes": [3, 4, 6, 12] },
+                { "name": "performance", "active": true, "size": 12, "resizeable": true, "sizes": [3, 4, 6, 12] },
+                { "name": "courses", "active": true, "size": 12, "resizeable": true, "sizes": [6, 12] },
+                { "name": "schedule", "active": true, "size": 6, "resizeable": true, "sizes": [3, 4, 6, 12] },
+                { "name": "weekly-attendance", "active": true, "size": 6, "resizeable": true, "sizes": [3, 4, 6, 12] },
+                { "name": "calendar", "active": true, "size": 6, "resizeable": true, "sizes": [3, 4, 6, 8, 12] },
+                { "name": "attendance", "active": true, "size": 6, "resizeable": false, "sizes": [] },
+                { "name": "news", "active": true, "size": 6, "resizeable": true, "sizes": [3, 4, 6, 12] },
+                { "name": "lasttrack", "active": true, "size": 6, "resizeable": true, "sizes": [3, 4, 6, 12] },
+                { "name": "badges", "active": true, "size": 4, "resizeable": true, "sizes": [3, 4] },
+                { "name": "stamps", "active": true, "size": 6, "resizeable": true, "sizes": [3, 4, 6, 12] },
+                { "name": "weekly-tasks", "active": true, "size": 6, "resizeable": true, "sizes": [3, 4, 6, 12] },
+                { "name": "messages", "active": true, "size": 6, "resizeable": true, "sizes": [3, 4, 6, 12] }
+            ];
+        }
+    }, function(reject) {
+
+    });
+
+
+
     if ($mmApp.isOnline()) {
         $mmaDashboardCommon.stats().then(function(res) {
             self.stats = res.data;
@@ -294,4 +320,4 @@ angular.module('mm.addons.dashboard')
     });
 
 
-});
+})

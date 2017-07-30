@@ -1,0 +1,47 @@
+<div class="stats  " ng-class="(child.gender == 'f') ? 's-female' : (child.gender == 'm') ? 's-male' : '' ">
+
+    <div class="row">
+        <div class="col-50">
+            <div class="card stats-chart courses-chart">
+                <ion-spinner ng-if="loadding" icon="dots" class="spinner "></ion-spinner>
+                <div class="chart-icon"><i class="ion-android-document"></i></div>
+                <div class="chart-count">
+                    <h2>{{ 'mma.parent.courses' | translate }}</h2>
+                    <h1 ng-class="{'helf-opacity' : loadding }">{{ stats.courses }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-50">
+            <div class="card stats-chart weeklytasks-chart">
+                <ion-spinner ng-if="loadding" icon="dots" class="spinner "></ion-spinner>
+                <div class="chart-icon"><i class="ion-clipboard"></i></div>
+                <div class="chart-count">
+                    <h2>{{ 'mma.parent.weekly_tasks' | translate }} </h2>
+                    <h1 ng-class="{'helf-opacity' : loadding }">{{ stats.weeklytasks }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-50">
+            <div class="card stats-chart badge-chart">
+                <ion-spinner ng-if="loadding" icon="dots" class="spinner "></ion-spinner>
+                <div class="chart-icon"><i class="ion-ribbon-b"></i></div>
+                <div class="chart-count">
+                    <h2>{{ 'mma.parent.badges' | translate }}</h2>
+                    <h1 ng-class="{'helf-opacity' : loadding }">{{ stats.badges }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-50">
+            <div class="card stats-chart points-chart">
+                <ion-spinner ng-if="loadding" icon="dots" class="spinner "></ion-spinner>
+                <div class="chart-icon"><i class="ion-android-star-half"></i></div>
+                <div class="chart-count">
+                    <h2>{{ 'mma.parent.points' | translate }}</h2>
+                    <h1 ng-class="{'helf-opacity' : loadding }">{{ stats.points }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -95,15 +95,20 @@ angular.module('mm.core.login')
         $scope.siteChecked = true;
     }
 
-    window.test = function() {
-        console.log(this);
-        window.iframe = this;
-        // return $mmSitesManager.newSite('https://smartway-dev.com', '1b14e494ec9c19ccb24eb9846da81d6c', '').then(function() {
-        //     console.warn('https://smartway-dev.com', '1b14e494ec9c19ccb24eb9846da81d6c', '');
-        //     $ionicHistory.nextViewOptions({ disableBack: true });
-        //     return $mmLoginHelper.redirectApp();
-        // });
-    }
+    window.addEventListener('message', function(e) {
+        return $mmSitesManager.newSite(e.origin, e.data, '').then(function() {
+            console.warn(e.origin, e.data, '');
+            $ionicHistory.nextViewOptions({ disableBack: true });
+            return $mmLoginHelper.redirectApp();
+        });
+    });
+
+
+    // window.test = function() {
+    //     console.log(this);
+    //     window.iframe = this;
+
+    // }
 
     $scope.login = function() {
 

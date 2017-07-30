@@ -1,0 +1,29 @@
+<ion-view>
+    <ion-nav-title>{{'mma.portfolio.artifact' | translate}}</ion-nav-title>
+    <ion-content padding="true" mm-state-class>
+        <div class="artifact-slide">
+            <mm-loading hide-until="$ctrl.itemsLoaded">
+                <div class="row portfolio-items port-folders">
+                    <div class="col col-50 folder" ng-repeat="cat in $ctrl.items.subcats" ng-if="cat.id !== 0">
+                        <div class="card" ui-sref="site.artifact({ id: cat.id })">
+                            <h2>{{ cat.name }}</h2>
+                            <img src="addons/portfolio/imgs/folder.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="row portfolio-items port-items">
+                    <div class="col col-50 port-item" ng-repeat="item in $ctrl.items.items">
+                        <div class="card">
+                            <h2>{{ item.name }}</h2>
+                            <div ng-bind-html="$ctrl.renderHtml(item.intro)" class="intro"></div>
+                            <small>{{ item.timemodified | date:"MM/dd/yyyy '|' h:mma" }}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="no-data" ng-if="$ctrl.items.items == 0 && ($ctrl.items.subcats == 0 || $ctrl.items.subcats == null)">
+                    <span>{{ 'mma.lastnews.no_data' | translate }}</span>
+                </div>
+            </mm-loading>
+        </div>
+    </ion-content>
+</ion-view>

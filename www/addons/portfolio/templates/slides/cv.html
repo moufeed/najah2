@@ -1,0 +1,42 @@
+<ion-view>
+    <ion-nav-title>{{'mma.portfolio.cv' | translate}}</ion-nav-title>
+    <ion-content padding="true" mm-state-class>
+        <div class="cv-slide">
+            <mm-loading hide-until="$ctrl.cvLoaded">
+                <div class="list card" ng-if="$ctrl.cv.personal_info">
+                    <div class="item item-body">
+                        <p ng-bind-html="$ctrl.renderHtml($ctrl.cv.personal_info)"></p>
+                    </div>
+                </div>
+                <div class="card" ng-if="$ctrl.cv.resume.cover">
+                    <div class="item item-divider">{{ 'mma.portfolio.cover' | translate }}</div>
+                    <div class="item item-text-wrap" ng-bind-html="$ctrl.renderHtml($ctrl.cv.resume.cover)"></div>
+                </div>
+                <div class="card" ng-if="$ctrl.cv.resume.goalsacademic">
+                    <div class="item item-divider">{{ 'mma.portfolio.goalsacademic' | translate }}</div>
+                    <div class="item item-text-wrap" ng-bind-html="$ctrl.renderHtml($ctrl.cv.resume.goalsacademic)"></div>
+                </div>
+                <div class="card" ng-if="$ctrl.cv.resume.goalspersonal">
+                    <div class="item item-divider">{{ 'mma.portfolio.goalspersonal' | translate }}</div>
+                    <div class="item item-text-wrap" ng-bind-html="$ctrl.renderHtml($ctrl.cv.resume.goalspersonal)"></div>
+                </div>
+                <div class="card" ng-if="$ctrl.cv.resume.goalscareers">
+                    <div class="item item-divider">{{ 'mma.portfolio.goalscareers' | translate }}</div>
+                    <div class="item item-text-wrap" ng-bind-html="$ctrl.renderHtml($ctrl.cv.resume.goalscareers)"></div>
+                </div>
+                <div class="card" ng-if="$ctrl.cv.resume.skillspersonal">
+                    <div class="item item-divider">{{ 'mma.portfolio.skillspersonal' | translate }}</div>
+                    <div class="item item-text-wrap" ng-bind-html="$ctrl.renderHtml($ctrl.cv.resume.skillspersonal)"></div>
+                </div>
+                <div class="card" ng-if="$ctrl.cv.resume.skillsacademic">
+                    <div class="item item-divider">{{ 'mma.portfolio.skillsacademic' | translate }}</div>
+                    <div class="item item-text-wrap" ng-bind-html="$ctrl.renderHtml($ctrl.cv.resume.skillsacademic)"></div>
+                </div>
+                <div class="card" ng-if="$ctrl.cv.resume.skillscareers">
+                    <div class="item item-divider">{{ 'mma.portfolio.skillscareers' | translate }}</div>
+                    <div class="item item-text-wrap" ng-bind-html="$ctrl.renderHtml($ctrl.cv.resume.skillscareers)"></div>
+                </div>
+            </mm-loading>
+        </div>
+    </ion-content>
+</ion-view>

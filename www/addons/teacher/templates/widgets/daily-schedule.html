@@ -1,0 +1,39 @@
+<div class="card dailyschedule" hide-until="lessons">
+    <div ng-if="lessons">
+        <div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' :''">
+            {{ 'mma.teacher.dailyschedule' | translate }}
+        </div>
+        <div class="card-body">
+            <ion-list class="list ">
+                <ion-item class="item item-avatar-left" ng-repeat="lesson in lessons | limitTo:lessonMaxItems" ng-class-even="'even'">
+                    <div class="item-image">
+                        <a ui-sref="site.attendence({divId:{{ lesson.divid}} ,recId : {{ lesson.recordid}} })" class="linkbtn {{ (lesson.status == 'edit') ? 'edite' : 'add' }}">
+                            <i class="{{ (lesson.status == 'add') ? 'ion-edit' : 'ion-compose' }}"></i>
+                        </a>
+                    </div>
+                    <div class="item-info">
+                        <div class="flex-display">
+                            <strong>{{lesson.program}} </strong>
+                            <strong> {{lesson.crsname}}</strong>
+                        </div>
+                        <div class="flex-display">
+                            <span>	<small>	{{ 'mma.teacher.division' | translate}}  </small> 	<small>  {{lesson.sessionid}} </small> </span>
+                            <span>	<small>	{{ 'mma.teacher.d_season' | translate}}  </small> 	<small>  {{lesson.divname}} </small> </span>
+                        </div>
+                    </div>
+                </ion-item>
+                <ion-item class="item text-center item-btn" ng-click="lessonMaxItems = lessons.length" ng-show="lessonMaxItems== 5 && lessons.length > 5">
+                    <i class="ion-chevron-down"></i> {{ 'mma.teacher.view_all' | translate }}
+                </ion-item>
+                <ion-item class="item text-center item-btn" ng-click="lessonMaxItems = 5" ng-show="lessonMaxItems > 5">
+                    <i class="ion-chevron-up"></i> {{ 'mma.teacher.view_less' | translate }}
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+    <mma-tempty helper-class="info inside" icon="zmdi zmdi-calendar-note" ng-if="!lessons">
+        <h4> {{ 'mma.teacher.dailyschedule' | translate }}</h4>
+        <ion-spinner icon="lines" ng-if="!Dlessons.noData"></ion-spinner>
+        <span ng-show="Dlessons.noData">  {{ 'mma.teacher.no_data' | translate }}</span>
+    </mma-tempty>
+</div>

@@ -1,0 +1,22 @@
+<div class=" card weeklyschedule" ng-class="(child.gender == 'f') ? 'gf' : (child.gender == 'm') ? 'gm' : '' ">
+    <ion-spinner ng-if="ws_loadding" icon="dots" class="ws_spinner "></ion-spinner>
+    <ks-swiper-container ng-if="weeklyschedule.length > 0" initial-slide="Utils.initialSlide()" loop="false" show-nav-buttons="true" slides-per-view="1" space-between="0" pagination-clickable="false">
+        <ks-swiper-slide class="swiper-slide" ng-repeat="day in  weeklyschedule">
+            <ion-list class="list">
+                <ion-item class="item item-divider text-center item-header">
+                    <h2 ng-class="{'helf-opacity' : ws_loadding }"> {{day.dayname}}</h2>
+                </ion-item>
+                <ion-item class="item item-icon-left" ng-repeat="schedule in day.data" ng-class-odd="'odd'">
+                    <i class="icon ion-num" data-content="{{schedule.sessionid}}"></i>
+                    <h3 class="ion-ios-book-outline"><span>{{schedule.data.crsname}}</span></h3>
+                    <p class="ion-university"><span>{{schedule.data.teachername}}</span></p>
+                </ion-item>
+            </ion-list>
+        </ks-swiper-slide>
+    </ks-swiper-container>
+    <mma-empty helper-class="primary inside" icon="ion-calendar" ng-if="!weeklyschedule || weeklyschedule.length <= 0">
+        <h4> {{ 'mma.parent.weekly_schedule' | translate }} </h4>
+        <ion-spinner icon="lines" ng-if="!weeklyschedule.noData"></ion-spinner>
+        <span ng-show="weeklyschedule.noData">  {{ 'mma.parent.no_data' | translate }}</span>
+    </mma-empty>
+</div>

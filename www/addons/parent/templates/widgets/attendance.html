@@ -1,0 +1,25 @@
+<div class="card attendence-card">
+    <ion-spinner ng-if="atd_loadding" icon="dots" class="atd_spinner "></ion-spinner>
+    <div ng-if="attendence.data.length > 0">
+        <div class="card-header" ng-class="(child.gender == 'f') ? 'gf' : (child.gender == 'm') ? 'gm' : '' ">
+            {{'mma.parent.attendencetitle' | translate }}
+        </div>
+        <div class="card-body card-padding">
+            <canvas id="doughnut" class="chart chart-pie" chart-data="attendence.data" chart-labels="attendence.labels" chart-colors="attendence.colors" chart-legend="true">
+					</canvas>
+
+        </div>
+        <div class="card-footer">
+            <ul class="chart-labels">
+                <li ng-repeat="label in attendence.labels">
+                    <span style="background-color:{{attendence.colors[$index]}}"></span><span>{{label}}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <mma-empty helper-class="info inside" icon="ion-ios-calendar-outline" ng-if="!attendence || attendence.data.length <= 0">
+        <h4> {{ 'mma.parent.attendencetitle' | translate }} </h4>
+        <ion-spinner icon="lines" ng-if="!attendence.noData"></ion-spinner>
+        <span ng-show="attendence.noData">  {{ 'mma.parent.no_data' | translate }} </span>
+    </mma-empty>
+</div>

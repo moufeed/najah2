@@ -1,0 +1,20 @@
+<mm-loading hide-until="dashboard.coursesLoaded">
+    <div class="card courses">
+        <div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' : '' ">
+            {{ 'mma.dashboard.courses' | translate }} <small>{{ dashbaord.currentCourses.name }}</small>
+        </div>
+        <div class="courses">
+            <ks-swiper-container loop="false" slides-per-view="2" space-between="5" on-ready="onReadySwiper(swiper)" class="swiper">
+                <ks-swiper-slide class="swiper-slide course" on-finish-render="ngRepeatFinished" ng-repeat="course in dashboard.currentCourses.courses">
+                    <a href="#/site/course/{{ course.id }}">
+                        <!--  ng-click="dashboard.goToCourse(course.id)" -->
+                        <div class="name">
+                            <h2>{{ course.name }}</h2>
+                        </div>
+                        <div class="image" ng-bind-html="course.img"></div>
+                    </a>
+                </ks-swiper-slide>
+            </ks-swiper-container>
+        </div>
+    </div>
+</mm-loading>

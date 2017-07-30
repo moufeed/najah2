@@ -9,9 +9,24 @@ angular.module('mm.addons.parent')
      * @ngdoc controller
      * @name mmParentCtrl
      */
-    .controller('mmaChildCtrl', function ($mmApp, $mmUtil, $scope,$ionicModal, $stateParams, $state, $log, $mmaParentHelper, $ionicPopup, $mmaParentOffline, mmaParentOfflineStamps, mmaParentOfflineWeeklyattendance, mmaParentOfflineWeeklytasks, mmaParentOfflineBadges, mmaParentOfflineAttendance, mmaParentOfflineParentStore, mmaParentOfflineStatistics, mmaParentOfflineCurrentcourses, mmaParentOfflineSchedule, mmaParentOfflineLastTrack, mmaParentOfflineChildMessages) {
+    .controller('mmaChildCtrl', function($mmApp, $mmUtil, $scope, $ionicModal, $stateParams, $state, $log, $mmaParentHelper, $ionicPopup, $mmaParentOffline, mmaParentOfflineStamps, mmaParentOfflineWeeklyattendance, mmaParentOfflineWeeklytasks, mmaParentOfflineBadges, mmaParentOfflineAttendance, mmaParentOfflineParentStore, mmaParentOfflineStatistics, mmaParentOfflineCurrentcourses, mmaParentOfflineSchedule, mmaParentOfflineLastTrack, mmaParentOfflineChildMessages) {
         $scope.isOnline = $mmApp.isOnline();
         var self = this;
+
+
+        $scope.widgets = [
+            { "name": "stats", "active": true, "size": 12, "resizeable": true, "sizes": [3, 4, 6, 12] },
+            { "name": "courses", "active": true, "size": 12, "resizeable": true, "sizes": [3, 4, 6, 12] },
+            { "name": "weekly-schedule", "active": true, "size": 12, "resizeable": true, "sizes": [6, 12] },
+            { "name": "lasttrack", "active": true, "size": 6, "resizeable": true, "sizes": [3, 4, 6, 12] },
+            { "name": "attendance", "active": true, "size": 6, "resizeable": true, "sizes": [3, 4, 6, 12] },
+            { "name": "weekly-attendance", "active": true, "size": 6, "resizeable": true, "sizes": [3, 4, 6, 12] },
+            { "name": "badges", "active": true, "size": 6, "resizeable": true, "sizes": [3, 4, 6, 8, 12] },
+            { "name": "stamps", "active": true, "size": 6, "resizeable": false, "sizes": [] },
+            { "name": "messages", "active": true, "size": 6, "resizeable": false, "sizes": [] },
+            { "name": "weekly-tasks", "active": true, "size": 6, "resizeable": false, "sizes": [] }
+        ];
+
         $scope.piechartOptions = {
             animate: {
                 duration: 1000,
@@ -30,45 +45,45 @@ angular.module('mm.addons.parent')
             data: [],
             labels: [],
             colors: finalColors
-        }; 
-        $scope.readMsg = function (item) {
+        };
+        $scope.readMsg = function(item) {
             $scope.message = item;
-             $ionicModal.fromTemplateUrl('addons/parent/templates/modal.html', {
+            $ionicModal.fromTemplateUrl('addons/parent/templates/modal.html', {
                 scope: $scope
             }).then(function(modal) {
                 $scope.modal = modal;
                 modal.show();
             });
         }
-        $scope.readStamp = function (item) {
-            $ionicPopup.alert({
-                cssClass: 'text-center',
-                title: item.stampname,
-                subTitle: item.course + ' <i class="ion-calendar"></i>  ' + item.date,
-                template: item.text
-            });
-        }
-        // Get child information from db
-        $mmaParentOffline.getItemData(mmaParentOfflineParentStore, $stateParams.id).then(function (data) {
-            $scope.child = data;
-        })
-        /// General Statistics
-        $mmaParentOffline.itemHasData(mmaParentOfflineStatistics, $stateParams.id).then(function (res) {
+        $scope.readStamp = function(item) {
+                $ionicPopup.alert({
+                    cssClass: 'text-center',
+                    title: item.stampname,
+                    subTitle: item.course + ' <i class="ion-calendar"></i>  ' + item.date,
+                    template: item.text
+                });
+            }
+            // Get child information from db
+        $mmaParentOffline.getItemData(mmaParentOfflineParentStore, $stateParams.id).then(function(data) {
+                $scope.child = data;
+            })
+            /// General Statistics
+        $mmaParentOffline.itemHasData(mmaParentOfflineStatistics, $stateParams.id).then(function(res) {
             if (res) {
-                $mmaParentOffline.getItemData(mmaParentOfflineStatistics, $stateParams.id).then(function (stats) {
+                $mmaParentOffline.getItemData(mmaParentOfflineStatistics, $stateParams.id).then(function(stats) {
                     $scope.stats = stats;
                 })
             }
             if ($mmApp.isOnline()) {
                 $scope.loadding = true;
-                $mmaParentHelper.generalStatistics($stateParams.id, res).then(function (stats) {
+                $mmaParentHelper.generalStatistics($stateParams.id, res).then(function(stats) {
                         if (stats)
                             $scope.stats = stats;
                     })
-                    .catch(function (err) {
+                    .catch(function(err) {
                         $log.log('erro', err)
                     })
-                    .finally(function () {
+                    .finally(function() {
                         $scope.loadding = false;
                     });
             }
@@ -85,40 +100,40 @@ angular.module('mm.addons.parent')
         /**
          * Current Courses
          */
-        $mmaParentOffline.itemHasDataWhere(mmaParentOfflineCurrentcourses, 'userid', $stateParams.id).then(function (res) {
-            if (res) {
-                $mmaParentOffline.getItemWhere(mmaParentOfflineCurrentcourses, 'userid', $stateParams.id).then(function (courses) {
-                    $scope.currentCourses = courses[0];
-                });
-            }
-            if ($mmApp.isOnline()) {
-                $scope.cc_loadding = true;
-                $mmaParentHelper.currentCourses($stateParams.id)
-                    .then(function (courses) {
+        $mmaParentOffline.itemHasDataWhere(mmaParentOfflineCurrentcourses, 'userid', $stateParams.id).then(function(res) {
+                if (res) {
+                    $mmaParentOffline.getItemWhere(mmaParentOfflineCurrentcourses, 'userid', $stateParams.id).then(function(courses) {
                         $scope.currentCourses = courses[0];
-                        $scope.piechartOptions.barColor = '#C9E4CA';
-                    })
-                    .finally(function () {
-                        $scope.cc_loadding = false;
-                        $scope.currentCourses.noData = true;
                     });
-            }
-        })
-        /**
-         *  Weekly schedule
-         */
-        $mmaParentOffline.itemHasData(mmaParentOfflineSchedule, $stateParams.id).then(function (res) {
+                }
+                if ($mmApp.isOnline()) {
+                    $scope.cc_loadding = true;
+                    $mmaParentHelper.currentCourses($stateParams.id)
+                        .then(function(courses) {
+                            $scope.currentCourses = courses[0];
+                            $scope.piechartOptions.barColor = '#C9E4CA';
+                        })
+                        .finally(function() {
+                            $scope.cc_loadding = false;
+                            $scope.currentCourses.noData = true;
+                        });
+                }
+            })
+            /**
+             *  Weekly schedule
+             */
+        $mmaParentOffline.itemHasData(mmaParentOfflineSchedule, $stateParams.id).then(function(res) {
             if (res) {
-                $mmaParentOffline.getItemData(mmaParentOfflineSchedule, $stateParams.id).then(function (data) {
+                $mmaParentOffline.getItemData(mmaParentOfflineSchedule, $stateParams.id).then(function(data) {
                     $scope.weeklyschedule = data.list;
                 });
             }
             if ($mmApp.isOnline()) {
                 $scope.ws_loadding = true;
                 $mmaParentHelper.getSchedule($stateParams.id)
-                    .then(function (data) {
+                    .then(function(data) {
                         $scope.weeklyschedule = data.list;
-                    }).finally(function () {
+                    }).finally(function() {
                         $scope.weeklyschedule.noData = true;
                         $scope.ws_loadding = false;
                     });
@@ -127,9 +142,9 @@ angular.module('mm.addons.parent')
         /**
          * Last track
          */
-        $mmaParentOffline.itemHasData(mmaParentOfflineLastTrack, $stateParams.id).then(function (res) {
+        $mmaParentOffline.itemHasData(mmaParentOfflineLastTrack, $stateParams.id).then(function(res) {
             if (res) {
-                $mmaParentOffline.getItemData(mmaParentOfflineLastTrack, $stateParams.id).then(function (trackCourses) {
+                $mmaParentOffline.getItemData(mmaParentOfflineLastTrack, $stateParams.id).then(function(trackCourses) {
                     $scope.lasttrack = trackCourses;
                     $scope.lasttrack.maxItems = 6;
                 });
@@ -137,10 +152,10 @@ angular.module('mm.addons.parent')
             if ($mmApp.isOnline()) {
                 $scope.lt_loadding = true;
                 $mmaParentHelper.getLastTrack($stateParams.id)
-                    .then(function (data) {
+                    .then(function(data) {
                         $scope.lasttrack = data;
                     })
-                    .finally(function () {
+                    .finally(function() {
                         $scope.lt_loadding = false;
                         $scope.lasttrack.noData = true;
                         $scope.lasttrack.maxItems = 6;
@@ -154,19 +169,19 @@ angular.module('mm.addons.parent')
             $scope.attendence.data = [];
             $scope.attendence.labels = [];
             var total = 0;
-            angular.forEach(data.list, function (value, key) {
+            angular.forEach(data.list, function(value, key) {
                 total += parseInt(value);
             })
-            angular.forEach(data.list, function (value, key) {
+            angular.forEach(data.list, function(value, key) {
                 var n = (value / total) * 100;
                 var percentage = n.toFixed(1);
                 $scope.attendence.data.push(percentage);
                 $scope.attendence.labels.push(key);
             })
         }
-        $mmaParentOffline.itemHasData(mmaParentOfflineAttendance, $stateParams.id).then(function (res) {
+        $mmaParentOffline.itemHasData(mmaParentOfflineAttendance, $stateParams.id).then(function(res) {
             if (res) {
-                $mmaParentOffline.getItemData(mmaParentOfflineAttendance, $stateParams.id).then(function (data) {
+                $mmaParentOffline.getItemData(mmaParentOfflineAttendance, $stateParams.id).then(function(data) {
                     attendanceData(data);
                 });
             }
@@ -174,10 +189,10 @@ angular.module('mm.addons.parent')
                 $scope.atd_loadding = true;
                 $scope.attendence.colors = loadingcolors;
                 $mmaParentHelper.getAttendance($stateParams.id)
-                    .then(function (data) {
+                    .then(function(data) {
                         attendanceData(data);
                     })
-                    .finally(function () {
+                    .finally(function() {
                         $scope.attendence.colors = finalColors;
                         $scope.atd_loadding = false;
                         $scope.attendence.noData = true;
@@ -187,40 +202,40 @@ angular.module('mm.addons.parent')
         /**
          * Get Badges
          */
-        $mmaParentOffline.itemHasData(mmaParentOfflineBadges, $stateParams.id).then(function (res) {
-            if (res) {
-                $mmaParentOffline.getItemData(mmaParentOfflineBadges, $stateParams.id).then(function (data) {
-                    $scope.badges = data.list;
-                    $scope.badges.maxItems = 5;
-                });
-            }
-            if ($mmApp.isOnline()) {
-                $scope.bd_loadding = true;
-                $mmaParentHelper.getBadges($stateParams.id)
-                    .then(function (data) {
+        $mmaParentOffline.itemHasData(mmaParentOfflineBadges, $stateParams.id).then(function(res) {
+                if (res) {
+                    $mmaParentOffline.getItemData(mmaParentOfflineBadges, $stateParams.id).then(function(data) {
                         $scope.badges = data.list;
-                    }).finally(function () {
-                        $scope.bd_loadding = false;
-                        $scope.badges.noData = true;
                         $scope.badges.maxItems = 5;
                     });
-            }
-        })
-        /**
-         * Weekly Attendance 
-         */
-        $mmaParentOffline.itemHasData(mmaParentOfflineWeeklyattendance, $stateParams.id).then(function (res) {
+                }
+                if ($mmApp.isOnline()) {
+                    $scope.bd_loadding = true;
+                    $mmaParentHelper.getBadges($stateParams.id)
+                        .then(function(data) {
+                            $scope.badges = data.list;
+                        }).finally(function() {
+                            $scope.bd_loadding = false;
+                            $scope.badges.noData = true;
+                            $scope.badges.maxItems = 5;
+                        });
+                }
+            })
+            /**
+             * Weekly Attendance 
+             */
+        $mmaParentOffline.itemHasData(mmaParentOfflineWeeklyattendance, $stateParams.id).then(function(res) {
             if (res) {
-                $mmaParentOffline.getItemData(mmaParentOfflineWeeklyattendance, $stateParams.id).then(function (data) {
+                $mmaParentOffline.getItemData(mmaParentOfflineWeeklyattendance, $stateParams.id).then(function(data) {
                     $scope.weeklyttendence = data.list;
                 });
             }
             if ($mmApp.isOnline()) {
                 $scope.wa_loadding = true;
                 $mmaParentHelper.getWeeklyAttendance($stateParams.id)
-                    .then(function (data) {
+                    .then(function(data) {
                         $scope.weeklyttendence = data.list;
-                    }).finally(function () {
+                    }).finally(function() {
                         $scope.wa_loadding = false;
                         $scope.weeklyttendence.noData = true;
                     });
@@ -229,42 +244,42 @@ angular.module('mm.addons.parent')
         /**
          * Child Messages  
          */
-        $mmaParentOffline.itemHasData(mmaParentOfflineChildMessages, $stateParams.id).then(function (res) {
-            if (res) {
-                $mmaParentOffline.getItemData(mmaParentOfflineChildMessages, $stateParams.id).then(function (data) {
-                    $scope.messages = data.list;
-                    $scope.messages.maxItems = 5;
-                });
-            }
-            if ($mmApp.isOnline()) {
-                $scope.cm_loadding = true;
-                $mmaParentHelper.getMessages($stateParams.id)
-                    .then(function (data) {
+        $mmaParentOffline.itemHasData(mmaParentOfflineChildMessages, $stateParams.id).then(function(res) {
+                if (res) {
+                    $mmaParentOffline.getItemData(mmaParentOfflineChildMessages, $stateParams.id).then(function(data) {
                         $scope.messages = data.list;
-                    })
-                    .finally(function () {
-                        $scope.cm_loadding = false;
-                        $scope.messages.noData = true;
                         $scope.messages.maxItems = 5;
                     });
-            }
-        })
-        /**
-         * Weekly Tasks  
-         */
-        $mmaParentOffline.itemHasData(mmaParentOfflineWeeklytasks, $stateParams.id).then(function (res) {
+                }
+                if ($mmApp.isOnline()) {
+                    $scope.cm_loadding = true;
+                    $mmaParentHelper.getMessages($stateParams.id)
+                        .then(function(data) {
+                            $scope.messages = data.list;
+                        })
+                        .finally(function() {
+                            $scope.cm_loadding = false;
+                            $scope.messages.noData = true;
+                            $scope.messages.maxItems = 5;
+                        });
+                }
+            })
+            /**
+             * Weekly Tasks  
+             */
+        $mmaParentOffline.itemHasData(mmaParentOfflineWeeklytasks, $stateParams.id).then(function(res) {
             if (res) {
-                $mmaParentOffline.getItemData(mmaParentOfflineWeeklytasks, $stateParams.id).then(function (data) {
+                $mmaParentOffline.getItemData(mmaParentOfflineWeeklytasks, $stateParams.id).then(function(data) {
                     $scope.taskslist = data.list;
                 });
             }
             if ($mmApp.isOnline()) {
                 $scope.wt_loadding = true;
                 $mmaParentHelper.getweeklytasks($stateParams.id)
-                    .then(function (data) {
+                    .then(function(data) {
                         $scope.taskslist = data.list;
                     })
-                    .finally(function () {
+                    .finally(function() {
                         $scope.wt_loadding = false;
                         $scope.taskslist.noData = true;
                     });
@@ -273,19 +288,19 @@ angular.module('mm.addons.parent')
         /**
          * Stamps
          */
-        $mmaParentOffline.itemHasData(mmaParentOfflineStamps, $stateParams.id).then(function (res) {
+        $mmaParentOffline.itemHasData(mmaParentOfflineStamps, $stateParams.id).then(function(res) {
             if (res) {
-                $mmaParentOffline.getItemData(mmaParentOfflineStamps, $stateParams.id).then(function (data) {
+                $mmaParentOffline.getItemData(mmaParentOfflineStamps, $stateParams.id).then(function(data) {
                     $scope.stampslist = data.list;
                 });
             }
             if ($mmApp.isOnline()) {
                 $scope.st_loadding = true;
                 $mmaParentHelper.getStamps($stateParams.id)
-                    .then(function (data) {
+                    .then(function(data) {
                         $scope.stampslist = data.list;
                     })
-                    .finally(function () {
+                    .finally(function() {
                         $scope.st_loadding = false;
                         $scope.stampslist.noData = true;
                     });

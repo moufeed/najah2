@@ -1,0 +1,30 @@
+<mm-loading hide-until="dashboard.badgesLoaded">
+    <div class="row responsive-sm news-wrapper">
+        <div class="col news-col">
+            <div class="card badges">
+                <div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' : '' ">
+                    {{ 'mma.dashboard.badges' | translate }}
+                </div>
+                <div ng-if="dashboard.badges.length">
+
+                    <div class="card-body">
+                        <ion-list class="list">
+                            <ion-item class="item item-thumbnail-left" ng-repeat="badge in dashboard.badges" ng-class-even="'even'">
+                                <div class="badge-image" ng-bind-html="badge.img"></div>
+                                <h2>{{badge.name }}</h2>
+                                <small>{{ badge.coursename }}</small>
+                            </ion-item>
+                        </ion-list>
+                    </div>
+                </div>
+                <div class="no-data" ng-if="!dashboard.badges.length">
+                    <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
+                    <p>{{ 'mma.dashboard.no_data' | translate }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- card badges -->
+</mm-loading>

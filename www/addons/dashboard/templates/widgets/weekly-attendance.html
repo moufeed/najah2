@@ -1,0 +1,31 @@
+<mm-loading hide-until="dashboard.weeklyAttendenceLoaded">
+    <div class="card weekly-attendence">
+        <div ng-if="dashboard.weeklyAttendenceLoaded">
+            <div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' : '' ">
+                {{ 'mma.dashboard.weekly_attendence' | translate }}
+            </div>
+            <div class="list with-height">
+                <ion-scroll direction="x" style="height:100%" zooming="true" min-zoom="1">
+                    <table>
+                        <thead ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' : '' ">
+                            <tr>
+                                <th ng-repeat="head in dashboard.attendence.header" style="white-space: pre">{{ head }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(sess, data) in dashboard.attendence.data">
+                                <td><i class="zmdi zmdi-collection-item-{{ sess }} zmdi-hc-fw color-green"></i></td>
+                                <td ng-repeat="s in data track by $index">
+                                    <i class="zmdi {{ s[0] }} {{ s[2] }} zmdi-hc-fw"></i>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </ion-scroll>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- weekly-attendence -->
+</mm-loading>

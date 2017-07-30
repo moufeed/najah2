@@ -1,0 +1,16 @@
+<mm-loading hide-until="dashboard.attendenceLoaded">
+    <div class="card attendence">
+        <div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' : '' ">
+            <span>{{ 'mma.dashboard.attendence' | translate }}</span>
+        </div>
+        <div class="list">
+            <div id="pie-chart" style="width:100%;height:400px" class="flot-chart-pie" ng-if="!dashboard.noChartData" data-pie-donut-stu chart-attendence="dashboard.chartAttendence"></div>
+            <div class="flc-pie"></div>
+            <div class="no-data" ng-if="dashboard.noChartData">
+                <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
+                <p>{{ 'mma.dashboard.no_data' | translate }}</p>
+            </div>
+        </div>
+    </div>
+    <!-- attendence-card -->
+</mm-loading>

@@ -1,0 +1,24 @@
+<div class="card latest_news" hide-until="feeds">
+    <div ng-if="feeds.length >= 0">
+
+        <div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' :''">
+            {{ 'mma.teacher.lastnews' | translate }}
+        </div>
+        <div class="card-body">
+            <ion-list class="list">
+                <ion-item class="item item-thumbnail-left" ng-repeat="feed in feeds" ng-class-even="'even'" ng-click="openNews(feed)">
+                    <img ng-src="{{feed.pic}}">
+                    <h2>{{feed.title }}</h2>
+                    <small class="date">{{feed.date | date:'medium'}}</small>
+
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+    <mma-tempty helper-class="info inside" icon="zmdi zmdi-calendar" ng-if="!feeds">
+        <h4> {{ 'mma.teacher.lastnews' | translate }}</h4>
+        <ion-spinner icon="lines" ng-if="!lnews.noData"></ion-spinner>
+        <span ng-show="lnews.noData">  {{ 'mma.teacher.no_data' | translate }}</span>
+    </mma-tempty>
+
+</div>

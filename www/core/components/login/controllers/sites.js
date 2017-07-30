@@ -77,6 +77,7 @@ angular.module('mm.core.login')
 
         $mmText.formatText(sitename).then(function(sitename) {
             $mmUtil.showConfirm($translate.instant('mm.login.confirmdeletesite', {sitename: sitename})).then(function() {
+                console.error(site);
                 $mmSitesManager.deleteSite(site.id).then(function() {
                     $scope.sites.splice(index, 1);
                     $scope.data.showDelete = false;

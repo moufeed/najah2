@@ -1,0 +1,26 @@
+<div class="card badges-box">
+    <ion-spinner ng-if="bd_loadding" icon="dots" class="bd_spinner "></ion-spinner>
+    <div ng-if="badges && badges.length > 0">
+        <div class="card-header">
+            {{ 'mma.parent.badges' | translate }}
+        </div>
+        <ion-list class="list">
+            <ion-item ng-repeat="badge in badges | limitTo:badges.maxItems" class="item item-avatar" ng-class-odd="'odd'">
+                <span ng-bind-html="badge.img | trustedHtml" class="item-image"></span>
+                <h2>{{badge.name}}</h2>
+                <p>{{badge.coursename}}</p>
+            </ion-item>
+            <ion-item class="item text-center item-btn" ng-click="badges.maxItems = badges.length" ng-show="badges.maxItems == 5 && badges.length >5">
+                <i class="ion-chevron-down"></i> {{ 'mma.parent.view_all' | translate }}
+            </ion-item>
+            <ion-item class="item text-center item-btn" ng-click="badges.maxItems = 5" ng-show="badges.maxItems > 5">
+                <i class="ion-chevron-up"></i> {{ 'mma.parent.view_less' | translate }}
+            </ion-item>
+        </ion-list>
+    </div>
+    <mma-empty helper-class="info inside" icon="ion-ribbon-b" ng-if="!badges">
+        <h4>{{ 'mma.parent.badges' | translate }}</h4>
+        <ion-spinner icon="lines" ng-if="!badges.noData"></ion-spinner>
+        <span ng-show="badges.noData"> {{ 'mma.parent.no_data' | translate }} </span>
+    </mma-empty>
+</div>

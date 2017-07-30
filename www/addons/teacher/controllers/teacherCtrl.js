@@ -14,104 +14,115 @@
 
 angular.module('mm.addons.teacher')
 
-  /**
-   * Controller to handle teacher section
-   *
-   * @module mm.core.mmaTeacherCtrl
-   * @ngdoc controller
-   * @name mmaTeacherCtrl
-   */
-  .controller('mmaTeacherCtrl', function ($scope, $q, $mmDB, $stateParams, $state,$mmaTeacherHelper, $log,$sce, $mmSite,$mmUtil,$ionicModal, $mmApp) {
+/**
+ * Controller to handle teacher section
+ *
+ * @module mm.core.mmaTeacherCtrl
+ * @ngdoc controller
+ * @name mmaTeacherCtrl
+ */
+.controller('mmaTeacherCtrl', function($scope, $q, $mmDB, $stateParams, $state, $mmaTeacherHelper, $log, $sce, $mmSite, $mmUtil, $ionicModal, $mmApp) {
     $scope.isOnline = $mmApp.isOnline();
-    $scope.initialSlide = function(){
-          var date = new Date();
-          var day  = date.getDay();
-          if (day == 5 || day == 6)  return 1;
-          else return day;
-    } 
-     /**
-      * Teacher Courses
-      */
-       $mmaTeacherHelper.getCourses()
-       .then(function(response){
-          $scope.courses =  response.list;
-      })
-      .finally(function(){
-         $scope.myCourses.noData = true;
-      });
+    $scope.initialSlide = function() {
+        var date = new Date();
+        var day = date.getDay();
+        if (day == 5 || day == 6) return 1;
+        else return day;
+    }
 
-      /**
-       * Daily Schedule
-       */
-      $mmaTeacherHelper.getDailySchedule()
-      .then(function(response){
-          $scope.lessons =  response.list;
-      })
-      .finally(function(){
-          $scope.Dlessons.noData = true;
-          $scope.lessonMaxItems = 5;
-      });
 
-      /**
-       * Weekly Schedule
-       */
-      $mmaTeacherHelper.getWeeklySchedule()
-      .then(function(response){
-          $scope.weeklySchedule =  response.list; 
-      })
-      .finally(function(){
-          $scope.wlessons.noData = true;
-      });
+    $scope.widgets = [
+        { "name": "courses", "active": true, "size": 12, "resizeable": true, "sizes": [3, 4, 6, 12] },
+        { "name": "daily-schedule", "active": true, "size": 12, "resizeable": true, "sizes": [3, 4, 6, 12] },
+        { "name": "daily-attendance", "active": true, "size": 12, "resizeable": true, "sizes": [3, 4, 6, 12] },
+        { "name": "weekly-schedule", "active": true, "size": 12, "resizeable": true, "sizes": [3, 4, 6, 12] },
+        { "name": "news", "active": true, "size": 12, "resizeable": true, "sizes": [3, 4, 6, 12] },
+    ];
 
-      /**
-       * Daily Attendance
-       */
-      $mmaTeacherHelper.getDailyAttendance()
-      .then(function(response){
-          angular.forEach(response.list,function(val,key){
+
+    /**
+     * Teacher Courses
+     */
+    $mmaTeacherHelper.getCourses()
+        .then(function(response) {
+            $scope.courses = response.list;
+        })
+        .finally(function() {
+            $scope.myCourses.noData = true;
+        });
+
+    /**
+     * Daily Schedule
+     */
+    $mmaTeacherHelper.getDailySchedule()
+        .then(function(response) {
+            $scope.lessons = response.list;
+        })
+        .finally(function() {
+            $scope.Dlessons.noData = true;
+            $scope.lessonMaxItems = 5;
+        });
+
+    /**
+     * Weekly Schedule
+     */
+    $mmaTeacherHelper.getWeeklySchedule()
+        .then(function(response) {
+            $scope.weeklySchedule = response.list;
+        })
+        .finally(function() {
+            $scope.wlessons.noData = true;
+        });
+
+    /**
+     * Daily Attendance
+     */
+    $mmaTeacherHelper.getDailyAttendance()
+        .then(function(response) {
+            angular.forEach(response.list, function(val, key) {
                 val.chartlabels = [];
-                val.chartdata   = [];
+                val.chartdata = [];
                 val.chartcolors = ['#8BC34A', '#F44336', '#FFEB3B', '#03A9F4'];
                 val.chartnums = [];
-                angular.forEach(val.counts,function(v,k){
-                            val.chartlabels.push(k);
-                            val.chartdata.push(v.percent);
-                            val.chartnums.push(v.num);
+                angular.forEach(val.counts, function(v, k) {
+                    val.chartlabels.push(k);
+                    val.chartdata.push(v.percent);
+                    val.chartnums.push(v.num);
                 });
-        });
-        $q.all(response.list).then(function () {
-            $scope.dailyattendance = response.list;
-            
-        });
-      })
-      .finally(function(data){
-          $scope.Dlessons.noData = true;
-      });
-/**
- * latest News
- */
-      $mmaTeacherHelper.getFeeds()
-      .then(function(response){
-          $scope.feeds= response.list;
-      })
-      .finally(function(data){
-          $scope.lnews.noData = true;
-      });
-
-     
-        $scope.openNews = function(post){
-            $scope.post = post;
-             $ionicModal.fromTemplateUrl('addons/teacher/templates/modal.html', {
-                scope: $scope
-            }).then(function(modal) {
-                $scope.modal = modal;
-                modal.show();
             });
-        }
-        
-      /**
-       * calender
-       */
+            $q.all(response.list).then(function() {
+                $scope.dailyattendance = response.list;
+
+            });
+        })
+        .finally(function(data) {
+            $scope.Dlessons.noData = true;
+        });
+    /**
+     * latest News
+     */
+    $mmaTeacherHelper.getFeeds()
+        .then(function(response) {
+            $scope.feeds = response.list;
+        })
+        .finally(function(data) {
+            $scope.lnews.noData = true;
+        });
+
+
+    $scope.openNews = function(post) {
+        $scope.post = post;
+        $ionicModal.fromTemplateUrl('addons/teacher/templates/modal.html', {
+            scope: $scope
+        }).then(function(modal) {
+            $scope.modal = modal;
+            modal.show();
+        });
+    }
+
+    /**
+     * calender
+     */
     /*  $mmaTeacherHelper.getCalender() 
         .then(function(data){
             $scope.mCalendar = $sce.trustAsHtml(data.mini);
@@ -119,4 +130,4 @@ angular.module('mm.addons.teacher')
       .finally(function(data){
           $scope.lcalendar.noData = true;
       });*/
-  });
+});

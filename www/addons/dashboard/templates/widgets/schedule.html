@@ -1,0 +1,35 @@
+<mm-loading hide-until="dashboard.scheduleLoaded">
+    <div class="card weekly-schedule">
+        <div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' : '' ">
+            {{ 'mma.dashboard.weekly_schedule' | translate }}
+        </div>
+        <ion-slides options="dashboard.options" slider="data.slider" ng-if="dashboard.schedule.hasData" class="weekly-schedule">
+            <ion-slide-page ng-repeat="week in dashboard.schedule">
+                <div class="list">
+                    <ion-list class="list ">
+                        <ion-item class="item item-divider">
+                            {{ week.dayname }}
+                        </ion-item>
+                        <ion-item class="item " ng-repeat="row in week.data" ng-class-even="'even'">
+                            <div class="item-info">
+                                <div class="flex-display">
+                                    <strong>{{row.data.teachername}} </strong>
+                                    <strong> {{row.data.crsname}}</strong>
+                                </div>
+                                <div class="flex-display">
+                                    <span>	<small>	{{ 'mma.teacher.division' | translate}}  </small> 	<small>  {{row.data.sessionid}} </small> </span>
+                                    <span>	<small>	{{ 'mma.teacher.d_season' | translate}}  </small> 	<small>  {{row.data.divname}} </small> </span>
+                                </div>
+                            </div>
+                        </ion-item>
+                    </ion-list>
+                </div>
+            </ion-slide-page>
+        </ion-slides>
+        <div class="no-data" ng-if="!dashboard.schedule.hasData">
+            <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
+            <p>{{ 'mma.dashboard.no_data' | translate }}</p>
+        </div>
+    </div>
+    <!-- weekly-schedule -->
+</mm-loading>

@@ -89,6 +89,12 @@ angular.module('mm.core.login', [])
         }
     })
 
+    .state('mm_login.logoutNoor', {
+        url: '/logout-noor',
+        templateUrl: 'core/components/login/templates/logout.html',
+        controller: 'mmlogoutNoorCtrl',
+    })
+
     .state('mm_login.email_signup', {
         url: '/email_signup',
         templateUrl: 'core/components/login/templates/emailsignup.html',

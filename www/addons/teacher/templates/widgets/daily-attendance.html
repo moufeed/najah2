@@ -1,0 +1,33 @@
+<div class="card dailyattendance">
+    <div ng-if="dailyattendance">
+        <div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' :''">
+            {{ 'mma.teacher.attendence' | translate }}
+        </div>
+
+        <ks-swiper-container ng-if="courses" initial-slide="0" loop="false" show-nav-buttons="true" slides-per-view="1" space-between="0" pagination-clickable="false">
+            <ks-swiper-slide class="swiper-slide" ng-repeat="(key,val) in dailyattendance">
+                <ion-list class="list ">
+                    <div class="item item-divider text-center">
+                        {{'mma.teacher.division' | translate}} <strong> {{key}}</strong>
+                    </div>
+                    <div class="item card-padding">
+                        <canvas id="doughnut-{{key}}" class="chart chart-pie" chart-data="val.chartdata" chart-labels="val.chartlabels" chart-colors="val.chartcolors" chart-legend="true"></canvas>
+                    </div>
+                    <div class="item-footer">
+                        <ul class="chart-labels">
+                            <li ng-repeat="label in val.chartlabels">
+                                <span style="background-color:{{val.chartcolors[$index]}}"></span><span>{{label}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </ion-list>
+
+            </ks-swiper-slide>
+    </div>
+    <mma-tempty helper-class="info inside" icon="zmdi zmdi-calendar-note" ng-if="!dailyattendance">
+        <h4>{{ 'mma.teacher.attendence' | translate }}</h4>
+        <ion-spinner icon="lines" ng-if="!Dlessons.noData"></ion-spinner>
+        <span ng-show="Dlessons.noData">  {{ 'mma.teacher.no_data' | translate }}</span>
+    </mma-tempty>
+
+</div>

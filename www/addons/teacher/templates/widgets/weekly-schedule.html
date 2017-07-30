@@ -1,0 +1,33 @@
+<div class="card weeklySchedule" hide-until="weeklySchedule">
+    <div ng-if="weeklySchedule">
+        <div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' :''">
+            {{ 'mma.teacher.weekly_schedule' | translate }}
+        </div>
+        <ks-swiper-container ng-if="courses" initial-slide="initialSlide()" loop="true" show-nav-buttons="true" slides-per-view="1" space-between="0" pagination-clickable="false">
+            <ks-swiper-slide class="swiper-slide" ng-repeat="day in weeklySchedule">
+                <ion-list class="list ">
+                    <ion-item class="item item-divider">
+                        {{day.dayname}}
+                    </ion-item>
+                    <ion-item class="item " ng-repeat="lesson in day.data " ng-class-even="'even'">
+                        <div class="item-info">
+                            <div class="flex-display">
+                                <strong>{{lesson.data.program}} </strong>
+                                <strong> {{lesson.data.crsname}}</strong>
+                            </div>
+                            <div class="flex-display">
+                                <span>	<small>	{{ 'mma.teacher.division' | translate}}  </small> 	<small>  {{lesson.data.sessionid}} </small> </span>
+                                <span>	<small>	{{ 'mma.teacher.d_season' | translate}}  </small> 	<small>  {{lesson.data.divname}} </small> </span>
+                            </div>
+                        </div>
+                    </ion-item>
+                </ion-list>
+            </ks-swiper-slide>
+        </ks-swiper-container>
+    </div>
+    <mma-tempty helper-class="info inside" icon="zmdi zmdi-calendar-note" ng-if="!weeklySchedule">
+        <h4>{{ 'mma.teacher.weekly_schedule' | translate }}</h4>
+        <ion-spinner icon="lines" ng-if="!wlessons.noData"></ion-spinner>
+        <span ng-show="wlessons.noData">  {{ 'mma.teacher.no_data' | translate }}</span>
+    </mma-tempty>
+</div>

@@ -1,0 +1,25 @@
+<mm-loading hide-until="dashboard.lastTrackCoursesLoaded">
+    <div class="card last-tracks">
+        <div class="card-header" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' : '' ">
+            <span>{{ 'mma.dashboard.Last_track_courses' | translate }} <small>{{ dashboard.trackCourses.name }}</small></span>
+        </div>
+        <div class="list">
+            <div class="tracks-results" ng-if="dashboard.trackCourses.courses.length">
+                <div class="course" ng-repeat="course in dashboard.trackCourses.courses">
+                    <div class="text">
+                        <h3>{{ course.name }}</h3>
+                        <span>{{ course.total_grade }}%</span>
+                    </div>
+                    <div class="progress">
+                        <span ng-class="{passed: course.total_grade > 70}" ng-style="{width: course.total_grade + '%'}"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="no-data" ng-if="!dashboard.trackCourses.courses.length">
+                <i class="zmdi zmdi-alert-triangle zmdi-hc-fw"></i><br/>
+                <p>{{ 'mma.dashboard.no_data' | translate }}</p>
+            </div>
+        </div>
+    </div>
+    <!-- card last-track -->
+</mm-loading>

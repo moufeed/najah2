@@ -1,0 +1,29 @@
+<div class="courses-box" hide-until="courses" ng-class="(gender == 'f') ? 'gf' : (gender == 'm') ? 'gm' :''">
+    <ks-swiper-container ng-if="courses" initial-slide="0" loop="false" show-nav-buttons="false" slides-per-view="(courses.length > 1) ? 2 : 1 " space-between="5" pagination-clickable="false">
+        <ks-swiper-slide class="swiper-slide" ng-repeat="course in courses">
+            <div class="list card" ui-sref="site.teacher_course({id:{{course.id}}})">
+                <div class=" card-header ">
+                    {{course.name}}
+                </div>
+                <div class="item item-image">
+                    <img ng-src="{{course.img | extImage}}" style="max-height:175px;">
+                </div>
+                <div class="item " ng-class="(courses.length < 2) ? 'item-icon-right' : ''">
+                    <div ng-if="courses.length < 2">
+                        <p><strong> </strong> <span></span></p>
+                        <i class="icon icon-accessory ion-chevron-right"></i>
+                    </div>
+                    <div ng-if="courses.length > 1" class="text-center">
+                        <p>{{ 'mma.teacher.season' | translate}}</p>
+                        <p>{{course.division}}</p>
+                    </div>
+                </div>
+            </div>
+        </ks-swiper-slide>
+    </ks-swiper-container>
+    <mma-tempty helper-class="info inside" icon="zmdi zmdi-assignment" ng-if="!courses">
+        <h4>{{ 'mma.teacher.courses' | translate }}</h4>
+        <ion-spinner icon="lines" ng-if="!myCourses.noData"></ion-spinner>
+        <span ng-show="myCourses.noData">  {{ 'mma.teacher.no_data' | translate }}</span>
+    </mma-tempty>
+</div>
