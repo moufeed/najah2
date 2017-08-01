@@ -30,15 +30,15 @@ angular.module('mm.addons.teacher')
         else return day;
     }
 
-
-    $scope.widgets = [
-        { "name": "courses", "active": true, "size": 12, "resizeable": true, "sizes": [3, 4, 6, 12] },
-        { "name": "daily-schedule", "active": true, "size": 12, "resizeable": true, "sizes": [3, 4, 6, 12] },
-        { "name": "daily-attendance", "active": true, "size": 12, "resizeable": true, "sizes": [3, 4, 6, 12] },
-        { "name": "weekly-schedule", "active": true, "size": 12, "resizeable": true, "sizes": [3, 4, 6, 12] },
-        { "name": "news", "active": true, "size": 12, "resizeable": true, "sizes": [3, 4, 6, 12] },
-    ];
-
+    /**
+     * Teacher Courses
+     */
+    $mmaTeacherHelper.layout()
+        .then(function(response) {
+            if (response.list.data) {
+                $scope.widgets = JSON.parse(response.list.data);
+            }
+        });
 
     /**
      * Teacher Courses

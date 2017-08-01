@@ -1,5 +1,5 @@
 angular.module('mm.addons.portfolio')
-    .factory('$mmaPortfolioHandlers', function($log) {
+    .factory('$mmaPortfolioHandlers', function($log, $portfolio) {
         $log = $log.getInstance('$mmaPortfolioHandlers');
         var self = {};
 
@@ -8,7 +8,7 @@ angular.module('mm.addons.portfolio')
             var self = {};
 
             self.isEnabled = function() {
-                return true;
+                return $portfolio.isAvailable();
             };
 
             self.getController = function() {

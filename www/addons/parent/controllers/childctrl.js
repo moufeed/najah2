@@ -9,23 +9,20 @@ angular.module('mm.addons.parent')
      * @ngdoc controller
      * @name mmParentCtrl
      */
-    .controller('mmaChildCtrl', function($mmApp, $mmUtil, $scope, $ionicModal, $stateParams, $state, $log, $mmaParentHelper, $ionicPopup, $mmaParentOffline, mmaParentOfflineStamps, mmaParentOfflineWeeklyattendance, mmaParentOfflineWeeklytasks, mmaParentOfflineBadges, mmaParentOfflineAttendance, mmaParentOfflineParentStore, mmaParentOfflineStatistics, mmaParentOfflineCurrentcourses, mmaParentOfflineSchedule, mmaParentOfflineLastTrack, mmaParentOfflineChildMessages) {
+    .controller('mmaChildCtrl', function($mmApp, $mmUtil, $scope, $ionicModal, $stateParams, $state, $log, $mmaParentHelper, $ionicPopup, $mmaParentOffline, mmaParentOfflineStamps, mmaParentOfflineWeeklyattendance, mmaParentOfflineWeeklytasks, mmaParentOfflineBadges, mmaParentOfflineAttendance, mmaParentOfflineParentStore, mmaParentOfflineStatistics, mmaParentOfflineCurrentcourses, mmaParentOfflineSchedule, mmaParentOfflineLastTrack, mmaParentOfflineChildMessages, $mmaTeacherHelper) {
         $scope.isOnline = $mmApp.isOnline();
         var self = this;
 
 
-        $scope.widgets = [
-            { "name": "stats", "active": true, "size": 12, "resizeable": true, "sizes": [3, 4, 6, 12] },
-            { "name": "courses", "active": true, "size": 12, "resizeable": true, "sizes": [3, 4, 6, 12] },
-            { "name": "weekly-schedule", "active": true, "size": 12, "resizeable": true, "sizes": [6, 12] },
-            { "name": "lasttrack", "active": true, "size": 6, "resizeable": true, "sizes": [3, 4, 6, 12] },
-            { "name": "attendance", "active": true, "size": 6, "resizeable": true, "sizes": [3, 4, 6, 12] },
-            { "name": "weekly-attendance", "active": true, "size": 6, "resizeable": true, "sizes": [3, 4, 6, 12] },
-            { "name": "badges", "active": true, "size": 6, "resizeable": true, "sizes": [3, 4, 6, 8, 12] },
-            { "name": "stamps", "active": true, "size": 6, "resizeable": false, "sizes": [] },
-            { "name": "messages", "active": true, "size": 6, "resizeable": false, "sizes": [] },
-            { "name": "weekly-tasks", "active": true, "size": 6, "resizeable": false, "sizes": [] }
-        ];
+        /**
+         * Teacher Courses
+         */
+        $mmaTeacherHelper.layout()
+            .then(function(response) {
+                if (response.list.data) {
+                    $scope.widgets = JSON.parse(response.list.data);
+                }
+            });
 
         $scope.piechartOptions = {
             animate: {

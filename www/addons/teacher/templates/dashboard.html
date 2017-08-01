@@ -2,7 +2,7 @@
     <ion-content padding="true" mm-state-class>
 
 
-        <div ng-repeat="wid in widgets" ng-include="'addons/teacher/templates/widgets/'+ wid.name +'.html'"></div>
+        <div ng-repeat="wid in widgets" ng-if="wid.name !== 'messages' && wid.name !== 'calendar'" ng-include="'addons/teacher/templates/widgets/'+ wid.name +'.html'"></div>
 
     </ion-content>
 </ion-view>

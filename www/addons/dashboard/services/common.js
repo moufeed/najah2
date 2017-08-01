@@ -43,8 +43,6 @@ angular.module('mm.addons.dashboard')
         });
     };
 
-    window.asd = self;
-
     self.userDetails = function(layout) {
         return $http({
             method: 'GET',

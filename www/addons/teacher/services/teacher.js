@@ -86,6 +86,21 @@ angular.module('mm.addons.teacher')
                     return false;
                 });
         }
+
+        /**
+         *   Return Layout
+         */
+        self.layout = function () {
+            return self.call({s: 'general.getlayout' })
+                .then(function (data) {
+                    return data;
+                })
+                .catch(function (err) {
+                    showError();
+                    return false;
+                });
+        }
+
         /**
          * Return Schedule
          */

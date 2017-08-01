@@ -33,6 +33,20 @@ angular.module('mm.addons.parent')
         };
 
         /**
+         *   Return Layout
+         */
+        self.layout = function () {
+            return self.call({s: 'general.getlayout' })
+                .then(function (data) {
+                    return data;
+                })
+                .catch(function (err) {
+                    showError();
+                    return false;
+                });
+        }
+
+        /**
          * Show Error Connecting To Server
          */
         var alertisShowing = true;
