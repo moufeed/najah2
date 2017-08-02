@@ -22,12 +22,22 @@ angular.module('mm.core.sidemenu')
  * @name mmSideMenuCtrl
  */
 .controller('mmSideMenuCtrl', function($scope, $state, $mmSideMenuDelegate, $mmSitesManager, $mmSite, $mmEvents,
-            $timeout, mmCoreEventLanguageChanged, mmCoreEventSiteUpdated, $mmSideMenu, $mmCourses, $http) {
+            $timeout, $rootScope, mmCoreEventLanguageChanged, mmCoreEventSiteUpdated, $mmSideMenu, $mmCourses, $http) {
 
     $mmSideMenu.setScope($scope);
     $scope.handlers = $mmSideMenuDelegate.getNavHandlers();
     $scope.areNavHandlersLoaded = $mmSideMenuDelegate.areNavHandlersLoaded;
     loadSiteInfo();
+
+    $rootScope.$watch('currentLang', function(newValue, oldValue) {
+        if (newValue == 'en') {
+            $scope.mainSide = 'left';
+            $scope.secSide = 'right';
+        } else if (newValue == 'ar') {
+            $scope.mainSide = 'right';
+            $scope.secSide = 'left';
+        }
+    });
 
     $scope.logout = function() {
         $mmSitesManager.logout().finally(function() {

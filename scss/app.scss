@@ -308,3 +308,7 @@ body[data-gender="f"] {
         color: #fff;
     }
 }
+
+body.ar ion-side-menu-content ion-nav-view {
+    direction: rtl;
+}

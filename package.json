@@ -16,7 +16,8 @@
         "gulp-concat": "^2.2.0",
         "gulp-minify-css": "^1.2.4",
         "gulp-rename": "^1.2.0",
-        "gulp-sass": "^3.1.0"
+        "gulp-sass": "^3.1.0",
+        "cordova-ios": "^4.4.0"
     },
     "devDependencies": {
         "@ionic/cli-plugin-cordova": "1.5.0",
@@ -103,7 +104,8 @@
     ],
     "cordova": {
         "platforms": [
-            "android"
+            "android",
+            "ios"
         ],
         "plugins": {
             "cordova-plugin-device": {},

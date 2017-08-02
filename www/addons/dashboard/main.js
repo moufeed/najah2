@@ -46,7 +46,7 @@ angular.module('mm.addons.dashboard', [])
 
 })
 
-.run(['$mmaDashboardCommon', '$rootScope', '$mmSite', function($mmaDashboardCommon, $rootScope, $mmSite) {
+.run(['$mmaDashboardCommon', '$rootScope', '$mmSite', '$mmEvents', 'mmCoreEventLanguageChanged', '$mmLang', function($mmaDashboardCommon, $rootScope, $mmSite, $mmEvents, mmCoreEventLanguageChanged, $mmLang) {
     // $rootScope.$watch($mmSite.getToken(), function(newVal, oldVal) {
     //     console.warn(newVal, oldVal);
     // });
@@ -63,4 +63,17 @@ angular.module('mm.addons.dashboard', [])
         }
 
     }, 1500);
+
+    $mmLang.getCurrentLanguage().then(function(currentLanguage) {
+        $rootScope.currentLang = currentLanguage;
+    });
+
+    $mmEvents.on(mmCoreEventLanguageChanged, function(data) {
+        $mmLang.getCurrentLanguage().then(function(currentLanguage) {
+            $rootScope.currentLang = currentLanguage;
+        });
+    });
+
+
+
 }]);
