@@ -1,4 +1,7 @@
 <ion-view view-title="{{ 'mma.parent.title' | translate }}">
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon ion-person-stalker" ng-if="multiRole" ng-click="switchRotle($event)" aria-label="{{ 'mm.courses.filter' | translate }}"></button>
+    </ion-nav-buttons>
     <ion-content padding="true" mm-state-class>
          
         <div class="children-list">

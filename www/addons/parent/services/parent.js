@@ -19,9 +19,24 @@ angular.module('mm.addons.parent')
             }else if($mmApp.isOnline()){
                 return self.call({s: 'general.usertype' })
                     .then(function (data) {
-                        if (data.usertype === 'parent') {
-                            $window.localStorage[siteId] = data.usertype;
-                            return true;
+                        if (data.usertype.constructor === Array) {
+                            var asd = false;
+                            for (var i = data.usertype.length - 1; i >= 0; i--) {
+                                if (data.usertype[i] === 'parent' || data.usertype[i] === 'sisteacher') {
+                                    asd = true;
+                                    if ($window.localStorage[siteId] == 'undefined') {
+                                        $window.localStorage[siteId] = data.usertype[i];    
+                                    } else {
+                                        $window.localStorage[$mmSite.getToken()] = 1;
+                                    }
+                                }
+                            }
+                            return asd;
+                        } else {
+                            if (data.usertype === 'parent') {
+                                $window.localStorage[siteId] = data.usertype;
+                                return true;
+                            }
                         }
                         return false;
                     })

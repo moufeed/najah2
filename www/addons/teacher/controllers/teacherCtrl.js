@@ -21,8 +21,29 @@ angular.module('mm.addons.teacher')
  * @ngdoc controller
  * @name mmaTeacherCtrl
  */
-.controller('mmaTeacherCtrl', function($scope, $q, $mmDB, $stateParams, $state, $mmaTeacherHelper, $log, $sce, $mmSite, $mmUtil, $ionicModal, $mmApp) {
+.controller('mmaTeacherCtrl', function($scope, $q, $mmDB, $stateParams, $state, $mmaTeacherHelper, $log, $sce, $mmSite, $mmUtil, $ionicModal, $mmApp, $ionicPopover, $window, $rootScope) {
     $scope.isOnline = $mmApp.isOnline();
+
+    if( $window.localStorage[$mmSite.getToken()] != 'undefined' && $window.localStorage[$mmSite.getToken()]){
+        $rootScope.multiRole = true;
+    } else {
+        $rootScope.multiRole = false;
+    }
+
+    $ionicPopover.fromTemplateUrl('addons/teacher/templates/switch_role.html', {
+        scope: $scope
+    }).then(function(po) {
+        popover = po;
+
+        $scope.switchRotle = function(event) {
+            popover.show(event);
+        };
+
+        $scope.selectRole = function() {
+          popover.hide();
+        }
+    });
+
     $scope.initialSlide = function() {
         var date = new Date();
         var day = date.getDay();
