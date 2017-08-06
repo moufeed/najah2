@@ -1,0 +1,13 @@
+{
+    "title": "Help Disk",
+    "email": "E-mail",
+    "mobile": "Mobile",
+    "details": "Details",
+    "image": "Image",
+    "add_new_ticket": "Add New Ticket",
+    "add": "Add",
+    "email_required": "Email is Required.",
+    "not_email": "This is not a valid email.",
+    "mobile_required": "Mobile is Required.",
+    "details_required": "Details is Required."
+}

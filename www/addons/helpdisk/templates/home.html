@@ -1,0 +1,44 @@
+<ion-view>
+    <ion-nav-title>{{'mma.helpdisk.title' | translate}}</ion-nav-title>
+    <ion-content padding="true" mm-state-class scroll="true">
+        <div class="list">
+            <div class="item item-divider">
+                {{'mma.helpdisk.add_new_ticket' | translate}}
+            </div>
+            <form name="ticketForm" ng-submit="$ctrl.add()" novalidate>
+                <label class="item item-input item-stacked-label" ng-class="{'has-error': (ticketForm.email.$dirty && ticketForm.email.$touched) &&ticketForm.email.$invalid}">
+                    <span class="input-label">{{'mma.helpdisk.email' | translate}}</span>
+                    <input type="email" ng-model="$ctrl.user.email" name="email" required>
+                    <div ng-show="ticketForm.email.$dirty && ticketForm.email.$touched">
+                      <span ng-show="ticketForm.email.$error.required">{{'mma.helpdisk.email_required' | translate}}</span>
+                      <span ng-show="ticketForm.email.$error.email">{{'mma.helpdisk.not_email' | translate}}</span>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label" ng-class="{'has-error': (ticketForm.mobile.$dirty && ticketForm.mobile.$touched) && ticketForm.mobile.$invalid}">
+                    <span class="input-label">{{'mma.helpdisk.mobile' | translate}}</span>
+                    <input type="number" ng-model="$ctrl.user.mobile" name="mobile" required>
+                    <div ng-show="ticketForm.mobile.$dirty && ticketForm.mobile.$touched">
+                      <span ng-show="ticketForm.mobile.$error.required">{{'mma.helpdisk.mobile_required' | translate}}</span>
+                      <!-- <span ng-show="ticketForm.mobile.$error.minlength">Tell us your mobile.</span>
+                      <span ng-show="ticketForm.mobile.$error.maxlength">Tell us your mobile.</span> -->
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label" ng-class="{'has-error': (ticketForm.details.$dirty && ticketForm.details.$touched) && ticketForm.details.$invalid}">
+                    <span class="input-label">{{'mma.helpdisk.details' | translate}}</span>
+                    <textarea ng-model="$ctrl.user.details" name="details" required></textarea>
+                    <div ng-show="ticketForm.details.$dirty && ticketForm.details.$touched">
+                      <span ng-show="ticketForm.details.$error.required">{{'mma.helpdisk.details_required' | translate}}</span>
+                    </div>
+                </label>
+                <div class="item item-image" ng-if="$ctrl.imageUrl">
+                    <img ng-src="{{$ctrl.imageUrl}}">
+                </div>
+                <button type="submit" class="button button-block button-positive" ng-disabled="ticketForm.$invalid">
+                  {{'mma.helpdisk.add' | translate}}
+                </button>
+            </form>
+            <button class="button" ng-click="$ctrl.addImage(true)">add image</button>
+            <button class="button" ng-click="$ctrl.addImage(false)">take image</button>
+        </div>
+    </ion-content>
+</ion-view>

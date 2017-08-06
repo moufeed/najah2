@@ -62,7 +62,7 @@ angular.module('mm.addons.parent')
              */
             return function($scope) { 
                 $scope.icon = 'ion-person-stalker';
-                $scope.title = 'mma.parent.dashboard';
+                $scope.title = 'mma.parent.title';
                 $scope.state = 'site.parent';
                 $scope.class = 'mma-parent-handler';
             };

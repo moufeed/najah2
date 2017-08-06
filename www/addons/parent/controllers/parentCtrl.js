@@ -21,9 +21,31 @@ angular.module('mm.addons.parent')
    * @ngdoc controller
    * @name mmParentCtrl
    */
-  .controller('mmaParentCtrl', function ($scope, $q, $mmDB, $stateParams, $state, $log, $mmSite, $mmaParentHelper, $mmaParentOffline, $mmApp, mmaParentOfflineParentStore) {
+  .controller('mmaParentCtrl', function ($scope, $q, $mmDB, $stateParams, $state, $log, $mmSite, $mmaParentHelper, $mmaParentOffline, $mmApp, mmaParentOfflineParentStore, $ionicPopover, $window, $rootScope) {
     $scope.isOnline = $mmApp.isOnline();
-      
+
+    if( $window.localStorage[$mmSite.getToken()] != 'undefined' && $window.localStorage[$mmSite.getToken()]){
+        $rootScope.multiRole = true;
+    } else {
+        $rootScope.multiRole = false;
+    }
+
+    $ionicPopover.fromTemplateUrl('addons/parent/templates/switch_role.html', {
+        scope: $scope
+    }).then(function(po) {
+        popover = po;
+
+        $scope.switchRotle = function(event) {
+            console.log('asd');
+            popover.show(event);
+        };
+
+        $scope.selectRole = function() {
+          popover.hide();
+        }
+    });
+
+
     $mmaParentOffline.storeHasData(mmaParentOfflineParentStore).then(function (res) {
       if (res) {
         $mmaParentOffline.getAllData(mmaParentOfflineParentStore).then(function (data) {

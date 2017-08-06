@@ -13,7 +13,6 @@ angular.module('mm.addons.parent')
         $scope.isOnline = $mmApp.isOnline();
         var self = this;
 
-
         /**
          * Teacher Courses
          */
