@@ -41,6 +41,7 @@
 	"class" : "Class",
 	"edit" : "Edit",
 	"close" : "Close",
-	"preview" : "Preview"
+	"preview" : "Preview",
+	"switch_to_parent": "Go To Parent Page"
 }
 

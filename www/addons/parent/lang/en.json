@@ -22,5 +22,6 @@
 	"errorfailedtoloaddata" :"Failed to load data, please try again later",
 	"noconnection" :"internet connection",
 	"noconnectionMessage" :"Please check your internet connection and try again",
-	"dashboard" :"Dashboard"
+	"dashboard" :"Dashboard",
+	"switch_to_teacher": "Go To Teacher Page"
 }

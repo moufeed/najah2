@@ -22,5 +22,6 @@
 	"errorfailedtoloaddata" :"خطأ في تحميل البيانات يرجى المحاولة لاحقاً",
 	"noconnection" :"الأتصال بالشبكة",
 	"noconnectionMessage" :" الرجاء التأكد من الاتصال والمحاولة من جديد",
-	"dashboard" :"الرئيسية"
+	"dashboard" :"الرئيسية",
+	"switch_to_teacher": "اذهب الي صفحه المعلم"
 }

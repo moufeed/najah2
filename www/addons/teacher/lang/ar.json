@@ -41,5 +41,6 @@
 	"class" :"الفصل",
 	"edit" : "تعديل",
 	"close" : "إغلاق",
-	"preview" : "معاينة"
+	"preview" : "معاينة",
+	"switch_to_parent": "اذهب الي صفحه الاب"
 }
