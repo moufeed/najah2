@@ -18,6 +18,7 @@ angular.module('mm.addons.helpdisk')
 			    maxWidth: 200,
 			    showDelay: 0
 			});
+
             var fileURL = self.imageUrl;
             var options = new FileUploadOptions();
             options.fileKey = "file";
