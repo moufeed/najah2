@@ -315,7 +315,7 @@ angular.module('mm.core')
         privateToken = privateToken || '';
 
         var candidateSite = $mmSitesFactory.makeSite(undefined, siteurl, token, undefined, privateToken);
-
+        // console.log(candidateSite.fetchSiteInfo());
         return candidateSite.fetchSiteInfo().then(function(infos) {
             if (isValidMoodleVersion(infos)) {
                 // Set site ID and infos.

@@ -95,9 +95,10 @@ angular.module('mm.core.login')
         $scope.siteChecked = true;
     }
 
-    window.addEventListener('message', function(e) {
+    window.addEventListener('message', function a(e) {
         return $mmSitesManager.newSite(e.origin, e.data, '').then(function() {
             console.warn(e.origin, e.data, '');
+            window.removeEventListener('message', a);
             $ionicHistory.nextViewOptions({ disableBack: true });
             return $mmLoginHelper.redirectApp();
         });
