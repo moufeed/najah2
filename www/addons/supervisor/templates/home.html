@@ -1,0 +1,30 @@
+<ion-view>
+    <ion-nav-title>{{'mma.supervisor.supervisor' | translate}}</ion-nav-title>
+    <ion-content padding="true" mm-state-class scroll="true">
+        <mm-loading hide-until="$ctrl.dataLoaded">
+            <div class="list card" ng-repeat="col in $ctrl.data" ui-sref="site.supervisorCollege({ id: col.id })">
+
+                <div class="item">
+                    <h2>{{ col.name }}</h2>
+                </div>
+
+                <div class="item item-image">
+                    <img ng-src="{{ col.image }}">
+                </div>
+
+                <div class="info">
+                    <p class="item item-icon-left assertive">
+                        <i class="icon ion-person"></i>
+                        {{ col.teacher_count }}
+                    </p>
+                    <p class="item item-icon-left assertive">
+                        <i class="icon ion-university"></i>
+                        {{ col.course_count }}
+                    </p>  
+                </div>
+              
+
+            </div>
+        </mm-loading>
+    </ion-content>
+</ion-view>
