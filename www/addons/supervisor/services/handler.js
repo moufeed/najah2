@@ -8,7 +8,7 @@ angular.module('mm.addons.supervisor')
             var self = {};
 
             self.isEnabled = function() {
-                return true;
+                return $supervisor.isAvailable();
             };
 
             self.getController = function() {

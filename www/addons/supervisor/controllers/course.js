@@ -3,6 +3,16 @@ angular.module('mm.addons.supervisor')
         var self = this;
         this.dataLoaded = true;
         this.tid = $stateParams.tid;
-        this.courses = $stateParams.courses;
-        this.teacher = $stateParams.teacher;
+        this.cid = $stateParams.cid;
+
+        this.dataLoaded = false;
+        $supervisor.courses(this.cid, this.tid).then(function(res) {
+            self.data = res.data.courses;
+        }, function(reject) {
+
+        }).finally(function() {
+            self.dataLoaded = true;
+        });
+
+        this.title = $stateParams.teacher;
     });

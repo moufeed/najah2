@@ -7,9 +7,9 @@
             <div class=" post-news">
 
                 <div class="item item-body text-center">
-                     <img class="post-full-image" src="{{post.pic}}" >
-                     <h3 class="post-title">{{post.title}}</h3>
-                     <div ng-bind-html="post.text | trustedHtml" ></div>
+                     <img class="post-full-image" src="{{post.image}}" >
+                     <h3 class="post-title">{{post.name}}</h3>
+                     <div><p>{{ post.description }}</p></div>
                 </div>
                 </div>
         </ion-content>

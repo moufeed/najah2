@@ -5,6 +5,7 @@
     justify-content: space-between;
     .item {
         margin-bottom: 0;
+        margin-top: 1px !important;
         border-radius: 0;
         margin: 0;
         border: none;
@@ -17,6 +18,154 @@
     }
     label {
         background: #fff;
+        flex-direction: row-reverse;
+    }
+    .item {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        .icon {
+            font-size: 27px;
+        }
+        &.item-image {
+            padding: 0;
+        }
+    }
+
+}
+
+.cancel-button {
+    background: lighten(red, 10%) !important;
+    border-color: lighten(red, 7%) !important;
+}
+
+.tabs {
+    justify-content: space-evenly;
+    .active-tab {
+        color: $primary;
+        font-weight: bold;
     }
 }
 
+.lectures {
+    height: 100%;
+    min-height: 100%;
+    table {
+        background: #fff;
+        border-bottom: 1px solid #eee;
+        td, th {
+            vertical-align: middle;
+        }
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+
+.lecture-loading {
+    .mm-loading-content {
+        height: 100%;
+        .scroll-view {
+            background: #fff;
+        }
+    }
+}
+
+.visits-page {
+    background: #fff;
+    table {
+        border-collapse: collapse;
+        td, th {
+            border: 1px solid #eee;
+        }
+    }
+}
+
+.week-tab {
+    line-height: 50px;
+    padding: 0 10px;
+    background: #fff;
+    color: #333;
+    display: inline-block;
+    small {
+        font-size: 15px;
+    }
+    &.activated {
+        background: #e7e7e7;
+    }
+}
+
+.lecture-view .lectures {
+    padding: 10px;
+}
+
+.lectures table {
+    border-collapse: collapse;
+}
+
+.lectures table td,
+.lectures table th {
+    border: 1px solid #333;
+}
+
+.schedule {
+    table.table {
+        background: #fff;
+        border-collapse: collapse;
+        tr.warning {
+            background: rgba(230, 181, 0, 0.14);
+        }
+        td,
+        th {
+            border: 1px solid #eee;
+            text-align: center;
+            vertical-align: middle; 
+            span {
+                white-space: nowrap;
+                p, small {
+                    display: block;
+                    white-space: nowrap;
+                }
+            }
+        }
+        th {
+            white-space: nowrap;
+            padding: 10px;
+        }
+        .button {
+            white-space: nowrap;
+            line-height: 20px;
+            min-height: auto;
+            padding: 0 5px;
+            min-width: auto;
+        }
+        .cls-info {
+            white-space: nowrap;
+        }
+    }
+}
+
+body.ar .add-visit {
+    .item {
+        text-align: right;
+    }
+    .item-input {
+        flex-direction: row-reverse;
+        textarea, input {
+            text-align: right;
+        }
+    }
+    .input-label {
+        padding: 7px 0px 7px 10px;
+        text-align: right;
+    }
+    .item-select select {
+        right: auto;
+        left: 0;
+        padding-right: 16px;
+        padding-left: 30px;
+    }
+    .item-select:after {
+        left: 16px;
+        right: auto;
+    }
+}

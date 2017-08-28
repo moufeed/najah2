@@ -23,39 +23,29 @@ angular.module('mm.addons.teacher')
                  return self.goToSiteInitialPage(type);
             }
          */
-        self.isAvailable = function (siteId) {
-                  siteId = siteId || $mmSite.getId();
-        if( $window.localStorage[siteId] != 'undefined' && $window.localStorage[siteId] == 'sisteacher'){
-            return true;
-            }else if($mmApp.isOnline()){
+        self.isAvailable = function () {
+            // if($window.localStorage[$mmSite.getToken()] != 'undefined'){
+            //     var user = JSON.parse($window.localStorage[$mmSite.getToken()]);
+            //     for (var i = user.roles.length - 1; i >= 0; i--) {
+            //         if (user.roles[i].shortname == 'sisteacher') {
+            //             return true;
+            //         }
+            //     }
+            // } else if($mmApp.isOnline()){
+            // } else {
                 return self.call({s: 'general.usertype' })
-                    .then(function (data) {
-                        if (data.usertype.constructor === Array) {
-                            var asd = false;
-                            for (var i = data.usertype.length - 1; i >= 0; i--) {
-                                if (data.usertype[i] === 'parent' || data.usertype[i] === 'sisteacher') {
-                                    asd = true;
-                                    if ($window.localStorage[siteId] == 'undefined') {
-                                        $window.localStorage[siteId] = data.usertype[i];    
-                                    } else {
-                                        $window.localStorage[$mmSite.getToken()] = 1;
-                                    }
-                                }
-                            }
-                            return asd;
-                        } else {
-                            if (data.usertype === 'sisteacher') {
-                                $window.localStorage[siteId] = data.usertype;
+                    .then(function (response) {
+                        for (var prop in response.myroles) {
+                          if (response.myroles.hasOwnProperty(prop)) {
+                            if (response.myroles[prop].shortname == 'sisteacher') {
                                 return true;
                             }
+                          } 
                         }
+                    }).catch(function() {
                         return false;
-                    })
-                    .catch(function (err) {
-                        return false;
-                });
-            }
-            return false;
+                    });
+            // }
         };
 
         self.call = function (service ,url) {
@@ -106,7 +96,7 @@ angular.module('mm.addons.teacher')
          *   Return Layout
          */
         self.layout = function () {
-            return self.call({s: 'general.getlayout' })
+            return self.call({s: 'general.getmobilelayout', usertype: 'sisteacher' })
                 .then(function (data) {
                     return data;
                 })
@@ -158,7 +148,7 @@ angular.module('mm.addons.teacher')
                 });
         }
         self.getFeeds = function(){
-            return self.call({s:'general.latestnews' })
+            return self.call({s:'general.news' })
                 .then(function (data) {
                     return data;
                 })
@@ -180,3 +170,40 @@ angular.module('mm.addons.teacher')
         return self;
         
     });
+
+
+
+// self.isAvailable = function (siteId) {
+//                   siteId = siteId || $mmSite.getId();
+//             if( $window.localStorage[siteId] != 'undefined' && $window.localStorage[siteId] == 'sisteacher'){
+//                 return true;
+//             }else if($mmApp.isOnline()){
+//                 return self.call({s: 'general.usertype' })
+//                     .then(function (data) {
+//                         if (data.usertype.constructor === Array) {
+//                             var asd = false;
+//                             for (var i = data.usertype.length - 1; i >= 0; i--) {
+//                                 if (data.usertype[i] === 'parent' || data.usertype[i] === 'sisteacher') {
+//                                     asd = true;
+//                                     if ($window.localStorage[siteId] == 'undefined') {
+//                                         $window.localStorage[siteId] = data.usertype[i];    
+//                                     } else {
+//                                         $window.localStorage[$mmSite.getToken()] = 1;
+//                                     }
+//                                 }
+//                             }
+//                             return asd;
+//                         } else {
+//                             if (data.usertype === 'sisteacher') {
+//                                 $window.localStorage[siteId] = data.usertype;
+//                                 return true;
+//                             }
+//                         }
+//                         return false;
+//                     })
+//                     .catch(function (err) {
+//                         return false;
+//                 });
+//             }
+//             return false;
+//         };

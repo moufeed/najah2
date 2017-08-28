@@ -1,9 +1,10 @@
 <ion-popover-view class="switch-role">
     <ion-content>
         <div class="list">
-            <a class="item item-icon-right" ui-sref="site.parent" ng-click="selectRole()">
+            <a class="item item-icon-right" ng-repeat="role in roles" ui-sref="{{ role.link }}" ng-click="selectRole()">
 			    <i class="icon ion-shuffle"></i>
-			    {{ 'mma.teacher.switch_to_parent' | translate }}
+			    <span ng-if="currentLang == 'en'">{{ role.name }}</span>
+			    <span ng-if="currentLang == 'ar'">{{ role.description }}</span>
 			  </a>
         </div>
     </ion-content>

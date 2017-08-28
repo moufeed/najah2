@@ -24,10 +24,14 @@ angular.module('mm.addons.teacher')
 .controller('mmaTeacherCtrl', function($scope, $q, $mmDB, $stateParams, $state, $mmaTeacherHelper, $log, $sce, $mmSite, $mmUtil, $ionicModal, $mmApp, $ionicPopover, $window, $rootScope) {
     $scope.isOnline = $mmApp.isOnline();
 
-    if( $window.localStorage[$mmSite.getToken()] != 'undefined' && $window.localStorage[$mmSite.getToken()]){
-        $rootScope.multiRole = true;
+    if($window.localStorage[$mmSite.getToken()] != 'undefined'){
+        var user = JSON.parse($window.localStorage[$mmSite.getToken()]);
+        if (user.roles.length > 1) {
+            $scope.multiRole = true;
+            $scope.roles = user.roles;
+        }
     } else {
-        $rootScope.multiRole = false;
+        $scope.multiRole = false;
     }
 
     $ionicPopover.fromTemplateUrl('addons/teacher/templates/switch_role.html', {
@@ -38,6 +42,10 @@ angular.module('mm.addons.teacher')
         $scope.switchRotle = function(event) {
             popover.show(event);
         };
+
+        $scope.renderHtml = function(html) {
+            return $sce.trustAsHtml(html);
+        }
 
         $scope.selectRole = function() {
           popover.hide();

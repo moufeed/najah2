@@ -1,0 +1,38 @@
+<ion-view>
+    <ion-nav-title>{{'mma.supervisor.program' | translate}}</ion-nav-title>
+    <ion-content padding="false" mm-state-class scroll="false" class="college-page">
+        <div class="schedule" style="height: 100%">
+        	<ion-scroll direction="xy" overflow-scroll="false" style="height: 100%; width: 100%" scrollbar-x="false">
+	        	<table class="table table-bordered">
+	                <thead>
+	                    <tr class="lightgray">
+	                        <th width="115">{{ 'mma.supervisor.day' | translate }} / {{ 'mma.supervisor.class' | translate }}</th>
+	                        <th ng-repeat="num in [] | range:schedule_max"><span>{{ 'mma.supervisor.class' | translate }} {{ num + 1 }}</span></th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                    <tr ng-repeat="day in schedule " ng-class="{'warning': day.isToday}"> 
+	                        <th>{{ day.dayname }}</th>
+	                        <td ng-repeat="cls in day.divisions" >
+	                            <div ng-if="Utils.keys(cls).length > 1" class="cls-info"> 
+	                                <span>
+	                                    <strong>{{cls.data.crsname}}</strong>
+	                                    <small>{{cls.data.program}}</small>
+	                                    <small>{{cls.data.divname}}</small>
+	                                </span>
+	                                 
+	                                <button class="button" ng-click="openAddModal(cls,day.dayname)">
+	                                	<i class="icon ion-person-stalker"></i>
+	                                </button>       
+	                                <button class="button" ng-click="openAttModal(cls)">
+	                                	<i class="icon ion-ios-circle-outline"></i>
+	                                </button>       
+	                            </div>
+	                        </td>
+	                    </tr>
+	                </tbody>
+	            </table>
+            </ion-scroll>
+        </div>
+    </ion-content>
+</ion-view>

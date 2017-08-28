@@ -199,8 +199,34 @@ angular.module('mm.core.login')
                 method: "GET",
                 params: { s: 'general.usertype', wstoken: $mmSite.getToken() }
             }).then(function(response) {
-                console.log(response.data.usertype, $mmSite.getId())
                 $window.localStorage[$mmSite.getId()] = response.data.usertype;
+                var a = {};
+                a.userType = response.data.usertype;
+                var s = [];
+                for (var prop in response.data.myroles) {
+                  if (response.data.myroles.hasOwnProperty(prop)) {
+                    response.data.myroles[prop].description = response.data.myroles[prop].description.replace(/<{1}[^<>]{1,}>{1}/g," ");
+                    switch(response.data.myroles[prop].shortname) {
+                        case 'sisteacher':
+                            response.data.myroles[prop].link = 'site.teacher'
+                            s.push(response.data.myroles[prop]);
+                        break;
+                        case 'parent':
+                            response.data.myroles[prop].link = 'site.parent'
+                            s.push(response.data.myroles[prop]);
+                        break;
+                        case 'educational_supervisor':
+                            response.data.myroles[prop].link = 'site.supervisor'
+                            s.push(response.data.myroles[prop]);
+                        break;
+                    }
+                  } 
+                }
+                
+                a.roles = s;
+                a.language = response.data.language;
+                a.gender = response.data.gender;
+                $window.localStorage[$mmSite.getToken()] = JSON.stringify(a);
                 return response.data.usertype;
             })
         }
@@ -211,6 +237,8 @@ angular.module('mm.core.login')
                 return $state.go('site.parent');
             else if (userType === 'sisteacher')
                 return $state.go('site.teacher');
+            else if (userType === 'educational_supervisor')
+                return $state.go('site.supervisor');
             else if (userType === 'sisstudent')
                 return $state.go('site.dashboard');
             else if (!myCoursesDisabled) {

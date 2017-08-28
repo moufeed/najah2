@@ -1,5 +1,6 @@
 {
     "errorgetnotifications": "خطأ في الحصول على الإشعارات",
     "notifications": "الإشعارات",
+	"notificationpreferences": "تفضيلات الاشعارات",
     "therearentnotificationsyet": "لا توجد إشعارات"
 }

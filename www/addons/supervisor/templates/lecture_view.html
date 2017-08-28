@@ -1,0 +1,11 @@
+<ion-scroll style="height:calc(100% - 120px); margin-top: 10px;" direction="xy">
+	<div class="lectures">
+		<ion-list class="list">
+            <ion-item class="item item-section" ng-repeat="(id, lec) in $ctrl.data" ng-class-even="'even'" 
+                ui-sref="site.supervisorContent.lecture.lecture_view.single({id: lec.data.id, data: lec.tpl, lecData: lec })">
+                    <h3>{{ lec.data.lecture }}</h3>
+            </ion-item>
+        </ion-list>
+		<ui-view name="view_lecture" class="lecture-view"></ui-view>
+	</div>
+</ion-scroll>

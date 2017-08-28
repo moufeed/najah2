@@ -7,10 +7,10 @@
         <div class="card-body">
             <ion-list class="list">
                 <ion-item class="item item-thumbnail-left" ng-repeat="feed in feeds" ng-class-even="'even'" ng-click="openNews(feed)">
-                    <img ng-src="{{feed.pic}}">
-                    <h2>{{feed.title }}</h2>
+                    <img ng-src="{{feed.image}}">
+                    <h2>{{feed.name }}</h2>
                     <small class="date">{{feed.date | date:'medium'}}</small>
-
+                    <p>{{ feed.description | limitTo : 200 }}</p>
                 </ion-item>
             </ion-list>
         </div>

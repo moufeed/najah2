@@ -1,0 +1,22 @@
+<ion-modal-view>
+	<ion-header-bar class="bar bar-header bar-positive">
+      	<h1 class="title">{{ 'mma.supervisor.attendance' | translate }}</h1>
+    </ion-header-bar>
+	<ion-content class="add-visit">
+		<div class="list card">
+			<div class="item" ng-repeat="row in attData">
+				<h2>{{ row.firstname }} {{ row.lastname }}</h2>
+				<p>{{ row.status }}</p>
+				<small>{{ row.notes }}</small>
+				<div class="date">
+					<span>{{ row.date }}</span>
+				</div>
+			</div>
+			<div class="item">
+				<button class="button button-block cancel-button" ng-click="closeAttModal()">
+					{{ 'mma.supervisor.cancel' | translate }}
+				</button>
+			</div>
+		</div>
+	</ion-content>
+</ion-modal-view>

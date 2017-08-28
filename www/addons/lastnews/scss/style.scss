@@ -100,3 +100,10 @@ $material : (
     }
 }
  
+
+.news-content {
+  flex-direction: column !important;
+  p, small, h3 {
+    white-space: initial !important;
+  }
+}

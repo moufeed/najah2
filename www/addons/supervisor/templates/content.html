@@ -1,0 +1,23 @@
+<ion-view>
+    <ion-content padding="false" mm-state-class scroll="false" class="college-page">
+    	<ui-view name="content"></ui-view>
+        <div class="tabs tabs-icon-left">
+       		<a class="tab-item" ui-sref="site.supervisorContent.syllabus" ui-sref-active="active-tab">
+			    <i class="icon ion-ios-bookmarks-outline"></i>
+			    <p>{{'mma.supervisor.syllabus' | translate}}</p>
+		  	</a>
+			<a class="tab-item" ui-sref="site.supervisorContent.lecture" ui-sref-active="active-tab">
+			    <i class="icon ion-ios-briefcase-outline"></i>
+			    <p>{{'mma.supervisor.lecture' | translate}}</p>
+			</a>
+			<a class="tab-item" ui-sref="site.supervisorContent.visit" ui-sref-active="active-tab">
+				<i class="icon ion-person-stalker"></i>
+			    <p>{{'mma.supervisor.visits' | translate}}</p>
+			</a>
+			<a class="tab-item" ui-sref="site.supervisorContent.students_grades" ui-sref-active="active-tab">
+				<i class="icon ion-ios-bookmarks-outline"></i>
+			    <p>{{'mma.supervisor.students_grades' | translate}}</p>
+			</a>
+		</div>
+    </ion-content>
+</ion-view>

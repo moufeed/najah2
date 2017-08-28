@@ -10,9 +10,9 @@
 			</div>
             <div class="row portfolio-items port-items">
                 <div class="col col-50" ng-repeat="tech in $ctrl.data.teachers | filter: $ctrl.search">
-                    <div class="card" ui-sref="site.supervisorCourse({ tid: tech.id, courses: tech.courses, teacher: tech.name })">
+                    <div class="list card">
 		                <div class="item item-image">
-		                    <img ng-src="{{ tech.image }}">
+		                    <img ng-src="{{ tech.img }}">
 		                </div>
 						<div class="item">
 		                    <h2>{{ tech.name }}</h2>
@@ -20,13 +20,21 @@
 		                <div class="item">
 		                    <p>{{ tech.program }}</p>
 		                </div>
-		                <div class="item">
-		                    <p>{{'mma.supervisor.division' | translate}}: {{ tech.division }}</p>
-		                </div>
+		                <a class="item item-icon-right" ng-click="openModal(tech)">
+						    <i class="icon ion-paper-airplane"></i>
+						    {{ 'mma.supervisor.message' | translate }}
+						</a>
+						<a class="item item-icon-right" ui-sref="site.supervisorCourse({ tid: tech.id, cid: $ctrl.cid, teacher: tech.name })">
+						    <i class="icon ion-ios-bookmarks"></i>
+						    {{ 'mma.supervisor.courses' | translate }}
+						</a>
+						<a class="item item-icon-right" ui-sref="site.supervisorSchedule({ id: tech.id, teacher: tech })">
+						    <i class="icon ion-briefcase"></i>
+						    {{ 'mma.supervisor.program' | translate }}
+						</a>
 		            </div>
                 </div>
             </div>
-            
         </mm-loading>
     </ion-content>
 </ion-view>

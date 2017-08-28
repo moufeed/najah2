@@ -184,6 +184,17 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
     }
 }
 
+body.ar {
+    .swiper-button-prev {
+        right: 0 !important;
+        left: auto !important;
+    }
+    .swiper-button-next {
+        left: 0 !important;
+        right: auto !important;
+    }
+}
+
 //----------------------------------------------------------------------------------------
 //------   daily attendance
 //----------------------------------------------------------------------------------------
@@ -811,10 +822,6 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
             }
         }
     }
-}
-
-.switch-role.popover {
-    height: 60px;
 }
 
 /*

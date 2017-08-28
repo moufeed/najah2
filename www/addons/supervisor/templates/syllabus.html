@@ -1,0 +1,19 @@
+<ion-scroll style="height:calc(100% - 49px)">
+    <mm-loading hide-until="$ctrl.dataLoaded">
+        <div ng-if="$ctrl.data.sections.length" class="lectures">
+		    <div class="syllabus-slide">
+		        <ion-list class="list">
+		            <ion-item class="item item-section item-icon-right" ng-repeat="section in $ctrl.data.sections"  ng-class-even="'even'" 
+		                ui-sref="site.mm_course-section({cid: $ctrl.cid, sectionid: section.id})">
+		                    <h3>{{ section.name }}</h3>
+		                    <i class="icon icon-accessory ion-chevron-right"></i>
+		            </ion-item>
+		        </ion-list>
+		    </div>
+        </div>
+        <div class="text-center" ng-if="!$ctrl.data.sections.length">
+            <h5>{{ 'mma.teacher.no_data' | translate }}</h5>
+        </div>
+	</mm-loading>
+  <ion-scroll>
+  

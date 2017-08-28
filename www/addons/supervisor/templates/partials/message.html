@@ -1,0 +1,23 @@
+<ion-modal-view>
+	<ion-header-bar>
+	  <h1 class="title">{{ teacher.name }}</h1>
+	</ion-header-bar>
+	<ion-content>
+		<form>
+			<div class="list">
+			  <label class="item item-input item-stacked-label">
+			    <span class="input-label">{{'mma.supervisor.message_label' | translate}}</span>
+			    <textarea rows="10" ng-model="messageText" required></textarea>
+			  </label>
+			
+				<button class="button button-block button-positive" ng-click="send(messageText); messageText = ''" ng-disabled="!messageText">
+					{{'mma.supervisor.send' | translate}}
+				</button>
+				<button class="button button-block cancel-button" ng-click="closeModal(); messageText = ''">
+					{{'mma.supervisor.cancel' | translate}}
+				</button>
+			
+			</div>
+		</form>
+	</ion-content>
+</ion-modal-view>

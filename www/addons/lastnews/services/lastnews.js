@@ -14,7 +14,7 @@ angular.module('mm.addons.lastnews')
          self.isAvailable = function () {
             return self.call({s: 'general.usertype' })
                 .then(function (data) {
-                    if (data.usertype === 'parent'){
+                    if (data.usertype === 'parent' || data.usertype === 'educational_supervisor'){
                         return false;
                     }
                     return true;
@@ -61,7 +61,7 @@ angular.module('mm.addons.lastnews')
          *   Return List Of News
          */ 
         self.getNews = function(){
-            return self.call({s:'general.latestnews'})
+            return self.call({s:'general.news'})
             .then(function(data){
                 return data ;
             })

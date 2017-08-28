@@ -1,5 +1,7 @@
 {
     "average": "متوسط",
+    "badgrade": "الدرجة المسجلة غير صالحة",
+    "contributiontocoursetotal": "المساهمة في مجموع المقرر",
     "feedback": "التغذية الراجعة",
     "grade": "الدرجة",
     "grades": "الدرجات",

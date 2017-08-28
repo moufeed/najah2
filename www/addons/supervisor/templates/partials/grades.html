@@ -1,0 +1,18 @@
+<ion-modal-view>
+	<ion-header-bar>
+	  <h1 class="title">{{ name }}</h1>
+	</ion-header-bar>
+	<ion-content>
+		<ion-list class="list">
+            <ion-item class="item item-section" ng-repeat="row in grades"  ng-class-even="'even'" 
+                >
+                    <h3>{{ row.fullname }}</h3>
+            		<small>{{'mma.supervisor.percentage' | translate}}: <span>{{ row.total_grade.percentage }}</span></small>        
+            </ion-item>
+        </ion-list>
+	
+		<button class="button button-block cancel-button" ng-click="closeGrades()">
+			{{'mma.supervisor.cancel' | translate}}
+		</button>
+	</ion-content>
+</ion-modal-view>

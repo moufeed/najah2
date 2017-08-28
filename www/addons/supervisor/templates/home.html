@@ -1,8 +1,11 @@
 <ion-view>
     <ion-nav-title>{{'mma.supervisor.supervisor' | translate}}</ion-nav-title>
+    <ion-nav-buttons side="secondary">
+        <button class="button button-icon ion-person-stalker" ng-if="multiRole" ng-click="switchRotle($event)" aria-label="{{ 'mm.courses.filter' | translate }}"></button>
+    </ion-nav-buttons>
     <ion-content padding="true" mm-state-class scroll="true">
         <mm-loading hide-until="$ctrl.dataLoaded">
-            <div class="list card" ng-repeat="col in $ctrl.data" ui-sref="site.supervisorCollege({ id: col.id })">
+            <div class="list card" ng-if="$ctrl.data.length" ng-repeat="col in $ctrl.data" ui-sref="site.supervisorCollege({ id: col.id })">
 
                 <div class="item">
                     <h2>{{ col.name }}</h2>
@@ -22,8 +25,9 @@
                         {{ col.course_count }}
                     </p>  
                 </div>
-              
-
+            </div>
+            <div class="text-center" ng-if="!$ctrl.data.length">
+                <h5>{{ 'mma.teacher.no_data' | translate }}</h5>
             </div>
         </mm-loading>
     </ion-content>

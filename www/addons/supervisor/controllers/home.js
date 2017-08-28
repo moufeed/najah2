@@ -1,9 +1,8 @@
 angular.module('mm.addons.supervisor')
-    .controller('mmaSupervisorCtrl', function($supervisor, $sce) {
+    .controller('mmaSupervisorCtrl', function($supervisor, $sce, $scope, $ionicPopover, $rootScope, $window, $mmSite) {
         var self = this;
         this.dataLoaded = false;
         $supervisor.colleges().then(function(res) {
-        	console.log(res);
             self.data = res.data.list;
         }, function(reject) {
 
@@ -11,7 +10,29 @@ angular.module('mm.addons.supervisor')
             self.dataLoaded = true;
         });
 
-        this.renderHtml = function(html) {
+        $rootScope.renderHtml = this.renderHtml = $scope.renderHtml = function(html) {
         	return $sce.trustAsHtml(html);
+        }
+        $ionicPopover.fromTemplateUrl('addons/supervisor/templates/switch_role.html', {
+            scope: $scope
+        }).then(function(po) {
+            popover = po;
+            $scope.switchRotle = function(event) {
+                popover.show(event);
+            };
+
+            $scope.selectRole = function() {
+              popover.hide();
+            }
+        });
+
+        if($window.localStorage[$mmSite.getToken()] != 'undefined'){
+            var user = JSON.parse($window.localStorage[$mmSite.getToken()]);
+            if (user.roles.length > 1) {
+                $scope.multiRole = true;
+                $scope.roles = user.roles;
+            }
+        } else {
+            $scope.multiRole = false;
         }
     });

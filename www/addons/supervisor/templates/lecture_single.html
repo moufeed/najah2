@@ -1,0 +1,36 @@
+<div class="table">
+	<table class="table">
+		<tr>
+			<th><i class="icon {{ $ctrl.lecData.data.teacher_has_visited == '1' ? 'ion-ios-checkmark' : 'ion-ios-circle-outline' }}"></i> {{ 'mma.supervisor.super_visited' | translate }}</th>
+			<th><i class="icon {{ $ctrl.lecData.data.schooladmin_has_visited == '1' ? 'ion-ios-checkmark' : 'ion-ios-circle-outline' }}"></i> {{ 'mma.supervisor.manager_visited' | translate }}</th>
+		</tr>
+	</table>
+</div>
+<div class="table" ng-bind-html="$ctrl.data"></div>
+<div class="list card">
+	<div class="item">
+		<h2>{{ 'mma.supervisor.date_created' | translate }}</h2>
+		<p>{{ $ctrl.lecData.data.teacher_date_created }}</p>
+	</div>
+	<div class="item item-divider">
+		<p>{{ 'mma.supervisor.supervisor_note' | translate }}</p>
+	</div>
+	<div class="item">
+		<h2>{{ 'mma.supervisor.date_created' | translate }}</h2>
+		<p>{{ $ctrl.lecData.data.supervisor_date_created }}</p>
+		<h2>{{ 'mma.supervisor.date_modified' | translate }}</h2>
+		<p>{{ $ctrl.lecData.data.supervisor_date_modify }}</p>
+	</div>
+	<label class="item item-input item-stacked-label">
+		<span class="input-label">{{ 'mma.supervisor.notes' | translate }}</span>
+		<textarea name="notes" ng-model="note" ng-init="note = $ctrl.newNote || $ctrl.lecData.data.supervisor_note" rows="5" placeholder="{{ 'mma.supervisor.add_notes' | translate }}"></textarea>
+	</label>
+	<div class="item">
+		<button ng-if="!$ctrl.lecData.data.supervisor_note" class="button button-block cancel-button" ng-click="$ctrl.addNote(note)">
+			{{ 'mma.supervisor.add_notes' | translate }}
+		</button>
+		<button ng-if="$ctrl.lecData.data.supervisor_note" class="button button-block cancel-button" ng-click="$ctrl.addNote(note)">
+			{{ 'mma.supervisor.edit_note' | translate }}
+		</button>
+	</div>
+</div>

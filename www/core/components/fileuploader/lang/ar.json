@@ -1,16 +1,25 @@
 {
-    "audio": "صوتي",
+     "addfiletext": "اضافة ملف",
+	"audio": "صوتي",
     "camera": "الكاميرا",
+	"confirmuploadfile": "انت على وشك رفع{{size}}. هل انت متأكد من الاستمرار?",
+    "confirmuploadunknownsize": "لم نتمكن من حساب حجم التحميل. هل تريد بالتأكيد المتابعة?",
     "errorcapturingaudio": "خطأ في التقاط الصوت",
     "errorcapturingimage": "خطأ في التقاط الصورة",
     "errorcapturingvideo": "خطأ في التقاط الفيديو",
     "errormustbeonlinetoupload": "لابد أن تكون متصل بالأنترنت لكي يتم رفع الملفات",
+	"errorgettingimagealbum": "حدث خطأ أثناء الحصول على صورة من الألبوم.",
+    "errornoapp": "ليس لديك تطبيق مثبت لتنفيذ هذا الإجراء.",
     "errorreadingfile": "خطأ في قراءة الملف",
+    "errorwhileuploading": "حدث خطأ أثناء تحميل الملف.",   
     "file": "ملف",
     "fileuploaded": "الملف الذي تم رفعه",
     "maxbytesfile": "حجم الملف {{$a.file}} كبير جداً . الحد الأقصى الذي تستطيع رفعه هو {{$a.size}}.",
+    "photoalbums": "البومات الصور",
     "readingfile": "يتم قراءة الملف",
+    "selectafile": "اختر الملف",
     "uploadafile": "إرفع ملف",
     "uploading": "يتم الرفع",
-    "video": "فيديو"
+    "uploadingperc": "رفع: {{$a}}%",  
+    "video": "فيديو"	
 }

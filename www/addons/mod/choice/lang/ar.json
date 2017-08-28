@@ -1,15 +1,20 @@
 {
+    "cannotsubmit": "عذرا، حدثت مشكلة أثناء إرسال اختيارك. حاول مرة اخرى.",
     "choiceoptions": "خيارات الاختيار",
+    "errorgetchoice": "حدث خطأ أثناء الحصول على بيانات الاختيار.",
     "expired": "عذراً، تم إغلاق هذا النشاط في {{$a}} وهو غير متوفر الآن.",
     "full": "(كامل)",
     "noresultsviewable": "حالياً لا يمكن معاينة النتائج",
     "notopenyet": "عذرا، هذا النشاط سيكون متوفر في {{$a}}",
     "numberofuser": "عدد المشاركين",
     "numberofuserinpercentage": "عدد المستخدمين كنسبة",
+    "previewonly": "هذه مجرد معاينة للخيارات المتاحة لهذا النشاط. لن تكون قادرا على تقديم اختيارك حتى {{$a}}.",
     "removemychoice": "استبعد خياري",
     "responses": "إجابات",
+	"responsesresultgraphdescription": "{{number}}% من المستخدمين  اختار  الخيار: {{text}}.",
     "responsesresultgraphheader": "عرض كمنحني",
-    "savemychoice": "حفظ الاختيار",
+    "resultsnotsynced": "لا تتضمن النتائج آخر رد لك. يرجى، مزامنة لتحديثها.",
+	"savemychoice": "حفظ الاختيار",
     "userchoosethisoption": "المستخدمين الذين اختاروا هذا الخيار",
     "yourselection": "أختيارك"
-}
+	}

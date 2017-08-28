@@ -24,10 +24,18 @@ angular.module('mm.addons.parent')
   .controller('mmaParentCtrl', function ($scope, $q, $mmDB, $stateParams, $state, $log, $mmSite, $mmaParentHelper, $mmaParentOffline, $mmApp, mmaParentOfflineParentStore, $ionicPopover, $window, $rootScope) {
     $scope.isOnline = $mmApp.isOnline();
 
-    if( $window.localStorage[$mmSite.getToken()] != 'undefined' && $window.localStorage[$mmSite.getToken()]){
-        $rootScope.multiRole = true;
+    if($window.localStorage[$mmSite.getToken()] != 'undefined'){
+        var user = JSON.parse($window.localStorage[$mmSite.getToken()]);
+        if (user.roles.length > 1) {
+            $scope.multiRole = true;
+            $scope.roles = user.roles;
+        }
     } else {
-        $rootScope.multiRole = false;
+        $scope.multiRole = false;
+    }
+
+    this.renderHtml = $scope.renderHtml = function(html) {
+      return $sce.trustAsHtml(html);
     }
 
     $ionicPopover.fromTemplateUrl('addons/parent/templates/switch_role.html', {

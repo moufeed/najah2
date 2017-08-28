@@ -1,7 +1,21 @@
 {
-    "allsections": "كل الأقسام",
-    "contents": "المحتويات",
-    "couldnotloadsections": "لم يتم تحميل كل الأقسام، من فضلك حاول مرة أخرى لاحقاَ",
-    "errordownloadingsection": "خطأ عن تنزيل الأقسام",
-    "showall": "عرض الكل"
+ "activitydisabled": "عطلت مؤسستك هذا النشاط في تطبيق الجوال.",
+    "activitynotyetviewableinapp": "نحن نعمل على دعم النشاط {{$ a}}.",
+    "activitynotyetviewableremoteaddon": "قامت مؤسستك بتثبيت مكون إضافي غير معتمد حتى الآن.",
+    "activitynotyetviewablesiteupgradeneeded": "يلزم تحديث تثبيت مودل لمؤسستك.",
+    "allsections": "جميع الأقسام",
+    "askadmintosupport": "اتصل بمسؤول الموقع وأخبرهم أنك تريد استخدام هذا النشاط مع تطبيق موودل موبيل.",
+    "confirmdeletemodulefiles": "هل تريد بالتأكيد حذف ملفات الوحدة",
+    "confirmdownload": "انت سوف تقوم بتحميل {{size}}. هل انت متأكد انك تريد الاستمرار?",
+    "confirmdownloadunknownsize": "لم نتمكن من حساب حجم التنزيل. هل تريد بالتأكيد تنزيل?",
+    "confirmpartialdownloadsize": "انت سوف تقوم بتحميل <strong>على الاقل</strong> {{size}}.هل انت متأكد أنك تريد الاستمرار?",
+    "contents": "محتويات",
+    "couldnotloadsections": "تعذر تحميل الأقسام، يرجى إعادة المحاولة لاحقا.",
+    "couldnotloadsectioncontent": "تعذر تحميل محتوى القسم، الرجاء إعادة المحاولة لاحقا.",
+    "errordownloadingsection": "حدث خطأ أثناء تنزيل القسم.",
+    "errorgetmodule": "حدث خطأ أثناء الحصول على بيانات الوحدة.",
+    "nocontentavailable": "لا يتوفر محتوى في الوقت الحالي.",
+    "overriddennotice": "تم ضبط الدرجة النهائية من هذا النشاط يدويا.",
+    "useactivityonbrowser": "لا يزال بإمكانك استخدامه باستخدام متصفح الأجهزة.",
+    "showall": " عرض الكل"
 }

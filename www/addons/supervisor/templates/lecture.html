@@ -1,29 +1,27 @@
-<ion-view>
-    <ion-nav-title>asd</ion-nav-title>
-    <ion-content padding="true" mm-state-class scroll="true" class="college-page">
-        <div class="item-input-inset">
-		  <label class="item-input-wrapper">
-		    <i class="icon ion-ios-search placeholder-icon"></i>
-		    <input type="search" ng-model="$ctrl.search" placeholder="{{'mma.supervisor.search' | translate}}">
-		  </label>
-		</div>
-        <!-- <div class="row portfolio-items port-items">
-            <div class="col col-50" ng-repeat="course in $ctrl.courses | filter: $ctrl.search">
-                <div class="card">
-	                <div class="item item-image">
-	                    <img ng-src="{{ course.img }}">
-	                </div>
-					<div class="item">
-	                    <h2>{{ course.name }}</h2>
-	                </div>
-	                <div class="item">
-	                    <p>{{ course.program }}</p>
-	                </div>
-	                <div class="item">
-	                    <p>{{'mma.supervisor.division' | translate}}: {{ course.division }}</p>
-	                </div>
-	            </div>
-            </div>
-        </div> -->
-    </ion-content>
-</ion-view>
+
+<mm-loading hide-until="$ctrl.dataLoaded" class="lecture-loading">
+        <div class="lectures">
+        	<div class="syllabus-slide">
+			    <!-- <ion-scroll direction="x" style="height: 50px; width: 100%">
+			        <div class="tabs" style="bottom: auto; top: 0;">
+					  <a class="tab-item" ui-sref="site.supervisorContent.lecture.lecture_view({data: data})" ng-repeat="(weekNum, data) in $ctrl.data">
+					    <h3>{{'mma.supervisor.week' | translate}}: {{ weekNum }}</h3>
+					  </a>
+					</div>
+				</ion-scroll> -->
+				<div class="tsb-icons">
+		    		<div class="tsb-ic-wrp">
+                        <ion-scroll direction="x" class="tsb-hscroll" style="height: 50px;">
+                           <a ui-sref="site.supervisorContent.lecture.lecture_view({data: data})" class="week-tab" ng-repeat="(weekNum, data) in $ctrl.data" ui-active-class="active-tab"> 
+                               <small>{{'mma.supervisor.week' | translate}}: {{ weekNum }}</small>
+                           </a>
+                       </ion-scroll>
+                           
+					</div>
+		    	</div>
+		    </div>
+		    <ui-view name="lecture" class="lecture-view"></ui-view>
+        </div>
+</mm-loading>
+
+  

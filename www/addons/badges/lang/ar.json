@@ -1,3 +1,13 @@
 {
-    "badges": "شارات"
-}
+
+ "badgedetails": "تفاصيل الشارات",
+    "badges": "Badges",
+    "dateawarded": "تاريخ الإصدار",
+    "expirydate": "تاريخ الانتهاء",
+    "contact": "جهة الاتصال",
+    "issuancedetails": "انتهاء صلاحية الشارة",
+    "issuerdetails": "تفاصيل المصدر",
+    "issuername": "اسم المصدر",
+    "nobadges": "لا توجد شارات متاحة.",
+    "recipientdetails": "تفاصيل المستلم"
+	}

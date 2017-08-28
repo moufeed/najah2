@@ -1,9 +1,14 @@
 {
     "addnewnote": "إضافة ملاحظة جديدة",
     "coursenotes": "ملاحظات المقرر الدراسي",
+    "eventnotecreated": "تم انشاء الملاحظة",
+    "nonotes": "لا يوجد ملاحظات لهذا النوع حالياً",   
     "note": "ملحوظة",
     "notes": "ملاحظات",
     "personalnotes": "ملاحظات شخصية",
     "publishstate": "السياق",
-    "sitenotes": "ملاحظات الموقع"
+    "sitenotes": "ملاحظات الموقع",
+    "userwithid": "المستخدم الذي له رقم {{id}}",
+    "warningnotenotsent": "لا يمكن اضافة ملاحظات للمقرر {{course}}. {{error}}"
 }
+

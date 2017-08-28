@@ -124,7 +124,7 @@ angular.module('mm.addons.dashboard')
     self.news = function() {
         return $http({
             method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.latestnews&wstoken=' + $mmSite.getToken()
+            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.news&wstoken=' + $mmSite.getToken()
         });
     };
 

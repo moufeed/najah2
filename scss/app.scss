@@ -309,6 +309,80 @@ body[data-gender="f"] {
     }
 }
 
+@font-face {
+    /* where FontName and fontname represents the name of the font you want to add */
+    font-family: 'Droid';
+    src: url(../fonts/Droid.eot);
+    src: url(../fonts/Droid.eot) format('embedded-opentype'), url(../fonts/Droid.ttf) format('truetype'), url(../fonts/Droid.svg) format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body.ar,
+h1, h2, .item .item-heading, .mm-grades-table .itemcenter .item-heading, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6,
+input, button, select, textarea,
+.tab-item {
+    font-family: "Droid", "-apple-system", "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+    font-size: 12px;
+}
+
 body.ar ion-side-menu-content ion-nav-view {
     direction: rtl;
+    .item-avatar {
+        padding-left: 16px;
+        padding-right: 72px;
+        > img {
+            left: auto;
+            right: 16px;
+        }
+        .item-note {
+            float: left;
+        }
+    }
+    .item-input-wrapper ~ .button {
+        margin-right: 10.66667px;
+        margin-left: 0;
+    }
+    .scroll-view {
+        direction: ltr;
+    }
 }
+
+body.ar {
+    ion-content .list {
+        direction: rtl;
+    }
+    .mm-sidemenu-menu .list {
+        direction: ltr;
+    }
+    // .item-icon-right,
+    // .item.item-howto.item-icon-right,
+    // .mm-grades-table .item-howto.item-icon-right.itemcenter {
+    //     padding-left: 54px;
+    //     padding-right: 16px;
+    //     i {
+    //         left: 3px;
+    //         right: auto;
+    //     }
+    // }
+    // .bar-side-menu {
+    //     .item-icon-right,
+    //     .item.item-howto.item-icon-right,
+    //     .mm-grades-table .item-howto.item-icon-right.itemcenter {
+    //         padding-left: 16px;
+    //         padding-right: 54px;
+    //         i {
+    //             right: 3px;
+    //             left: auto;
+    //         }
+    //     }
+    // }
+     
+    .item .badge, .mm-grades-table .itemcenter .badge, .item .mma-messages-date span, .mma-messages-date .item span, .mm-grades-table .itemcenter .mma-messages-date span, .mma-messages-date .mm-grades-table .itemcenter span, .item
+    .mma-messages-unreadfrom span, .mma-messages-unreadfrom .item span, .mm-grades-table .itemcenter
+    .mma-messages-unreadfrom span, .mma-messages-unreadfrom .mm-grades-table .itemcenter span, .item .mma-chat-notice span, .mma-chat-notice .item span, .mm-grades-table .itemcenter .mma-chat-notice span, .mma-chat-notice .mm-grades-table .itemcenter span {
+        left: 32px;
+        right: auto;
+    }
+}
+

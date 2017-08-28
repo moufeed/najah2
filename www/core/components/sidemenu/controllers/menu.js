@@ -42,8 +42,8 @@ angular.module('mm.core.sidemenu')
     $scope.logout = function() {
         $mmSitesManager.logout().finally(function() {
             $mmSitesManager.deleteSite($mmSite.getId());
-            // $state.go('mm_login.sites');
-            $state.go('mm_login.logoutNoor');
+            $state.go('mm_login.sites');
+            // $state.go('mm_login.logoutNoor');
         });
     };
     /**
@@ -53,8 +53,8 @@ angular.module('mm.core.sidemenu')
       $scope.sitelogout = function (){
            $mmSitesManager.setSiteLoggedOut($mmSite.getId(),true).finally(function(res){
                 $mmSitesManager.deleteSite($mmSite.getId());
-               // $state.go('mm_login.reconnect');
-               $state.go('mm_login.logoutNoor');
+               $state.go('mm_login.reconnect');
+               // $state.go('mm_login.logoutNoor');
            });
       };
     function loadSiteInfo() {

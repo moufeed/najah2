@@ -5,16 +5,17 @@
     <ion-refresher on-refresh="doRefresh()"  pulling-text="{{ 'mma.lastnews.pulltorefresh' | translate }}" ></ion-refresher>
     <div class="list category-feeds">
       <a ng-repeat="feed in feeds" class="item card feed-card"  ng-click="openNews(feed)" ng-if="feeds.length > 0">
-          <div class="row  ">
+          <div class="row">
               <div class="col-67">
-                 <div class="info">
-                   <span class="title">{{feed.title}}</span>
-                 <small class="date">{{feed.date | date:'medium'}}</small>  
+                 <div class="info news-content">
+                   <h3 class="title">{{feed.name}}</h3>
+                   <small class="date">{{feed.date | date:'medium'}}</small>  
+                   <p>{{ feed.description | limitTo : 150 }}</p>
                  </div>
               </div>
               <div class="col-33">
                      <mma-pre-img ratio="_1_1" helper-class="">
-                        <img class="thumbnail" ng-src="{{feed.pic}}" mma-spinner-on-load> 
+                        <img class="thumbnail" ng-src="{{feed.image}}" mma-spinner-on-load> 
                      </mma-pre-img>
               </div>
           </div>

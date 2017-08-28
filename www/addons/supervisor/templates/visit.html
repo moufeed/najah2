@@ -1,0 +1,32 @@
+<ion-scroll style="height:calc(100% - 49px)" class="visits-page">
+    <mm-loading hide-until="$ctrl.dataLoaded">
+        <div ng-if="$ctrl.visits.length" class="visits">
+        	<table>
+        		<thead>
+        			<tr>
+        				<td>{{ 'mma.supervisor.visitor' | translate }}</td>
+        				<td>{{ 'mma.supervisor.division' | translate }}</td>
+        				<td>{{ 'mma.supervisor.class' | translate }}</td>
+        				<td>{{ 'mma.supervisor.date' | translate }}</td>
+        				<td>{{ 'mma.supervisor.degree' | translate }}</td>
+        				<td>{{ 'mma.supervisor.note' | translate }}</td>
+        			</tr>
+        		</thead>
+        		<tbody>
+        			<tr ng-repeat="row in $ctrl.visits">
+        				<td>{{ row.name }}</td>
+        				<td>{{ row.divisionname }}</td>
+        				<td>{{ row.yearid }}</td>
+        				<td>{{ row.date }}</td>
+        				<td>{{ row.visit_grade }}</td>
+        				<td>{{ row.note }}</td>
+        			</tr>
+        		</tbody>
+        	</table>
+        </div>
+        <div class="text-center" ng-if="!$ctrl.visits.length">
+            <h5>{{ 'mma.teacher.no_data' | translate }}</h5>
+        </div>
+	</mm-loading>
+  <ion-scroll>
+  

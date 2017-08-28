@@ -5,6 +5,7 @@
     "country": "الدولة",
     "description": "الوصف",
     "details": "التفاصيل",
+    "detailsnotavailable": "تفاصيل هذا المستخدم غير متوفرة لك.",
     "editingteacher": "معلم",
     "email": "البريد الإلكتروني",
     "emailagain": "إعادة إدخال البريد الإلكتروني للتأكيد ",
@@ -17,7 +18,9 @@
     "phone1": "الهاتف",
     "phone2": "الجوال",
     "roles": "أدورا",
+	"sendemail": "بريد الكتروني",
     "student": "طالب",
+	"teacher": "مدرس غير محرر",
     "viewprofile": "عرض الحساب",
     "webpage": "صفحة إنترنت"
-}
+	}

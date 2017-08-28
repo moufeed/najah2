@@ -1,7 +1,10 @@
 {
+    "cannotsubmitsurvey": "عذرا، حدثت مشكلة أثناء إرسال الاستبيان. حاول مرة اخرى.",
+    "errorgetsurvey": "حدث خطأ أثناء الحصول على بيانات الاستطلاع.",
     "clicktocontinue": "اضغط هنا للاستمرار",
     "ifoundthat": "وجدت أن",
     "ipreferthat": "أفضل أن",
     "responses": "إجابات",
-    "results": "النتائج"
+    "results": "النتائج",
+	"surveycompletednograph": "لقد أكملت هذا الاستطلاع."
 }

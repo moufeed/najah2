@@ -1,0 +1,36 @@
+<ion-modal-view>
+	<ion-header-bar class="bar bar-header bar-positive">
+      	<h1 class="title">{{ 'mma.supervisor.add_class_visit' | translate }}</h1>
+    </ion-header-bar>
+	<ion-content class="add-visit">
+		<div class="list card">
+			<form no-validate name="visit_form" ng-submit="add(visit, cls.data.recordid)">
+				<label class="item item-input item-select" ng-class="{'has-error': visit_form.visit_date.$error.required && (visit_form.visit_date.$dirty && visit_form.visit_date.$invalid)}">
+					<div class="input-label">
+					{{ 'mma.supervisor.visit_date' | translate }}
+					</div>
+					<select name="visit_date" ng-model="visit.date" required>
+						<option></option>
+						<option ng-repeat="(timestamp, date) in cls.dates_list" value="{{ timestamp }}">{{ date }}</option>
+					</select>
+					<span ng-if="visit_form.visit_date.$error.required && (visit_form.visit_date.$dirty && visit_form.visit_date.$invalid)" class="error">{{ 'mma.supervisor.visit_date_error' | translate }}</span>
+				</label>
+				<label class="item item-input item-stacked-label">
+					<span class="input-label">{{ 'mma.supervisor.notes' | translate }}</span>
+					<textarea name="notes" ng-model="visit.notes" rows="5" placeholder="{{ 'mma.supervisor.add_notes' | translate }}"></textarea>
+				</label>
+				<ion-list>
+					<ion-checkbox ng-model="visit.notify" name="notify">{{ 'mma.supervisor.notify_teacher' | translate }}</ion-checkbox>
+				</ion-list>
+				<div class="item">
+					<button type="submit" ng-disabled="visit_form.$invalid" class="button button-block">
+						{{ 'mma.supervisor.add' | translate }}
+					</button>
+					<button type="reset" class="button button-block cancel-button" ng-click="closeAddModal()">
+						{{ 'mma.supervisor.cancel' | translate }}
+					</button>
+				</div>
+			</form>
+		</div>
+	</ion-content>
+</ion-modal-view>

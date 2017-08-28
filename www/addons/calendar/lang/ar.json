@@ -1,5 +1,6 @@
 {
     "calendarevents": "أحداث التقويم",
+    "defaultnotificationtime": "وقت الإشعار الافتراضي",   
     "errorloadevent": "خطأ في تحميل الحدث",
     "errorloadevents": "خطأ في تحميل الأحداث",
     "noevents": "لا يوجد أي أحداث",
