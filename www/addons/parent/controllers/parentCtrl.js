@@ -21,8 +21,50 @@ angular.module('mm.addons.parent')
    * @ngdoc controller
    * @name mmParentCtrl
    */
-  .controller('mmaParentCtrl', function ($scope, $q, $mmDB, $stateParams, $state, $log, $mmSite, $mmaParentHelper, $mmaParentOffline, $mmApp, mmaParentOfflineParentStore, $ionicPopover, $window, $rootScope) {
+  .controller('mmaParentCtrl', function ($scope, $ionicPopup, $q, $mmDB, $stateParams, $state, $log, $mmSite, $mmaParentHelper, $mmaParentOffline, $mmApp, mmaParentOfflineParentStore, $ionicPopover, $window, $rootScope, $translate, $timeout) {
     $scope.isOnline = $mmApp.isOnline();
+
+    $scope.callButtonText = $translate.instant('mma.parent.call_to_manager');
+
+    $scope.callLoading = false;
+
+    $scope.callChild = function(e) {
+      e.preventDefault();
+      $scope.showConfirm();
+    };
+
+    $scope.showConfirm = function() {
+     var confirmPopup = $ionicPopup.confirm({
+       title: $translate.instant('mma.parent.are_you_sure_title'),
+       template: $translate.instant('mma.parent.are_you_sure_call'),
+       cssClass: 'call-child',
+       buttons: [{
+          text: $translate.instant('mma.parent.cancel'),
+          type: 'button-cancel',
+          onTap: function(e) {
+            return false; 
+          }
+        },{
+          text: $translate.instant('mma.parent.yes'),
+          type: 'button-ok',
+          onTap: function(e) {
+            return true;
+          }
+        }]
+     });
+
+     confirmPopup.then(function(res) {
+       if(res) {
+        // $parent.callChild()
+        $scope.callButtonText = '';
+        $scope.callLoading = true;
+        $timeout(function() {
+          $scope.callButtonText = $translate.instant('mma.parent.call_to_manager');
+          $scope.callLoading = false;
+        }, 2000);
+       }
+     });
+   };
 
     if($window.localStorage[$mmSite.getToken()] != 'undefined'){
         var user = JSON.parse($window.localStorage[$mmSite.getToken()]);
@@ -44,7 +86,6 @@ angular.module('mm.addons.parent')
         popover = po;
 
         $scope.switchRotle = function(event) {
-            console.log('asd');
             popover.show(event);
         };
 

@@ -24,9 +24,9 @@ angular.module('mm.addons.parent')
             // } else {
                 return self.call({s: 'general.usertype' })
                     .then(function (response) {
-                        for (var prop in response.data.myroles) {
-                          if (response.data.myroles.hasOwnProperty(prop)) {
-                            if (response.data.myroles[prop].shortname == 'parent') {
+                        for (var prop in response.myroles) {
+                          if (response.myroles.hasOwnProperty(prop)) {
+                            if (response.myroles[prop].shortname == 'parent') {
                                 return true;
                             }
                           } 
@@ -293,5 +293,12 @@ angular.module('mm.addons.parent')
                     return false;
                 })
         }
+
+
+        self.callChild = function(pId, cId) {
+            return self.call({ s:'parent.call', parentid : pId, childid: cId });
+        }
+
+
         return self;
     });

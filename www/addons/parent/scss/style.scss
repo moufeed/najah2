@@ -696,3 +696,65 @@ $leftArr: 'data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz
 .helf-opacity {
     opacity: .5;
 }
+
+.children-list {
+    .child-card {
+        .item.item-footer.flex-footer {
+            > span {
+                flex: 1;
+            }
+            .link {
+                margin: 0 5px;
+            }
+        }
+    }
+}
+
+.button-cancel {
+    border-color: $assertive !important;
+    background: $assertive !important;
+    color: #fff;
+}
+
+.link {
+    .loadder {
+        position: static !important;   
+        svg {
+            fill: #fff;
+            stroke: #fff;
+            width: 15px;
+            height: 15px;
+            top: 2px;
+        }
+    }
+}
+
+body {
+    .call-child {
+        .popup-head {
+            background: $male;
+            h3 {
+                color: #fff;
+            }
+        }
+        .popup-body {
+            text-align: center;
+        }
+    }
+}
+
+
+body[data-gender="f"] {
+    .call-child {
+        .popup-head {
+            background: $female;
+        }
+    }
+}
+
+
+
+
+
+
+

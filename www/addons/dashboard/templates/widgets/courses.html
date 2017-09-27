@@ -11,7 +11,7 @@
                         <div class="name">
                             <h2>{{ course.name }}</h2>
                         </div>
-                        <div class="image" ng-bind-html="course.img"></div>
+                        <img ng-src="{{ course.img }}" alt="{{ course.name }}">
                     </a>
                 </ks-swiper-slide>
             </ks-swiper-container>

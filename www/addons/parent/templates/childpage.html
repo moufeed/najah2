@@ -11,7 +11,7 @@
             </ion-list>
         </mm-loading>
 
-        <div ng-repeat="wid in widgets" ng-if="wid.name !== 'news' && wid.name !== 'communicate'" ng-include="'addons/parent/templates/widgets/' + wid.name + '.html'"></div>
+        <div ng-repeat="wid in widgets" ng-if="wid.name !== 'news' && wid.name !== 'communicate' && wid.name !== 'calendar' && wid.name !== 'weekly-schedule'" ng-include="'addons/parent/templates/widgets/' + wid.name + '.html'"></div>
 
     </ion-content>
 </ion-view>

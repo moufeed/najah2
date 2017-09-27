@@ -23,5 +23,11 @@
 	"noconnection" :"internet connection",
 	"noconnectionMessage" :"Please check your internet connection and try again",
 	"dashboard" :"Dashboard",
-	"switch_to_teacher": "Go To Teacher Page"
+	"switch_to_teacher": "Go To Teacher Page",
+	"call_to_manager": "see",
+	"are_you_sure_title": "Calling child",
+	"are_you_sure_call": "are yout sure you want to call your child to the manager office ?",
+	"yes": "yes",
+	"cancel": "cancel"
+
 }

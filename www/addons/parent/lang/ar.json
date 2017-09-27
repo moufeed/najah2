@@ -23,5 +23,10 @@
 	"noconnection" :"الأتصال بالشبكة",
 	"noconnectionMessage" :" الرجاء التأكد من الاتصال والمحاولة من جديد",
 	"dashboard" :"الرئيسية",
-	"switch_to_teacher": "اذهب الي صفحه المعلم"
+	"switch_to_teacher": "اذهب الي صفحه المعلم",
+	"call_to_manager": "استدعاء",
+	"are_you_sure_title": "استدعاء الابن",
+	"are_you_sure_call": "هل انت متأكد ؟",
+	"yes": "نعم",
+	"cancel": "الغاء"
 }

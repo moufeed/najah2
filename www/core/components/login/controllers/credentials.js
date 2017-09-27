@@ -22,7 +22,8 @@ angular.module('mm.core.login')
  * @name mmLoginCredentialsCtrl
  */
 .controller('mmLoginCredentialsCtrl', function($scope, $stateParams, $mmSitesManager, $mmUtil, $ionicHistory, $mmApp,
-    $q, $mmLoginHelper, $mmContentLinksDelegate, $mmContentLinksHelper, $translate) {
+    $q, $mmLoginHelper, $mmContentLinksDelegate, $mmContentLinksHelper, $translate, $window) {
+
 
     $scope.siteurl = $stateParams.siteurl;
     $scope.credentials = {
@@ -96,6 +97,7 @@ angular.module('mm.core.login')
     }
 
     window.addEventListener('message', function a(e) {
+        console.log(e.data)
         return $mmSitesManager.newSite(e.origin, e.data, '').then(function() {
             window.removeEventListener('message', a);
             $ionicHistory.nextViewOptions({ disableBack: true });

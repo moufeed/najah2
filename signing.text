@@ -1,0 +1,16 @@
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore future-gate.keystore /Users/mohammedshrayyef/Desktop/mobile2/platforms/android/build/outputs/apk/android-release-unsigned.apk future_gate
+
+keytool -genkey -v -keystore future-gate.keystore -alias future_gate -keyalg RSA -keysize 2048 -validity 10000
+
+/Users/mohammedshrayyef/Desktop/mobile2/future-gate.keystore
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore /Users/mohammedshrayyef/Desktop/mobile2/future-gate.keystore /Users/mohammedshrayyef/Desktop/mobile2/platforms/android/build/outputs/apk/android-release-unsigned.apk future_gate
+
+/Users/mohammedshrayyef/Library/Android/sdk/build-tools/26.0.1
+
+/Users/mohammedshrayyef/Library/Android/sdk/build-tools/26.0.1/zipalign -v 4 /Users/mohammedshrayyef/Desktop/mobile2/platforms/android/build/outputs/apk/android-release-unsigned.apk /Users/mohammedshrayyef/Desktop/mobile2/FutureGate.apk
+
+
+
+
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore /Users/mohammedshrayyef/Desktop/mobile2/future-gate.keystore /Users/mohammedshrayyef/Desktop/mobile2/platforms/android/build/outputs/apk/android-release-unsigned.apk future_gate

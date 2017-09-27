@@ -76,9 +76,9 @@ angular.module('mm.addons.supervisor')
             isAvailable: function () {
                 return this.userType()
                     .then(function (response) {
-                        for (var prop in response.data.myroles) {
-                          if (response.data.myroles.hasOwnProperty(prop)) {
-                            if (response.data.myroles[prop].shortname == 'educational_supervisor') {
+                        for (var prop in response.myroles) {
+                          if (response.myroles.hasOwnProperty(prop)) {
+                            if (response.myroles[prop].shortname == 'educational_supervisor') {
                                 return true;
                             }
                           } 

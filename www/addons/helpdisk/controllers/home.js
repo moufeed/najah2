@@ -19,23 +19,23 @@ angular.module('mm.addons.helpdisk')
 			    showDelay: 0
 			});
 
-            var fileURL = self.imageUrl;
-            var options = new FileUploadOptions();
-            options.fileKey = "file";
-            options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
-            options.mimeType = "image/jpeg";
-            options.chunkedMode = true;
+            // var fileURL = self.imageUrl;
+            // var options = new FileUploadOptions();
+            // options.fileKey = "file";
+            // options.fileName = fileURL.substr(fileURL.lastIndexOf('/') + 1);
+            // options.mimeType = "image/jpeg";
+            // options.chunkedMode = true;
 
-            options.params = self.user;
+            // options.params = self.user;
 
-        	var a = $helpdisk.sendData(fileURL, onSuccess, onError, options);
-            console.log(a);
-            // $helpdisk.send(self.user).then(function(res) {
-            //     if (res.data.success) {
-            //         self.user = {};
-            //         $ionicLoading.hide();
-            //     }
-            // })
+        	// var a = $helpdisk.sendData(fileURL, onSuccess, onError, options);
+            // console.log(a);
+            $helpdisk.send(self.user).then(function(res) {
+                if (res.data.success) {
+                    self.user = {};
+                    $ionicLoading.hide();
+                }
+            })
         }
 
         function onSuccess(res) {
