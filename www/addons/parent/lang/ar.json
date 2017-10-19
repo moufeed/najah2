@@ -28,5 +28,8 @@
 	"are_you_sure_title": "استدعاء الابن",
 	"are_you_sure_call": "هل انت متأكد ؟",
 	"yes": "نعم",
-	"cancel": "الغاء"
+	"cancel": "الغاء",
+	"child_not_in_school": "الطالب ليس في المدرسة الان",
+	"child_has_called_before": "تم استدعاء الطالب من قبل",
+	"success_call": "تم الاستدعاء بنجاح"
 }

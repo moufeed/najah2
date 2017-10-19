@@ -97,7 +97,7 @@ angular.module('mm.core.login')
     }
 
     window.addEventListener('message', function a(e) {
-        console.log(e.data)
+        console.log(e.data);
         return $mmSitesManager.newSite(e.origin, e.data, '').then(function() {
             window.removeEventListener('message', a);
             $ionicHistory.nextViewOptions({ disableBack: true });

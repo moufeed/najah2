@@ -21,19 +21,19 @@ angular.module('mm.addons.parent')
    * @ngdoc controller
    * @name mmParentCtrl
    */
-  .controller('mmaParentCtrl', function ($scope, $ionicPopup, $q, $mmDB, $stateParams, $state, $log, $mmSite, $mmaParentHelper, $mmaParentOffline, $mmApp, mmaParentOfflineParentStore, $ionicPopover, $window, $rootScope, $translate, $timeout) {
+  .controller('mmaParentCtrl', function ($scope, $ionicPopup, $q, $mmDB, $stateParams, $state, $log, $mmSite, $mmaParentHelper, $mmaParentOffline, $mmApp, mmaParentOfflineParentStore, $ionicPopover, $window, $rootScope, $translate, $timeout, $ionicLoading, $mmUtil) {
     $scope.isOnline = $mmApp.isOnline();
 
     $scope.callButtonText = $translate.instant('mma.parent.call_to_manager');
 
     $scope.callLoading = false;
 
-    $scope.callChild = function(e) {
+    $scope.callChild = function(e, id) {
       e.preventDefault();
-      $scope.showConfirm();
+      $scope.showConfirm(id);
     };
 
-    $scope.showConfirm = function() {
+    $scope.showConfirm = function(childid) {
      var confirmPopup = $ionicPopup.confirm({
        title: $translate.instant('mma.parent.are_you_sure_title'),
        template: $translate.instant('mma.parent.are_you_sure_call'),
@@ -48,21 +48,29 @@ angular.module('mm.addons.parent')
           text: $translate.instant('mma.parent.yes'),
           type: 'button-ok',
           onTap: function(e) {
+            $ionicLoading.show({
+                content: 'Loading',
+                animation: 'fade-in',
+                showBackdrop: true,
+                maxWidth: 200,
+                showDelay: 0
+            });
+            $scope.callButtonText = '';
+            $scope.callLoading = true;
+            $mmaParentHelper.callChild(childid).then(function(response) {
+              $ionicLoading.hide();
+              $scope.callButtonText = $translate.instant('mma.parent.call_to_manager');
+              $scope.callLoading = false;
+              if (response.status == 'success') {
+                $mmUtil.showToast('mma.parent.success_call', true, 3000);
+              } else {
+                $mmUtil.showToast('mma.parent.' + response.msg, true, 3000);
+              }
+              
+            });
             return true;
           }
         }]
-     });
-
-     confirmPopup.then(function(res) {
-       if(res) {
-        // $parent.callChild()
-        $scope.callButtonText = '';
-        $scope.callLoading = true;
-        $timeout(function() {
-          $scope.callButtonText = $translate.instant('mma.parent.call_to_manager');
-          $scope.callLoading = false;
-        }, 2000);
-       }
      });
    };
 

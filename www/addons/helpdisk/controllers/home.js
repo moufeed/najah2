@@ -1,5 +1,5 @@
 angular.module('mm.addons.helpdisk')
-    .controller('mmaHelpDiskCtrl', function($helpdisk, $cordovaImagePicker, $scope, $ionicLoading, $state) {
+    .controller('mmaHelpDiskCtrl', function($helpdisk, $cordovaImagePicker, $scope, $ionicLoading, $state, $mmUtil) {
         var self = this;
         self.profileLoading = true;
         self.user = {};
@@ -33,7 +33,9 @@ angular.module('mm.addons.helpdisk')
             $helpdisk.send(self.user).then(function(res) {
                 if (res.data.success) {
                     self.user = {};
+                    $scope.ticketForm = {};
                     $ionicLoading.hide();
+                    $mmUtil.showToast('mma.helpdisk.ticket_sent', true, 2500);
                 }
             })
         }

@@ -295,8 +295,8 @@ angular.module('mm.addons.parent')
         }
 
 
-        self.callChild = function(pId, cId) {
-            return self.call({ s:'parent.call', parentid : pId, childid: cId });
+        self.callChild = function(cId) {
+            return self.call({ s:'parent.CallChild', childid: cId });
         }
 
 

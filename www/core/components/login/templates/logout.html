@@ -2,10 +2,6 @@
 <ion-view view-title="{{ 'mm.login.login' | translate }}" hide-nav-bar="true">
 
     <ion-content overflow-scroll="true">
-        <iframe style="width: 100%;height: 100%;" src="https://fg-riyadh.moe.gov.sa/simplesaml/wsfed/sp/initSLO.php?RelayState=/simplesaml/logout.php"></iframe>
-        <!-- <iframe style="width: 100%;height: 100%;" src="https://fg2.smartway-dev.com/auth/noor/moblogout.php"></iframe> -->
+        <iframe onLoad="window.goHome()" style="width: 100%;height: 100%;" src="https://fg-riyadh.moe.gov.sa/simplesaml/wsfed/sp/initSLO.php?RelayState=/simplesaml/logout.php"></iframe>
     </ion-content>
 </ion-view>
-
-
-

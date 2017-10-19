@@ -248,17 +248,19 @@ angular.module('mm.core.login', [])
                 disableBack: true
             });
             //$mmLoginHelper.goToSiteInitialPage();
-            console.log($mmLoginHelper.redirectApp());
+            $mmLoginHelper.redirectApp();
         }
          // get user gender  female or male
-        $timeout(function(){
-            $http({
-            method: 'GET',
-            url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.usertype&wstoken=' + $mmSite.getToken()
-            }).then(function(res) {
-                $rootScope.gender  = (res.data.gender == 'f')  ? 'f' : 'm';
-            });
-        },350)
+         if($mmSite.getToken() && $mmSite.getURL()) {
+            $timeout(function(){
+                $http({
+                    method: 'GET',
+                    url: $mmSite.getURL() + '/local/ajax/mobile2.php?s=general.usertype&wstoken=' + $mmSite.getToken()
+                }).then(function(res) {
+                    $rootScope.gender  = (res.data.gender == 'f')  ? 'f' : 'm';
+                });
+            },350)
+         }
     });
 
     // Function to handle session expired events.

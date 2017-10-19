@@ -9,5 +9,6 @@
     "email_required": "البريد الالكتروني مطلوب",
     "not_email": "ادخل بريد الكتروني صحيح",
     "mobile_required": "الهاتف حقل مطلوب",
-    "details_required": "التفاصيل حقل مطلوب"
+    "details_required": "التفاصيل حقل مطلوب",
+    "ticket_sent": "تم الارسال بنجاح"
 }

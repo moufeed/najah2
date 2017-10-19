@@ -392,9 +392,10 @@ var remoteAddonPaths = {
   ]
 };
 
-gulp.task('default', ['build', 'sass', 'lang', 'config']);
+// gulp.task('serve:before', ['default', 'watch']);
+gulp.task('ionic:watch:before', ['default'])
 
-gulp.task('serve:before', ['default', 'watch']);
+gulp.task('default', ['build', 'sass', 'lang', 'config']);
 
 gulp.task('sass-build', function(done) {
   gulp.src(paths.sass.core)

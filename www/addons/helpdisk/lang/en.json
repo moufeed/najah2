@@ -9,5 +9,6 @@
     "email_required": "Email is Required.",
     "not_email": "This is not a valid email.",
     "mobile_required": "Mobile is Required.",
-    "details_required": "Details is Required."
+    "details_required": "Details is Required.",
+    "ticket_sent": "Ticket Sent Successfully"
 }

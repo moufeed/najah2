@@ -24,10 +24,12 @@
 	"noconnectionMessage" :"Please check your internet connection and try again",
 	"dashboard" :"Dashboard",
 	"switch_to_teacher": "Go To Teacher Page",
-	"call_to_manager": "see",
+	"call_to_manager": "calling",
 	"are_you_sure_title": "Calling child",
 	"are_you_sure_call": "are yout sure you want to call your child to the manager office ?",
 	"yes": "yes",
-	"cancel": "cancel"
-
+	"cancel": "cancel",
+	"child_not_in_school": "student not in school",
+	"child_has_called_before": "student has been called before",
+	"success_call": "you have called your student successfully"
 }
