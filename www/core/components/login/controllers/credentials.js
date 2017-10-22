@@ -21,7 +21,7 @@ angular.module('mm.core.login')
  * @ngdoc controller
  * @name mmLoginCredentialsCtrl
  */
-.controller('mmLoginCredentialsCtrl', function($scope, $stateParams, $mmSitesManager, $mmUtil, $ionicHistory, $mmApp,
+.controller('mmLoginCredentialsCtrl', function($scope, $stateParams, $mmSitesManager, $mmUtil, $ionicHistory, $mmApp,$mmSite,
     $q, $mmLoginHelper, $mmContentLinksDelegate, $mmContentLinksHelper, $translate, $window) {
 
 
@@ -95,16 +95,21 @@ angular.module('mm.core.login')
     } else {
         $scope.siteChecked = true;
     }
-
-    window.addEventListener('message', function a(e) {
-        console.log(e.data);
+var loaded = true;
+// console.log('$mmSite.getToken()',$mmSite.getToken());
+  $window.addEventListener('message', function a(e) {
+      if(e.data &&  loaded){
+        loaded = false;
         return $mmSitesManager.newSite(e.origin, e.data, '').then(function() {
-            window.removeEventListener('message', a);
+            $window.removeEventListener('message', a);
             $ionicHistory.nextViewOptions({ disableBack: true });
             return $mmLoginHelper.redirectApp();
         });
+      }
+        
+        
     });
-
+ 
 
     // window.test = function() {
     //     console.log(this);
