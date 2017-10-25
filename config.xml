@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.smartway.futuregate" version="0.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>بوابة المستقبل</name>
+<widget id="com.smartway.futuregate" version="0.1.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>بوابة المستقبل - الرياض</name>
     <description>Future Gate</description>
     <author email="info@smartway-me.com" href="http://smartway-me.com">smart way</author>
     <content src="index.html" />
@@ -21,6 +21,7 @@
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="KeyboardDisplayRequiresUserAction" value="false" />
     <preference name="orientation" value="portrait" />
+    <preference name="AppendUserAgent" value="0f5712f22b8a33d1a9821d8bb5593a58" />
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
