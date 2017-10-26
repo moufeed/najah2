@@ -14,11 +14,7 @@
     "skipssoconfirmation": "false",
     "forcedefaultlanguage": "false",
     "privacypolicy": null,
-    // "privacypolicy": "https://moodle.org/mod/page/view.php?id=8148",
     "siteurl": "https://fg-riyadh.moe.gov.sa"
-    // "siteurl": "http://192.168.2.96"
-    // "siteurl": "https://fg2.smartway-dev.com"
-    // "siteurl": "https://fg-riyadh.smartway-dev.com/najeh"
 
 
 }

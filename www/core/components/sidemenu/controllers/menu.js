@@ -22,7 +22,7 @@ angular.module('mm.core.sidemenu')
  * @name mmSideMenuCtrl
  */
 .controller('mmSideMenuCtrl', function($scope, $state, $mmSideMenuDelegate, $mmSitesManager, $mmSite, $mmEvents,
-            $timeout, $rootScope, mmCoreEventLanguageChanged, mmCoreEventSiteUpdated, $mmSideMenu, $mmCourses, $http) {
+            $timeout, $rootScope, mmCoreEventLanguageChanged, mmCoreEventSiteUpdated, $mmSideMenu, $mmCourses, $http,$window) {
 
     $mmSideMenu.setScope($scope);
     $scope.handlers = $mmSideMenuDelegate.getNavHandlers();
@@ -39,13 +39,18 @@ angular.module('mm.core.sidemenu')
         }
     });
 
+
+    
+
+
     $scope.logout = function() {
         $mmSitesManager.logout().finally(function() {
             $mmSitesManager.deleteSite($mmSite.getId());
             // $state.go('mm_login.sites');
             $mmSitesManager.logout();
-            localStorage.clear();
-            sessionStorage.clear();
+            $window.localStorage.clear();
+            $window.sessionStorage.clear();
+
             $state.go('mm_login.logoutNoor');
         });
     };
@@ -54,15 +59,33 @@ angular.module('mm.core.sidemenu')
      *  key mjlog
      */
       $scope.sitelogout = function (){
-           $mmSitesManager.setSiteLoggedOut($mmSite.getId(),true).finally(function(res){
-                $mmSitesManager.deleteSite($mmSite.getId());
-               // $state.go('mm_login.reconnect');
-               $mmSitesManager.logout();
-               localStorage.clear();
-                sessionStorage.clear();
-               $state.go('mm_login.logoutNoor');
-           });
+
+
+
+        $mmSitesManager.setSiteLoggedOut($mmSite.getId(),true).finally(function(res){
+            console.log('sitelogout');
+           $mmSitesManager.deleteSite($mmSite.getId());
+           $mmSitesManager.logout();
+           $window.localStorage.clear();
+           $window.sessionStorage.clear();
+           $state.go('mm_login.logoutNoor');
+       });
+
+
+          
+
+            
       };
+      window.logs = function(){
+        $http({
+            method: 'GET',
+            url: 'https://fg-riyadh.moe.gov.sa/simplesaml/wsfed/sp/initSLO.php?RelayState=/simplesaml/logout.php'
+            }).then(function successCallback(response) {
+                console.log('response',response)
+            }, function errorCallback(response) {
+                console.log(response)
+         });
+      }
     function loadSiteInfo() {
         var config = $mmSite.getStoredConfig();
 
