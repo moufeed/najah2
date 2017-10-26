@@ -12,11 +12,10 @@
     "www/**/*.html",
     "www/build/**/*",
     "www/index.html",
-    "!www/lib/**/*",
-    "scss/**/*"
+    "!www/lib/**/*"
   ],
-  "type": "ionic1",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "ionic1"
 }
